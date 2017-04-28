@@ -2408,13 +2408,43 @@
         }
       }
     },
+    "/v2/user/channelCatalogs/{channelCatalogId}/products": {
+      "post": {
+        "tags": [
+          "V2UserChannelCatalogs_Product"
+        ],
+        "summary": "Get channel catalog product information list",
+        "operationId": "GetChannelCatalogProductInfoList",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "description": "The channel catalog product list filter",
+            "schema": {
+              "$ref": "#/definitions/getChannelCatalogProductInfoListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel catalog product information",
+            "schema": {
+              "$ref": "#/definitions/channelCatalogProductInfoList"
+            }
+          }
+        }
+      }
+    },
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}": {
       "get": {
         "tags": [
           "V2UserChannelCatalogs_Product"
         ],
         "summary": "Get channel catalog product information",
-        "operationId": "GetChannelCatalogProduct",
+        "operationId": "GetChannelCatalogProductInfo",
         "parameters": [
           {
             "$ref": "#/parameters/channelCatalogIdParameter"
@@ -5239,7 +5269,7 @@
         }
       }
     },
-    "/v2/user/marketplaces/orders/status": {
+    "/BeezUP/user_marketplaces_orders/2.0/status": {
       "get": {
         "tags": [
           "V2UserMarketplacesOrders_Global"
@@ -5261,7 +5291,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/harvest": {
+    "/BeezUP/user_marketplaces_orders/2.0/harvest": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_Global"
@@ -5294,7 +5324,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/automaticTransitions": {
+    "/BeezUP/user_marketplaces_orders/2.0/automaticTransitions": {
       "get": {
         "tags": [
           "V2UserMarketplacesOrders_AutoTransitions"
@@ -5341,7 +5371,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/list/full": {
+    "/BeezUP/user_marketplaces_orders/2.0/list/full": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_List"
@@ -5384,7 +5414,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/list/light": {
+    "/BeezUP/user_marketplaces_orders/2.0/list/light": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_List"
@@ -5415,7 +5445,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/exportations": {
+    "/BeezUP/user_marketplaces_orders/2.0/exportations": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_Exports"
@@ -5498,7 +5528,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/batches/setMerchantOrderInfos": {
+    "/BeezUP/user_marketplaces_orders/2.0/batches/setMerchantOrderInfos": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_Batches"
@@ -5527,7 +5557,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
+    "/BeezUP/user_marketplaces_orders/2.0/batches/clearMerchantOrderInfos": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_Batches"
@@ -5556,7 +5586,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
+    "/BeezUP/user_marketplaces_orders/2.0/batches/changeOrders/{changeOrderType}": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_Batches"
@@ -5594,7 +5624,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
+    "/BeezUP/user_marketplaces_orders/2.0/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
       "get": {
         "tags": [
           "V2UserMarketplacesOrders_One Order"
@@ -5626,7 +5656,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
+    "/BeezUP/user_marketplaces_orders/2.0/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_One Order"
@@ -5670,7 +5700,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
+    "/BeezUP/user_marketplaces_orders/2.0/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
         "tags": [
           "V2UserMarketplacesOrders_One Order"
@@ -5702,7 +5732,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
+    "/BeezUP/user_marketplaces_orders/2.0/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_One Order"
@@ -5736,7 +5766,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
+    "/BeezUP/user_marketplaces_orders/2.0/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_One Order"
@@ -5765,7 +5795,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
+    "/BeezUP/user_marketplaces_orders/2.0/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
         "tags": [
           "V2UserMarketplacesOrders_One Order"
@@ -6260,7 +6290,7 @@
         "compressedRelativePath": {
           "description": "Indicate the relative path in the compressed file",
           "type": "string",
-          "example": null
+          "example": "MyFolder/MyCatalog.zip"
         },
         "downloadTimeout": {
           "description": "Indicate the download time out in second",
@@ -6490,6 +6520,11 @@
         },
         "displayGroupName": {
           "$ref": "#/definitions/displayGroupName"
+        },
+        "description": {
+          "type": "string",
+          "description": "Describe the BeezUP column",
+          "example": "Use for big text, like description"
         }
       }
     },
@@ -6791,6 +6826,27 @@
         },
         "configuration": {
           "$ref": "#/definitions/columnConfiguration"
+        }
+      },
+      "example": {
+        "ignored": true,
+        "duplicateProductValueConfiguration": {
+          "strategy": "KeepFirstDuplicateProductOnly",
+          "compareOptions": "IgnoreCase"
+        },
+        "id": "8a76f06a-fefc-4c0d-bcfe-b210f1482977",
+        "catalogColumnName": "SKU",
+        "userColumName": "My SKU",
+        "configuration": {
+          "beezUPColumnName": "CategoryFirstLevel",
+          "customConfiguration": {
+            "columnImportance": "Required",
+            "columnDataType": "String",
+            "columnCultureName": "fr-FR",
+            "columnFormat": "MM/dd/yyyy",
+            "canBeTruncated": false,
+            "displayGroupName": "Category"
+          }
         }
       }
     },
@@ -7715,6 +7771,46 @@
         },
         "expectedValueDataType": {
           "$ref": "#/definitions/exclusionFilterOperatorDataType"
+        }
+      }
+    },
+    "getChannelCatalogProductInfoListRequest": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "The product sku to search"
+        },
+        "title": {
+          "type": "string",
+          "description": "The  product title to search"
+        }
+      }
+    },
+    "links.GetChannelCatalogProductInfo": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "channelCatalogProductInfoList": {
+      "description": "The channel catalog product info list",
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "$ref": "#/definitions/links.GetChannelCatalogProductInfo"
+            }
+          }
+        },
+        "productInfos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogProductInfo"
+          }
         }
       }
     },
@@ -9707,7 +9803,7 @@
           "format": "date-time",
           "description": "The utc date of the last execution",
           "type": "string",
-          "example": null
+          "example": "2016-08-29T09:12:33.001Z"
         },
         "actionName": {
           "$ref": "#/definitions/optimisationActionName"
@@ -10242,7 +10338,7 @@
             "category": {
               "description": "The channel category",
               "type": "string",
-              "example": null
+              "example": "NULL"
             },
             "homeUrl": {
               "description": "The home url of the channel",
@@ -12830,7 +12926,7 @@
         "htmlReportGenerationErrorMessage": {
           "description": "The error message if the Html Report generation failed",
           "type": "string",
-          "example": null
+          "example": "You have an error at this place..."
         },
         "completed": {
           "description": "Indicates if the publication is completed or not",
@@ -13633,7 +13729,7 @@
         "abortionUtcDate": {
           "format": "date-time",
           "type": "string",
-          "example": null
+          "example": "2017-04-01T13:10:12Z"
         },
         "beginUtcDate": {
           "format": "date-time",
@@ -13656,7 +13752,7 @@
         },
         "errorMessage": {
           "type": "string",
-          "example": null
+          "example": "You have an error here"
         },
         "executionUUID": {
           "format": "uuid",
@@ -13671,7 +13767,7 @@
         "failureUtcDate": {
           "format": "date-time",
           "type": "string",
-          "example": null
+          "example": "2017-04-01T13:39:12Z"
         },
         "ipAddress": {
           "type": "string",
@@ -13703,7 +13799,7 @@
         "resumedUtcDate": {
           "format": "date-time",
           "type": "string",
-          "example": null
+          "example": "2017-04-01T13:39:12Z"
         },
         "sourceType": {
           "$ref": "#/definitions/sourceType"
@@ -13718,7 +13814,7 @@
         "suspendedUtcDate": {
           "format": "date-time",
           "type": "string",
-          "example": null
+          "example": "2017-04-01T13:39:12Z"
         },
         "timeoutDuration": {
           "type": "string",
@@ -13726,7 +13822,7 @@
         },
         "warningMessage": {
           "type": "string",
-          "example": null
+          "example": "You have a warning here"
         }
       }
     },
@@ -14530,7 +14626,7 @@
             "order_Comment": {
               "description": "The comment associated to this order",
               "type": "string",
-              "example": null
+              "example": "This is a comment"
             },
             "order_Shipping_Civility": {
               "description": "The civility of the person in the shipping address for this order",
@@ -14560,12 +14656,12 @@
             "order_Shipping_AddressLine2": {
               "description": "The shipping address line 2 of this order",
               "type": "string",
-              "example": null
+              "example": "BDR"
             },
             "order_Shipping_AddressLine3": {
               "description": "The shipping address line 3 of this order",
               "type": "string",
-              "example": null
+              "example": "RDC"
             },
             "order_Shipping_AddressPostalCode": {
               "description": "The shipping address postal code of this order",
@@ -14634,17 +14730,17 @@
             "order_Buyer_Identifier": {
               "description": "The buyer identifier for this order",
               "type": "string",
-              "example": null
+              "example": "1234567890"
             },
             "order_Buyer_Civility": {
               "description": "The buyer civility for this order",
               "type": "string",
-              "example": null
+              "example": "Marseille"
             },
             "order_Buyer_CompanyName": {
               "description": "The buyer company name for this order",
               "type": "string",
-              "example": null
+              "example": "Marsillia"
             },
             "order_Buyer_Email": {
               "description": "The email of the buyer for this order",
@@ -14659,12 +14755,12 @@
             "order_Buyer_AddressLine2": {
               "description": "The Buyer address line 2 of this order",
               "type": "string",
-              "example": null
+              "example": "BDR"
             },
             "order_Buyer_AddressLine3": {
               "description": "The Buyer address line 3 of this order",
               "type": "string",
-              "example": null
+              "example": "RDC"
             },
             "order_Buyer_AddressPostalCode": {
               "description": "The Buyer address postal code of this order",
@@ -15003,7 +15099,7 @@
         "errorMessage": {
           "description": "The error message during the execution",
           "type": "string",
-          "example": null
+          "example": "This is an error message"
         },
         "ipAddress": {
           "description": "The IP address who request this operation",
@@ -15050,12 +15146,12 @@
         "errorMessage": {
           "description": "The warning message during the execution",
           "type": "string",
-          "example": null
+          "example": "This is an error message"
         },
         "warningMessage": {
           "description": "The warning message during the execution",
           "type": "string",
-          "example": null
+          "example": "This is a warning"
         },
         "beezUPStatus": {
           "$ref": "#/definitions/beezUPOrderStatus"
@@ -15114,24 +15210,26 @@
           "$ref": "#/definitions/beezUPOrderId"
         },
         "changeOrderRequest": {
-          "$ref": "#/definitions/changeOrderRequest"
+          "$ref": "#/definitions/changeOrderRequestDic"
         }
       }
     },
-    "changeOrderRequest": {
-      "type": "object",
-      "description": "All properties with the prefix order_ are translated in the list of values /user/lov/OrderMetaInfoPosted",
-      "additionalProperties": {
-        "type": "string",
-        "x-lov": "OrderMetaInfoPosted"
+    "changeOrderRequestDic": {
+      "description": "All properties with the prefix order_ are translated in the list of values /user/lov",
+      "properties": {
+        "default": {
+          "$ref": "#/definitions/changeOrderRequest"
+        }
       },
-      "example": {
-        "order_Shipping_ShipperTrackingNumber": "1H01845163783",
-        "order_Shipping_ShippingUrl": "https://trackingpackage.com?number=1H01845163783",
-        "order_Shipping_CarrierName": "La poste",
-        "order_Shipping_FulfillmentDate": "2014-09-23T09:58:00Z",
-        "order_Shipping_EstimatedDeliveryDate": "2014-09-24T09:58:00Z"
+      "additionalProperties": {
+        "$ref": "#/definitions/changeOrderRequest"
       }
+    },
+    "changeOrderRequest": {
+      "description": "All properties with the prefix order_ are translated in the list of values /user/lov",
+      "type": "string",
+      "example": "8D4176FA78D5A7Fffa91e9edc694ec5858be9a1b109507c",
+      "x-lov": "OrderMetaInfoPosted"
     },
     "changeOrderResponse": {
       "type": "object",
