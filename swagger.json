@@ -13,7 +13,7 @@
     }
   },
   "host": "api.beezup.com",
-  "basePath": "/v2/user/catalogs",
+  "basePath": "",
   "x-api-name": "V2UserCatalogs",
   "schemes": [
     "https"
