@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "2.0",
-    "title": "BeezUP API",
-    "description": "This is the RESTful API of BeezUP which allows you to manage everything related to BeezUP",
+    "title": "Catalogs",
+    "description": "This API allows you to manage your catalogs",
     "contact": {
       "email": "support@beezup.com"
     },
@@ -13,7 +13,7 @@
     }
   },
   "host": "api.beezup.com",
-  "basePath": "v2",
+  "basePath": "",
   "x-api-name": "V2UserCatalogs",
   "schemes": [
     "https"
@@ -26,171 +26,171 @@
   ],
   "tags": [
     {
-      "name": "Auto",
+      "name": "V2UserCatalogs_Auto",
       "description": "All operations related to the Auto importation"
     },
     {
-      "name": "Global",
+      "name": "V2UserCatalogs_Global",
       "description": "All operations related to global information"
     },
     {
-      "name": "Importation Process",
+      "name": "V2UserCatalogs_Importation Process",
       "description": "All operations concerning the importation process"
     },
     {
-      "name": "Importation Catalog Info",
+      "name": "V2UserCatalogs_Importation Catalog Info",
       "description": "All operations related to the catalog information during the importation"
     },
     {
-      "name": "Catalog",
+      "name": "V2UserCatalogs_Catalog",
       "description": "All operation related to the catalog"
     },
     {
-      "name": "Channel Catalogs Global",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Global",
       "description": "All global operations"
     },
     {
-      "name": "Channel Catalogs Settings",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Settings",
       "description": "All settings operations"
     },
     {
-      "name": "Channel Catalogs Column Mappings",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Column Mappings",
       "description": "All column mapping operations"
     },
     {
-      "name": "Channel Catalogs Category Mappings",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Category Mappings",
       "description": "All category mapping operations"
     },
     {
-      "name": "Channel Catalogs Exclusion Filters",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Exclusion Filters",
       "description": "All exclusion filters operations"
     },
     {
-      "name": "Channel Catalogs Products",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Products",
       "description": "All products operations"
     },
     {
-      "name": "Channel Catalogs Products Overrides",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Products Overrides",
       "description": "All products overrides operations"
     },
     {
-      "name": "Channel Catalogs Products Optimisation",
+      "name": "V2UserChannelCatalogs_Channel Catalogs Products Optimisation",
       "description": "All products optimisation operations"
     },
     {
-      "name": "Tracking",
+      "name": "V2UserAnalytics_Tracking",
       "description": "All tracking operations"
     },
     {
-      "name": "Statistics",
+      "name": "V2UserAnalytics_Statistics",
       "description": "All statitics operations"
     },
     {
-      "name": "Rules",
+      "name": "V2UserAnalytics_Rules",
       "description": "All rules operations. Rules are automatic optimisations based on report filters."
     },
     {
-      "name": "Reports",
+      "name": "V2UserAnalytics_Reports",
       "description": "All reports operations"
     },
     {
-      "name": "Optimisations",
+      "name": "V2UserAnalytics_Optimisations",
       "description": "All optmisations operations"
     },
     {
-      "name": "Channels Global",
+      "name": "V2UserChannels_Channels Global",
       "description": "All global operations"
     },
     {
-      "name": "Account",
+      "name": "V2UserCustomer_Account",
       "description": "All user account operations"
     },
     {
-      "name": "Stores",
+      "name": "V2UserCustomer_Stores",
       "description": "All stores operations"
     },
     {
-      "name": "Shares",
+      "name": "V2UserCustomer_Shares",
       "description": "All store share operations"
     },
     {
-      "name": "Alerts",
+      "name": "V2UserCustomer_Alerts",
       "description": "All stores's alerts operations"
     },
     {
-      "name": "Rights",
+      "name": "V2UserCustomer_Rights",
       "description": "All store rights operations"
     },
     {
-      "name": "Friends",
+      "name": "V2UserCustomer_Friends",
       "description": "All friends operations"
     },
     {
-      "name": "Contracts",
+      "name": "V2UserCustomer_Contracts",
       "description": "All contracts and offer operations"
     },
     {
-      "name": "Invoices",
+      "name": "V2UserCustomer_Invoices",
       "description": "All invoice operations"
     },
     {
-      "name": "Security",
+      "name": "V2UserCustomer_Security",
       "description": "All security operations"
     },
     {
-      "name": "LOV",
+      "name": "UserLOV_LOV",
       "description": "All LOV operations"
     },
     {
-      "name": "Groups",
+      "name": "UserLOV_Groups",
       "description": "All LOV groups operations"
     },
     {
-      "name": "Marketplaces - Channel catalogs - Global",
+      "name": "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Global",
       "description": "Operations to fetch your marketplace account related to your channel catalogs"
     },
     {
-      "name": "Marketplaces - Channel catalogs - Publications",
+      "name": "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Publications",
       "description": "Operations to fetch your marketplace account's catalog publication history"
     },
     {
-      "name": "Marketplaces - Channel catalogs - Settings",
+      "name": "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Settings",
       "description": "Operations to manage your channel catalogs' marketplace settings"
     },
     {
-      "name": "Order",
-      "description": "All global operations"
+      "name": "V2UserMarketplacesOrders_Global",
+      "description": "All global operations (cross marketplace)"
     },
     {
-      "name": "One Order",
-      "description": "All operations related to only one order"
+      "name": "V2UserMarketplacesOrders_Order",
+      "description": "All operations related to a single Order"
     },
     {
-      "name": "List",
-      "description": "All order list operations"
+      "name": "V2UserMarketplacesOrders_List",
+      "description": "All Order list operations"
     },
     {
-      "name": "Batches",
-      "description": "All batch operations on orders to reduce rate calls"
+      "name": "V2UserMarketplacesOrders_Batches",
+      "description": "All batch operations on Orders to reduce call rate"
     },
     {
-      "name": "AutoTransitions",
+      "name": "V2UserMarketplacesOrders_AutoTransitions",
       "description": "All auto transitions operations"
     },
     {
-      "name": "Exports",
-      "description": "All order exportation operations"
+      "name": "V2UserMarketplacesOrders_Exports",
+      "description": "All Order report exportation operations"
     },
     {
-      "name": "LOV",
+      "name": "PublicLOV_LOV",
       "description": "All LOV operations"
     },
     {
-      "name": "Groups",
+      "name": "PublicLOV_Groups",
       "description": "All LOV groups operations"
     },
     {
-      "name": "Security"
+      "name": "V2PublicSecurity_Security"
     }
   ],
   "securityDefinitions": {
@@ -201,6 +201,11 @@
       "in": "header"
     }
   },
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
   "responses": {
     "importStarted": {
       "description": "Catalog importation started",
@@ -425,7 +430,7 @@
       "x-example": 1001
     },
     "beezUPOrderIdParameter": {
-      "description": "The order BeezUP identifier",
+      "description": "The BeezUP Order identifier",
       "name": "beezUPOrderId",
       "in": "path",
       "required": true,
@@ -433,7 +438,7 @@
       "x-example": "00000000000000000000000000000000000000000000000"
     },
     "changeOrderTypeParameter": {
-      "description": "The order change type",
+      "description": "The Order change type",
       "name": "changeOrderType",
       "in": "path",
       "required": true,
@@ -442,14 +447,14 @@
     },
     "userNameInQueryParameter": {
       "name": "userName",
-      "description": "Sometimes the user in the e-commerce application is not the same than the subscription key you indicate in your settings. We recommand you to indicate the login of the user in your appplication.",
+      "description": "Sometimes the user in the e-commerce application is not the same as user associated with the current subscription key. We recommend providing your application's user login.",
       "in": "query",
       "required": true,
       "type": "string"
     },
     "testModeInQueryParameter": {
       "name": "testMode",
-      "description": "If true, the operation will be be commited. But the validation will be taken in account.",
+      "description": "If true, the operation will be not be sent to marketplace. But the validation will be taken in account.",
       "in": "query",
       "required": false,
       "type": "boolean",
@@ -461,7 +466,7 @@
     "/v2/user/catalogs/beezupColumns": {
       "get": {
         "tags": [
-          "Global"
+          "V2UserCatalogs_Global"
         ],
         "operationId": "Catalog_GetBeezUPColumns",
         "summary": "Get the BeezUP columns",
@@ -473,24 +478,20 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/beezUPColumnConfiguration"
-              }
+              },
+              "example": null
             }
           },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/inputConfiguration": {
       "get": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Importation_GetManualUpdateLastInputConfig",
         "summary": "Get the last input configuration",
@@ -512,18 +513,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/catalogColumns": {
       "get": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_GetCatalogColumns",
         "summary": "Get catalog column list",
@@ -545,18 +541,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/catalogColumns/{columnId}/rename": {
       "post": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_ChangeCatalogColumnUserName",
         "summary": "Change Catalog Column User Name",
@@ -595,18 +586,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/customColumns": {
       "get": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_GetCustomColumns",
         "summary": "Get custom column list",
@@ -628,18 +614,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/customColumns/{columnId}": {
       "put": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_SaveCustomColumn",
         "summary": "Create or replace a custom column",
@@ -678,16 +659,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "summary": "Delete custom column",
         "operationId": "Catalog_DeleteCustomColumn",
@@ -718,18 +694,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/customColumns/{columnId}/rename": {
       "post": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "summary": "Change Custom Column User Name",
         "operationId": "Catalog_ChangeCustomColumnUserName",
@@ -768,18 +739,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "summary": "Get the encrypted custom column expression",
         "operationId": "Catalog_GetCustomColumnExpression",
@@ -805,16 +771,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "summary": "Change custom column expression",
         "operationId": "Catalog_ChangeCustomColumnExpression",
@@ -850,18 +811,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/customColumns/computeExpression": {
       "post": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "summary": "Compute the expression for this catalog.",
         "operationId": "Catalog_ComputeExpression",
@@ -888,18 +844,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/categories": {
       "get": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_GetCategories",
         "summary": "Get category list",
@@ -942,18 +893,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/products": {
       "post": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_GetProducts",
         "summary": "Get product list",
@@ -982,18 +928,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/products/random": {
       "get": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_GetRandomProducts",
         "summary": "Get random product list",
@@ -1027,18 +968,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/products/{productId}": {
       "get": {
         "tags": [
-          "Catalog"
+          "V2UserCatalogs_Catalog"
         ],
         "operationId": "Catalog_GetProduct",
         "summary": "Get product",
@@ -1068,18 +1004,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations": {
       "post": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Start Manual Import",
         "operationId": "Importation_StartManualUpdate",
@@ -1115,16 +1046,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "get": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Get the latest catalog importation reporting",
         "operationId": "Importation_GetReportings",
@@ -1146,18 +1072,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}": {
       "get": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Get the importation status",
         "operationId": "Importation_GetImportationMonitoring",
@@ -1182,16 +1103,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Cancel importation",
         "operationId": "Importation_Cancel",
@@ -1216,18 +1132,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/technicalProgression": {
       "get": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Get technical progression",
         "operationId": "Importation_TechnicalProgression",
@@ -1255,18 +1166,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/configureRemainingCatalogColumns": {
       "post": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Configure remaining catalog columns",
         "description": "This operation should be used after you have mapped the required BeezUP Columns",
@@ -1298,18 +1204,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/commitColumns": {
       "post": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Commit columns",
         "operationId": "Importation_CommitColumns",
@@ -1337,18 +1238,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/commit": {
       "post": {
         "tags": [
-          "Importation Process"
+          "V2UserCatalogs_Importation Process"
         ],
         "summary": "Commit Importation",
         "operationId": "Importation_Commit",
@@ -1379,18 +1275,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}": {
       "get": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Get the product sample related to this importation with all columns (catalog and custom)",
         "operationId": "Importation_GetProductSample",
@@ -1421,18 +1312,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}/customColumns/{columnId}": {
       "get": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Get product sample custom column value related to this importation.",
         "description": "/!\\ Use this operation only when you just changed the custom column expression and you want to get a precise the property value. Otherwise use the operation Importation_GetProductSample which will give you all property values",
@@ -1477,18 +1363,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns": {
       "get": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Get detected catalog columns during this importation.",
         "operationId": "Importation_GetDetectedCatalogColumns",
@@ -1516,18 +1397,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}": {
       "post": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Configure catalog column",
         "operationId": "Importation_ConfigureCatalogColumn",
@@ -1569,18 +1445,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/ignore": {
       "post": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Ignore Column",
         "operationId": "Importation_IgnoreColumn",
@@ -1608,18 +1479,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/reattend": {
       "post": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Reattend Column",
         "operationId": "Importation_ReattendColumn",
@@ -1647,18 +1513,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/map": {
       "post": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Map catalog column to a BeezUP column",
         "operationId": "Importation_MapCatalogColumn",
@@ -1694,18 +1555,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/unmap": {
       "post": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Unmap catalog column",
         "operationId": "Importation_UnmapCatalogColumn",
@@ -1733,18 +1589,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns": {
       "get": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Get custom columns currently place in this importation",
         "operationId": "Importation_GetCustomColumns",
@@ -1772,18 +1623,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Get the encrypted custom column expression in this importation",
         "operationId": "Importation_GetCustomColumnExpression",
@@ -1815,18 +1661,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}": {
       "put": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Create or replace a custom column",
         "operationId": "Importation_SaveCustomColumn",
@@ -1862,16 +1703,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Delete Custom Column",
         "operationId": "Importation_DeleteCustomColumn",
@@ -1896,18 +1732,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/map": {
       "post": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Map custom column to a BeezUP column",
         "operationId": "Importation_MapCustomColumn",
@@ -1943,18 +1774,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/unmap": {
       "post": {
         "tags": [
-          "Importation Catalog Info"
+          "V2UserCatalogs_Importation Catalog Info"
         ],
         "summary": "Unmap custom column",
         "operationId": "Importation_UnmapCustomColumn",
@@ -1982,18 +1808,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/autoImport": {
       "get": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "operationId": "Auto_GetAutoImportConfiguration",
         "summary": "Get the auto import configuration",
@@ -2015,16 +1836,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "operationId": "Importation_ActivateAutoImport",
         "summary": "Activate the auto importation of the last successful manual catalog importation.",
@@ -2056,16 +1872,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "operationId": "Auto_DeleteAutoImport",
         "summary": "Delete Auto Import",
@@ -2087,18 +1898,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/autoImport/start": {
       "post": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "summary": "Start Auto Import Manually",
         "operationId": "Auto_StartAutoImport",
@@ -2129,18 +1935,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/autoImport/pause": {
       "post": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "operationId": "Auto_PauseAutoImport",
         "summary": "Pause Auto Import",
@@ -2162,18 +1963,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/autoImport/resume": {
       "post": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "operationId": "Auto_ResumeAutoImport",
         "summary": "Resume Auto Import",
@@ -2195,18 +1991,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/autoImport/scheduling/interval": {
       "post": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "operationId": "Auto_ConfigureAutoImportInterval",
         "summary": "Configure Auto Import Interval",
@@ -2239,18 +2030,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/catalogs/{storeId}/autoImport/scheduling/schedules": {
       "post": {
         "tags": [
-          "Auto"
+          "V2UserCatalogs_Auto"
         ],
         "summary": "Configure Auto Import Schedules",
         "operationId": "Auto_ScheduleAutoImport",
@@ -2283,18 +2069,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/": {
       "get": {
         "tags": [
-          "Channel Catalogs Global"
+          "V2UserChannelCatalogs_Channel Catalogs Global"
         ],
         "summary": "List all your current channel catalogs",
         "operationId": "GetChannelCatalogs",
@@ -2316,16 +2097,11 @@
               "$ref": "#/definitions/channelCatalogList"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Channel Catalogs Global"
+          "V2UserChannelCatalogs_Channel Catalogs Global"
         ],
         "summary": "Create a new channel catalog",
         "operationId": "CreateChannelCatalog",
@@ -2364,18 +2140,13 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}": {
       "get": {
         "tags": [
-          "Channel Catalogs Global"
+          "V2UserChannelCatalogs_Channel Catalogs Global"
         ],
         "summary": "Get the channel catalog information",
         "operationId": "GetChannelCatalog",
@@ -2391,16 +2162,11 @@
               "$ref": "#/definitions/channelCatalog"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Channel Catalogs Global"
+          "V2UserChannelCatalogs_Channel Catalogs Global"
         ],
         "summary": "Delete the channel catalog",
         "operationId": "DeleteChannelCatalog",
@@ -2408,18 +2174,13 @@
           "204": {
             "description": "Channel catalog deleted"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/enable": {
       "post": {
         "tags": [
-          "Channel Catalogs Settings"
+          "V2UserChannelCatalogs_Channel Catalogs Settings"
         ],
         "summary": "Enable a channel catalog",
         "operationId": "EnableChannelCatalog",
@@ -2438,18 +2199,13 @@
               "$ref": "#/definitions/upgradeOfferRequired"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/disable": {
       "post": {
         "tags": [
-          "Channel Catalogs Settings"
+          "V2UserChannelCatalogs_Channel Catalogs Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "DisableChannelCatalog",
@@ -2462,18 +2218,13 @@
           "204": {
             "description": "Channel catalog disabled"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/settings/general": {
       "post": {
         "tags": [
-          "Channel Catalogs Settings"
+          "V2UserChannelCatalogs_Channel Catalogs Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "ConfigureChannelCatalogGeneralSettings",
@@ -2494,18 +2245,13 @@
           "204": {
             "description": "Channel catalog general settings configured"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/settings/cost": {
       "post": {
         "tags": [
-          "Channel Catalogs Settings"
+          "V2UserChannelCatalogs_Channel Catalogs Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "ConfigureChannelCatalogCostSettings",
@@ -2526,18 +2272,13 @@
           "204": {
             "description": "Channel catalog cost settings configured"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/columnMappings": {
       "put": {
         "tags": [
-          "Channel Catalogs Column Mappings"
+          "V2UserChannelCatalogs_Channel Catalogs Column Mappings"
         ],
         "summary": "Configure channel catalog column mappings",
         "operationId": "MapChannelCatalogColumns",
@@ -2558,18 +2299,13 @@
           "204": {
             "description": "Channel catalog column mappings configured"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings": {
       "get": {
         "tags": [
-          "Channel Catalogs Category Mappings"
+          "V2UserChannelCatalogs_Channel Catalogs Category Mappings"
         ],
         "summary": "Get channel catalog categories",
         "operationId": "GetChannelCatalogCategories",
@@ -2585,18 +2321,13 @@
               "$ref": "#/definitions/channelCatalogCategoryMappings"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/map": {
       "post": {
         "tags": [
-          "Channel Catalogs Category Mappings"
+          "V2UserChannelCatalogs_Channel Catalogs Category Mappings"
         ],
         "summary": "Map channel catalog category",
         "operationId": "MapChannelCatalogCategory",
@@ -2617,18 +2348,13 @@
           "204": {
             "description": "Channel catalog category mapped"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/unmap": {
       "post": {
         "tags": [
-          "Channel Catalogs Category Mappings"
+          "V2UserChannelCatalogs_Channel Catalogs Category Mappings"
         ],
         "summary": "Unmap channel catalog category",
         "operationId": "UnmapChannelCatalogCategory",
@@ -2649,18 +2375,13 @@
           "204": {
             "description": "Channel catalog category unmapped"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/exclusionFilterOperators": {
       "get": {
         "tags": [
-          "Channel Catalogs Exclusion Filters"
+          "V2UserChannelCatalogs_Channel Catalogs Exclusion Filters"
         ],
         "summary": "Get channel catalog exclusion filter operators",
         "operationId": "GetChannelCatalogExclusionFilterOperators",
@@ -2674,18 +2395,13 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/exclusionFilters": {
       "put": {
         "tags": [
-          "Channel Catalogs Exclusion Filters"
+          "V2UserChannelCatalogs_Channel Catalogs Exclusion Filters"
         ],
         "summary": "Configure channel catalog exclusion filters",
         "operationId": "ConfigureChannelCatalogExclusionFilters",
@@ -2706,18 +2422,13 @@
           "204": {
             "description": "Channel catalog exclusion filter list configured"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/products": {
       "post": {
         "tags": [
-          "Channel Catalogs Products"
+          "V2UserChannelCatalogs_Channel Catalogs Products"
         ],
         "summary": "Get channel catalog product information list",
         "operationId": "GetChannelCatalogProductInfoList",
@@ -2741,18 +2452,13 @@
               "$ref": "#/definitions/channelCatalogProductInfoList"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}": {
       "get": {
         "tags": [
-          "Channel Catalogs Products"
+          "V2UserChannelCatalogs_Channel Catalogs Products"
         ],
         "summary": "Get channel catalog product information",
         "operationId": "GetChannelCatalogProductInfo",
@@ -2771,18 +2477,13 @@
               "$ref": "#/definitions/channelCatalogProductInfo"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides": {
       "put": {
         "tags": [
-          "Channel Catalogs Products Overrides"
+          "V2UserChannelCatalogs_Channel Catalogs Products Overrides"
         ],
         "summary": "Override channel catalog product values",
         "operationId": "OverrideChannelCatalogProductOverrides",
@@ -2806,18 +2507,13 @@
           "204": {
             "description": "Channel catalog product overriden"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/{channelColumnId}": {
       "delete": {
         "tags": [
-          "Channel Catalogs Products Overrides"
+          "V2UserChannelCatalogs_Channel Catalogs Products Overrides"
         ],
         "summary": "Delete a specific channel catalog product value override",
         "operationId": "DeleteChannelCatalogProductValueOverride",
@@ -2842,18 +2538,13 @@
           "204": {
             "description": "Channel catalog product value override deleted"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/disable": {
       "post": {
         "tags": [
-          "Channel Catalogs Products Optimisation"
+          "V2UserChannelCatalogs_Channel Catalogs Products Optimisation"
         ],
         "summary": "Disable channel catalog product",
         "operationId": "DisableChannelCatalogProduct",
@@ -2870,18 +2561,13 @@
           "204": {
             "description": "Channel catalog product disabled"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/reenable": {
       "post": {
         "tags": [
-          "Channel Catalogs Products Optimisation"
+          "V2UserChannelCatalogs_Channel Catalogs Products Optimisation"
         ],
         "summary": "Reenable channel catalog product",
         "description": "By default a all your catalog products are exposed to the channel.\nYou can reenable a product by using this operation.\n/!\\ In case of massive optimisation we recommand you to use the analytics api\n",
@@ -2898,18 +2584,13 @@
           "204": {
             "description": "Channel catalog product reenabled"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/tracking/status": {
       "get": {
         "tags": [
-          "Tracking"
+          "V2UserAnalytics_Tracking"
         ],
         "summary": "Display the synchronization status of the clicks and orders",
         "description": "Your clicks and orders are eventually consistent. \\\nThis operation indicates you at which date the projections are.\n",
@@ -2924,18 +2605,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/filters": {
       "get": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Get report filter list for the given store",
         "operationId": "GetReportFilters",
@@ -2954,18 +2630,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/filters/{reportFilterId}": {
       "get": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Get the report filter description",
         "operationId": "GetReportFilter",
@@ -2990,16 +2661,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Delete the report filter",
         "operationId": "DeleteReportFilter",
@@ -3027,16 +2693,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Save the report filter",
         "operationId": "SaveReportFilter",
@@ -3072,18 +2733,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/byday": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Get the report by day",
         "description": "Get the report by day",
@@ -3111,18 +2767,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/byday/export": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Get the report by day",
         "description": "Get the report by day",
@@ -3170,18 +2821,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/bychannel": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Get the report by channel",
         "description": "Get the report by channel",
@@ -3209,18 +2855,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/bychannel/export": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Export the report by channel",
         "description": "Export the report by channel",
@@ -3267,18 +2908,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/bycategory": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Get the report by category",
         "description": "Get the report by category",
@@ -3306,18 +2942,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/bycategory/export": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Export the report by category",
         "description": "Export the report by category",
@@ -3364,18 +2995,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/byproduct": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Get the report by product",
         "description": "Get the report by product",
@@ -3403,18 +3029,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/reports/byproduct/export": {
       "post": {
         "tags": [
-          "Reports"
+          "V2UserAnalytics_Reports"
         ],
         "summary": "Export the report by product",
         "description": "Export the report by product",
@@ -3461,18 +3082,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/optimisations/{actionName}": {
       "post": {
         "tags": [
-          "Optimisations"
+          "V2UserAnalytics_Optimisations"
         ],
         "summary": "Optimise products",
         "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product related to this request. \\\nThis operation is used at the bottom of the analytics page result.\n",
@@ -3500,18 +3116,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/optimisations/byproduct/{productId}/{actionName}": {
       "post": {
         "tags": [
-          "Optimisations"
+          "V2UserAnalytics_Optimisations"
         ],
         "summary": "Optimise products",
         "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable this product for every channel indicated in the body. \n",
@@ -3558,18 +3169,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/optimisations/bycategory/{catalogCategoryId}/{actionName}": {
       "post": {
         "tags": [
-          "Optimisations"
+          "V2UserAnalytics_Optimisations"
         ],
         "summary": "Optimise products's category",
         "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable products's category for every channel indicated in the body. \n",
@@ -3616,18 +3222,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/optimisations/bychannel/{channelId}/{actionName}": {
       "post": {
         "tags": [
-          "Optimisations"
+          "V2UserAnalytics_Optimisations"
         ],
         "summary": "Optimise products's category",
         "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product on this channel.\n",
@@ -3655,18 +3256,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/tracking/status": {
       "get": {
         "tags": [
-          "Tracking"
+          "V2UserAnalytics_Tracking"
         ],
         "summary": "Get store tracking synchronization status",
         "description": "Your clicks and orders are eventually consistent. \\\nThis operation indicates you at which date the projections are for this store.\n",
@@ -3689,18 +3285,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/tracking/clicks": {
       "get": {
         "tags": [
-          "Tracking"
+          "V2UserAnalytics_Tracking"
         ],
         "summary": "Get the latest clicks tracked",
         "operationId": "GetStoreTrackedClicks",
@@ -3732,18 +3323,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/tracking/orders": {
       "get": {
         "tags": [
-          "Tracking"
+          "V2UserAnalytics_Tracking"
         ],
         "summary": "Get the latest orders tracked",
         "operationId": "GetStoreTrackedOrders",
@@ -3775,18 +3361,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/tracking/externalorders": {
       "get": {
         "tags": [
-          "Tracking"
+          "V2UserAnalytics_Tracking"
         ],
         "summary": "Get the latest external orders tracked",
         "operationId": "GetStoreTrackedExternalOrders",
@@ -3818,18 +3399,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules": {
       "get": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Gets the list of rules for a given store",
         "operationId": "GetRules",
@@ -3848,16 +3424,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Rule creation",
         "operationId": "CreateRule",
@@ -3894,18 +3465,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/run": {
       "post": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Run all rules for this store",
         "operationId": "RunRules",
@@ -3930,18 +3496,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/executions": {
       "get": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Get the rules execution history",
         "operationId": "GetRulesExecutions",
@@ -3979,18 +3540,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/{ruleId}": {
       "get": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Gets the rule",
         "operationId": "GetRule",
@@ -4012,16 +3568,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Delete Rule",
         "operationId": "DeleteRule",
@@ -4046,16 +3597,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "patch": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Update Rule",
         "operationId": "UpdateRule",
@@ -4094,18 +3640,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/{ruleId}/run": {
       "post": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Run rule",
         "operationId": "RunRule",
@@ -4136,18 +3677,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/{ruleId}/moveup": {
       "post": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Move the rule up",
         "operationId": "MoveUpRule",
@@ -4175,18 +3711,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/{ruleId}/movedown": {
       "post": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Move the rule down",
         "operationId": "MoveDownRule",
@@ -4214,18 +3745,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/{ruleId}/enable": {
       "post": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Enable rule",
         "operationId": "EnableRule",
@@ -4250,18 +3776,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/analytics/{storeId}/rules/{ruleId}/disable": {
       "post": {
         "tags": [
-          "Rules"
+          "V2UserAnalytics_Rules"
         ],
         "summary": "Disable rule",
         "operationId": "DisableRule",
@@ -4286,18 +3807,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channels/": {
       "get": {
         "tags": [
-          "Channels Global"
+          "V2UserChannels_Channels Global"
         ],
         "summary": "List all available channel for this store",
         "operationId": "GetCurrentChannels",
@@ -4322,18 +3838,13 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channels/{channelId}": {
       "get": {
         "tags": [
-          "Channels Global"
+          "V2UserChannels_Channels Global"
         ],
         "summary": "Get channel information",
         "operationId": "GetChannelInfo",
@@ -4349,18 +3860,13 @@
               "$ref": "#/definitions/channelInfo"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channels/{channelId}/categories": {
       "get": {
         "tags": [
-          "Channels Global"
+          "V2UserChannels_Channels Global"
         ],
         "summary": "Get channel categories",
         "operationId": "GetChannelCategories",
@@ -4397,18 +3903,13 @@
               "$ref": "#/definitions/channelRootCategory"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/channels/{channelId}/columns": {
       "post": {
         "tags": [
-          "Channels Global"
+          "V2UserChannels_Channels Global"
         ],
         "summary": "Get channel columns",
         "operationId": "GetChannelColumns",
@@ -4460,18 +3961,13 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account": {
       "get": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Get user account information",
         "operationId": "GetUserAccountInfo",
@@ -4485,18 +3981,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account/resendEmailActivation": {
       "post": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Resend email activation",
         "operationId": "ResendEmailActivation",
@@ -4516,18 +4007,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account/activate": {
       "post": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Activate the user account",
         "operationId": "ActivateUserAccount",
@@ -4553,18 +4039,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account/personalInfo": {
       "put": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Save user personal information",
         "operationId": "SavePersonalInfo",
@@ -4591,18 +4072,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account/companyInfo": {
       "put": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Change company information",
         "operationId": "SaveCompanyInfo",
@@ -4632,18 +4108,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account/profilePictureInfo": {
       "put": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Change user picture information",
         "operationId": "SaveProfilePictureInfo",
@@ -4676,18 +4147,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account/creditCardInfo": {
       "get": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Get credit card information",
         "operationId": "GetCreditCardInfo",
@@ -4707,16 +4173,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Save user credit card info",
         "operationId": "SaveCreditCardInfo",
@@ -4747,18 +4208,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/account/changePassword": {
       "post": {
         "tags": [
-          "Account"
+          "V2UserCustomer_Account"
         ],
         "summary": "Change user password",
         "operationId": "ChangePassword",
@@ -4782,18 +4238,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/security/logout": {
       "post": {
         "tags": [
-          "Security"
+          "V2UserCustomer_Security"
         ],
         "summary": "Log out the current user from go2",
         "description": "Log out the current user from go2",
@@ -4805,18 +4256,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/stores": {
       "get": {
         "tags": [
-          "Stores"
+          "V2UserCustomer_Stores"
         ],
         "summary": "Get store list",
         "operationId": "GetStores",
@@ -4830,16 +4276,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Stores"
+          "V2UserCustomer_Stores"
         ],
         "summary": "Create a new store",
         "operationId": "CreateStore",
@@ -4869,18 +4310,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/stores/{storeId}": {
       "get": {
         "tags": [
-          "Stores"
+          "V2UserCustomer_Stores"
         ],
         "summary": "Get store's information",
         "operationId": "GetStore",
@@ -4902,16 +4338,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "patch": {
         "tags": [
-          "Stores"
+          "V2UserCustomer_Stores"
         ],
         "summary": "Update some store's information.",
         "description": "Update some store's information. FYI, you cannot change the country.\n",
@@ -4942,16 +4373,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
-          "Stores"
+          "V2UserCustomer_Stores"
         ],
         "summary": "Delete a store",
         "operationId": "DeleteStore",
@@ -4970,18 +4396,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/stores/{storeId}/shares": {
       "get": {
         "tags": [
-          "Shares"
+          "V2UserCustomer_Shares"
         ],
         "summary": "Get shares related to this store",
         "operationId": "GetShares",
@@ -5003,16 +4424,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Shares"
+          "V2UserCustomer_Shares"
         ],
         "summary": "Share a store to another user",
         "operationId": "Share",
@@ -5043,18 +4459,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/friends/{userId}": {
       "get": {
         "tags": [
-          "Friends"
+          "V2UserCustomer_Friends"
         ],
         "summary": "Get friend information",
         "operationId": "GetFriendInfo",
@@ -5081,18 +4492,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/stores/{storeId}/shares/{userId}": {
       "delete": {
         "tags": [
-          "Shares"
+          "V2UserCustomer_Shares"
         ],
         "summary": "Delete a share to another user",
         "operationId": "DeleteShare",
@@ -5119,18 +4525,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/stores/{storeId}/rights": {
       "post": {
         "tags": [
-          "Rights"
+          "V2UserCustomer_Rights"
         ],
         "summary": "Get store's rights",
         "operationId": "GetRights",
@@ -5174,18 +4575,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/stores/{storeId}/alerts": {
       "get": {
         "tags": [
-          "Alerts"
+          "V2UserCustomer_Alerts"
         ],
         "summary": "Get store's alerts",
         "operationId": "GetStoreAlerts",
@@ -5207,18 +4603,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/stores/{storeId}/alerts/{alertId}": {
       "put": {
         "tags": [
-          "Alerts"
+          "V2UserCustomer_Alerts"
         ],
         "summary": "Save store alert",
         "operationId": "SaveStoreAlert",
@@ -5261,18 +4652,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/billingPeriods": {
       "get": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Get billing periods conditions",
         "operationId": "GetBillingPeriods",
@@ -5286,18 +4672,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/offers": {
       "get": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Get all standard offers",
         "operationId": "GetStandardOffers",
@@ -5311,16 +4692,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Get offer pricing",
         "description": "Get the offer pricing then you can create your contract with the same request parameters. /v2/user/customer/contracts\n",
@@ -5354,18 +4730,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/contracts": {
       "get": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Get contract list",
         "operationId": "GetContracts",
@@ -5376,16 +4747,11 @@
               "$ref": "#/definitions/contracts"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Create a new contract",
         "description": "Now you are ready to create your contract. Before that, please ensure that you check the offer with the same request parameterts. /offers\n",
@@ -5428,18 +4794,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/contracts/current/disableAutoRenewal": {
       "post": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Schedule termination of your current contract at the end of the commitment.",
         "description": "By default your contract are automatically renew. By calling this operation you can disable the auto renewal.",
@@ -5471,18 +4832,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/contracts/current/reenableAutoRenewal": {
       "post": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Reactivate your terminated contract.",
         "description": "By calling this operation you can re-enable the auto renewal.",
@@ -5497,18 +4853,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/contracts/next": {
       "delete": {
         "tags": [
-          "Contracts"
+          "V2UserCustomer_Contracts"
         ],
         "summary": "Delete your next contract",
         "operationId": "DeleteNextContract",
@@ -5519,18 +4870,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/customer/invoices": {
       "get": {
         "tags": [
-          "Invoices"
+          "V2UserCustomer_Invoices"
         ],
         "summary": "Get all your invoices",
         "operationId": "GetInvoices",
@@ -5544,12 +4890,7 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/lov/": {
@@ -5557,7 +4898,7 @@
         "summary": "Get all list names",
         "operationId": "GetUserListNames",
         "tags": [
-          "LOV"
+          "UserLOV_LOV"
         ],
         "responses": {
           "200": {
@@ -5569,18 +4910,13 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/lov/{listName}": {
       "get": {
         "tags": [
-          "LOV"
+          "UserLOV_LOV"
         ],
         "summary": "Get the list of values related to this list name",
         "operationId": "GetUserListOfValues",
@@ -5627,18 +4963,13 @@
           "404": {
             "description": "The list is unreachable or not found"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/lov/groups": {
       "get": {
         "tags": [
-          "Groups"
+          "UserLOV_Groups"
         ],
         "summary": "Get list of group of list name",
         "operationId": "GetUserListGroupNames",
@@ -5652,18 +4983,13 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/lov/groups/{listGroupName}": {
       "get": {
         "tags": [
-          "Groups"
+          "UserLOV_Groups"
         ],
         "summary": "Get list of values related to this group name",
         "operationId": "GetUserListGroup",
@@ -5689,18 +5015,13 @@
           "403": {
             "description": "The list is unreachable or not found"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/marketplaces/channelcatalogs/": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Global"
+          "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Global"
         ],
         "summary": "Get  you marketplace channel catalog list",
         "operationId": "GetMarketplaceAccountStores",
@@ -5711,18 +5032,13 @@
               "$ref": "#/definitions/marketplaceChannelCatalogList"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/marketplaces/channelcatalogs/publications/{marketplaceTechnicalCode}/{accountId}/history": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Publications"
+          "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Publications"
         ],
         "summary": "Fetch the publication history for an account, sorted by descending start date",
         "operationId": "GetPublications",
@@ -5800,18 +5116,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/properties": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Settings"
+          "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Get the marketplace properties for a channel catalog",
         "operationId": "GetChannelCatalogMarketplaceProperties",
@@ -5840,18 +5151,13 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/settings": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Settings"
+          "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Get the marketplace settings for a channel catalog",
         "operationId": "GetChannelCatalogMarketplaceSettings",
@@ -5881,16 +5187,11 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
-          "Marketplaces - Channel catalogs - Settings"
+          "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Save new marketplace settings for a channel catalog",
         "description": "Allow you to configure your marketplace settings. \nPartial update accepted.\n",
@@ -5933,25 +5234,20 @@
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
     "/v2/user/marketplaces/orders/status": {
       "get": {
         "tags": [
-          "Global"
+          "V2UserMarketplacesOrders_Global"
         ],
         "x-tagGroups": "Martketplaces Orders",
         "operationId": "GetMarketplaceAccountsSynchronization",
-        "summary": "Get marketplace accounts synchronization status",
+        "summary": "Get current synchronization status between your marketplaces and BeezUP accounts",
         "responses": {
           "200": {
-            "description": "Account synchronizations",
+            "description": "Successfully fetched current synchronization status",
             "schema": {
               "$ref": "#/definitions/accountSynchronizations"
             }
@@ -5960,37 +5256,32 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/harvest": {
       "post": {
         "tags": [
-          "Global"
+          "V2UserMarketplacesOrders_Global"
         ],
         "operationId": "HarvestAll",
-        "summary": "Harvest orders from all marketplaces",
+        "summary": "Send harvest request to all your marketplaces",
         "responses": {
           "202": {
-            "description": "Harvest request accepted",
+            "description": "Successfully sent harvest request to all marketplaces",
             "headers": {
               "Retry-After": {
                 "type": "integer",
-                "description": "Indicates the duration to wait in second to be able to make this request again"
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
               }
             }
           },
           "409": {
-            "description": "Harvest rate limit exceeded",
+            "description": "Failed to send harvest request because allowed rate limits have been exceeded",
             "headers": {
               "Retry-After": {
                 "type": "integer",
-                "description": "Indicates the duration to wait in second to be able to make this request again"
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
               }
             }
           },
@@ -5998,18 +5289,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/automaticTransitions": {
       "get": {
         "tags": [
-          "AutoTransitions"
+          "V2UserMarketplacesOrders_AutoTransitions"
         ],
         "operationId": "GetAutomaticTransitions",
         "summary": "Get automatic order status transition list",
@@ -6024,16 +5310,11 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
-          "AutoTransitions"
+          "V2UserMarketplacesOrders_AutoTransitions"
         ],
         "operationId": "ConfigureAutomaticTransitions",
         "summary": "Configure automatic order status transitions",
@@ -6051,22 +5332,23 @@
           "204": {
             "description": "Configure Automatic Transitions"
           },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/list/full": {
       "post": {
         "tags": [
-          "List"
+          "V2UserMarketplacesOrders_List"
         ],
         "operationId": "GetOrderListFull",
         "summary": "Get order list with all order properties and all order items.",
@@ -6103,18 +5385,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/list/light": {
       "post": {
         "tags": [
-          "List"
+          "V2UserMarketplacesOrders_List"
         ],
         "operationId": "GetOrderListLight",
         "summary": "Get order list without details",
@@ -6139,62 +5416,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/exportations": {
-      "post": {
-        "tags": [
-          "Exports"
-        ],
-        "operationId": "ExportOrders",
-        "summary": "Export orders",
-        "description": "This will create a file with all your orders related to your filter",
-        "parameters": [
-          {
-            "name": "format",
-            "description": "The type of the file to export",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "csv"
-            ],
-            "default": "csv",
-            "x-example": "csv"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/exportOrderListRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Orders exportation accepted"
-          },
-          "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
-          }
-        },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      },
       "get": {
         "tags": [
-          "Exports"
+          "V2UserMarketplacesOrders_Exports"
         ],
         "summary": "Get the order exportation list",
         "operationId": "GetOrderExportations",
@@ -6232,18 +5460,52 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "V2UserMarketplacesOrders_Exports"
+        ],
+        "operationId": "ExportOrders",
+        "summary": "Export orders",
+        "description": "This will create a file with all your orders related to your filter",
+        "parameters": [
           {
-            "api_key": []
+            "name": "format",
+            "description": "The type of the file to export",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "csv"
+            ],
+            "default": "csv",
+            "x-example": "csv"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exportOrderListRequest"
+            }
           }
-        ]
+        ],
+        "responses": {
+          "202": {
+            "description": "Orders exportation accepted"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/batches/setMerchantOrderInfos": {
       "post": {
         "tags": [
-          "Batches"
+          "V2UserMarketplacesOrders_Batches"
         ],
         "operationId": "SetMerchantOrderInfoList",
         "summary": "Batches the set merchant order info operation.",
@@ -6269,18 +5531,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
       "post": {
         "tags": [
-          "Batches"
+          "V2UserMarketplacesOrders_Batches"
         ],
         "operationId": "ClearMerchantOrderInfoList",
         "summary": "Batches the clear merchant order info operation.",
@@ -6306,18 +5563,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
       "post": {
         "tags": [
-          "Batches"
+          "V2UserMarketplacesOrders_Batches"
         ],
         "operationId": "ChangeOrderList",
         "summary": "Batches the change order operation.",
@@ -6352,18 +5604,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
       "get": {
         "tags": [
-          "One Order"
+          "V2UserMarketplacesOrders_One Order"
         ],
         "operationId": "GetOrder",
         "summary": "Get order details",
@@ -6417,18 +5664,51 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
+        "deprecated": false
+      }
+    },
+    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
+      "get": {
+        "tags": [
+          "V2UserMarketplacesOrders_One Order"
+        ],
+        "operationId": "GetOrderHistory",
+        "summary": "Get the harvest history and the change status operations",
+        "parameters": [
           {
-            "api_key": []
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "Order history",
+            "schema": {
+              "$ref": "#/definitions/orderHistory"
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
         "tags": [
-          "One Order"
+          "V2UserMarketplacesOrders_One Order"
         ],
         "operationId": "HarvestOrder",
         "summary": "Harvest a specific order from the marketplace",
@@ -6466,55 +5746,13 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
-      "get": {
-        "tags": [
-          "One Order"
-        ],
-        "operationId": "GetOrderHistory",
-        "summary": "Get the harvest history and the change status operations",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Order history",
-            "schema": {
-              "$ref": "#/definitions/orderHistory"
-            }
-          },
-          "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
-          }
-        },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
         "tags": [
-          "One Order"
+          "V2UserMarketplacesOrders_One Order"
         ],
         "operationId": "SetMerchantOrderInfo",
         "summary": "Associate your merchant order identifier to this order",
@@ -6541,22 +5779,29 @@
           "204": {
             "description": "Merchant order info set"
           },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
         "tags": [
-          "One Order"
+          "V2UserMarketplacesOrders_One Order"
         ],
         "operationId": "ClearMerchantOrderInfo",
         "summary": "Clear the merchant info related to this order",
@@ -6575,22 +5820,29 @@
           "204": {
             "description": "Merchant order info cleared"
           },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
         "tags": [
-          "One Order"
+          "V2UserMarketplacesOrders_One Order"
         ],
         "operationId": "ChangeOrder",
         "summary": "Change order status",
@@ -6673,12 +5925,7 @@
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
     "/v2/public/lov/": {
@@ -6686,7 +5933,7 @@
         "summary": "Get all list names",
         "operationId": "GetPublicListNames",
         "tags": [
-          "LOV"
+          "PublicLOV_LOV"
         ],
         "responses": {
           "200": {
@@ -6707,7 +5954,7 @@
     "/v2/public/lov/groups": {
       "get": {
         "tags": [
-          "Groups"
+          "PublicLOV_Groups"
         ],
         "summary": "Get list of group of list name",
         "operationId": "GetPublicListGroupNames",
@@ -6727,7 +5974,7 @@
     "/v2/public/lov/{listName}": {
       "get": {
         "tags": [
-          "LOV"
+          "PublicLOV_LOV"
         ],
         "summary": "Get the list of values related to this list name",
         "operationId": "GetPublicListOfValues",
@@ -6780,7 +6027,7 @@
     "/v2/public/lov/groups/{listGroupName}": {
       "get": {
         "tags": [
-          "Groups"
+          "PublicLOV_Groups"
         ],
         "summary": "Get list of values related to this group name",
         "operationId": "GetPublicListGroup",
@@ -6812,7 +6059,7 @@
     "/v2/public/security/login": {
       "post": {
         "tags": [
-          "Security"
+          "V2PublicSecurity_Security"
         ],
         "summary": "Login",
         "description": "User Login - The login will give your tokens",
@@ -6851,7 +6098,7 @@
     "/v2/public/security/register": {
       "post": {
         "tags": [
-          "Security"
+          "V2PublicSecurity_Security"
         ],
         "summary": "User Registration",
         "description": "User Registration - Create a new user on BeezUP",
@@ -6887,7 +6134,7 @@
     "/v2/public/security/lostpassword": {
       "post": {
         "tags": [
-          "Security"
+          "V2PublicSecurity_Security"
         ],
         "summary": "Lost password",
         "description": "Lost password - Your password will be regenerated and sent to your email",
@@ -7127,7 +6374,7 @@
         "compressedRelativePath": {
           "description": "Indicate the relative path in the compressed file",
           "type": "string",
-          "example": "MyFolder/MyCatalog.zip"
+          "example": null
         },
         "downloadTimeout": {
           "description": "Indicate the download time out in second",
@@ -7676,14 +6923,12 @@
         "userColumName": "My SKU",
         "configuration": {
           "beezUPColumnName": "CategoryFirstLevel",
-          "customConfiguration": {
-            "columnImportance": "Required",
-            "columnDataType": "String",
-            "columnCultureName": "fr-FR",
-            "columnFormat": "MM/dd/yyyy",
-            "canBeTruncated": false,
-            "displayGroupName": "Category"
-          }
+          "columnImportance": "Required",
+          "columnDataType": "String",
+          "columnCultureName": "fr-FR",
+          "columnFormat": "MM/dd/yyyy",
+          "canBeTruncated": false,
+          "displayGroupName": "Category"
         }
       }
     },
@@ -7704,35 +6949,16 @@
       }
     },
     "columnConfiguration": {
-      "description": "Indicates the configuration applied on the column (catalog or custom) during the importation process. You have to define the BeezUP Column Name property OR the custom configuration property.",
-      "type": "object",
-      "properties": {
-        "beezUPColumnName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
-        },
-        "customConfiguration": {
-          "$ref": "#/definitions/columnCustomConfiguration"
-        }
-      }
-    },
-    "columnCultureName": {
-      "description": "If non null, culture used to parse the value to the storage type of this column\\r\\n will be used for parsing and for consolidation proces",
-      "type": "string",
-      "example": "fr-FR"
-    },
-    "columnFormat": {
-      "description": "If non null, format used to parse the value to the storage type of this column\\r\\n will be used for parsing and for consolidation proces",
-      "type": "string",
-      "example": "MM/dd/yyyy"
-    },
-    "columnCustomConfiguration": {
-      "description": "Indicate the custom configuration applied during the importation process related to the column (catalog or custom)",
+      "description": "Indicates the configuration applied on the column (catalog or custom) during the importation process.",
       "type": "object",
       "required": [
         "columnImportance",
         "columnDataType"
       ],
       "properties": {
+        "beezUPColumnName": {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
+        },
         "columnImportance": {
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ColumnImportance"
         },
@@ -7752,6 +6978,16 @@
           "$ref": "#/definitions/displayGroupName"
         }
       }
+    },
+    "columnCultureName": {
+      "description": "If non null, culture used to parse the value to the storage type of this column\\r\\n will be used for parsing and for consolidation proces",
+      "type": "string",
+      "example": "fr-FR"
+    },
+    "columnFormat": {
+      "description": "If non null, format used to parse the value to the storage type of this column\\r\\n will be used for parsing and for consolidation proces",
+      "type": "string",
+      "example": "MM/dd/yyyy"
     },
     "mapBeezUPColumnRequest": {
       "required": [
@@ -8497,12 +7733,63 @@
         "type": "string"
       },
       "example": {
-        "A92B715D-5330-5086-B58A-A49E183649BA": "3563",
+        "8a76f06a-fefc-4c0d-bcfe-b210f1482977": "3563",
         "B7B79A0B-A8DE-54DA-964C-E2704DF3738A": "SHBELNL56",
         "57F70E81-E4F2-5034-BC65-E1D5C48EBEDA": "Sony bravia",
         "2A77749D-0AAB-5245-89B5-6A1A4E06DACA": "http://www.blalbla.nl/images/cache/dldldl.jpg",
         "54B3B3CB-5CA5-5471-9DAE-5310C032059A": "http://www.blalbla.nl/images/cache/dlmdl.jpg",
         "0EA21509-1141-57BD-B679-371BC98B2ADA": "http://www.blalbla.nl/images/cache/ldldld.jpg"
+      }
+    },
+    "productOverridesWithCatalogValues": {
+      "description": "The key is the channel column identifier",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/productOverrideWithCatalogValue"
+      },
+      "example": {
+        "8a76f06a-fefc-4c0d-bcfe-b210f1482977": {
+          "catalogValue": "x235",
+          "override": "3563"
+        },
+        "B7B79A0B-A8DE-54DA-964C-E2704DF3738A": {
+          "catalogValue": "x_ezlSHBELNL56",
+          "override": "SHBELNL56"
+        },
+        "57F70E81-E4F2-5034-BC65-E1D5C48EBEDA": {
+          "catalogValue": "Sony",
+          "override": "Sony bravia"
+        },
+        "2A77749D-0AAB-5245-89B5-6A1A4E06DACA": {
+          "catalogValue": "http://www.toto.com/thing/images/cache/dldldl.jpg",
+          "override": "http://www.blalbla.nl/images/cache/dldldl.jpg"
+        },
+        "54B3B3CB-5CA5-5471-9DAE-5310C032059A": {
+          "catalogValue": "http://www.toto.com/thing/cache/dlmdl.jpg",
+          "override": "http://www.blalbla.nl/images/cache/dlmdl.jpg"
+        },
+        "0EA21509-1141-57BD-B679-371BC98B2ADA": {
+          "catalogValue": "http://www.toto.com/thing/images/cache/ldldld.jpg",
+          "override": "http://www.blalbla.nl/images/cache/ldldld.jpg"
+        }
+      }
+    },
+    "productOverrideWithCatalogValue": {
+      "type": "object",
+      "required": [
+        "override"
+      ],
+      "properties": {
+        "override": {
+          "type": "string",
+          "description": "The overrided product value",
+          "example": "Sony bravia"
+        },
+        "catalogValue": {
+          "type": "string",
+          "description": "The catalog product value",
+          "example": "Sony"
+        }
       }
     },
     "exclusionFilters": {
@@ -8606,11 +7893,38 @@
       "properties": {
         "sku": {
           "type": "string",
-          "description": "The product sku to search"
+          "description": "Search by product sku. If null the filter will not be taken in account.",
+          "example": "M123"
         },
         "title": {
           "type": "string",
-          "description": "The  product title to search"
+          "description": "Search by product title. If null the filter will not be taken in account.",
+          "example": "RÃƒÂ©frigÃƒÂ©rateur"
+        },
+        "overrided": {
+          "type": "boolean",
+          "description": "Search overrided products. If null the filter will not be taken in account.",
+          "example": true
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Search disabled products. If null the filter will not be taken in account.",
+          "example": false
+        },
+        "categoryMapped": {
+          "type": "boolean",
+          "description": "Search product with category mapped with the channel. If null the filter will not be taken in account.",
+          "example": false
+        },
+        "excluded": {
+          "type": "boolean",
+          "description": "Search excluded products by at least an exclusion filter. If null the filter will not be taken in account.",
+          "example": false
+        },
+        "active": {
+          "type": "boolean",
+          "description": "If false, search for product absent from the current catalog. If null the filter will not be taken in account.",
+          "example": true
         }
       }
     },
@@ -8659,7 +7973,7 @@
           ],
           "properties": {
             "overrides": {
-              "$ref": "#/definitions/productOverrides"
+              "$ref": "#/definitions/productOverridesWithCatalogValues"
             },
             "disabled": {
               "type": "boolean",
@@ -16424,101 +15738,97 @@
     }
   },
   "x-azure-api-id": "v2usercatalogs",
-  "externalDocs": {
-    "description": "Find the documentation for BeezUP's API here",
-    "url": "https://beezup.github.io/api-docs/"
-  },
   "x-tagGroups": [
     {
       "name": "Catalogs",
       "tags": [
-        "Auto",
-        "Global",
-        "Importation Process",
-        "Importation Catalog Info",
-        "Catalog"
+        "V2UserCatalogs_Auto",
+        "V2UserCatalogs_Global",
+        "V2UserCatalogs_Importation Process",
+        "V2UserCatalogs_Importation Catalog Info",
+        "V2UserCatalogs_Catalog"
       ]
     },
     {
       "name": "Channel Catalogs",
       "tags": [
-        "Channel Catalogs Global",
-        "Channel Catalogs Settings",
-        "Channel Catalogs Column Mappings",
-        "Channel Catalogs Category Mappings",
-        "Channel Catalogs Exclusion Filters",
-        "Channel Catalogs Products",
-        "Channel Catalogs Products Overrides",
-        "Channel Catalogs Products Optimisation"
+        "V2UserChannelCatalogs_Channel Catalogs Global",
+        "V2UserChannelCatalogs_Channel Catalogs Settings",
+        "V2UserChannelCatalogs_Channel Catalogs Column Mappings",
+        "V2UserChannelCatalogs_Channel Catalogs Category Mappings",
+        "V2UserChannelCatalogs_Channel Catalogs Exclusion Filters",
+        "V2UserChannelCatalogs_Channel Catalogs Products",
+        "V2UserChannelCatalogs_Channel Catalogs Products Overrides",
+        "V2UserChannelCatalogs_Channel Catalogs Products Optimisation"
       ]
     },
     {
       "name": "Analytics",
       "tags": [
-        "Tracking",
-        "Statistics",
-        "Rules",
-        "Reports",
-        "Optimisations"
+        "V2UserAnalytics_Tracking",
+        "V2UserAnalytics_Statistics",
+        "V2UserAnalytics_Rules",
+        "V2UserAnalytics_Reports",
+        "V2UserAnalytics_Optimisations"
       ]
     },
     {
       "name": "Channels",
       "tags": [
-        "Channels Global"
+        "V2UserChannels_Channels Global"
       ]
     },
     {
       "name": "Customer",
       "tags": [
-        "Account",
-        "Stores",
-        "Shares",
-        "Alerts",
-        "Rights",
-        "Friends",
-        "Contracts",
-        "Invoices",
-        "Security"
+        "V2UserCustomer_Account",
+        "V2UserCustomer_Stores",
+        "V2UserCustomer_Shares",
+        "V2UserCustomer_Alerts",
+        "V2UserCustomer_Rights",
+        "V2UserCustomer_Friends",
+        "V2UserCustomer_Contracts",
+        "V2UserCustomer_Invoices",
+        "V2UserCustomer_Security"
       ]
     },
     {
       "name": "User - List of Values",
       "tags": [
-        "LOV",
-        "Groups"
+        "UserLOV_LOV",
+        "UserLOV_Groups"
       ]
     },
     {
       "name": "Marketplaces - Channel catalogss",
       "tags": [
-        "Marketplaces - Channel catalogs - Global",
-        "Marketplaces - Channel catalogs - Publications",
-        "Marketplaces - Channel catalogs - Settings"
+        "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Global",
+        "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Publications",
+        "V2UserMarketplacesChannelCatalogs_Marketplaces - Channel catalogs - Settings"
       ]
     },
     {
       "name": "Marketplaces - Orders",
       "tags": [
-        "Order",
-        "One Order",
-        "List",
-        "Batches",
-        "AutoTransitions",
-        "Exports"
+        "V2UserMarketplacesOrders_Global",
+        "V2UserMarketplacesOrders_Order",
+        "V2UserMarketplacesOrders_List",
+        "V2UserMarketplacesOrders_Batches",
+        "V2UserMarketplacesOrders_AutoTransitions",
+        "V2UserMarketplacesOrders_Exports"
       ]
     },
     {
       "name": "Public - List of Values",
       "tags": [
-        "LOV",
-        "Groups"
+        "PublicLOV_LOV",
+        "PublicLOV_Groups"
       ]
     },
     {
       "name": "Public - Security",
       "tags": [
-        "Security"
+        "V2PublicSecurity_Security"
       ]
     }
   ]
