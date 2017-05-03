@@ -5367,20 +5367,14 @@
         "tags": [
           "Contracts"
         ],
-        "summary": "Get contracts links",
-        "operationId": "GetContractsLinks",
+        "summary": "Get contract list",
+        "operationId": "GetContracts",
         "responses": {
           "200": {
-            "description": "New contract has been saved. Some warnings can be present in response.",
+            "description": "Contract list",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
-              }
+              "$ref": "#/definitions/contracts"
             }
-          },
-          "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -5430,34 +5424,6 @@
             "schema": {
               "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
-          },
-          "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/v2/user/customer/contracts/current": {
-      "get": {
-        "tags": [
-          "Contracts"
-        ],
-        "summary": "Get the conditions of your current contract",
-        "operationId": "GetCurrentContract",
-        "responses": {
-          "200": {
-            "description": "Show your current contract",
-            "schema": {
-              "$ref": "#/definitions/contractInfo"
-            }
-          },
-          "404": {
-            "description": "No current contract"
           },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
@@ -5540,32 +5506,6 @@
       }
     },
     "/v2/user/customer/contracts/next": {
-      "get": {
-        "tags": [
-          "Contracts"
-        ],
-        "summary": "Get the conditions of your next contract",
-        "operationId": "GetNextContract",
-        "responses": {
-          "200": {
-            "description": "Show your next contract",
-            "schema": {
-              "$ref": "#/definitions/contractInfo"
-            }
-          },
-          "404": {
-            "description": "When there is no next contract"
-          },
-          "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      },
       "delete": {
         "tags": [
           "Contracts"
@@ -6319,8 +6259,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Merchant order info list set"
+          "202": {
+            "description": "Merchant order info list set",
+            "schema": {
+              "$ref": "#/definitions/batchOrderOperationResponse"
+            }
           },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
@@ -6353,8 +6296,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Merchant order info list cleared"
+          "202": {
+            "description": "Merchant order info list cleared",
+            "schema": {
+              "$ref": "#/definitions/batchOrderOperationResponse"
+            }
           },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
@@ -6396,8 +6342,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Orders changed"
+          "202": {
+            "description": "Orders changed",
+            "schema": {
+              "$ref": "#/definitions/batchOrderOperationResponse"
+            }
           },
           "default": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
@@ -6434,6 +6383,12 @@
             "description": "Order information",
             "schema": {
               "$ref": "#/definitions/order"
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -6563,6 +6518,9 @@
         "responses": {
           "204": {
             "description": "Merchant order info set"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -6647,6 +6605,36 @@
             "description": "Order changed",
             "schema": {
               "$ref": "#/definitions/changeOrderResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "Order already processing a update operation. \\\nPlease refresh the order information and retry later. \n",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration to wait in second to be able to make this request again"
+              }
+            },
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "412": {
+            "description": "Order has been changed. \\\nPlease refresh the order information.\n",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -11470,13 +11458,6 @@
         }
       ]
     },
-    "links.getCreditCardInfoLink": {
-      "allOf": [
-        {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
-        }
-      ]
-    },
     "links.saveCreditCardInfoLink": {
       "allOf": [
         {
@@ -11485,6 +11466,69 @@
       ]
     },
     "links.saveStoreAlertLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.savePersonalInfoLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.changePasswordLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.saveCompanyInfoLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.saveProfilePictureInfoLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.getCreditCardInfoLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.getContractsLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.reactivateCurrentContractLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.terminateCurrentContractLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "links.deleteNextContractLink": {
       "allOf": [
         {
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
@@ -12019,6 +12063,100 @@
       "allOf": [
         {
           "$ref": "#/definitions/offerRequest"
+        }
+      ]
+    },
+    "contractsLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getContractsLink"
+        },
+        "create": {
+          "$ref": "#/definitions/links.createContractLink"
+        }
+      }
+    },
+    "currentContractInfoLinks": {
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getContractsLink"
+        },
+        "disable": {
+          "$ref": "#/definitions/links.terminateCurrentContractLink"
+        },
+        "reenable": {
+          "$ref": "#/definitions/links.reactivateCurrentContractLink"
+        }
+      }
+    },
+    "nextContractInfoLinks": {
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getContractsLink"
+        },
+        "delete": {
+          "$ref": "#/definitions/links.deleteNextContractLink"
+        }
+      }
+    },
+    "currentContractInfo": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/contractInfo"
+        },
+        {
+          "type": "object",
+          "description": "Get the conditions of your current contract",
+          "required": [
+            "links"
+          ],
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/currentContractInfoLinks"
+            }
+          }
+        }
+      ]
+    },
+    "contracts": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/contractsLinks"
+        },
+        "current": {
+          "$ref": "#/definitions/currentContractInfo"
+        },
+        "next": {
+          "$ref": "#/definitions/nextContractInfo"
+        }
+      }
+    },
+    "nextContractInfo": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/contractInfo"
+        },
+        {
+          "type": "object",
+          "description": "Get the conditions of your next contract",
+          "required": [
+            "links"
+          ],
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/nextContractInfoLinks"
+            }
+          }
         }
       ]
     },
@@ -12853,8 +12991,23 @@
           "description": "The different actions you can make on this account",
           "type": "object",
           "properties": {
-            "tbd": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+            "savePersonalInfo": {
+              "$ref": "#/definitions/links.savePersonalInfoLink"
+            },
+            "changePassword": {
+              "$ref": "#/definitions/links.changePasswordLink"
+            },
+            "saveCompanyInfo": {
+              "$ref": "#/definitions/links.saveCompanyInfoLink"
+            },
+            "saveProfilePictureInfo": {
+              "$ref": "#/definitions/links.saveProfilePictureInfoLink"
+            },
+            "getCreditCardInfo": {
+              "$ref": "#/definitions/links.getCreditCardInfoLink"
+            },
+            "saveUserCreditCardLink": {
+              "$ref": "#/definitions/links.saveCreditCardInfoLink"
             }
           },
           "additionalProperties": false
@@ -16086,6 +16239,43 @@
         "order_Shipping_CarrierName": "La poste",
         "order_Shipping_FulfillmentDate": "2014-09-23T09:58:00Z",
         "order_Shipping_EstimatedDeliveryDate": "2014-09-24T09:58:00Z"
+      }
+    },
+    "batchOrderOperationResponse": {
+      "description": "The response given by the batch operation",
+      "type": "object",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderOperationResponse"
+          }
+        }
+      }
+    },
+    "orderOperationResponse": {
+      "description": "The response given by the batch operation for an order",
+      "type": "object",
+      "required": [
+        "order",
+        "success"
+      ],
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/orderIdentifier"
+        },
+        "success": {
+          "type": "boolean",
+          "description": "Indicates if the operation succeed or not",
+          "example": true
+        },
+        "errors": {
+          "description": "The error list",
+          "type": "array",
+          "items": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserErrorMessage"
+          }
+        }
       }
     },
     "changeOrderResponse": {
