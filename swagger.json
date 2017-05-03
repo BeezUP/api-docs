@@ -6376,13 +6376,35 @@
           },
           {
             "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "name": "If-None-Match",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "description": "ETag value to identify the order given in the order information. \\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
           }
         ],
         "responses": {
           "200": {
             "description": "Order information",
+            "headers": {
+              "ETag": {
+                "type": "string",
+                "description": "The ETag value to identify the order. \\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
+            },
             "schema": {
               "$ref": "#/definitions/order"
+            }
+          },
+          "304": {
+            "description": "Your order did not change",
+            "headers": {
+              "ETag": {
+                "type": "string",
+                "description": "The ETag value to identify the order. \\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
             }
           },
           "404": {
@@ -6598,14 +6620,18 @@
             "schema": {
               "$ref": "#/definitions/changeOrderRequest"
             }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "type": "string",
+            "required": true,
+            "description": "To ensure that you are making a change on the lastest version of the order.\nETag value to identify the order given in the order information. \\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Order changed",
-            "schema": {
-              "$ref": "#/definitions/changeOrderResponse"
-            }
+          "204": {
+            "description": "Order changed"
           },
           "400": {
             "description": "Bad request",
@@ -6633,6 +6659,12 @@
           },
           "412": {
             "description": "Order has been changed. \\\nPlease refresh the order information.\n",
+            "headers": {
+              "ETag": {
+                "type": "string",
+                "description": "The ETag value to identify the order. \\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
+            },
             "schema": {
               "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -15250,7 +15282,7 @@
         "order_LastModificationUtcDate",
         "order_MarketplaceLastModificationUtcDate",
         "processing",
-        "eTag",
+        "etag",
         "links"
       ],
       "properties": {
@@ -15320,10 +15352,8 @@
         "processing": {
           "$ref": "#/definitions/processing"
         },
-        "eTag": {
-          "description": "ETag value to identify the order. For more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n",
-          "type": "string",
-          "example": "\"ca071a4580129f932a03971968ffef69\""
+        "etag": {
+          "$ref": "#/definitions/etag"
         },
         "links": {
           "type": "array",
@@ -15489,6 +15519,11 @@
         }
       }
     },
+    "etag": {
+      "description": "ETag value to identify the order. \\\nThis information is required for the operation GetOrder and ChangeOrder. \\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n",
+      "type": "string",
+      "example": "\"ca071a4580129f932a03971968ffef69\""
+    },
     "orderItem": {
       "description": "Describe an order item. All properties with the prefix orderItem_ are translated in the list of values /user/lov/OrderMetaInfoOrderItems",
       "type": "object",
@@ -15603,7 +15638,7 @@
             "order_LastModificationUtcDate",
             "order_MarketplaceLastModificationUtcDate",
             "processing",
-            "eTag",
+            "etag",
             "links",
             "orderItems",
             "transitionLinks"
@@ -16196,19 +16231,7 @@
           "maxLength": 100,
           "items": {
             "$ref": "#/definitions/changeOrderListRequestItem"
-          },
-          "example": [
-            {
-              "beezUPOrderId": "00000000000000000000000000000000000000000000000",
-              "changeOrderRequest": {
-                "order_Shipping_ShipperTrackingNumber": "1H01845163783",
-                "order_Shipping_ShippingUrl": "https://trackingpackage.com?number=1H01845163783",
-                "order_Shipping_CarrierName": "La poste",
-                "order_Shipping_FulfillmentDate": "2014-09-23T09:58:00Z",
-                "order_Shipping_EstimatedDeliveryDate": "2014-09-24T09:58:00Z"
-              }
-            }
-          ]
+          }
         }
       }
     },
@@ -16216,17 +16239,38 @@
       "type": "object",
       "description": "Contains the order identifier and the change order request",
       "required": [
-        "beezUPOrderId",
+        "order",
         "changeOrderRequest"
       ],
       "properties": {
-        "beezUPOrderId": {
-          "$ref": "#/definitions/beezUPOrderId"
+        "order": {
+          "$ref": "#/definitions/orderIdentifierWithETag"
         },
         "changeOrderRequest": {
           "$ref": "#/definitions/changeOrderRequest"
         }
       }
+    },
+    "orderIdentifierWithETag": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderIdentifier"
+        },
+        {
+          "type": "object",
+          "required": [
+            "marketplaceTechnicalCode",
+            "accountId",
+            "beezUPOrderId",
+            "etag"
+          ],
+          "properties": {
+            "etag": {
+              "$ref": "#/definitions/etag"
+            }
+          }
+        }
+      ]
     },
     "changeOrderRequest": {
       "description": "All properties with the prefix order_ are translated in the list of values /user/lov#OrderMetaInfoPosted",
@@ -16258,7 +16302,8 @@
       "type": "object",
       "required": [
         "order",
-        "success"
+        "success",
+        "status"
       ],
       "properties": {
         "order": {
@@ -16269,26 +16314,17 @@
           "description": "Indicates if the operation succeed or not",
           "example": true
         },
+        "status": {
+          "type": "integer",
+          "description": "Indicates the http status corresponding to the individual operation",
+          "example": 204
+        },
         "errors": {
           "description": "The error list",
           "type": "array",
           "items": {
             "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserErrorMessage"
           }
-        }
-      }
-    },
-    "changeOrderResponse": {
-      "type": "object",
-      "properties": {
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
-          }
-        },
-        "info": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
         }
       }
     },
