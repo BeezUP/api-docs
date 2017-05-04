@@ -10861,11 +10861,12 @@
     },
     "accountStatus": {
       "type": "string",
-      "description": "The account status\n* Active:  When the account is active\n* SystemBlocked:  When all stores on the account are blocked by the system\n* UserBlocked: When all stores on the account are blocked on GO not on the system\n",
+      "description": "The account status\n* Active:  When the account is active\n* SystemBlocked:  When all stores on the account are blocked by the system\n* UserBlocked: When all stores on the account are blocked on GO not on the system\n* NotActivated: When the email is not verified\n",
       "enum": [
         "Active",
         "SystemBlocked",
-        "UserBlocked"
+        "UserBlocked",
+        "NotActivated"
       ],
       "example": "Active"
     },
