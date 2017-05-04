@@ -7615,9 +7615,20 @@
             "channelId",
             "channelName",
             "channelImageUrl",
-            "storeId"
+            "storeId",
+            "enabled",
+            "status",
+            "links",
+            "generalSettings",
+            "costSettings",
+            "isMarketplace"
           ],
           "properties": {
+            "productCount": {
+              "type": "integer",
+              "format": "int32",
+              "description": "The product count exported considering category mapping. Not all filters have been applied."
+            },
             "enabled": {
               "type": "boolean",
               "description": "Indicates if the channel catalog is active",
