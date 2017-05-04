@@ -7567,8 +7567,8 @@
         "columnMappingStatus": {
           "$ref": "#/definitions/columnMappingStatus"
         },
-        "categoryMappingStatus": {
-          "$ref": "#/definitions/categoryMappingStatus"
+        "categoryMappingState": {
+          "$ref": "#/definitions/categoryMappingState"
         },
         "apiSettingStatus": {
           "$ref": "#/definitions/apiSettingStatus"
@@ -7583,6 +7583,26 @@
         "failed"
       ],
       "example": "Success"
+    },
+    "categoryMappingState": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/categoryMappingStatus"
+        },
+        "uncategorizedProductCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Indicates the uncategorized product count",
+          "example": 101
+        },
+        "categorizedWithoutCostProductCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Indicates the categorized product count without cost defined on the category",
+          "example": 42
+        }
+      }
     },
     "categoryMappingStatus": {
       "type": "string",
