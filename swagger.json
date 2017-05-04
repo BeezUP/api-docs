@@ -3402,7 +3402,7 @@
           "200": {
             "description": "Rule list",
             "schema": {
-              "$ref": "#/definitions/rulelist"
+              "$ref": "#/definitions/ruleList"
             }
           },
           "default": {
