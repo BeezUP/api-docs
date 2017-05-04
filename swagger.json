@@ -6079,7 +6079,8 @@
             "in": "body",
             "schema": {
               "$ref": "#/definitions/loginRequest"
-            }
+            },
+            "required": true
           }
         ],
         "responses": {
@@ -6118,7 +6119,8 @@
             "in": "body",
             "schema": {
               "$ref": "#/definitions/registerRequest"
-            }
+            },
+            "required": true
           }
         ],
         "responses": {
@@ -6153,9 +6155,10 @@
             "name": "email",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/email"
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Email"
             },
-            "description": "Your email"
+            "description": "Your email",
+            "required": true
           }
         ],
         "responses": {
@@ -8120,11 +8123,16 @@
           "$ref": "#/definitions/reportFilterCommonParameters"
         },
         {
+          "$ref": "#/definitions/paginationRequestParameters"
+        },
+        {
           "type": "object",
           "required": [
             "beginPeriodUtcDate",
             "endPeriodUtcDate",
-            "advancedFilters"
+            "advancedFilters",
+            "pageSize",
+            "pageNumber"
           ],
           "properties": {
             "productState": {
@@ -8179,6 +8187,45 @@
         "IsNotNull"
       ]
     },
+    "links.OptimiseLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
+    "reportByCommonResponseLinks": {
+      "type": "object",
+      "properties": {
+        "enableAllProducts": {
+          "$ref": "#/definitions/links.OptimiseLink"
+        },
+        "disableAllProducts": {
+          "$ref": "#/definitions/links.OptimiseLink"
+        }
+      }
+    },
+    "reportByChannelResponseLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/reportByCommonResponseLinks"
+        }
+      ]
+    },
+    "reportByCategoryResponseLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/reportByCommonResponseLinks"
+        }
+      ]
+    },
+    "reportByProductResponseLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/reportByCommonResponseLinks"
+        }
+      ]
+    },
     "reportByChannelResponse": {
       "type": "object",
       "required": [
@@ -8201,62 +8248,7 @@
           }
         },
         "links": {
-          "type": "array",
-          "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
-          },
-          "example": [
-            {
-              "href": "/v2/user/analytics/{storeId}/optimisations/{actionName}",
-              "operationId": "Optimise",
-              "rel": "EnableAllProducts",
-              "parameters": [
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "8f95eb1a-3691-4750-950d-a13c4a8a9bcc"
-                },
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "reenable"
-                },
-                {
-                  "name": "request",
-                  "in": "body",
-                  "type": "object",
-                  "value": "$request.body"
-                }
-              ]
-            },
-            {
-              "href": "/v2/user/analytics/{storeId}/optimisations/{actionName}",
-              "operationId": "Optimise",
-              "rel": "DisableAllProducts",
-              "parameters": [
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "8f95eb1a-3691-4750-950d-a13c4a8a9bcc"
-                },
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "disable"
-                },
-                {
-                  "name": "request",
-                  "in": "body",
-                  "type": "object",
-                  "value": "$request.body"
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/reportByChannelResponseLinks"
         }
       }
     },
@@ -8276,62 +8268,7 @@
           }
         },
         "links": {
-          "type": "array",
-          "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
-          },
-          "example": [
-            {
-              "href": "/v2/user/analytics/{storeId}/optimisations/{actionName}",
-              "operationId": "Optimise",
-              "rel": "EnableAllProducts",
-              "parameters": [
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "8f95eb1a-3691-4750-950d-a13c4a8a9bcc"
-                },
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "reenable"
-                },
-                {
-                  "name": "request",
-                  "in": "body",
-                  "type": "object",
-                  "value": "$request.body"
-                }
-              ]
-            },
-            {
-              "href": "/v2/user/analytics/{storeId}/optimisations/{actionName}",
-              "operationId": "Optimise",
-              "rel": "DisableAllProducts",
-              "parameters": [
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "8f95eb1a-3691-4750-950d-a13c4a8a9bcc"
-                },
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "disable"
-                },
-                {
-                  "name": "request",
-                  "in": "body",
-                  "type": "object",
-                  "value": "$request.body"
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/reportByCategoryResponseLinks"
         }
       }
     },
@@ -8353,62 +8290,7 @@
           }
         },
         "links": {
-          "type": "array",
-          "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
-          },
-          "example": [
-            {
-              "href": "/v2/user/analytics/{storeId}/optimisations/{actionName}",
-              "operationId": "Optimise",
-              "rel": "EnableAllProducts",
-              "parameters": [
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "8f95eb1a-3691-4750-950d-a13c4a8a9bcc"
-                },
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "reenable"
-                },
-                {
-                  "name": "request",
-                  "in": "body",
-                  "type": "object",
-                  "value": "$request.body"
-                }
-              ]
-            },
-            {
-              "href": "/v2/user/analytics/{storeId}/optimisations/{actionName}",
-              "operationId": "Optimise",
-              "rel": "DisableAllProducts",
-              "parameters": [
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "8f95eb1a-3691-4750-950d-a13c4a8a9bcc"
-                },
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "type": "string",
-                  "value": "disable"
-                },
-                {
-                  "name": "request",
-                  "in": "body",
-                  "type": "object",
-                  "value": "$request.body"
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/reportByProductResponseLinks"
         }
       }
     },
@@ -15671,12 +15553,6 @@
         }
       }
     },
-    "email": {
-      "description": "Your email",
-      "type": "string",
-      "format": "email",
-      "example": "myemail@mycompany.com"
-    },
     "loginRequest": {
       "required": [
         "login",
@@ -15685,7 +15561,7 @@
       "type": "object",
       "properties": {
         "login": {
-          "$ref": "#/definitions/email"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Email"
         },
         "password": {
           "description": "Your password",
