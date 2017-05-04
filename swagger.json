@@ -12474,28 +12474,28 @@
       }
     },
     "creditCardInfoWithCardType": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/creditCardInfo"
+      "required": [
+        "cardNumber",
+        "expirationMonth",
+        "expirationYear",
+        "cardType"
+      ],
+      "properties": {
+        "cardNumber": {
+          "$ref": "#/definitions/cardNumber"
         },
-        {
-          "type": "object",
-          "required": [
-            "cardNumber",
-            "cardVerificationCode",
-            "expirationMonth",
-            "expirationYear",
-            "cardType"
-          ],
-          "properties": {
-            "cardType": {
-              "description": "Your credit card type. Example: VISA, MasterCard, etc...",
-              "type": "string",
-              "example": "VISA"
-            }
-          }
+        "expirationMonth": {
+          "$ref": "#/definitions/expirationMonth"
+        },
+        "expirationYear": {
+          "$ref": "#/definitions/expirationYear"
+        },
+        "cardType": {
+          "description": "Your credit card type. Example: VISA, MasterCard, etc...",
+          "type": "string",
+          "example": "VISA"
         }
-      ]
+      }
     },
     "storeAlerts": {
       "type": "object",
