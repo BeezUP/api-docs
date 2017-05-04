@@ -7251,37 +7251,7 @@
         "channelCatalogs": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/channelCatalogHeader"
-          }
-        }
-      }
-    },
-    "channelCatalogHeader": {
-      "type": "object",
-      "properties": {
-        "channelCatalogId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCatalogId"
-        },
-        "channelId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelId"
-        },
-        "channelName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelName"
-        },
-        "isMarketplace": {
-          "type": "boolean",
-          "description": "Indicates if this channel catalog is related to a marketplace",
-          "example": true
-        },
-        "storeId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.StoreId"
-        },
-        "links": {
-          "type": "object",
-          "properties": {
-            "self": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
-            }
+            "$ref": "#/definitions/channelCatalog"
           }
         }
       }
