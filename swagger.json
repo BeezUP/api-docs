@@ -10851,7 +10851,7 @@
     },
     "storeStatus": {
       "type": "string",
-      "description": "The store status\n* Active:  When the store is active\n* SystemBlocked:  When the store is blocked by the system\n* UserBlocked: When the store is blocked on GO not on the system\n* NotActivated: When the email is not verified\n",
+      "description": "The store status\n* Active:  When the store is active\n* SystemBlocked:  When the store is blocked by the system\n* UserBlocked: When the store is blocked on GO not on the system\n",
       "enum": [
         "Active",
         "SystemBlocked",
