@@ -12453,6 +12453,7 @@
     "creditCardInfo": {
       "required": [
         "cardNumber",
+        "cardVerificationCode",
         "expirationMonth",
         "expirationYear"
       ],
