@@ -7585,6 +7585,7 @@
       "example": "Success"
     },
     "categoryMappingState": {
+      "description": "The category mapping state of the channel catalog",
       "type": "object",
       "properties": {
         "status": {
