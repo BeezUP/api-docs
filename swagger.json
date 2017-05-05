@@ -10195,7 +10195,8 @@
         "channelName",
         "channelLogoUrl",
         "descriptionAvailable",
-        "links"
+        "links",
+        "isMarketplace"
       ],
       "properties": {
         "channelId": {
@@ -10210,6 +10211,12 @@
         "descriptionAvailable": {
           "type": "boolean",
           "description": "Indicates if we have more detailed information about this channel",
+          "default": false,
+          "example": true
+        },
+        "isMarketplace": {
+          "type": "boolean",
+          "description": "Indicates if the channel is a marketplace",
           "default": false,
           "example": true
         },
