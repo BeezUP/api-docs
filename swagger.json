@@ -98,6 +98,10 @@
       "description": "All optmisations operations"
     },
     {
+      "name": "Channels - Channels Global",
+      "description": "All global operations"
+    },
+    {
       "name": "Customer - Account",
       "description": "All user account operations"
     },
@@ -3794,7 +3798,7 @@
     "/v2/user/channels/": {
       "get": {
         "tags": [
-          "Channels - Global"
+          "Channels - Channels Global"
         ],
         "summary": "List all available channel for this store",
         "operationId": "GetAvailableChannels",
@@ -3825,7 +3829,7 @@
     "/v2/user/channels/{channelId}": {
       "get": {
         "tags": [
-          "Channels - Global"
+          "Channels - Channels Global"
         ],
         "summary": "Get channel information",
         "operationId": "GetChannelInfo",
@@ -3847,7 +3851,7 @@
     "/v2/user/channels/{channelId}/categories": {
       "get": {
         "tags": [
-          "Channels - Global"
+          "Channels - Channels Global"
         ],
         "summary": "Get channel categories",
         "operationId": "GetChannelCategories",
@@ -3890,7 +3894,7 @@
     "/v2/user/channels/{channelId}/columns": {
       "post": {
         "tags": [
-          "Channels - Global"
+          "Channels - Channels Global"
         ],
         "summary": "Get channel columns",
         "operationId": "GetChannelColumns",
@@ -10190,6 +10194,7 @@
         "channelId",
         "channelName",
         "channelLogoUrl",
+        "descriptionAvailable",
         "links"
       ],
       "properties": {
@@ -10202,12 +10207,18 @@
         "channelLogoUrl": {
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.HttpUrl"
         },
+        "descriptionAvailable": {
+          "type": "boolean",
+          "description": "Indicates if we have more detailed information about this channel",
+          "default": false,
+          "example": true
+        },
         "links": {
-          "$ref": "#/definitions/availableChannelLink"
+          "$ref": "#/definitions/channelHeaderLinks"
         }
       }
     },
-    "availableChannelLink": {
+    "channelHeaderLinks": {
       "description": "The links related to an available channel",
       "type": "object",
       "required": [
@@ -10287,7 +10298,7 @@
             "category": {
               "description": "The channel category",
               "type": "string",
-              "example": null
+              "example": "NULL"
             },
             "homeUrl": {
               "description": "The home url of the channel",
@@ -10469,7 +10480,7 @@
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnId"
         },
         "channelColumnName": {
-          "$ref": "#/definitions/channelColumnName"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnName"
         },
         "channelColumnDescription": {
           "$ref": "#/definitions/channelColumnDescription"
@@ -10484,11 +10495,6 @@
           "$ref": "#/definitions/channelColumnRestrictedValues"
         }
       }
-    },
-    "channelColumnName": {
-      "type": "string",
-      "description": "The channel column name",
-      "example": "NAME"
     },
     "channelColumnDescription": {
       "type": "string",
@@ -10515,7 +10521,7 @@
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnId"
         },
         "channelColumnName": {
-          "$ref": "#/definitions/channelColumnName"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnName"
         },
         "channelColumnDescription": {
           "$ref": "#/definitions/channelColumnDescription"
@@ -10533,23 +10539,6 @@
         },
         "restrictedValues": {
           "$ref": "#/definitions/channelColumnRestrictedValues"
-        }
-      },
-      "example": {
-        "channelColumnId": "8a76f06a-fefc-4c0d-bcfe-b210f1482977",
-        "channelColumnName": "NAME",
-        "channelColumnDescription": "Please enter the base prices (price per unit) according to <a href=\"http://www.gesetze-im-internet.de/pangv/__2.html\">Article PAngV</a>",
-        "showInMapping": true,
-        "position": 1,
-        "configuration": {
-          "columnImportance": "Required",
-          "columnDataType": "String",
-          "beezUPColumnName": "CategoryFirstLevel"
-        },
-        "restrictedValues": {
-          "additionalProp1": "string",
-          "additionalProp2": "string",
-          "additionalProp3": "string"
         }
       }
     },
@@ -15638,6 +15627,12 @@
         "Analytics - Rules",
         "Analytics - Reports",
         "Analytics - Optimisations"
+      ]
+    },
+    {
+      "name": "Channels",
+      "tags": [
+        "Channels - Channels Global"
       ]
     },
     {
