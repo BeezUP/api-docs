@@ -10930,6 +10930,9 @@
                 },
                 "getShares": {
                   "$ref": "#/definitions/links.getSharesLink"
+                },
+                "share": {
+                  "$ref": "#/definitions/links.shareLink"
                 }
               },
               "additionalProperties": false
