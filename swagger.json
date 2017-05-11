@@ -529,7 +529,7 @@
         "summary": "Get all list names",
         "operationId": "GetUserLovIndex",
         "tags": [
-          "User - List of Values - BeezUP"
+          "User - List of Values - LOV"
         ],
         "responses": {
           "200": {
@@ -583,7 +583,7 @@
     "/v2/user/lov/{listName}": {
       "get": {
         "tags": [
-          "User - List of Values - BeezUP"
+          "User - List of Values - LOV"
         ],
         "summary": "Get the list of values related to this list name",
         "operationId": "GetUserListOfValues",
@@ -668,7 +668,7 @@
     "/v2/user/customer/account": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Get user account information",
         "operationId": "GetUserAccountInfo",
@@ -693,7 +693,7 @@
     "/v2/user/customer/account/resendEmailActivation": {
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Resend email activation",
         "operationId": "ResendEmailActivation",
@@ -724,7 +724,7 @@
     "/v2/user/customer/account/activate": {
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Activate the user account",
         "operationId": "ActivateUserAccount",
@@ -761,7 +761,7 @@
     "/v2/user/customer/account/personalInfo": {
       "put": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Save user personal information",
         "operationId": "SavePersonalInfo",
@@ -799,7 +799,7 @@
     "/v2/user/customer/account/companyInfo": {
       "put": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Change company information",
         "operationId": "SaveCompanyInfo",
@@ -840,7 +840,7 @@
     "/v2/user/customer/account/profilePictureInfo": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Get profile picture information",
         "operationId": "GetProfilePictureInfo",
@@ -863,7 +863,7 @@
       },
       "put": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Change user picture information",
         "operationId": "SaveProfilePictureInfo",
@@ -907,7 +907,7 @@
     "/v2/user/customer/account/creditCardInfo": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Get credit card information",
         "operationId": "GetCreditCardInfo",
@@ -936,7 +936,7 @@
       },
       "put": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Save user credit card info",
         "operationId": "SaveCreditCardInfo",
@@ -978,7 +978,7 @@
     "/v2/user/customer/account/changePassword": {
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Account"
         ],
         "summary": "Change user password",
         "operationId": "ChangePassword",
@@ -1013,7 +1013,7 @@
     "/v2/user/customer/security/logout": {
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Security"
         ],
         "summary": "Log out the current user from go2",
         "description": "Log out the current user from go2",
@@ -1036,7 +1036,7 @@
     "/v2/user/customer/stores": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Stores"
         ],
         "summary": "Get store list",
         "operationId": "GetStores",
@@ -1059,7 +1059,7 @@
       },
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Stores"
         ],
         "summary": "Create a new store",
         "operationId": "CreateStore",
@@ -1100,7 +1100,7 @@
     "/v2/user/customer/stores/{storeId}": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Stores"
         ],
         "summary": "Get store's information",
         "operationId": "GetStore",
@@ -1131,7 +1131,7 @@
       },
       "patch": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Stores"
         ],
         "summary": "Update some store's information.",
         "description": "Update some store's information. FYI, you cannot change the country.\n",
@@ -1171,7 +1171,7 @@
       },
       "delete": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Stores"
         ],
         "summary": "Delete a store",
         "operationId": "DeleteStore",
@@ -1201,7 +1201,7 @@
     "/v2/user/customer/stores/{storeId}/shares": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Shares"
         ],
         "summary": "Get shares related to this store",
         "operationId": "GetShares",
@@ -1232,7 +1232,7 @@
       },
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Shares"
         ],
         "summary": "Share a store to another user",
         "operationId": "Share",
@@ -1274,7 +1274,7 @@
     "/v2/user/customer/friends/{userId}": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Friends"
         ],
         "summary": "Get friend information",
         "operationId": "GetFriendInfo",
@@ -1312,7 +1312,7 @@
     "/v2/user/customer/stores/{storeId}/shares/{userId}": {
       "delete": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Shares"
         ],
         "summary": "Delete a share to another user",
         "operationId": "DeleteShare",
@@ -1350,7 +1350,7 @@
     "/v2/user/customer/stores/{storeId}/rights": {
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Rights"
         ],
         "summary": "Get store's rights",
         "operationId": "GetRights",
@@ -1405,7 +1405,7 @@
     "/v2/user/customer/stores/{storeId}/alerts": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Alerts"
         ],
         "summary": "Get store's alerts",
         "operationId": "GetStoreAlerts",
@@ -1438,7 +1438,7 @@
     "/v2/user/customer/stores/{storeId}/alerts/{alertId}": {
       "put": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Alerts"
         ],
         "summary": "Save store alert",
         "operationId": "SaveStoreAlert",
@@ -1492,7 +1492,7 @@
     "/v2/user/customer/billingPeriods": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Get billing periods conditions",
         "operationId": "GetBillingPeriods",
@@ -1517,7 +1517,7 @@
     "/v2/user/customer/offers": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Get all standard offers",
         "operationId": "GetStandardOffers",
@@ -1540,7 +1540,7 @@
       },
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Get offer pricing",
         "description": "Get the offer pricing then you can create your contract with the same request parameters. /v2/user/customer/contracts\n",
@@ -1585,7 +1585,7 @@
     "/v2/user/customer/contracts": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Get contract list",
         "operationId": "GetContracts",
@@ -1605,7 +1605,7 @@
       },
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Create a new contract",
         "description": "Now you are ready to create your contract. Before that, please ensure that you check the offer with the same request parameterts. /offers\n",
@@ -1659,7 +1659,7 @@
     "/v2/user/customer/contracts/current/disableAutoRenewal": {
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Schedule termination of your current contract at the end of the commitment.",
         "description": "By default your contract are automatically renew. By calling this operation you can disable the auto renewal.",
@@ -1702,7 +1702,7 @@
     "/v2/user/customer/contracts/current/reenableAutoRenewal": {
       "post": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Reactivate your terminated contract.",
         "description": "By calling this operation you can re-enable the auto renewal.",
@@ -1728,7 +1728,7 @@
     "/v2/user/customer/contracts/next": {
       "delete": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Contracts"
         ],
         "summary": "Delete your next contract",
         "operationId": "DeleteNextContract",
@@ -1750,7 +1750,7 @@
     "/v2/user/customer/invoices": {
       "get": {
         "tags": [
-          "Customer - BeezUP"
+          "Customer - Invoices"
         ],
         "summary": "Get all your invoices",
         "operationId": "GetInvoices",
@@ -1775,7 +1775,7 @@
     "/v2/user/catalogs/beezupColumns": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Global"
         ],
         "operationId": "Catalog_GetBeezUPColumns",
         "summary": "Get the BeezUP columns",
@@ -1805,7 +1805,7 @@
     "/v2/user/catalogs/{storeId}/inputConfiguration": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Importation_GetManualUpdateLastInputConfig",
         "summary": "Get the last input configuration",
@@ -1838,7 +1838,7 @@
     "/v2/user/catalogs/{storeId}/catalogColumns": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetCatalogColumns",
         "summary": "Get catalog column list",
@@ -1871,7 +1871,7 @@
     "/v2/user/catalogs/{storeId}/catalogColumns/{columnId}/rename": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_ChangeCatalogColumnUserName",
         "summary": "Change Catalog Column User Name",
@@ -1921,7 +1921,7 @@
     "/v2/user/catalogs/{storeId}/customColumns": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetCustomColumns",
         "summary": "Get custom column list",
@@ -1954,7 +1954,7 @@
     "/v2/user/catalogs/{storeId}/customColumns/{columnId}": {
       "put": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_SaveCustomColumn",
         "summary": "Create or replace a custom column",
@@ -2002,7 +2002,7 @@
       },
       "delete": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "summary": "Delete custom column",
         "operationId": "Catalog_DeleteCustomColumn",
@@ -2044,7 +2044,7 @@
     "/v2/user/catalogs/{storeId}/customColumns/{columnId}/rename": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "summary": "Change Custom Column User Name",
         "operationId": "Catalog_ChangeCustomColumnUserName",
@@ -2094,7 +2094,7 @@
     "/v2/user/catalogs/{storeId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "summary": "Get the encrypted custom column expression",
         "operationId": "Catalog_GetCustomColumnExpression",
@@ -2129,7 +2129,7 @@
       },
       "put": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "summary": "Change custom column expression",
         "operationId": "Catalog_ChangeCustomColumnExpression",
@@ -2176,7 +2176,7 @@
     "/v2/user/catalogs/{storeId}/customColumns/computeExpression": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "summary": "Compute the expression for this catalog.",
         "operationId": "Catalog_ComputeExpression",
@@ -2214,7 +2214,7 @@
     "/v2/user/catalogs/{storeId}/categories": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetCategories",
         "summary": "Get category list",
@@ -2268,7 +2268,7 @@
     "/v2/user/catalogs/{storeId}/products": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetProducts",
         "summary": "Get product list",
@@ -2308,7 +2308,7 @@
     "/v2/user/catalogs/{storeId}/products/random": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetRandomProducts",
         "summary": "Get random product list",
@@ -2353,7 +2353,7 @@
     "/v2/user/catalogs/{storeId}/products/{productId}": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetProduct",
         "summary": "Get product",
@@ -2394,7 +2394,7 @@
     "/v2/user/catalogs/{storeId}/importations": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Start Manual Import",
         "operationId": "Importation_StartManualUpdate",
@@ -2439,7 +2439,7 @@
       },
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Get the latest catalog importation reporting",
         "operationId": "Importation_GetReportings",
@@ -2472,7 +2472,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Get the importation status",
         "operationId": "Importation_GetImportationMonitoring",
@@ -2506,7 +2506,7 @@
       },
       "delete": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Cancel importation",
         "operationId": "Importation_Cancel",
@@ -2542,7 +2542,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/technicalProgression": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Get technical progression",
         "operationId": "Importation_TechnicalProgression",
@@ -2581,7 +2581,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/configureRemainingCatalogColumns": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Configure remaining catalog columns",
         "description": "This operation should be used after you have mapped the required BeezUP Columns",
@@ -2624,7 +2624,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/commitColumns": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Commit columns",
         "operationId": "Importation_CommitColumns",
@@ -2663,7 +2663,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/commit": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Process"
         ],
         "summary": "Commit Importation",
         "operationId": "Importation_Commit",
@@ -2705,7 +2705,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Get the product sample related to this importation with all columns (catalog and custom)",
         "operationId": "Importation_GetProductSample",
@@ -2747,7 +2747,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}/customColumns/{columnId}": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Get product sample custom column value related to this importation.",
         "description": "/!\\ Use this operation only when you just changed the custom column expression and you want to get a precise the property value. Otherwise use the operation Importation_GetProductSample which will give you all property values",
@@ -2803,7 +2803,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Get detected catalog columns during this importation.",
         "operationId": "Importation_GetDetectedCatalogColumns",
@@ -2842,7 +2842,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Configure catalog column",
         "operationId": "Importation_ConfigureCatalogColumn",
@@ -2895,7 +2895,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/ignore": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Ignore Column",
         "operationId": "Importation_IgnoreColumn",
@@ -2934,7 +2934,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/reattend": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Reattend Column",
         "operationId": "Importation_ReattendColumn",
@@ -2973,7 +2973,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/map": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Map catalog column to a BeezUP column",
         "operationId": "Importation_MapCatalogColumn",
@@ -3020,7 +3020,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/unmap": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Unmap catalog column",
         "operationId": "Importation_UnmapCatalogColumn",
@@ -3059,7 +3059,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Get custom columns currently place in this importation",
         "operationId": "Importation_GetCustomColumns",
@@ -3098,7 +3098,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Get the encrypted custom column expression in this importation",
         "operationId": "Importation_GetCustomColumnExpression",
@@ -3141,7 +3141,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}": {
       "put": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Create or replace a custom column",
         "operationId": "Importation_SaveCustomColumn",
@@ -3186,7 +3186,7 @@
       },
       "delete": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Delete Custom Column",
         "operationId": "Importation_DeleteCustomColumn",
@@ -3222,7 +3222,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/map": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Map custom column to a BeezUP column",
         "operationId": "Importation_MapCustomColumn",
@@ -3269,7 +3269,7 @@
     "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/unmap": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Importation Catalog Info"
         ],
         "summary": "Unmap custom column",
         "operationId": "Importation_UnmapCustomColumn",
@@ -3308,7 +3308,7 @@
     "/v2/user/catalogs/{storeId}/autoImport": {
       "get": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "operationId": "Auto_GetAutoImportConfiguration",
         "summary": "Get the auto import configuration",
@@ -3339,7 +3339,7 @@
       },
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "operationId": "Importation_ActivateAutoImport",
         "summary": "Activate the auto importation of the last successful manual catalog importation.",
@@ -3380,7 +3380,7 @@
       },
       "delete": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "operationId": "Auto_DeleteAutoImport",
         "summary": "Delete Auto Import",
@@ -3413,7 +3413,7 @@
     "/v2/user/catalogs/{storeId}/autoImport/start": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "summary": "Start Auto Import Manually",
         "operationId": "Auto_StartAutoImport",
@@ -3455,7 +3455,7 @@
     "/v2/user/catalogs/{storeId}/autoImport/pause": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "operationId": "Auto_PauseAutoImport",
         "summary": "Pause Auto Import",
@@ -3488,7 +3488,7 @@
     "/v2/user/catalogs/{storeId}/autoImport/resume": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "operationId": "Auto_ResumeAutoImport",
         "summary": "Resume Auto Import",
@@ -3521,7 +3521,7 @@
     "/v2/user/catalogs/{storeId}/autoImport/scheduling/interval": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "operationId": "Auto_ConfigureAutoImportInterval",
         "summary": "Configure Auto Import Interval",
@@ -3565,7 +3565,7 @@
     "/v2/user/catalogs/{storeId}/autoImport/scheduling/schedules": {
       "post": {
         "tags": [
-          "Catalogs - BeezUP"
+          "Catalogs - Auto"
         ],
         "summary": "Configure Auto Import Schedules",
         "operationId": "Auto_ScheduleAutoImport",
@@ -3609,7 +3609,7 @@
     "/v2/user/channels/": {
       "get": {
         "tags": [
-          "Channels - BeezUP"
+          "Channels - Channels Global"
         ],
         "summary": "List all available channel for this store",
         "operationId": "GetAvailableChannels",
@@ -3645,7 +3645,7 @@
     "/v2/user/channels/{channelId}": {
       "get": {
         "tags": [
-          "Channels - BeezUP"
+          "Channels - Channels Global"
         ],
         "summary": "Get channel information",
         "operationId": "GetChannelInfo",
@@ -3672,7 +3672,7 @@
     "/v2/user/channels/{channelId}/categories": {
       "get": {
         "tags": [
-          "Channels - BeezUP"
+          "Channels - Channels Global"
         ],
         "summary": "Get channel categories",
         "operationId": "GetChannelCategories",
@@ -3720,7 +3720,7 @@
     "/v2/user/channels/{channelId}/columns": {
       "post": {
         "tags": [
-          "Channels - BeezUP"
+          "Channels - Channels Global"
         ],
         "summary": "Get channel columns",
         "operationId": "GetChannelColumns",
@@ -3783,7 +3783,7 @@
     "/v2/user/channelCatalogs/": {
       "get": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Global"
         ],
         "summary": "List all your current channel catalogs",
         "operationId": "GetChannelCatalogs",
@@ -3814,7 +3814,7 @@
       },
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Global"
         ],
         "summary": "Create a new channel catalog",
         "operationId": "CreateChannelCatalog",
@@ -3864,7 +3864,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}": {
       "get": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Global"
         ],
         "summary": "Get the channel catalog information",
         "operationId": "GetChannelCatalog",
@@ -3889,7 +3889,7 @@
       },
       "delete": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Global"
         ],
         "summary": "Delete the channel catalog",
         "operationId": "DeleteChannelCatalog",
@@ -3913,7 +3913,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/enable": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Settings"
         ],
         "summary": "Enable a channel catalog",
         "operationId": "EnableChannelCatalog",
@@ -3943,7 +3943,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/disable": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "DisableChannelCatalog",
@@ -3967,7 +3967,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/settings/general": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "ConfigureChannelCatalogGeneralSettings",
@@ -3999,7 +3999,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/settings/cost": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "ConfigureChannelCatalogCostSettings",
@@ -4031,7 +4031,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/columnMappings": {
       "put": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Column Mappings"
         ],
         "summary": "Configure channel catalog column mappings",
         "operationId": "MapChannelCatalogColumns",
@@ -4063,7 +4063,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings": {
       "get": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Category Mappings"
         ],
         "summary": "Get channel catalog categories",
         "operationId": "GetChannelCatalogCategories",
@@ -4090,7 +4090,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/map": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Category Mappings"
         ],
         "summary": "Map channel catalog category",
         "operationId": "MapChannelCatalogCategory",
@@ -4122,7 +4122,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/unmap": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Category Mappings"
         ],
         "summary": "Unmap channel catalog category",
         "operationId": "UnmapChannelCatalogCategory",
@@ -4154,7 +4154,7 @@
     "/v2/user/channelCatalogs/exclusionFilterOperators": {
       "get": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Exclusion Filters"
         ],
         "summary": "Get channel catalog exclusion filter operators",
         "operationId": "GetChannelCatalogExclusionFilterOperators",
@@ -4179,7 +4179,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/exclusionFilters": {
       "put": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Exclusion Filters"
         ],
         "summary": "Configure channel catalog exclusion filters",
         "operationId": "ConfigureChannelCatalogExclusionFilters",
@@ -4211,7 +4211,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Products"
         ],
         "summary": "Get channel catalog product information list",
         "operationId": "GetChannelCatalogProductInfoList",
@@ -4246,7 +4246,7 @@
     "/v2/user/channelCatalogs/products/{productId}": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Products"
         ],
         "summary": "Get channel catalog products related to these channel catalogs",
         "operationId": "GetChannelCatalogProductByChannelCatalog",
@@ -4280,7 +4280,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}": {
       "get": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Products"
         ],
         "summary": "Get channel catalog product information",
         "operationId": "GetChannelCatalogProductInfo",
@@ -4310,7 +4310,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides": {
       "put": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Products Overrides"
         ],
         "summary": "Override channel catalog product values",
         "operationId": "OverrideChannelCatalogProductOverrides",
@@ -4345,7 +4345,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/{channelColumnId}": {
       "delete": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Products Overrides"
         ],
         "summary": "Delete a specific channel catalog product value override",
         "operationId": "DeleteChannelCatalogProductValueOverride",
@@ -4381,7 +4381,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/disable": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Products Optimisation"
         ],
         "summary": "Disable channel catalog product",
         "operationId": "DisableChannelCatalogProduct",
@@ -4409,7 +4409,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/reenable": {
       "post": {
         "tags": [
-          "Channel Catalogs - BeezUP"
+          "Channel Catalogs - Channel Catalogs Products Optimisation"
         ],
         "summary": "Reenable channel catalog product",
         "description": "By default a all your catalog products are exposed to the channel.\nYou can reenable a product by using this operation.\n/!\\ In case of massive optimisation we recommand you to use the analytics api\n",
@@ -4437,7 +4437,7 @@
     "/v2/user/marketplaces/channelcatalogs/": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - BeezUP"
+          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Global"
         ],
         "summary": "Get  you marketplace channel catalog list",
         "operationId": "GetMarketplaceAccountStores",
@@ -4459,7 +4459,7 @@
     "/v2/user/marketplaces/channelcatalogs/publications/{marketplaceTechnicalCode}/{accountId}/history": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - BeezUP"
+          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Publications"
         ],
         "summary": "Fetch the publication history for an account, sorted by descending start date",
         "operationId": "GetPublications",
@@ -4548,7 +4548,7 @@
     "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/properties": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - BeezUP"
+          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Get the marketplace properties for a channel catalog",
         "operationId": "GetChannelCatalogMarketplaceProperties",
@@ -4588,7 +4588,7 @@
     "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/settings": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - BeezUP"
+          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Get the marketplace settings for a channel catalog",
         "operationId": "GetChannelCatalogMarketplaceSettings",
@@ -4627,7 +4627,7 @@
       },
       "post": {
         "tags": [
-          "Marketplaces - Channel catalogs - BeezUP"
+          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Save new marketplace settings for a channel catalog",
         "description": "Allow you to configure your marketplace settings. \nPartial update accepted.\n",
@@ -4681,7 +4681,7 @@
     "/v2/user/marketplaces/orders/": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Global"
         ],
         "x-tagGroups": "Martketplaces Orders",
         "operationId": "GetOrderIndex",
@@ -4708,7 +4708,7 @@
     "/v2/user/marketplaces/orders/status": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Global"
         ],
         "x-tagGroups": "Martketplaces Orders",
         "operationId": "GetMarketplaceAccountsSynchronization",
@@ -4735,7 +4735,7 @@
     "/v2/user/marketplaces/orders/harvest": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Global"
         ],
         "operationId": "HarvestAll",
         "summary": "Send harvest request to all your marketplaces",
@@ -4776,7 +4776,7 @@
     "/v2/user/marketplaces/orders/automaticTransitions": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - AutoTransitions"
         ],
         "operationId": "GetAutomaticTransitions",
         "summary": "Get list of configured automatic Order status transitions",
@@ -4800,7 +4800,7 @@
       },
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - AutoTransitions"
         ],
         "operationId": "ConfigureAutomaticTransitions",
         "summary": "Configure new or existing automatic Order status transition",
@@ -4839,7 +4839,7 @@
     "/v2/user/marketplaces/orders/list/full": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - List"
         ],
         "operationId": "GetOrderListFull",
         "summary": "Get a paginated list of all Orders with all Order and Order Item(s) properties",
@@ -4887,7 +4887,7 @@
     "/v2/user/marketplaces/orders/list/light": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - List"
         ],
         "operationId": "GetOrderListLight",
         "summary": "Get a paginated list of all Orders without details",
@@ -4923,7 +4923,7 @@
     "/v2/user/marketplaces/orders/exportations": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Exports"
         ],
         "operationId": "GetOrderExportations",
         "summary": "Get a paginated list of Order report exportations",
@@ -4990,7 +4990,7 @@
       },
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Exports"
         ],
         "operationId": "ExportOrders",
         "summary": "Request a new Order report exportation to be generated",
@@ -5030,7 +5030,7 @@
     "/v2/user/marketplaces/orders/batches/setMerchantOrderInfos": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Batches"
         ],
         "operationId": "SetMerchantOrderInfoList",
         "summary": "Send a batch of operations to set an Order's merchant information",
@@ -5067,7 +5067,7 @@
     "/v2/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Batches"
         ],
         "operationId": "ClearMerchantOrderInfoList",
         "summary": "Send a batch of operations to clear an Order's merchant information",
@@ -5104,7 +5104,7 @@
     "/v2/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Batches"
         ],
         "operationId": "ChangeOrderList",
         "summary": "Send a batch of operations to change your marketplace Order information (accept, ship, etc.)",
@@ -5150,7 +5150,7 @@
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Order"
         ],
         "operationId": "GetOrder",
         "summary": "Get full Order and Order Item(s) properties",
@@ -5211,7 +5211,7 @@
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Order"
         ],
         "operationId": "GetOrderHistory",
         "summary": "Get an Order's harvest and change history",
@@ -5254,7 +5254,7 @@
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Order"
         ],
         "operationId": "HarvestOrder",
         "summary": "Send harvest request for a single Order",
@@ -5306,7 +5306,7 @@
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Order"
         ],
         "operationId": "SetMerchantOrderInfo",
         "summary": "Set an Order's merchant information",
@@ -5360,7 +5360,7 @@
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Order"
         ],
         "operationId": "ClearMerchantOrderInfo",
         "summary": "Clear an Order's merchant information",
@@ -5406,7 +5406,7 @@
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - BeezUP"
+          "Marketplaces - Orders - Order"
         ],
         "operationId": "ChangeOrder",
         "summary": "Change your marketplace Order Information (accept, ship, etc.)",
@@ -5487,7 +5487,7 @@
     "/v2/user/analytics/tracking/status": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Tracking"
         ],
         "summary": "Display the synchronization status of the clicks and orders",
         "description": "Your clicks and orders are eventually consistent. \\\nThis operation indicates you at which date the projections are.\n",
@@ -5513,7 +5513,7 @@
     "/v2/user/analytics/{storeId}/reports/filters": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Get report filter list for the given store",
         "operationId": "GetReportFilters",
@@ -5543,7 +5543,7 @@
     "/v2/user/analytics/{storeId}/reports/filters/{reportFilterId}": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Get the report filter description",
         "operationId": "GetReportFilter",
@@ -5577,7 +5577,7 @@
       },
       "delete": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Delete the report filter",
         "operationId": "DeleteReportFilter",
@@ -5614,7 +5614,7 @@
       },
       "put": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Save the report filter",
         "operationId": "SaveReportFilter",
@@ -5661,7 +5661,7 @@
     "/v2/user/analytics/{storeId}/reports/byday": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Get the report by day",
         "description": "Get the report by day",
@@ -5700,7 +5700,7 @@
     "/v2/user/analytics/{storeId}/reports/byday/export": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Get the report by day",
         "description": "Get the report by day",
@@ -5755,7 +5755,7 @@
     "/v2/user/analytics/{storeId}/reports/bychannel": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Get the report by channel",
         "description": "Get the report by channel",
@@ -5794,7 +5794,7 @@
     "/v2/user/analytics/{storeId}/reports/bychannel/export": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Export the report by channel",
         "description": "Export the report by channel",
@@ -5848,7 +5848,7 @@
     "/v2/user/analytics/{storeId}/reports/bycategory": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Get the report by category",
         "description": "Get the report by category",
@@ -5887,7 +5887,7 @@
     "/v2/user/analytics/{storeId}/reports/bycategory/export": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Export the report by category",
         "description": "Export the report by category",
@@ -5941,7 +5941,7 @@
     "/v2/user/analytics/{storeId}/reports/byproduct": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Get the report by product",
         "description": "Get the report by product",
@@ -5980,7 +5980,7 @@
     "/v2/user/analytics/{storeId}/reports/byproduct/export": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Reports"
         ],
         "summary": "Export the report by product",
         "description": "Export the report by product",
@@ -6034,7 +6034,7 @@
     "/v2/user/analytics/{storeId}/optimisations/{actionName}": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Optimisations"
         ],
         "summary": "Optimise products",
         "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product related to this request. \\\nThis operation is used at the bottom of the analytics page result.\n",
@@ -6073,7 +6073,7 @@
     "/v2/user/analytics/{storeId}/optimisations/byproduct/{productId}/{actionName}": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Optimisations"
         ],
         "summary": "Optimise products",
         "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable this product for every channel indicated in the body. \n",
@@ -6131,7 +6131,7 @@
     "/v2/user/analytics/{storeId}/optimisations/bycategory/{catalogCategoryId}/{actionName}": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Optimisations"
         ],
         "summary": "Optimise products's category",
         "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable products's category for every channel indicated in the body. \n",
@@ -6189,7 +6189,7 @@
     "/v2/user/analytics/{storeId}/optimisations/bychannel/{channelId}/{actionName}": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Optimisations"
         ],
         "summary": "Optimise products's category",
         "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product on this channel.\n",
@@ -6228,7 +6228,7 @@
     "/v2/user/analytics/{storeId}/tracking/status": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Tracking"
         ],
         "summary": "Get store tracking synchronization status",
         "description": "Your clicks and orders are eventually consistent. \\\nThis operation indicates you at which date the projections are for this store.\n",
@@ -6262,7 +6262,7 @@
     "/v2/user/analytics/{storeId}/tracking/clicks": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Tracking"
         ],
         "summary": "Get the latest clicks tracked",
         "operationId": "GetStoreTrackedClicks",
@@ -6305,7 +6305,7 @@
     "/v2/user/analytics/{storeId}/tracking/orders": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Tracking"
         ],
         "summary": "Get the latest orders tracked",
         "operationId": "GetStoreTrackedOrders",
@@ -6348,7 +6348,7 @@
     "/v2/user/analytics/{storeId}/tracking/externalorders": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Tracking"
         ],
         "summary": "Get the latest external orders tracked",
         "operationId": "GetStoreTrackedExternalOrders",
@@ -6391,7 +6391,7 @@
     "/v2/user/analytics/{storeId}/rules": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Gets the list of rules for a given store",
         "operationId": "GetRules",
@@ -6419,7 +6419,7 @@
       },
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Rule creation",
         "operationId": "CreateRule",
@@ -6467,7 +6467,7 @@
     "/v2/user/analytics/{storeId}/rules/run": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Run all rules for this store",
         "operationId": "RunRules",
@@ -6503,7 +6503,7 @@
     "/v2/user/analytics/{storeId}/rules/executions": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Get the rules execution history",
         "operationId": "GetRulesExecutions",
@@ -6552,7 +6552,7 @@
     "/v2/user/analytics/{storeId}/rules/{ruleId}": {
       "get": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Gets the rule",
         "operationId": "GetRule",
@@ -6583,7 +6583,7 @@
       },
       "delete": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Delete Rule",
         "operationId": "DeleteRule",
@@ -6617,7 +6617,7 @@
       },
       "patch": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Update Rule",
         "operationId": "UpdateRule",
@@ -6667,7 +6667,7 @@
     "/v2/user/analytics/{storeId}/rules/{ruleId}/run": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Run rule",
         "operationId": "RunRule",
@@ -6709,7 +6709,7 @@
     "/v2/user/analytics/{storeId}/rules/{ruleId}/moveup": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Move the rule up",
         "operationId": "MoveUpRule",
@@ -6748,7 +6748,7 @@
     "/v2/user/analytics/{storeId}/rules/{ruleId}/movedown": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Move the rule down",
         "operationId": "MoveDownRule",
@@ -6787,7 +6787,7 @@
     "/v2/user/analytics/{storeId}/rules/{ruleId}/enable": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Enable rule",
         "operationId": "EnableRule",
@@ -6823,7 +6823,7 @@
     "/v2/user/analytics/{storeId}/rules/{ruleId}/disable": {
       "post": {
         "tags": [
-          "Analytics - BeezUP"
+          "Analytics - Rules"
         ],
         "summary": "Disable rule",
         "operationId": "DisableRule",
