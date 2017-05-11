@@ -4,12 +4,20 @@
     "title": "BeezUP Api",
     "description": "BeezUP Api Swagger - This is a work in progress",
     "version": "1.0",
+    "x-logo": {
+      "url": "https://avatars0.githubusercontent.com/u/25665430",
+      "backgroundColor": "#FFFFFF"
+    },
     "contact": {
       "email": "support@beezup.com"
     },
     "license": {
       "name": "BeezUP",
       "url": "http://www.beezup.com"
+    },
+    "externalDocs": {
+      "description": "Find the documentation for BeezUP's API here",
+      "url": "https://beezup.github.io/api-docs/"
     }
   },
   "host": "api.beezup.com",
@@ -12808,12 +12816,6 @@
       "format": "uuid",
       "example": "00000000000000000000000000000000000000000000000"
     },
-    "marketplaceTechnicalCode": {
-      "description": "The technical code of the marketplace",
-      "type": "string",
-      "example": "Amazon",
-      "x-lov": "OMMarketplaceTechnicalCode"
-    },
     "accountId": {
       "description": "The marketplace account identifier in BeezUP. This account identifier is based on your api settings.",
       "type": "integer",
@@ -13050,7 +13052,7 @@
         "marketplaceTechnicalCodes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/marketplaceTechnicalCode"
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
           },
           "example": [
             "PriceMinister"
@@ -13059,7 +13061,7 @@
         "marketplaceBusinessCodes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/marketplaceBusinessCode"
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
           },
           "example": [
             "PRICEMINISTER"
@@ -13226,7 +13228,7 @@
           ],
           "properties": {
             "marketplaceBusinessCode": {
-              "$ref": "#/definitions/marketplaceBusinessCode"
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
             },
             "beezUPOrderStatus": {
               "$ref": "#/definitions/beezUPOrderStatus"
@@ -13266,7 +13268,7 @@
       ],
       "properties": {
         "marketplaceTechnicalCode": {
-          "$ref": "#/definitions/marketplaceTechnicalCode"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
         },
         "accountId": {
           "$ref": "#/definitions/accountId"
@@ -13291,7 +13293,7 @@
       ],
       "properties": {
         "marketplaceTechnicalCode": {
-          "$ref": "#/definitions/marketplaceTechnicalCode"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
         },
         "accountId": {
           "$ref": "#/definitions/accountId"
@@ -13438,10 +13440,10 @@
           "type": "string"
         },
         "marketplaceBusinessCode": {
-          "$ref": "#/definitions/marketplaceBusinessCode"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
         },
         "marketplaceTechnicalCode": {
-          "$ref": "#/definitions/marketplaceTechnicalCode"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
         }
       }
     },
@@ -13493,7 +13495,7 @@
       ],
       "properties": {
         "marketplaceTechnicalCode": {
-          "$ref": "#/definitions/marketplaceTechnicalCode"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
         },
         "accountId": {
           "$ref": "#/definitions/accountId"
@@ -13505,7 +13507,7 @@
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.HttpUrl"
         },
         "marketplaceBusinessCode": {
-          "$ref": "#/definitions/marketplaceBusinessCode"
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
         },
         "order_MarketplaceOrderId": {
           "$ref": "#/definitions/marketplaceOrderId"
@@ -14444,12 +14446,6 @@
           "$ref": "#/definitions/orderListFullLinks"
         }
       }
-    },
-    "marketplaceBusinessCode": {
-      "description": "In an marketplace technical code like CDiscount you can have several marketplaces like GO SPORT, etc. We identify them by a business code.",
-      "type": "string",
-      "example": "GOSPORT",
-      "x-lov": "MarketplaceBusinessCode"
     },
     "beezUPOrderStatus": {
       "type": "string",
@@ -16859,14 +16855,6 @@
         }
       }
     }
-  },
-  "externalDocs": {
-    "description": "Find the documentation for BeezUP's API here",
-    "url": "https://beezup.github.io/api-docs/"
-  },
-  "x-logo": {
-    "url": "https://avatars0.githubusercontent.com/u/25665430",
-    "backgroundColor": "#FFFFFF"
   },
   "x-tagGroups": [
     {
