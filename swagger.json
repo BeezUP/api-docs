@@ -1,26 +1,19 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Public - Security",
-    "description": "This API will allow you to create your account and to get your tokens. \\\nIf you lost your password, you have an operation to get it back.\n",
-    "version": "2.0",
-    "x-logo": {
-      "url": "https://avatars0.githubusercontent.com/u/25665430",
-      "backgroundColor": "#FFFFFF"
-    },
+    "title": "BeezUP Api",
+    "description": "BeezUP Api Swagger - This is a work in progress",
+    "version": "1.0",
     "contact": {
       "email": "support@beezup.com"
     },
     "license": {
       "name": "BeezUP",
       "url": "http://www.beezup.com"
-    },
-    "x-changeComment": "Change the product name from BeezUP API to UserApi to correspond to the reality\n"
+    }
   },
   "host": "api.beezup.com",
   "basePath": "",
-  "x-api-name": "V2PublicSecurity",
-  "x-api-namespace": "BeezUP.Customer.WebService",
   "schemes": [
     "https"
   ],
@@ -196,7 +189,7 @@
     }
   ],
   "paths": {
-    "/v2/public/security/login": {
+    "/login": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -236,7 +229,7 @@
         }
       }
     },
-    "/v2/public/security/register": {
+    "/register": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -273,7 +266,7 @@
         ]
       }
     },
-    "/v2/public/security/lostpassword": {
+    "/lostpassword": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -16867,7 +16860,14 @@
       }
     }
   },
-  "x-azure-api-id": "V2PublicSecurity",
+  "externalDocs": {
+    "description": "Find the documentation for BeezUP's API here",
+    "url": "https://beezup.github.io/api-docs/"
+  },
+  "x-logo": {
+    "url": "https://avatars0.githubusercontent.com/u/25665430",
+    "backgroundColor": "#FFFFFF"
+  },
   "x-tagGroups": [
     {
       "name": "Public - Security",
