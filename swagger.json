@@ -16965,5 +16965,218 @@
         "Analytics - Optimisations"
       ]
     }
-  ]
+  ],
+  "responses": {
+    "importStarted": {
+      "description": "Catalog importation started",
+      "headers": {
+        "Location": {
+          "description": "The location of the new resource to poll",
+          "type": "string",
+          "x-example": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c"
+        },
+        "Retry-After": {
+          "description": "The duration in second to wait before polling this resource",
+          "type": "integer",
+          "minimum": 5,
+          "default": 5,
+          "x-example": 5
+        }
+      },
+      "schema": {
+        "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
+      }
+    },
+    "importAlreadyInProgress": {
+      "description": "When a catalog importation is already in progress!",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserErrorMessage"
+            }
+          },
+          "links": {
+            "description": "The action links",
+            "type": "object",
+            "properties": {
+              "currentImportation": {
+                "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
+              }
+            },
+            "additionalProperties": false,
+            "example": {
+              "currentImportation": {
+                "href": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c",
+                "method": "GET"
+              }
+            }
+          }
+        }
+      }
+    },
+    "processingResponse": {
+      "description": "The marketplace configuration related to this channel catalog is currently in progress. Please retry later.",
+      "headers": {
+        "Retry-After": {
+          "description": "Indicate the duration to before the next retry in second.",
+          "type": "integer",
+          "format": "int32",
+          "x-example": 120
+        }
+      }
+    }
+  },
+  "parameters": {
+    "executionId": {
+      "name": "executionId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "guid",
+      "description": "The execution identifier of you catalog importation"
+    },
+    "catalogColumnId": {
+      "name": "columnId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "guid",
+      "description": "The catalog column identifier"
+    },
+    "customColumnId": {
+      "name": "columnId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "guid",
+      "description": "The custom column identifier"
+    },
+    "productSampleIndex": {
+      "name": "productSampleIndex",
+      "in": "path",
+      "description": "Index of the product sample. Starting from 0 to 99.",
+      "required": true,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 99
+    },
+    "channelIdParameter": {
+      "name": "channelId",
+      "in": "path",
+      "required": true,
+      "description": "The channel identifier",
+      "type": "string",
+      "format": "guid",
+      "x-example": "2dc136a7-0d3d-4cc9-a825-a28a42c53e28"
+    },
+    "channelCatalogIdParameter": {
+      "name": "channelCatalogId",
+      "in": "path",
+      "required": true,
+      "description": "The channel catalog identifier",
+      "type": "string",
+      "format": "guid",
+      "x-example": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
+    },
+    "productIdParameter": {
+      "name": "productId",
+      "description": "The product identifier",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "guid",
+      "x-example": "578419df-1bbf-41a6-96fa-862e42182b67"
+    },
+    "marketplaceTechnicalCodeParameter": {
+      "description": "The marketplace technical code",
+      "name": "marketplaceTechnicalCode",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-example": "Amazon"
+    },
+    "accountIdParameter": {
+      "description": "The account identifier",
+      "name": "accountId",
+      "in": "path",
+      "required": true,
+      "type": "integer",
+      "format": "int32",
+      "x-example": 1001
+    },
+    "beezUPOrderIdParameter": {
+      "description": "The BeezUP Order identifier",
+      "name": "beezUPOrderId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "uuid",
+      "x-example": "00000000000000000000000000000000000000000000000"
+    },
+    "changeOrderTypeParameter": {
+      "description": "The Order change type",
+      "name": "changeOrderType",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-lov": "OrderChangeBusinessOperationType"
+    },
+    "userNameInQueryParameter": {
+      "name": "userName",
+      "description": "Sometimes the user in the e-commerce application is not the same as user associated with the current subscription key. We recommend providing your application's user login.",
+      "in": "query",
+      "required": true,
+      "type": "string"
+    },
+    "testModeInQueryParameter": {
+      "name": "testMode",
+      "description": "If true, the operation will be not be sent to marketplace. But the validation will be taken in account.",
+      "in": "query",
+      "required": false,
+      "type": "boolean",
+      "default": false,
+      "x-example": false
+    },
+    "exportFormatInQueryGeneralParameter": {
+      "name": "format",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "enum": [
+        "xlsx",
+        "csv"
+      ]
+    },
+    "ruleIdOnlyGeneralParameters": {
+      "name": "ruleId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "guid",
+      "description": "Your rule identifier"
+    },
+    "reportFilterIdOnlyGeneralParameters": {
+      "name": "reportFilterId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "guid",
+      "description": "Your report filter identifier"
+    },
+    "optimisationActionNameGeneralParameters": {
+      "name": "actionName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "enum": [
+        "reenable",
+        "disable"
+      ],
+      "format": "optimisationActionName"
+    }
+  }
 }
