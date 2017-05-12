@@ -1791,8 +1791,7 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/beezUPColumnConfiguration"
-              },
-              "example": null
+              }
             }
           },
           "default": {
@@ -4877,7 +4876,7 @@
             }
           },
           "400": {
-            "description": "Could not process request for given parameters values (pageNumber or pageSize). Please check error message for more details.",
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
               "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -4919,7 +4918,7 @@
             }
           },
           "400": {
-            "description": "Could not process request for given parameters values (pageNumber or pageSize). Please check error message for more details.",
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
               "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -4982,7 +4981,7 @@
             }
           },
           "400": {
-            "description": "Could not process request for given parameters values (pageNumber or pageSize). Please check error message for more details.",
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
               "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -5020,7 +5019,7 @@
             "description": "Successfully requested new Order report exportation generation"
           },
           "400": {
-            "description": "Could not process request for given parameters values (storeId). Please check error message for more details.",
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
               "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -7705,6 +7704,7 @@
       }
     },
     "createStoreRequest": {
+      "type": "object",
       "allOf": [
         {
           "$ref": "#/definitions/store"
@@ -9798,7 +9798,7 @@
         "compressedRelativePath": {
           "description": "Indicate the relative path in the compressed file",
           "type": "string",
-          "example": null
+          "example": "folder/file.xxx"
         },
         "downloadTimeout": {
           "description": "Indicate the download time out in second",
@@ -10611,6 +10611,7 @@
       }
     },
     "getProductsRequest": {
+      "type": "object",
       "description": "The request message to get products based on these filters",
       "properties": {
         "sku": {
@@ -12021,7 +12022,7 @@
         "htmlReportGenerationErrorMessage": {
           "description": "The error message if the Html Report generation failed",
           "type": "string",
-          "example": null
+          "example": "Example error message"
         },
         "completed": {
           "description": "Indicates if the publication is completed or not",
@@ -14775,6 +14776,7 @@
       ]
     },
     "changeOrderRequest": {
+      "type": "object",
       "description": "All properties with the prefix order_ are translated in the list of values /user/lov#OrderMetaInfoPosted",
       "additionalProperties": {
         "type": "string"
@@ -16964,7 +16966,7 @@
   },
   "externalDocs": {
     "description": "Find the documentation for BeezUP's API here",
-    "url": "https://beezup.github.io/api-docs/"
+    "url": "https://api-docs.beezup.com/"
   },
   "x-tagGroups": [
     {
