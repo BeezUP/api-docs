@@ -11177,9 +11177,15 @@
       ],
       "properties": {
         "cacheStatus": {
+          "description": "The cache status",
           "type": "string",
           "example": "ReadyForGeneration",
           "x-lov": "ChannelCatalogExportCacheStatus"
+        },
+        "lastUpdateUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last update UTC date of the cache"
         }
       }
     },
