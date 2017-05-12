@@ -14,10 +14,6 @@
     "license": {
       "name": "BeezUP",
       "url": "http://www.beezup.com"
-    },
-    "externalDocs": {
-      "description": "Find the documentation for BeezUP's API here",
-      "url": "https://beezup.github.io/api-docs/"
     }
   },
   "host": "api.beezup.com",
@@ -4867,7 +4863,7 @@
           {
             "name": "request",
             "in": "body",
-            "required": false,
+            "required": true,
             "schema": {
               "$ref": "#/definitions/orderListRequest"
             }
@@ -4878,6 +4874,12 @@
             "description": "Successfully fetched the full list of Orders",
             "schema": {
               "$ref": "#/definitions/orderListFull"
+            }
+          },
+          "400": {
+            "description": "Could not process request for given parameters values (pageNumber or pageSize). Please check error message for more details.",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -4914,6 +4916,12 @@
             "description": "Successfully fetched the list of Orders",
             "schema": {
               "$ref": "#/definitions/orderListLight"
+            }
+          },
+          "400": {
+            "description": "Could not process request for given parameters values (pageNumber or pageSize). Please check error message for more details.",
+            "schema": {
+              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -4975,12 +4983,6 @@
           },
           "400": {
             "description": "Could not process request for given parameters values (pageNumber or pageSize). Please check error message for more details.",
-            "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "404": {
-            "description": "Resources metting request parameters where not found. Please check error message for more details.",
             "schema": {
               "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -12839,6 +12841,9 @@
     },
     "orderExportationsLinks": {
       "type": "object",
+      "required": [
+        "self"
+      ],
       "properties": {
         "self": {
           "$ref": "#/definitions/links.GetOrderExportationsLink"
@@ -13048,6 +13053,13 @@
     },
     "orderListRequest": {
       "type": "object",
+      "required": [
+        "dateSearchType",
+        "beginPeriodUtcDate",
+        "endPeriodUtcDate",
+        "pageSize",
+        "pageNumber"
+      ],
       "properties": {
         "marketplaceTechnicalCodes": {
           "type": "array",
@@ -13090,13 +13102,13 @@
           "$ref": "#/definitions/dateSearchType"
         },
         "beginPeriodUtcDate": {
-          "description": "The begin period you want to make the search. The period MUST not be greater than 30 days. If null, the current date minus 30 days will be used.",
+          "description": "The begin period you want to make the search. \\\nThe period MUST not be greater than 30 days.\nThe begin period MUST be lower than the end period. \n",
           "format": "date-time",
           "type": "string",
           "example": "2017-03-01T13:10:01Z"
         },
         "endPeriodUtcDate": {
-          "description": "The end period of you search. The period MUST not be greater than 30 days. If null the current date will be used.",
+          "description": "The end period of you search. \\\nThe period MUST not be greater than 30 days. \\\nThe end period MUST be greater than the begin period. \nThe end period MUST be lower to the current date.\n",
           "format": "date-time",
           "type": "string",
           "example": "2017-04-01T13:10:01Z"
@@ -13174,6 +13186,10 @@
     },
     "automaticTransitionInfosLinks": {
       "type": "object",
+      "required": [
+        "self",
+        "configure"
+      ],
       "properties": {
         "self": {
           "$ref": "#/definitions/links.GetAutomaticTransitionsLink"
@@ -13185,6 +13201,9 @@
     },
     "automaticTransitionInfos": {
       "type": "object",
+      "required": [
+        "links"
+      ],
       "properties": {
         "links": {
           "$ref": "#/definitions/automaticTransitionInfosLinks"
@@ -13204,6 +13223,9 @@
     },
     "automaticTransitionInfoLinks": {
       "type": "object",
+      "required": [
+        "configure"
+      ],
       "properties": {
         "configure": {
           "$ref": "#/definitions/links.ConfigureAutomaticTransitionsLink"
@@ -13676,7 +13698,11 @@
         {
           "type": "object",
           "required": [
-            "self"
+            "self",
+            "history",
+            "harvest",
+            "setMerchantInfo",
+            "clearMerchantInfo"
           ],
           "properties": {
             "history": {
@@ -14171,6 +14197,10 @@
     },
     "orderIndex": {
       "type": "object",
+      "required": [
+        "links",
+        "lovLinks"
+      ],
       "properties": {
         "links": {
           "$ref": "#/definitions/orderIndexLinks"
@@ -14180,9 +14210,37 @@
         }
       }
     },
+    "links.GetOrderIndexLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders",
+            "method": "GET"
+          }
+        }
+      ]
+    },
     "orderIndexLinks": {
+      "description": "Gives you all entry point operations you can do on this API",
       "type": "object",
+      "required": [
+        "self",
+        "status",
+        "harvest",
+        "setMerchantInfos",
+        "clearMerchantInfos",
+        "export",
+        "autoTransitions",
+        "orders",
+        "lightOrders"
+      ],
       "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetOrderIndexLink"
+        },
         "status": {
           "$ref": "#/definitions/links.GetMarketplaceAccountsSynchronizationLink"
         },
@@ -14213,7 +14271,14 @@
       }
     },
     "orderIndexLovLinks": {
+      "description": "Gives you all the LOV to get the translations realated to operation name, codes, property names and statuses.",
       "type": "object",
+      "required": [
+        "orderChangeBusinessOperationType",
+        "orderState",
+        "orderProperty",
+        "orderPropertyPosted"
+      ],
       "properties": {
         "orderChangeBusinessOperationType": {
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
@@ -14313,6 +14378,13 @@
     "orderListLinks": {
       "description": "The list of actions you can do from the order list response",
       "type": "object",
+      "required": [
+        "harvest",
+        "setMerchantInfos",
+        "clearMerchantInfos",
+        "export",
+        "status"
+      ],
       "properties": {
         "harvest": {
           "$ref": "#/definitions/links.HarvestAllLink"
@@ -14348,6 +14420,22 @@
       "allOf": [
         {
           "$ref": "#/definitions/orderListLinks"
+        },
+        {
+          "type": "object",
+          "required": [
+            "self",
+            "harvest",
+            "setMerchantInfos",
+            "clearMerchantInfos",
+            "export",
+            "status"
+          ],
+          "properties": {
+            "self": {
+              "$ref": "#/definitions/links.GetOrderListLightLink"
+            }
+          }
         }
       ]
     },
@@ -14355,6 +14443,22 @@
       "allOf": [
         {
           "$ref": "#/definitions/orderListLinks"
+        },
+        {
+          "type": "object",
+          "required": [
+            "self",
+            "harvest",
+            "setMerchantInfos",
+            "clearMerchantInfos",
+            "export",
+            "status"
+          ],
+          "properties": {
+            "self": {
+              "$ref": "#/definitions/links.GetOrderListFullLink"
+            }
+          }
         }
       ]
     },
@@ -14409,7 +14513,8 @@
       "type": "object",
       "required": [
         "paginationResult",
-        "orders"
+        "orders",
+        "links"
       ],
       "properties": {
         "paginationResult": {
@@ -14430,7 +14535,8 @@
       "type": "object",
       "required": [
         "paginationResult",
-        "orders"
+        "orders",
+        "links"
       ],
       "properties": {
         "paginationResult": {
@@ -16855,6 +16961,10 @@
         }
       }
     }
+  },
+  "externalDocs": {
+    "description": "Find the documentation for BeezUP's API here",
+    "url": "https://beezup.github.io/api-docs/"
   },
   "x-tagGroups": [
     {
