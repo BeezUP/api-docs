@@ -136,6 +136,10 @@
       "description": "All products optimisation operations"
     },
     {
+      "name": "Channel Catalogs - Exportations",
+      "description": "All channel catalog exportation operations"
+    },
+    {
       "name": "Marketplaces - Channel catalogs - Global",
       "description": "Operations to fetch your marketplace account related to your channel catalogs"
     },
@@ -221,7 +225,7 @@
           "400": {
             "description": "Bad Request",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "403": {
@@ -283,7 +287,7 @@
             "name": "email",
             "in": "body",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Email"
+              "$ref": "/BeezUP.Common.Email"
             },
             "description": "Your email",
             "required": true
@@ -296,7 +300,7 @@
           "400": {
             "description": "Bad Request",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -308,7 +312,7 @@
           "502": {
             "description": "Problem with SMTP service",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           }
         }
@@ -375,7 +379,7 @@
                     "name": "Amazon Direct FRA",
                     "homeUrl": "http://www.amazon.fr",
                     "logoUrl": "http://beezupcdn.blob.core.windows.net/comparators/Amazon%2520Direct%2520FRA.png",
-                    "tags": [
+                    "types": [
                       "Marketplace"
                     ]
                   }
@@ -386,7 +390,7 @@
           "404": {
             "description": "Channel country not found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -522,7 +526,7 @@
           "404": {
             "description": "List not found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -658,7 +662,7 @@
           "404": {
             "description": "List not found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -789,7 +793,7 @@
           "400": {
             "description": "Bad Request",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -827,7 +831,7 @@
           "400": {
             "description": "Bad request or invalid VATNumber.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "403": {
@@ -891,7 +895,7 @@
           "400": {
             "description": "BadRequest (Url invalid)",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "413": {
@@ -965,7 +969,7 @@
           "400": {
             "description": "BadRequest",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "502": {
@@ -1392,7 +1396,7 @@
           "403": {
             "description": "Functionality not found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+              "$ref": "/BeezUP.Common.InfoSummaries"
             }
           },
           "404": {
@@ -1479,7 +1483,7 @@
           "400": {
             "description": "BadRequest",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -1572,7 +1576,7 @@
           "400": {
             "description": "Bad request. (Invalid billing period, invalid offer, etc.)",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "403": {
@@ -1631,25 +1635,25 @@
           "200": {
             "description": "New contract has been saved. Some warnings can be present in response.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+              "$ref": "/BeezUP.Common.InfoSummaries"
             }
           },
           "400": {
             "description": "Bad request. (Invalid billing period, invalid offer, etc.)",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "403": {
             "description": "The contract is not modifiable or the coupon offer has been already used",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "409": {
             "description": "The contract is not modifiable or the coupon offer has been already used",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -1689,7 +1693,7 @@
           "400": {
             "description": "Invalid reason type",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -1904,7 +1908,7 @@
           "400": {
             "description": "When a user column name is duplicate.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -1987,7 +1991,7 @@
           "400": {
             "description": "Occurs when a catalog custom column id is already used by a catalog column.\nWhen the catalog custom column count limit has been reached.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -2033,7 +2037,7 @@
           "409": {
             "description": "When a catalog importation is already in progress!",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -2077,7 +2081,7 @@
           "400": {
             "description": "When a user column name is duplicate.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -2424,7 +2428,7 @@
           "400": {
             "description": "Missing Input configuration in the request\nOccurs when there is a duplicate file number in the input configuration\nOccurs when there is a duplicate file Uri in the input configuration",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -2607,7 +2611,7 @@
           "400": {
             "description": "When a user column name is duplicate.\nWhen the catalog column name are duplicate.\nWhen the BeezUP column have duplicate mapping.\nOccurs when the required beezup column is not mapped to any column.\nOccurs when the category hierarchy is not correctly mapped.\nOccurs when the duplicate strategy on {catalogColumnName} is not found.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -2649,7 +2653,7 @@
           "400": {
             "description": "When a user column name is duplicate.\nWhen the catalog column name are duplicate.\nWhen the BeezUP column have duplicate mapping.\nOccurs when the required beezup column is not mapped to any column.\nOccurs when the category hierarchy is not correctly mapped.\nWhen the catalog column count limit has been reached.\nWhen the catalog custom column count limit has been reached.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -2688,7 +2692,7 @@
           "400": {
             "description": "",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -2878,7 +2882,7 @@
           "400": {
             "description": "\nWhen the catalog column name is not found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -3362,7 +3366,7 @@
           "400": {
             "description": "Occurs when the user tries to auto import a local file.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -3371,7 +3375,7 @@
           "409": {
             "description": "When a catalog importation is already in progress!",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -3435,7 +3439,7 @@
           "400": {
             "description": "Occurs when the catalog auto import is not configured.\nWhen a user column name is duplicate.\nWhen the catalog column name are duplicate.\nWhen the BeezUP column have duplicate mapping.\nOccurs when the required beezup column is not mapped to any column.\nOccurs when the category hierarchy is not correctly mapped.\nOccurs when the duplicate strategy on {catalogColumnName} is not found.\nWhen the user tries to import to ofen the catalog file to download count max limit has been reached.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -3444,7 +3448,7 @@
           "409": {
             "description": "When a catalog importation is already in progress!",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -3551,7 +3555,7 @@
           "400": {
             "description": "\nWhen the min catalog Auto Import scheduling interval delay has been reached.\nWhen the max catalog Auto Import count has been reached.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -3595,7 +3599,7 @@
           "400": {
             "description": "\nWhen the max catalog Auto Import count has been reached.\nWhen the min catalog Auto Import scheduling interval delay has been reached.\nWhen the max catalog Auto Import count has been reached.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -3753,7 +3757,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnId"
+                "$ref": "/BeezUP.Common.ChannelColumnId"
               }
             }
           }
@@ -3858,7 +3862,7 @@
               "description": "Link to the new channel catalog",
               "type": "array",
               "items": {
-                "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+                "$ref": "/BeezUP.Common.Link2"
               }
             }
           },
@@ -4568,6 +4572,12 @@
         "parameters": [
           {
             "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageNumberQueryStrngParameter"
+          },
+          {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageSizeQueryStrngParameter"
           }
         ],
         "responses": {
@@ -4812,7 +4822,7 @@
           "400": {
             "description": "One or more channel catalog property keys or values are invalid for requested channel catalog. See response for details.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -4912,7 +4922,7 @@
               }
             },
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -4975,7 +4985,7 @@
           "400": {
             "description": "Requested automatic Order status transition could not be configured",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5029,7 +5039,7 @@
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5071,7 +5081,7 @@
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5119,7 +5129,7 @@
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5157,7 +5167,7 @@
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5338,7 +5348,7 @@
           "404": {
             "description": "Requested Order could not be found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5381,7 +5391,7 @@
           "404": {
             "description": "Requested Order could not be found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5433,7 +5443,7 @@
               }
             },
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5481,13 +5491,13 @@
           "400": {
             "description": "Could not update Order merchant information. Please see body for more information.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
             "description": "Requested Order could not be found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5527,13 +5537,13 @@
           "400": {
             "description": "Could not update Order merchant information. Please see body for more information.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
             "description": "Requested Order could not be found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5593,13 +5603,13 @@
           "400": {
             "description": "Invalid order change request, could not be send to the marketplace. Please check the body of this request.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
             "description": "Requested Order could not be found",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "409": {
@@ -5611,7 +5621,7 @@
               }
             },
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "412": {
@@ -5744,7 +5754,7 @@
           "401": {
             "description": "This report filter is used by rule. In the error message you will find the rule identifier.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5789,7 +5799,7 @@
           "401": {
             "description": "This report filter is used by rule. In the error message you will find the rule identifier.",
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5877,7 +5887,7 @@
               }
             },
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+              "$ref": "/BeezUP.Common.Link3"
             },
             "examples": {
               "application/json": {
@@ -5970,7 +5980,7 @@
               }
             },
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+              "$ref": "/BeezUP.Common.Link3"
             },
             "examples": {
               "application/json": {
@@ -6063,7 +6073,7 @@
               }
             },
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+              "$ref": "/BeezUP.Common.Link3"
             },
             "examples": {
               "application/json": {
@@ -6156,7 +6166,7 @@
               }
             },
             "schema": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+              "$ref": "/BeezUP.Common.Link3"
             },
             "examples": {
               "application/json": {
@@ -7011,7 +7021,7 @@
       "type": "object",
       "properties": {
         "login": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Email"
+          "$ref": "/BeezUP.Common.Email"
         },
         "password": {
           "description": "Your password",
@@ -7156,7 +7166,7 @@
     "links.GetPublicListOfValuesLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -7169,7 +7179,7 @@
     "links.GetChannelsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -7182,7 +7192,7 @@
     "links.GetChannelsIndexLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -7278,7 +7288,7 @@
     "links.GetPublicLovIndexLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -7297,7 +7307,7 @@
         "items": {
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ListOfValueItem"
+            "$ref": "/BeezUP.Common.ListOfValueItem"
           }
         }
       }
@@ -7339,7 +7349,7 @@
     "links.GetUserListOfValuesLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -7352,7 +7362,7 @@
     "links.GetUserLovIndexLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -7371,7 +7381,7 @@
         "items": {
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ListOfValueItem"
+            "$ref": "/BeezUP.Common.ListOfValueItem"
           }
         }
       }
@@ -7387,140 +7397,140 @@
     "links.shareLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.deleteShareLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.getStoresLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.createStoreLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.getStoreLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.deleteStoreLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.updateStoreLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.getSharesLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.createContractLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.saveCreditCardInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.saveStoreAlertLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.savePersonalInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.changePasswordLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.saveCompanyInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.saveProfilePictureInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.getCreditCardInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.getContractsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.reactivateCurrentContractLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.terminateCurrentContractLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
     "links.deleteNextContractLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
@@ -7577,7 +7587,7 @@
       ],
       "properties": {
         "userId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "userRole": {
           "$ref": "#/definitions/storeUserRole"
@@ -7722,7 +7732,7 @@
           ],
           "properties": {
             "storeId": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.StoreId"
+              "$ref": "/BeezUP.Common.StoreId"
             },
             "userRole": {
               "$ref": "#/definitions/storeUserRole"
@@ -7966,7 +7976,7 @@
           "description": "The remaining amount to be paid for this invoice"
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "paymentStatus": {
           "$ref": "#/definitions/invoicePaymentStatus"
@@ -8208,7 +8218,7 @@
           "type": "string"
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "contractId": {
           "$ref": "#/definitions/contractId"
@@ -8392,7 +8402,7 @@
           "$ref": "#/definitions/offerContent"
         },
         "info": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+          "$ref": "/BeezUP.Common.InfoSummaries"
         },
         "links": {
           "description": "The different actions you can make on this offer",
@@ -8747,7 +8757,7 @@
           "type": "number"
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "vatPercent": {
           "format": "double",
@@ -8919,7 +8929,7 @@
       "description": "Your company accounting emails",
       "type": "array",
       "items": {
-        "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Email"
+        "$ref": "/BeezUP.Common.Email"
       },
       "example": [
         "myaccountemail@mysupercompany.com"
@@ -9019,7 +9029,7 @@
     "links.getProfilePictureInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -9042,10 +9052,10 @@
       ],
       "properties": {
         "userId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "email": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Email"
+          "$ref": "/BeezUP.Common.Email"
         },
         "personalInfo": {
           "$ref": "#/definitions/personalInfo"
@@ -9063,7 +9073,7 @@
           "$ref": "#/definitions/accountInfoLinks"
         },
         "info": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+          "$ref": "/BeezUP.Common.InfoSummaries"
         }
       }
     },
@@ -9132,7 +9142,7 @@
           "$ref": "#/definitions/city"
         },
         "countryIsoCodeAlpha3": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CountryIsoCodeAlpha3"
+          "$ref": "/BeezUP.Common.CountryIsoCodeAlpha3"
         },
         "company": {
           "$ref": "#/definitions/company"
@@ -9272,7 +9282,7 @@
           "$ref": "#/definitions/creditCardInfoWithCardType"
         },
         "info": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+          "$ref": "/BeezUP.Common.InfoSummaries"
         }
       }
     },
@@ -9598,7 +9608,7 @@
           "example": 101.42
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "position": {
           "format": "int32",
@@ -9732,7 +9742,7 @@
     "links.Importation_GetImportationMonitoringLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
@@ -9788,13 +9798,13 @@
           "$ref": "#/definitions/inputConfiguration"
         },
         "inputConfiguredByUserId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "schedulingType": {
           "$ref": "#/definitions/schedulingType"
         },
         "scheduledByUserId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "schedulingValue": {
           "description": "Indicate the scheduling value. If the scheduling type is Interval then the value will be a duration otherwise the values will be the time.",
@@ -9816,7 +9826,7 @@
           "example": false
         },
         "pauseStatusChangedByUserId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "pauseStatusChangedUtcDate": {
           "format": "date-time",
@@ -10145,7 +10155,7 @@
       "type": "object",
       "properties": {
         "beezUPColumnName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
+          "$ref": "/BeezUP.Common.BeezUPColumnName"
         },
         "unique": {
           "description": "/!\\ ONLY AVAILABLE ON CATALOG COLUMN NOT ON CUSTOM COLUMNS!!\r\nIf true, an error happen at the second occurence of the same value for this column\r\nThis information will be used during the importation process and later for mapping proposal",
@@ -10154,10 +10164,10 @@
           "default": false
         },
         "columnImportance": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ColumnImportance"
+          "$ref": "/BeezUP.Common.ColumnImportance"
         },
         "columnDataType": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ColumnDataType"
+          "$ref": "/BeezUP.Common.ColumnDataType"
         },
         "canBeTruncated": {
           "$ref": "#/definitions/canBeTruncated"
@@ -10268,7 +10278,7 @@
       ],
       "properties": {
         "userId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "success": {
           "description": "Indicates if the importation was successfully completed or not",
@@ -10294,7 +10304,7 @@
           "description": "In case of error a description will be indicated",
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserErrorMessage"
+            "$ref": "/BeezUP.Common.UserErrorMessage"
           }
         },
         "steps": {
@@ -10517,13 +10527,13 @@
       ],
       "properties": {
         "beezUPColumnName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
+          "$ref": "/BeezUP.Common.BeezUPColumnName"
         },
         "columnImportance": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ColumnImportance"
+          "$ref": "/BeezUP.Common.ColumnImportance"
         },
         "columnDataType": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ColumnDataType"
+          "$ref": "/BeezUP.Common.ColumnDataType"
         },
         "columnCultureName": {
           "$ref": "#/definitions/columnCultureName"
@@ -10556,7 +10566,7 @@
       "type": "object",
       "properties": {
         "beezUPColumnName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
+          "$ref": "/BeezUP.Common.BeezUPColumnName"
         }
       }
     },
@@ -10575,7 +10585,7 @@
           "example": "IsSaveInDb"
         },
         "userId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "success": {
           "description": "Indicate if the importation succeed or not.",
@@ -10604,7 +10614,7 @@
           "description": "Indicate the error message list related to this importation.",
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserErrorMessage"
+            "$ref": "/BeezUP.Common.UserErrorMessage"
           }
         },
         "lastUpdateUtcDate": {
@@ -10736,10 +10746,10 @@
       "description": "Represent a catalog product",
       "properties": {
         "productId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ProductId"
+          "$ref": "/BeezUP.Common.ProductId"
         },
         "categoryId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryId"
+          "$ref": "/BeezUP.Common.CatalogCategoryId"
         },
         "values": {
           "$ref": "#/definitions/productValues"
@@ -10759,7 +10769,7 @@
           "type": "string"
         },
         "categoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryPath"
+          "$ref": "/BeezUP.Common.CatalogCategoryPath"
         }
       }
     },
@@ -10784,10 +10794,10 @@
       ],
       "properties": {
         "categoryId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryId"
+          "$ref": "/BeezUP.Common.CatalogCategoryId"
         },
         "categoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryPath"
+          "$ref": "/BeezUP.Common.CatalogCategoryPath"
         }
       }
     },
@@ -10804,13 +10814,13 @@
       ],
       "properties": {
         "channelId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelId"
+          "$ref": "/BeezUP.Common.ChannelId"
         },
         "channelName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelName"
+          "$ref": "/BeezUP.Common.ChannelName"
         },
         "channelLogoUrl": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.HttpUrl"
+          "$ref": "/BeezUP.Common.HttpUrl"
         },
         "descriptionAvailable": {
           "type": "boolean",
@@ -10837,7 +10847,7 @@
       ],
       "properties": {
         "self": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+          "$ref": "/BeezUP.Common.Link2"
         }
       }
     },
@@ -10885,7 +10895,7 @@
       ],
       "properties": {
         "channelCategoryId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCategoryId"
+          "$ref": "/BeezUP.Common.ChannelCategoryId"
         },
         "channelCategoryName": {
           "type": "string",
@@ -10922,10 +10932,10 @@
       ],
       "properties": {
         "channelCategoryId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCategoryId"
+          "$ref": "/BeezUP.Common.ChannelCategoryId"
         },
         "channelCategoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCategoryPath"
+          "$ref": "/BeezUP.Common.ChannelCategoryPath"
         },
         "channelCategoryLevel": {
           "$ref": "#/definitions/channelCategoryLevel"
@@ -10958,10 +10968,10 @@
       ],
       "properties": {
         "channelColumnId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnId"
+          "$ref": "/BeezUP.Common.ChannelColumnId"
         },
         "channelColumnName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnName"
+          "$ref": "/BeezUP.Common.ChannelColumnName"
         },
         "channelColumnDescription": {
           "$ref": "#/definitions/channelColumnDescription"
@@ -10999,10 +11009,10 @@
       ],
       "properties": {
         "channelColumnId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnId"
+          "$ref": "/BeezUP.Common.ChannelColumnId"
         },
         "channelColumnName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnName"
+          "$ref": "/BeezUP.Common.ChannelColumnName"
         },
         "channelColumnDescription": {
           "$ref": "#/definitions/channelColumnDescription"
@@ -11039,20 +11049,20 @@
       ],
       "properties": {
         "columnImportance": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ColumnImportance"
+          "$ref": "/BeezUP.Common.ColumnImportance"
         },
         "columnDataType": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ColumnDataType"
+          "$ref": "/BeezUP.Common.ColumnDataType"
         },
         "beezUPColumnName": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
+          "$ref": "/BeezUP.Common.BeezUPColumnName"
         }
       }
     },
     "links.GetChannelCatalogExportationCacheInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -11065,7 +11075,7 @@
     "links.GetChannelCatalogExportationHistoryLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -11078,7 +11088,7 @@
     "links.DeleteChannelCatalogExportationCacheLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -11126,10 +11136,8 @@
       "properties": {
         "cacheStatus": {
           "type": "string",
-          "enum": [
-            "ReadyForGeneration"
-          ],
-          "example": "ReadyForGeneration"
+          "example": "ReadyForGeneration",
+          "x-lov": "ChannelCatalogExportCacheStatus"
         }
       }
     },
@@ -11149,7 +11157,7 @@
       ],
       "properties": {
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         },
         "exportations": {
           "type": "array",
@@ -11217,7 +11225,7 @@
           "description": "Indicates how to create a channel catalog and how to get the channel catalog list",
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+            "$ref": "/BeezUP.Common.Link2"
           }
         },
         "channelCatalogs": {
@@ -11236,10 +11244,10 @@
       ],
       "properties": {
         "channelId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelId"
+          "$ref": "/BeezUP.Common.ChannelId"
         },
         "storeId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.StoreId"
+          "$ref": "/BeezUP.Common.StoreId"
         }
       }
     },
@@ -11320,7 +11328,7 @@
       ],
       "properties": {
         "catalogCategoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryPath"
+          "$ref": "/BeezUP.Common.CatalogCategoryPath"
         }
       }
     },
@@ -11358,7 +11366,7 @@
         "links": {
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+            "$ref": "/BeezUP.Common.Link2"
           },
           "example": [
             {
@@ -11401,7 +11409,7 @@
             "links": {
               "type": "array",
               "items": {
-                "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+                "$ref": "/BeezUP.Common.Link2"
               },
               "example": [
                 {
@@ -11446,10 +11454,10 @@
       ],
       "properties": {
         "catalogCategoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryPath"
+          "$ref": "/BeezUP.Common.CatalogCategoryPath"
         },
         "channelCategoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCategoryPath"
+          "$ref": "/BeezUP.Common.ChannelCategoryPath"
         },
         "costValue": {
           "description": "In case of CPC_ByCategory or CPA_ByCategory cost type, you have to indicate the cost value.",
@@ -11468,16 +11476,16 @@
           "type": "object",
           "properties": {
             "channelColumnName": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnName"
+              "$ref": "/BeezUP.Common.ChannelColumnName"
             },
             "channelBeezUPColumnName": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
+              "$ref": "/BeezUP.Common.BeezUPColumnName"
             },
             "catalogColumnName": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogColumnUserName"
+              "$ref": "/BeezUP.Common.CatalogColumnUserName"
             },
             "catalogBeezUPColumnName": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.BeezUPColumnName"
+              "$ref": "/BeezUP.Common.BeezUPColumnName"
             }
           }
         }
@@ -11488,13 +11496,13 @@
       "type": "object",
       "properties": {
         "channelColumnId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnId"
+          "$ref": "/BeezUP.Common.ChannelColumnId"
         },
         "channelCategoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCategoryPath"
+          "$ref": "/BeezUP.Common.ChannelCategoryPath"
         },
         "catalogColumnId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogColumnId"
+          "$ref": "/BeezUP.Common.CatalogColumnId"
         }
       }
     },
@@ -11604,7 +11612,7 @@
     "channelCatalog": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelBasicInfo"
+          "$ref": "/BeezUP.Common.ChannelBasicInfo"
         },
         {
           "type": "object",
@@ -11641,10 +11649,10 @@
               "example": true
             },
             "channelCatalogId": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCatalogId"
+              "$ref": "/BeezUP.Common.ChannelCatalogId"
             },
             "storeId": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.StoreId"
+              "$ref": "/BeezUP.Common.StoreId"
             },
             "generalSettings": {
               "$ref": "#/definitions/generalSettings"
@@ -11659,7 +11667,7 @@
               "$ref": "#/definitions/exclusionFilters"
             },
             "exportUrl": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.HttpUrl"
+              "$ref": "/BeezUP.Common.HttpUrl"
             },
             "state": {
               "$ref": "#/definitions/channelCatalogState"
@@ -11678,7 +11686,7 @@
               "description": "Indicates the actions you can do on a channel catalog",
               "type": "array",
               "items": {
-                "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+                "$ref": "/BeezUP.Common.Link2"
               },
               "example": [
                 {
@@ -11877,7 +11885,7 @@
           "example": 1
         },
         "channelColumnId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelColumnId"
+          "$ref": "/BeezUP.Common.ChannelColumnId"
         },
         "operatorName": {
           "$ref": "#/definitions/exclusionFilterOperatorName"
@@ -11973,7 +11981,7 @@
     "links.GetChannelCatalogProductInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         }
       ]
     },
@@ -12000,7 +12008,7 @@
     "channelCatalogProductInfo": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ProductBasicInfo"
+          "$ref": "/BeezUP.Common.ProductBasicInfo"
         },
         {
           "type": "object",
@@ -12058,13 +12066,13 @@
       ],
       "properties": {
         "override": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+          "$ref": "/BeezUP.Common.Link2"
         },
         "disable": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+          "$ref": "/BeezUP.Common.Link2"
         },
         "reenable": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
+          "$ref": "/BeezUP.Common.Link2"
         }
       }
     },
@@ -12075,7 +12083,7 @@
           "description": "The list of channel catalog identifier",
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCatalogId"
+            "$ref": "/BeezUP.Common.ChannelCatalogId"
           }
         }
       }
@@ -12364,7 +12372,7 @@
     "links.GetChannelCatalogMarketplacePropertiesLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -12396,7 +12404,7 @@
       ],
       "properties": {
         "info": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+          "$ref": "/BeezUP.Common.InfoSummaries"
         },
         "links": {
           "$ref": "#/definitions/channelCatalogMarketplacePropertiesLinks"
@@ -12636,7 +12644,7 @@
           "description": "Model for fetching a channel catalog marketplace property",
           "properties": {
             "info": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+              "$ref": "/BeezUP.Common.InfoSummaries"
             },
             "default": {
               "description": "Indicate the default values of the property",
@@ -12697,7 +12705,7 @@
               "example": 2
             },
             "lovLink": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+              "$ref": "/BeezUP.Common.LOVLink3"
             },
             "lovRequired": {
               "type": "boolean",
@@ -12749,7 +12757,7 @@
     "links.GetChannelCatalogMarketplaceSettingsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -12761,7 +12769,7 @@
     "links.SetChannelCatalogMarketplaceSettingsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -13002,7 +13010,7 @@
     "links.GetMarketplaceAccountStoresLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -13040,10 +13048,10 @@
       ],
       "properties": {
         "marketplaceTechnicalCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
+          "$ref": "/BeezUP.Common.MarketplaceTechnicalCode"
         },
         "marketplaceBusinessCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
+          "$ref": "/BeezUP.Common.MarketplaceBusinessCode"
         },
         "marketplaceMarketPlaceId": {
           "description": "The marketplace identifier in the marketplace",
@@ -13060,13 +13068,13 @@
           "example": "ebay FRA"
         },
         "beezUPChannelId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelId"
+          "$ref": "/BeezUP.Common.ChannelId"
         },
         "beezUPChannelCatalogId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelCatalogId"
+          "$ref": "/BeezUP.Common.ChannelCatalogId"
         },
         "beezUPStoreId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.StoreId"
+          "$ref": "/BeezUP.Common.StoreId"
         },
         "beezUPStoreName": {
           "description": "The store name",
@@ -13084,7 +13092,7 @@
           }
         },
         "marketplaceAccountId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceAccountId"
+          "$ref": "/BeezUP.Common.MarketplaceAccountId"
         },
         "lovLinks": {
           "$ref": "#/definitions/marketplaceChannelCatalogLovLinks"
@@ -13097,7 +13105,7 @@
     "links.GetPublicationsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -13111,16 +13119,16 @@
       "description": "Indicates the List Of Values related to the marketplace",
       "properties": {
         "shippingMethodLOV": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         },
         "carrierCodeLOV": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         },
         "cancelationReasonCodeLOV": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         },
         "refundReasonCodeLOV": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         }
       }
     },
@@ -13184,7 +13192,7 @@
     "links.GetOrderExportationsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -13197,7 +13205,7 @@
     "links.ExportOrdersLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -13225,7 +13233,7 @@
       ],
       "properties": {
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         },
         "exportations": {
           "type": "array",
@@ -13329,7 +13337,7 @@
           "$ref": "#/definitions/sourceType"
         },
         "sourceUserId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "sourceUserName": {
           "type": "string",
@@ -13395,7 +13403,7 @@
         "marketplaceTechnicalCodes": {
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
+            "$ref": "/BeezUP.Common.MarketplaceTechnicalCode"
           },
           "example": [
             "PriceMinister"
@@ -13404,7 +13412,7 @@
         "marketplaceBusinessCodes": {
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
+            "$ref": "/BeezUP.Common.MarketplaceBusinessCode"
           },
           "example": [
             "PRICEMINISTER"
@@ -13495,7 +13503,7 @@
           "$ref": "#/definitions/exportOrderListFormat"
         },
         "storeId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.StoreId"
+          "$ref": "/BeezUP.Common.StoreId"
         },
         "orderListRequest": {
           "$ref": "#/definitions/orderListRequest"
@@ -13581,7 +13589,7 @@
           ],
           "properties": {
             "marketplaceBusinessCode": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
+              "$ref": "/BeezUP.Common.MarketplaceBusinessCode"
             },
             "beezUPOrderStatus": {
               "$ref": "#/definitions/beezUPOrderStatus"
@@ -13621,7 +13629,7 @@
       ],
       "properties": {
         "marketplaceTechnicalCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
+          "$ref": "/BeezUP.Common.MarketplaceTechnicalCode"
         },
         "accountId": {
           "$ref": "#/definitions/accountId"
@@ -13646,7 +13654,7 @@
       ],
       "properties": {
         "marketplaceTechnicalCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
+          "$ref": "/BeezUP.Common.MarketplaceTechnicalCode"
         },
         "accountId": {
           "$ref": "#/definitions/accountId"
@@ -13793,10 +13801,10 @@
           "type": "string"
         },
         "marketplaceBusinessCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
+          "$ref": "/BeezUP.Common.MarketplaceBusinessCode"
         },
         "marketplaceTechnicalCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
+          "$ref": "/BeezUP.Common.MarketplaceTechnicalCode"
         }
       }
     },
@@ -13808,7 +13816,7 @@
     "links.GetOrderLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -13848,7 +13856,7 @@
       ],
       "properties": {
         "marketplaceTechnicalCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
+          "$ref": "/BeezUP.Common.MarketplaceTechnicalCode"
         },
         "accountId": {
           "$ref": "#/definitions/accountId"
@@ -13857,10 +13865,10 @@
           "$ref": "#/definitions/beezUPOrderId"
         },
         "beezUPOrderUrl": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.HttpUrl"
+          "$ref": "/BeezUP.Common.HttpUrl"
         },
         "marketplaceBusinessCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.MarketplaceBusinessCode"
+          "$ref": "/BeezUP.Common.MarketplaceBusinessCode"
         },
         "order_MarketplaceOrderId": {
           "$ref": "#/definitions/marketplaceOrderId"
@@ -13908,7 +13916,7 @@
           "example": 101.42
         },
         "order_CurrencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "processing": {
           "$ref": "#/definitions/processing"
@@ -14055,7 +14063,7 @@
     "links.GetOrderHistoryLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14068,7 +14076,7 @@
     "links.SetMerchantOrderInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14088,7 +14096,7 @@
     "links.ClearMerchantOrderInfoLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14101,7 +14109,7 @@
     "links.HarvestOrderLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14369,7 +14377,7 @@
     "links.ChangeOrderLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14544,7 +14552,7 @@
     "links.GetOrderIndexLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14612,23 +14620,23 @@
       ],
       "properties": {
         "orderChangeBusinessOperationType": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         },
         "orderState": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         },
         "orderProperty": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         },
         "orderPropertyPosted": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.LOVLink3"
+          "$ref": "/BeezUP.Common.LOVLink3"
         }
       }
     },
     "links.GetOrderListFullLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14655,7 +14663,7 @@
     "links.GetOrderListLightLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14676,7 +14684,7 @@
     "links.GetAutomaticTransitionsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14689,7 +14697,7 @@
     "links.ConfigureAutomaticTransitionsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14737,7 +14745,7 @@
     "links.GetMarketplaceAccountsSynchronizationLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14796,7 +14804,7 @@
     "links.SetMerchantOrderInfoListLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14817,7 +14825,7 @@
     "links.ClearMerchantOrderInfoListLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14830,7 +14838,7 @@
     "links.HarvestAllLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -14849,7 +14857,7 @@
       ],
       "properties": {
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         },
         "orders": {
           "type": "array",
@@ -14871,7 +14879,7 @@
       ],
       "properties": {
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         },
         "orders": {
           "type": "array",
@@ -14922,7 +14930,7 @@
           "type": "string"
         },
         "info": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.InfoSummaries"
+          "$ref": "/BeezUP.Common.InfoSummaries"
         }
       }
     },
@@ -14955,7 +14963,7 @@
           "$ref": "#/definitions/sourceType"
         },
         "sourceUserId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserId"
+          "$ref": "/BeezUP.Common.UserId"
         },
         "sourceUserName": {
           "type": "string",
@@ -15157,7 +15165,7 @@
           "description": "The error list",
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserErrorMessage"
+            "$ref": "/BeezUP.Common.UserErrorMessage"
           }
         }
       }
@@ -15195,7 +15203,7 @@
               "minItems": 0,
               "maxItems": 1,
               "items": {
-                "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogColumnId"
+                "$ref": "/BeezUP.Common.CatalogColumnId"
               },
               "example": [
                 "4b460e31-3d1f-4117-922d-b159a64ec1d2"
@@ -15314,7 +15322,7 @@
     "links.OptimiseLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -15421,10 +15429,10 @@
       ],
       "properties": {
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "channels": {
           "type": "array",
@@ -15441,10 +15449,10 @@
       "type": "object",
       "properties": {
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "categories": {
           "type": "array",
@@ -15466,7 +15474,7 @@
       ],
       "properties": {
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         },
         "products": {
           "type": "array",
@@ -15489,7 +15497,7 @@
       ],
       "properties": {
         "channelId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelId"
+          "$ref": "/BeezUP.Common.ChannelId"
         },
         "beginPeriodUtcDate": {
           "type": "string",
@@ -15626,17 +15634,17 @@
           "description": "Indicate the channel identifier list",
           "type": "array",
           "items": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelId"
+            "$ref": "/BeezUP.Common.ChannelId"
           },
           "example": [
             "2dc136a7-0d3d-4cc9-a825-a28a42c53e28"
           ]
         },
         "productId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ProductId"
+          "$ref": "/BeezUP.Common.ProductId"
         },
         "catalogCategoryId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryId"
+          "$ref": "/BeezUP.Common.CatalogCategoryId"
         },
         "beginPeriodUtcDate": {
           "type": "string",
@@ -15730,7 +15738,7 @@
       ],
       "properties": {
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "globalPerformanceIndicators": {
           "type": "array",
@@ -15754,7 +15762,7 @@
       ],
       "properties": {
         "channel": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelBasicInfo"
+          "$ref": "/BeezUP.Common.ChannelBasicInfo"
         },
         "globalPerformanceIndicator": {
           "type": "number",
@@ -15790,7 +15798,7 @@
     "links.OptimiseByProductLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -15812,7 +15820,7 @@
     "links.OptimiseByCategoryLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -15834,7 +15842,7 @@
     "links.OptimiseByChannelLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -15896,7 +15904,7 @@
       ],
       "properties": {
         "product": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ProductBasicInfo"
+          "$ref": "/BeezUP.Common.ProductBasicInfo"
         },
         "enabledOnChannelCount": {
           "type": "integer",
@@ -15958,10 +15966,10 @@
       ],
       "properties": {
         "catalogCategoryId": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryId"
+          "$ref": "/BeezUP.Common.CatalogCategoryId"
         },
         "catalogCategoryPath": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CatalogCategoryPath"
+          "$ref": "/BeezUP.Common.CatalogCategoryPath"
         },
         "enabledProductCount": {
           "type": "integer",
@@ -16023,7 +16031,7 @@
       ],
       "properties": {
         "channel": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelBasicInfo"
+          "$ref": "/BeezUP.Common.ChannelBasicInfo"
         },
         "enabledProductCount": {
           "type": "integer",
@@ -16126,7 +16134,7 @@
       ],
       "properties": {
         "channel": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelBasicInfo"
+          "$ref": "/BeezUP.Common.ChannelBasicInfo"
         },
         "clickCount": {
           "type": "integer",
@@ -16239,7 +16247,7 @@
           "example": "2016-08-29T09:12:33.001Z"
         },
         "product": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ProductBasicInfo"
+          "$ref": "/BeezUP.Common.ProductBasicInfo"
         },
         "ipAddress": {
           "type": "string",
@@ -16247,7 +16255,7 @@
           "example": "127.0.0.1"
         },
         "channel": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelBasicInfo"
+          "$ref": "/BeezUP.Common.ChannelBasicInfo"
         }
       }
     },
@@ -16284,7 +16292,7 @@
           "example": "2016-08-29T09:12:33.001Z"
         },
         "channel": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ChannelBasicInfo"
+          "$ref": "/BeezUP.Common.ChannelBasicInfo"
         },
         "merchantOrderId": {
           "type": "string",
@@ -16297,7 +16305,7 @@
           "example": 101.42
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "paymentValidated": {
           "type": "boolean",
@@ -16328,7 +16336,7 @@
     "trackedOrderProduct": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ProductBasicInfo"
+          "$ref": "/BeezUP.Common.ProductBasicInfo"
         },
         {
           "type": "object",
@@ -16408,7 +16416,7 @@
           "example": 101.42
         },
         "currencyCode": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.CurrencyCode"
+          "$ref": "/BeezUP.Common.CurrencyCode"
         },
         "paymentValidated": {
           "type": "boolean",
@@ -16540,7 +16548,7 @@
     "links.GetReportFiltersLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16553,7 +16561,7 @@
     "links.SaveReportFilterLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16574,7 +16582,7 @@
     "links.DeleteReportFilterLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16612,7 +16620,7 @@
     "links.GetReportFilterLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16771,7 +16779,7 @@
     "links.CreateRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16798,7 +16806,7 @@
     "links.GetRulesExecutionsLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16811,7 +16819,7 @@
     "links.RunRulesLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16824,7 +16832,7 @@
     "links.GetRulesLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16876,7 +16884,7 @@
     "links.RunRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16889,7 +16897,7 @@
     "links.GetRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16902,7 +16910,7 @@
     "links.DeleteRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16915,7 +16923,7 @@
     "links.MoveUpRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16928,7 +16936,7 @@
     "links.MoveDownRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16941,7 +16949,7 @@
     "links.EnableRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16954,7 +16962,7 @@
     "links.DisableRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -16967,7 +16975,7 @@
     "links.UpdateRuleLink": {
       "allOf": [
         {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+          "$ref": "/BeezUP.Common.Link3"
         },
         {
           "example": {
@@ -17163,7 +17171,7 @@
           }
         },
         "paginationResult": {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+          "$ref": "/BeezUP.Common.PaginationResult"
         }
       }
     },
@@ -17357,7 +17365,8 @@
         "Channel Catalogs - Exclusion Filters",
         "Channel Catalogs - Products",
         "Channel Catalogs - Products Overrides",
-        "Channel Catalogs - Products Optimisation"
+        "Channel Catalogs - Products Optimisation",
+        "Channel Catalogs - Exportations"
       ]
     },
     {
@@ -17390,69 +17399,6 @@
       ]
     }
   ],
-  "responses": {
-    "importStarted": {
-      "description": "Catalog importation started",
-      "headers": {
-        "Location": {
-          "description": "The location of the new resource to poll",
-          "type": "string",
-          "x-example": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c"
-        },
-        "Retry-After": {
-          "description": "The duration in second to wait before polling this resource",
-          "type": "integer",
-          "minimum": 5,
-          "default": 5,
-          "x-example": 5
-        }
-      },
-      "schema": {
-        "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
-      }
-    },
-    "importAlreadyInProgress": {
-      "description": "When a catalog importation is already in progress!",
-      "schema": {
-        "type": "object",
-        "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.UserErrorMessage"
-            }
-          },
-          "links": {
-            "description": "The action links",
-            "type": "object",
-            "properties": {
-              "currentImportation": {
-                "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
-              }
-            },
-            "additionalProperties": false,
-            "example": {
-              "currentImportation": {
-                "href": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c",
-                "method": "GET"
-              }
-            }
-          }
-        }
-      }
-    },
-    "processingResponse": {
-      "description": "The marketplace configuration related to this channel catalog is currently in progress. Please retry later.",
-      "headers": {
-        "Retry-After": {
-          "description": "Indicate the duration to before the next retry in second.",
-          "type": "integer",
-          "format": "int32",
-          "x-example": 120
-        }
-      }
-    }
-  },
   "parameters": {
     "executionId": {
       "name": "executionId",
@@ -17601,6 +17547,69 @@
         "disable"
       ],
       "format": "optimisationActionName"
+    }
+  },
+  "responses": {
+    "importStarted": {
+      "description": "Catalog importation started",
+      "headers": {
+        "Location": {
+          "description": "The location of the new resource to poll",
+          "type": "string",
+          "x-example": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c"
+        },
+        "Retry-After": {
+          "description": "The duration in second to wait before polling this resource",
+          "type": "integer",
+          "minimum": 5,
+          "default": 5,
+          "x-example": 5
+        }
+      },
+      "schema": {
+        "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
+      }
+    },
+    "importAlreadyInProgress": {
+      "description": "When a catalog importation is already in progress!",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "/BeezUP.Common.UserErrorMessage"
+            }
+          },
+          "links": {
+            "description": "The action links",
+            "type": "object",
+            "properties": {
+              "currentImportation": {
+                "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
+              }
+            },
+            "additionalProperties": false,
+            "example": {
+              "currentImportation": {
+                "href": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c",
+                "method": "GET"
+              }
+            }
+          }
+        }
+      }
+    },
+    "processingResponse": {
+      "description": "The marketplace configuration related to this channel catalog is currently in progress. Please retry later.",
+      "headers": {
+        "Retry-After": {
+          "description": "Indicate the duration to before the next retry in second.",
+          "type": "integer",
+          "format": "int32",
+          "x-example": 120
+        }
+      }
     }
   }
 }
