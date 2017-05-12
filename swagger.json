@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "BeezUP Api",
-    "description": "BeezUP Api Swagger - This is a work in progress",
+    "title": "BeezUP API",
+    "description": "The REST API of the BeezUP system",
     "version": "2.0",
     "x-logo": {
       "url": "https://avatars0.githubusercontent.com/u/25665430",
@@ -11158,8 +11158,7 @@
     "channelCatalogExportCacheInfoResponseLinks": {
       "type": "object",
       "required": [
-        "self",
-        "delete"
+        "self"
       ],
       "properties": {
         "self": {
@@ -11185,7 +11184,20 @@
         "lastUpdateUtcDate": {
           "type": "string",
           "format": "date-time",
-          "description": "The last update UTC date of the cache"
+          "description": "The last update UTC date of the cache",
+          "example": "2014-08-25T07:32:31.584Z"
+        },
+        "lastContentChangeUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last content change UTC date",
+          "example": "2014-08-25T07:30:31.584Z"
+        },
+        "expirationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The expiration UTC date of the cache",
+          "example": "2014-08-25T08:02:31.584Z"
         }
       }
     },
