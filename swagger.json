@@ -140,15 +140,15 @@
       "description": "All products optimisation operations"
     },
     {
-      "name": "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Global",
+      "name": "Marketplaces - Channel catalogs - Global",
       "description": "Operations to fetch your marketplace account related to your channel catalogs"
     },
     {
-      "name": "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Publications",
+      "name": "Marketplaces - Channel catalogs - Publications",
       "description": "Operations to fetch your marketplace account's catalog publication history"
     },
     {
-      "name": "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings",
+      "name": "Marketplaces - Channel catalogs - Settings",
       "description": "Operations to manage your channel catalogs' marketplace settings"
     },
     {
@@ -4445,7 +4445,7 @@
     "/v2/user/marketplaces/channelcatalogs/": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Global"
+          "Marketplaces - Channel catalogs - Global"
         ],
         "summary": "Get  you marketplace channel catalog list",
         "operationId": "GetMarketplaceAccountStores",
@@ -4467,7 +4467,7 @@
     "/v2/user/marketplaces/channelcatalogs/publications/{marketplaceTechnicalCode}/{accountId}/history": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Publications"
+          "Marketplaces - Channel catalogs - Publications"
         ],
         "summary": "Fetch the publication history for an account, sorted by descending start date",
         "operationId": "GetPublications",
@@ -4556,7 +4556,7 @@
     "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/properties": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings"
+          "Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Get the marketplace properties for a channel catalog",
         "operationId": "GetChannelCatalogMarketplaceProperties",
@@ -4596,7 +4596,7 @@
     "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/settings": {
       "get": {
         "tags": [
-          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings"
+          "Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Get the marketplace settings for a channel catalog",
         "operationId": "GetChannelCatalogMarketplaceSettings",
@@ -4635,7 +4635,7 @@
       },
       "post": {
         "tags": [
-          "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings"
+          "Marketplaces - Channel catalogs - Settings"
         ],
         "summary": "Save new marketplace settings for a channel catalog",
         "description": "Allow you to configure your marketplace settings. \nPartial update accepted.\n",
@@ -16927,9 +16927,9 @@
     {
       "name": "Marketplaces - Channel catalogs",
       "tags": [
-        "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Global",
-        "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Publications",
-        "Marketplaces - Channel catalogs - Marketplaces - Channel catalogs - Settings"
+        "Marketplaces - Channel catalogs - Global",
+        "Marketplaces - Channel catalogs - Publications",
+        "Marketplaces - Channel catalogs - Settings"
       ]
     },
     {
