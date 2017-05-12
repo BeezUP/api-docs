@@ -5,7 +5,7 @@
     "description": "BeezUP Api Swagger - This is a work in progress",
     "version": "1.0",
     "x-logo": {
-      "url": "http://i.imgur.com/NP2tepb.png",
+      "url": "https://avatars0.githubusercontent.com/u/25665430",
       "backgroundColor": "#FFFFFF"
     },
     "contact": {
@@ -108,35 +108,35 @@
       "description": "All global operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Global",
+      "name": "Channel Catalogs - Global",
       "description": "All global operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Settings",
+      "name": "Channel Catalogs - Settings",
       "description": "All settings operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Column Mappings",
+      "name": "Channel Catalogs - Column Mappings",
       "description": "All column mapping operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Category Mappings",
+      "name": "Channel Catalogs - Category Mappings",
       "description": "All category mapping operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Exclusion Filters",
+      "name": "Channel Catalogs - Exclusion Filters",
       "description": "All exclusion filters operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Products",
+      "name": "Channel Catalogs - Products",
       "description": "All products operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Products Overrides",
+      "name": "Channel Catalogs - Products Overrides",
       "description": "All products overrides operations"
     },
     {
-      "name": "Channel Catalogs - Channel Catalogs Products Optimisation",
+      "name": "Channel Catalogs - Products Optimisation",
       "description": "All products optimisation operations"
     },
     {
@@ -3791,7 +3791,7 @@
     "/v2/user/channelCatalogs/": {
       "get": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Global"
+          "Channel Catalogs - Global"
         ],
         "summary": "List all your current channel catalogs",
         "operationId": "GetChannelCatalogs",
@@ -3822,7 +3822,7 @@
       },
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Global"
+          "Channel Catalogs - Global"
         ],
         "summary": "Create a new channel catalog",
         "operationId": "CreateChannelCatalog",
@@ -3872,7 +3872,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}": {
       "get": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Global"
+          "Channel Catalogs - Global"
         ],
         "summary": "Get the channel catalog information",
         "operationId": "GetChannelCatalog",
@@ -3897,7 +3897,7 @@
       },
       "delete": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Global"
+          "Channel Catalogs - Global"
         ],
         "summary": "Delete the channel catalog",
         "operationId": "DeleteChannelCatalog",
@@ -3921,7 +3921,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/enable": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Settings"
+          "Channel Catalogs - Settings"
         ],
         "summary": "Enable a channel catalog",
         "operationId": "EnableChannelCatalog",
@@ -3951,7 +3951,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/disable": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Settings"
+          "Channel Catalogs - Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "DisableChannelCatalog",
@@ -3975,7 +3975,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/settings/general": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Settings"
+          "Channel Catalogs - Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "ConfigureChannelCatalogGeneralSettings",
@@ -4007,7 +4007,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/settings/cost": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Settings"
+          "Channel Catalogs - Settings"
         ],
         "summary": "Disable a channel catalog",
         "operationId": "ConfigureChannelCatalogCostSettings",
@@ -4039,7 +4039,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/columnMappings": {
       "put": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Column Mappings"
+          "Channel Catalogs - Column Mappings"
         ],
         "summary": "Configure channel catalog column mappings",
         "operationId": "MapChannelCatalogColumns",
@@ -4071,7 +4071,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings": {
       "get": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Category Mappings"
+          "Channel Catalogs - Category Mappings"
         ],
         "summary": "Get channel catalog categories",
         "operationId": "GetChannelCatalogCategories",
@@ -4098,7 +4098,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/map": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Category Mappings"
+          "Channel Catalogs - Category Mappings"
         ],
         "summary": "Map channel catalog category",
         "operationId": "MapChannelCatalogCategory",
@@ -4130,7 +4130,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/unmap": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Category Mappings"
+          "Channel Catalogs - Category Mappings"
         ],
         "summary": "Unmap channel catalog category",
         "operationId": "UnmapChannelCatalogCategory",
@@ -4162,7 +4162,7 @@
     "/v2/user/channelCatalogs/exclusionFilterOperators": {
       "get": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Exclusion Filters"
+          "Channel Catalogs - Exclusion Filters"
         ],
         "summary": "Get channel catalog exclusion filter operators",
         "operationId": "GetChannelCatalogExclusionFilterOperators",
@@ -4187,7 +4187,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/exclusionFilters": {
       "put": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Exclusion Filters"
+          "Channel Catalogs - Exclusion Filters"
         ],
         "summary": "Configure channel catalog exclusion filters",
         "operationId": "ConfigureChannelCatalogExclusionFilters",
@@ -4219,7 +4219,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Products"
+          "Channel Catalogs - Products"
         ],
         "summary": "Get channel catalog product information list",
         "operationId": "GetChannelCatalogProductInfoList",
@@ -4254,7 +4254,7 @@
     "/v2/user/channelCatalogs/products/{productId}": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Products"
+          "Channel Catalogs - Products"
         ],
         "summary": "Get channel catalog products related to these channel catalogs",
         "operationId": "GetChannelCatalogProductByChannelCatalog",
@@ -4288,7 +4288,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}": {
       "get": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Products"
+          "Channel Catalogs - Products"
         ],
         "summary": "Get channel catalog product information",
         "operationId": "GetChannelCatalogProductInfo",
@@ -4318,7 +4318,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides": {
       "put": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Products Overrides"
+          "Channel Catalogs - Products Overrides"
         ],
         "summary": "Override channel catalog product values",
         "operationId": "OverrideChannelCatalogProductOverrides",
@@ -4353,7 +4353,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/{channelColumnId}": {
       "delete": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Products Overrides"
+          "Channel Catalogs - Products Overrides"
         ],
         "summary": "Delete a specific channel catalog product value override",
         "operationId": "DeleteChannelCatalogProductValueOverride",
@@ -4389,7 +4389,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/disable": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Products Optimisation"
+          "Channel Catalogs - Products Optimisation"
         ],
         "summary": "Disable channel catalog product",
         "operationId": "DisableChannelCatalogProduct",
@@ -4417,7 +4417,7 @@
     "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/reenable": {
       "post": {
         "tags": [
-          "Channel Catalogs - Channel Catalogs Products Optimisation"
+          "Channel Catalogs - Products Optimisation"
         ],
         "summary": "Reenable channel catalog product",
         "description": "By default a all your catalog products are exposed to the channel.\nYou can reenable a product by using this operation.\n/!\\ In case of massive optimisation we recommand you to use the analytics api\n",
@@ -16914,14 +16914,14 @@
     {
       "name": "Channel Catalogs",
       "tags": [
-        "Channel Catalogs - Channel Catalogs Global",
-        "Channel Catalogs - Channel Catalogs Settings",
-        "Channel Catalogs - Channel Catalogs Column Mappings",
-        "Channel Catalogs - Channel Catalogs Category Mappings",
-        "Channel Catalogs - Channel Catalogs Exclusion Filters",
-        "Channel Catalogs - Channel Catalogs Products",
-        "Channel Catalogs - Channel Catalogs Products Overrides",
-        "Channel Catalogs - Channel Catalogs Products Optimisation"
+        "Channel Catalogs - Global",
+        "Channel Catalogs - Settings",
+        "Channel Catalogs - Column Mappings",
+        "Channel Catalogs - Category Mappings",
+        "Channel Catalogs - Exclusion Filters",
+        "Channel Catalogs - Products",
+        "Channel Catalogs - Products Overrides",
+        "Channel Catalogs - Products Optimisation"
       ]
     },
     {
