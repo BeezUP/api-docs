@@ -29,171 +29,213 @@
   ],
   "tags": [
     {
-      "name": "Public - Security - Security"
+      "name": "Public - Security - Security",
+      "x-displayName": "Security"
     },
     {
       "name": "Public - Channels - Public Channels",
-      "description": "All our public channels operations"
+      "description": "All our public channels operations",
+      "x-displayName": "Public Channels"
     },
     {
       "name": "Public - List of Values - LOV",
-      "description": "All LOV operations"
+      "description": "All LOV operations",
+      "x-displayName": "LOV"
     },
     {
       "name": "User - List of Values - LOV",
-      "description": "All LOV operations"
+      "description": "All LOV operations",
+      "x-displayName": "LOV"
     },
     {
       "name": "Customer - Account",
-      "description": "All user account operations"
+      "description": "All user account operations",
+      "x-displayName": "Account"
     },
     {
       "name": "Customer - Stores",
-      "description": "All stores operations"
+      "description": "All stores operations",
+      "x-displayName": "Stores"
     },
     {
       "name": "Customer - Shares",
-      "description": "All store share operations"
+      "description": "All store share operations",
+      "x-displayName": "Shares"
     },
     {
       "name": "Customer - Alerts",
-      "description": "All stores's alerts operations"
+      "description": "All stores's alerts operations",
+      "x-displayName": "Alerts"
     },
     {
       "name": "Customer - Rights",
-      "description": "All store rights operations"
+      "description": "All store rights operations",
+      "x-displayName": "Rights"
     },
     {
       "name": "Customer - Friends",
-      "description": "All friends operations"
+      "description": "All friends operations",
+      "x-displayName": "Friends"
     },
     {
       "name": "Customer - Contracts",
-      "description": "All contracts and offer operations"
+      "description": "All contracts and offer operations",
+      "x-displayName": "Contracts"
     },
     {
       "name": "Customer - Invoices",
-      "description": "All invoice operations"
+      "description": "All invoice operations",
+      "x-displayName": "Invoices"
     },
     {
       "name": "Customer - Security",
-      "description": "All security operations"
+      "description": "All security operations",
+      "x-displayName": "Security"
     },
     {
       "name": "Catalogs - Auto",
-      "description": "All operations related to the Auto importation"
+      "description": "All operations related to the Auto importation",
+      "x-displayName": "Auto"
     },
     {
       "name": "Catalogs - Global",
-      "description": "All operations related to global information"
+      "description": "All operations related to global information",
+      "x-displayName": "Global"
     },
     {
       "name": "Catalogs - Importation Process",
-      "description": "All operations concerning the importation process"
+      "description": "All operations concerning the importation process",
+      "x-displayName": "Importation Process"
     },
     {
       "name": "Catalogs - Importation Catalog Info",
-      "description": "All operations related to the catalog information during the importation"
+      "description": "All operations related to the catalog information during the importation",
+      "x-displayName": "Importation Catalog Info"
     },
     {
       "name": "Catalogs - Catalog",
-      "description": "All operation related to the catalog"
+      "description": "All operation related to the catalog",
+      "x-displayName": "Catalog"
     },
     {
       "name": "Channels - Channels Global",
-      "description": "All global operations"
+      "description": "All global operations",
+      "x-displayName": "Channels Global"
     },
     {
       "name": "Channel Catalogs - Global",
-      "description": "All global operations"
+      "description": "All global operations",
+      "x-displayName": "Global"
     },
     {
       "name": "Channel Catalogs - Settings",
-      "description": "All settings operations"
+      "description": "All settings operations",
+      "x-displayName": "Settings"
     },
     {
       "name": "Channel Catalogs - Column Mappings",
-      "description": "All column mapping operations"
+      "description": "All column mapping operations",
+      "x-displayName": "Column Mappings"
     },
     {
       "name": "Channel Catalogs - Category Mappings",
-      "description": "All category mapping operations"
+      "description": "All category mapping operations",
+      "x-displayName": "Category Mappings"
     },
     {
       "name": "Channel Catalogs - Exclusion Filters",
-      "description": "All exclusion filters operations"
+      "description": "All exclusion filters operations",
+      "x-displayName": "Exclusion Filters"
     },
     {
       "name": "Channel Catalogs - Products",
-      "description": "All products operations"
+      "description": "All products operations",
+      "x-displayName": "Products"
     },
     {
       "name": "Channel Catalogs - Products Overrides",
-      "description": "All products overrides operations"
+      "description": "All products overrides operations",
+      "x-displayName": "Products Overrides"
     },
     {
       "name": "Channel Catalogs - Products Optimisation",
-      "description": "All products optimisation operations"
+      "description": "All products optimisation operations",
+      "x-displayName": "Products Optimisation"
     },
     {
       "name": "Channel Catalogs - Exportations",
-      "description": "All channel catalog exportation operations"
+      "description": "All channel catalog exportation operations",
+      "x-displayName": "Exportations"
     },
     {
       "name": "Marketplaces - Channel catalogs - Global",
-      "description": "Operations to fetch your marketplace account related to your channel catalogs"
+      "description": "Operations to fetch your marketplace account related to your channel catalogs",
+      "x-displayName": "Global"
     },
     {
       "name": "Marketplaces - Channel catalogs - Publications",
-      "description": "Operations to fetch your marketplace account's catalog publication history"
+      "description": "Operations to fetch your marketplace account's catalog publication history",
+      "x-displayName": "Publications"
     },
     {
       "name": "Marketplaces - Channel catalogs - Settings",
-      "description": "Operations to manage your channel catalogs' marketplace settings"
+      "description": "Operations to manage your channel catalogs' marketplace settings",
+      "x-displayName": "Settings"
     },
     {
       "name": "Marketplaces - Orders - Global",
-      "description": "All global operations (cross marketplace)"
+      "description": "All global operations (cross marketplace)",
+      "x-displayName": "Global"
     },
     {
       "name": "Marketplaces - Orders - AutoTransitions",
-      "description": "All auto transitions operations"
+      "description": "All auto transitions operations",
+      "x-displayName": "AutoTransitions"
     },
     {
       "name": "Marketplaces - Orders - List",
-      "description": "All Order list operations"
+      "description": "All Order list operations",
+      "x-displayName": "List"
     },
     {
       "name": "Marketplaces - Orders - Order",
-      "description": "All operations related to a single Order"
+      "description": "All operations related to a single Order",
+      "x-displayName": "Order"
     },
     {
       "name": "Marketplaces - Orders - Batches",
-      "description": "All batch operations on Orders to reduce call rate"
+      "description": "All batch operations on Orders to reduce call rate",
+      "x-displayName": "Batches"
     },
     {
       "name": "Marketplaces - Orders - Exports",
-      "description": "All Order report exportation operations"
+      "description": "All Order report exportation operations",
+      "x-displayName": "Exports"
     },
     {
       "name": "Analytics - Tracking",
-      "description": "All tracking operations"
+      "description": "All tracking operations",
+      "x-displayName": "Tracking"
     },
     {
       "name": "Analytics - Statistics",
-      "description": "All statitics operations"
+      "description": "All statitics operations",
+      "x-displayName": "Statistics"
     },
     {
       "name": "Analytics - Rules",
-      "description": "All rules operations. Rules are automatic optimisations based on report filters."
+      "description": "All rules operations. Rules are automatic optimisations based on report filters.",
+      "x-displayName": "Rules"
     },
     {
       "name": "Analytics - Reports",
-      "description": "All reports operations"
+      "description": "All reports operations",
+      "x-displayName": "Reports"
     },
     {
       "name": "Analytics - Optimisations",
-      "description": "All optmisations operations"
+      "description": "All optmisations operations",
+      "x-displayName": "Optimisations"
     }
   ],
   "paths": {
