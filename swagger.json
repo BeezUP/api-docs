@@ -232,7 +232,7 @@
             "description": "Invalid credentials"
           },
           "500": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         }
       }
@@ -266,7 +266,7 @@
             "description": "Email already used"
           },
           "500": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "produces": [
@@ -307,7 +307,7 @@
             "description": "Email not found"
           },
           "500": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           },
           "502": {
             "description": "Problem with SMTP service",
@@ -334,7 +334,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         }
       }
@@ -394,7 +394,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         }
       }
@@ -405,7 +405,7 @@
         "operationId": "GetPublicLovIndex",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/ifNoneMatchParameter"
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "tags": [
@@ -450,7 +450,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         }
       }
@@ -471,10 +471,10 @@
             "type": "string"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/acceptLanguageParameter"
+            "$ref": "#/parameters/acceptLanguageParameter"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/ifNoneMatchParameter"
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -530,7 +530,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         }
       }
@@ -581,7 +581,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -607,10 +607,10 @@
             "type": "string"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/acceptLanguageParameter"
+            "$ref": "#/parameters/acceptLanguageParameter"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/ifNoneMatchParameter"
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -666,7 +666,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -691,7 +691,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -722,7 +722,7 @@
             "description": "Email activate send failed because of our email service. Ensure that your email is the correct one otherwise please contact our support if the problem persists."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -759,7 +759,7 @@
             "description": "Invalid email activation id"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -797,7 +797,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -838,7 +838,7 @@
             "description": "User not found or unauthorized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -863,7 +863,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -905,7 +905,7 @@
             "description": "The content type of the image must be an image"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -936,7 +936,7 @@
             "description": "We are unable to get your credit card info. This is a temporary state. Please retry later"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -976,7 +976,7 @@
             "description": "Communication problem with our payment service"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1011,7 +1011,7 @@
             "description": "Old password is invalid or the new password does not respect the password's constraints"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1034,7 +1034,7 @@
             "description": "User logout"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1059,7 +1059,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1098,7 +1098,7 @@
             "description": "The customer has a store with the same name"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1117,7 +1117,7 @@
         "operationId": "GetStore",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -1131,7 +1131,7 @@
             "description": "Store not found or not authorized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1149,7 +1149,7 @@
         "operationId": "UpdateStore",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -1171,7 +1171,7 @@
             "description": "The store name already used"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1188,7 +1188,7 @@
         "operationId": "DeleteStore",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -1199,7 +1199,7 @@
             "description": "Store not found or customer not the owner"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1218,7 +1218,7 @@
         "operationId": "GetShares",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -1232,7 +1232,7 @@
             "description": "Store not found or customer not the owner"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1249,7 +1249,7 @@
         "operationId": "Share",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "email",
@@ -1272,7 +1272,7 @@
             "description": "Only the owner of the store can make this operation or user not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1310,7 +1310,7 @@
             "description": "User not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1329,7 +1329,7 @@
         "operationId": "DeleteShare",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "userId",
@@ -1348,7 +1348,7 @@
             "description": "Store not found or customer not the owner"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1368,7 +1368,7 @@
         "deprecated": true,
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "functionalityCodeList",
@@ -1403,7 +1403,7 @@
             "description": "Store not found or not authorized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1422,7 +1422,7 @@
         "operationId": "GetStoreAlerts",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -1436,7 +1436,7 @@
             "description": "Store not found or not authorized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1455,7 +1455,7 @@
         "operationId": "SaveStoreAlert",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "alertId",
@@ -1490,7 +1490,7 @@
             "description": "Store not found or not authorized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1515,7 +1515,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1540,7 +1540,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1583,7 +1583,7 @@
             "description": "You current contract is not modifiable. Please choose another offer."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1657,7 +1657,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1700,7 +1700,7 @@
             "description": "No current contract"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1726,7 +1726,7 @@
             "description": "No current contract"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1748,7 +1748,7 @@
             "description": "Next contract has been deleted"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1773,7 +1773,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1802,7 +1802,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1821,7 +1821,7 @@
         "summary": "Get the last input configuration",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -1835,7 +1835,7 @@
             "description": "StoreId or Manual Update last configuration not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1854,7 +1854,7 @@
         "summary": "Get catalog column list",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -1868,7 +1868,7 @@
             "description": "StoreId not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1887,7 +1887,7 @@
         "summary": "Change Catalog Column User Name",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/catalogColumnId"
@@ -1918,7 +1918,7 @@
             "$ref": "#/responses/importAlreadyInProgress"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1937,7 +1937,7 @@
         "summary": "Get custom column list",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -1951,7 +1951,7 @@
             "description": "StoreId not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1970,7 +1970,7 @@
         "summary": "Create or replace a custom column",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/customColumnId"
@@ -2001,7 +2001,7 @@
             "$ref": "#/responses/importAlreadyInProgress"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2018,7 +2018,7 @@
         "operationId": "Catalog_DeleteCustomColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/customColumnId"
@@ -2041,7 +2041,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2060,7 +2060,7 @@
         "operationId": "Catalog_ChangeCustomColumnUserName",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/customColumnId"
@@ -2091,7 +2091,7 @@
             "$ref": "#/responses/importAlreadyInProgress"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2110,7 +2110,7 @@
         "operationId": "Catalog_GetCustomColumnExpression",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/customColumnId"
@@ -2128,7 +2128,7 @@
             "description": "Occurs when a user tries to work on the wrong store.\nOccurs when a catalog custom column is not found."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2145,7 +2145,7 @@
         "operationId": "Catalog_ChangeCustomColumnExpression",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/customColumnId"
@@ -2173,7 +2173,7 @@
             "$ref": "#/responses/importAlreadyInProgress"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2192,7 +2192,7 @@
         "operationId": "Catalog_ComputeExpression",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -2211,7 +2211,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2230,7 +2230,7 @@
         "summary": "Get category list",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "Accept-Encoding",
@@ -2265,7 +2265,7 @@
             "description": "StoreId not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2284,7 +2284,7 @@
         "summary": "Get product list",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -2305,7 +2305,7 @@
             "description": "StoreId not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2324,7 +2324,7 @@
         "summary": "Get random product list",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "count",
@@ -2350,7 +2350,7 @@
             "description": "StoreId not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2369,7 +2369,7 @@
         "summary": "Get product",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "productId",
@@ -2391,7 +2391,7 @@
             "description": "StoreId not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2410,7 +2410,7 @@
         "operationId": "Importation_StartManualUpdate",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -2438,7 +2438,7 @@
             "$ref": "#/responses/importAlreadyInProgress"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2455,7 +2455,7 @@
         "operationId": "Importation_GetReportings",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -2469,7 +2469,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2488,7 +2488,7 @@
         "operationId": "Importation_GetImportationMonitoring",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2505,7 +2505,7 @@
             "description": "ExecutionId not found or not yet synchronized. If not synchronized within 30 sec after the import has been started, please contact our support"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2522,7 +2522,7 @@
         "operationId": "Importation_Cancel",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2539,7 +2539,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2558,7 +2558,7 @@
         "operationId": "Importation_TechnicalProgression",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2578,7 +2578,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2598,7 +2598,7 @@
         "operationId": "Importation_ConfigureRemainingCatalogColumns",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2621,7 +2621,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2640,7 +2640,7 @@
         "operationId": "Importation_CommitColumns",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2660,7 +2660,7 @@
             "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.\nOccurs when a catalog column is not found."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2679,7 +2679,7 @@
         "operationId": "Importation_Commit",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2702,7 +2702,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2721,7 +2721,7 @@
         "operationId": "Importation_GetProductSample",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2744,7 +2744,7 @@
             "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2764,7 +2764,7 @@
         "operationId": "Importation_GetProductSampleCustomColumnValue",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2800,7 +2800,7 @@
             "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2819,7 +2819,7 @@
         "operationId": "Importation_GetDetectedCatalogColumns",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2839,7 +2839,7 @@
             "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2858,7 +2858,7 @@
         "operationId": "Importation_ConfigureCatalogColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2892,7 +2892,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2911,7 +2911,7 @@
         "operationId": "Importation_IgnoreColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2931,7 +2931,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2950,7 +2950,7 @@
         "operationId": "Importation_ReattendColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -2970,7 +2970,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -2989,7 +2989,7 @@
         "operationId": "Importation_MapCatalogColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3017,7 +3017,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3036,7 +3036,7 @@
         "operationId": "Importation_UnmapCatalogColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3056,7 +3056,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3075,7 +3075,7 @@
         "operationId": "Importation_GetCustomColumns",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3095,7 +3095,7 @@
             "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3114,7 +3114,7 @@
         "operationId": "Importation_GetCustomColumnExpression",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3138,7 +3138,7 @@
             "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3157,7 +3157,7 @@
         "operationId": "Importation_SaveCustomColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3185,7 +3185,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3202,7 +3202,7 @@
         "operationId": "Importation_DeleteCustomColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3219,7 +3219,7 @@
             "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3238,7 +3238,7 @@
         "operationId": "Importation_MapCustomColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3266,7 +3266,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3285,7 +3285,7 @@
         "operationId": "Importation_UnmapCustomColumn",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/executionId"
@@ -3305,7 +3305,7 @@
             "description": "Occurs when this importation is already finished."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3324,7 +3324,7 @@
         "summary": "Get the auto import configuration",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -3338,7 +3338,7 @@
             "description": "StoreId or Auto Import configuration not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3356,7 +3356,7 @@
         "description": "Once you have made your fist manual catalog importation with success, you can call this operation to import it automatically. No parameter required, we know which one it is.",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -3379,7 +3379,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3396,7 +3396,7 @@
         "summary": "Delete Auto Import",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -3410,7 +3410,7 @@
             "description": "Occurs when a user tries to work on the wrong store."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3429,7 +3429,7 @@
         "operationId": "Auto_StartAutoImport",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -3452,7 +3452,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3471,7 +3471,7 @@
         "summary": "Pause Auto Import",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -3485,7 +3485,7 @@
             "description": "Occurs when a user tries to work on the wrong store."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3504,7 +3504,7 @@
         "summary": "Resume Auto Import",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -3518,7 +3518,7 @@
             "description": "Occurs when a user tries to work on the wrong store."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3537,7 +3537,7 @@
         "summary": "Configure Auto Import Interval",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -3562,7 +3562,7 @@
             "description": "Occurs when a user tries to work on the wrong store."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3581,7 +3581,7 @@
         "operationId": "Auto_ScheduleAutoImport",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -3606,7 +3606,7 @@
             "description": "Occurs when a user tries to work on the wrong store."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3816,7 +3816,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3867,7 +3867,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3897,7 +3897,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3922,7 +3922,7 @@
             "description": "Channel catalog deleted"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3955,7 +3955,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -3982,7 +3982,7 @@
             "description": "Channel catalog disabled"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4017,7 +4017,7 @@
             "description": "Channel catalog general settings configured"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4052,7 +4052,7 @@
             "description": "Channel catalog cost settings configured"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4087,7 +4087,7 @@
             "description": "Channel catalog column mappings configured"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4117,7 +4117,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4152,7 +4152,7 @@
             "description": "Channel catalog category mapped"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4187,7 +4187,7 @@
             "description": "Channel catalog category unmapped"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4215,7 +4215,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4250,7 +4250,7 @@
             "description": "Channel catalog exclusion filter list configured"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4288,7 +4288,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4325,7 +4325,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4358,7 +4358,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4396,7 +4396,7 @@
             "description": "Channel catalog product overriden"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4435,7 +4435,7 @@
             "description": "Channel catalog product value override deleted"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4466,7 +4466,7 @@
             "description": "Channel catalog product disabled"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4497,7 +4497,7 @@
             "description": "Channel catalog product reenabled"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4527,7 +4527,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4552,7 +4552,7 @@
             "description": "Channel catalog exportation cache deleted"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4574,10 +4574,10 @@
             "$ref": "#/parameters/channelCatalogIdParameter"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageNumberQueryStrngParameter"
+            "$ref": "#/parameters/pageNumberQueryStrngParameter"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageSizeQueryStrngParameter"
+            "$ref": "#/parameters/pageSizeQueryStrngParameter"
           }
         ],
         "responses": {
@@ -4588,7 +4588,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4698,7 +4698,7 @@
             "$ref": "#/responses/processingResponse"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -4739,7 +4739,7 @@
             "$ref": "#/responses/processingResponse"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4780,7 +4780,7 @@
             "$ref": "#/responses/processingResponse"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4832,7 +4832,7 @@
             "$ref": "#/responses/processingResponse"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -4858,7 +4858,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -4885,7 +4885,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -4926,7 +4926,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -4952,7 +4952,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -4989,7 +4989,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5043,7 +5043,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5085,7 +5085,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5105,10 +5105,10 @@
         "summary": "Get a paginated list of Order report exportations",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageNumberQueryStrngParameter"
+            "$ref": "#/parameters/pageNumberQueryStrngParameter"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageSizeQueryStrngParameter"
+            "$ref": "#/parameters/pageSizeQueryStrngParameter"
           },
           {
             "name": "storeId",
@@ -5133,7 +5133,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5171,7 +5171,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5208,7 +5208,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5245,7 +5245,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5291,7 +5291,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5320,7 +5320,7 @@
             "$ref": "#/parameters/beezUPOrderIdParameter"
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/ifNoneMatchParameter"
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -5352,7 +5352,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5395,7 +5395,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5447,7 +5447,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5501,7 +5501,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5547,7 +5547,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5593,7 +5593,7 @@
             }
           },
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/ifMatchParameter"
+            "$ref": "#/parameters/ifMatchParameter"
           }
         ],
         "responses": {
@@ -5625,10 +5625,10 @@
             }
           },
           "412": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/412_PreConditionFailed"
+            "$ref": "#/responses/412_PreConditionFailed"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "deprecated": false,
@@ -5655,7 +5655,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5674,7 +5674,7 @@
         "operationId": "GetReportFilters",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -5685,7 +5685,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5704,7 +5704,7 @@
         "operationId": "GetReportFilter",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/reportFilterIdOnlyGeneralParameters"
@@ -5721,7 +5721,7 @@
             "description": "Report filter not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5738,7 +5738,7 @@
         "operationId": "DeleteReportFilter",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/reportFilterIdOnlyGeneralParameters"
@@ -5758,7 +5758,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5775,7 +5775,7 @@
         "operationId": "SaveReportFilter",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/reportFilterIdOnlyGeneralParameters"
@@ -5803,7 +5803,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5823,7 +5823,7 @@
         "operationId": "GetStoreReportByDay",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -5842,7 +5842,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5862,7 +5862,7 @@
         "operationId": "GetStoreReportByDayExport",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
@@ -5897,7 +5897,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5917,7 +5917,7 @@
         "operationId": "GetStoreReportByChannel",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -5936,7 +5936,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -5956,7 +5956,7 @@
         "operationId": "ExportStoreReportByChannel",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
@@ -5990,7 +5990,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6010,7 +6010,7 @@
         "operationId": "GetStoreReportByCategory",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -6029,7 +6029,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6049,7 +6049,7 @@
         "operationId": "ExportStoreReportByCategory",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
@@ -6083,7 +6083,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6103,7 +6103,7 @@
         "operationId": "GetStoreReportByProduct",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -6122,7 +6122,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6142,7 +6142,7 @@
         "operationId": "ExportStoreReportByProduct",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
@@ -6176,7 +6176,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6196,7 +6196,7 @@
         "operationId": "Optimise",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/optimisationActionNameGeneralParameters"
@@ -6215,7 +6215,7 @@
             "description": "Products optimisatized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6235,7 +6235,7 @@
         "operationId": "OptimiseByProduct",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "productId",
@@ -6273,7 +6273,7 @@
             "description": "Product(s) optimisatized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6293,7 +6293,7 @@
         "operationId": "OptimiseByCategory",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "catalogCategoryId",
@@ -6331,7 +6331,7 @@
             "description": "Products optimisatized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6351,7 +6351,7 @@
         "operationId": "OptimiseByChannel",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "channelId",
@@ -6370,7 +6370,7 @@
             "description": "Products optimisatized"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6390,7 +6390,7 @@
         "operationId": "GetStoreTrackingStatus",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -6404,7 +6404,7 @@
             "description": "Store not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6423,7 +6423,7 @@
         "operationId": "GetStoreTrackedClicks",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "count",
@@ -6447,7 +6447,7 @@
             "description": "Store not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6466,7 +6466,7 @@
         "operationId": "GetStoreTrackedOrders",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "count",
@@ -6490,7 +6490,7 @@
             "description": "Store not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6509,7 +6509,7 @@
         "operationId": "GetStoreTrackedExternalOrders",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "count",
@@ -6533,7 +6533,7 @@
             "description": "Store not found"
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6552,7 +6552,7 @@
         "operationId": "GetRules",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -6563,7 +6563,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6584,7 +6584,7 @@
         "produces": [],
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "request",
@@ -6609,7 +6609,7 @@
             "description": "Reached the maximum amount of rules allowed for your offer. Please upgrade your offer or contact us."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6628,7 +6628,7 @@
         "operationId": "RunRules",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           }
         ],
         "responses": {
@@ -6645,7 +6645,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6664,7 +6664,7 @@
         "operationId": "GetRulesExecutions",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "name": "pageNumber",
@@ -6694,7 +6694,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6713,7 +6713,7 @@
         "operationId": "GetRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -6727,7 +6727,7 @@
             }
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6744,7 +6744,7 @@
         "operationId": "DeleteRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -6761,7 +6761,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6778,7 +6778,7 @@
         "operationId": "UpdateRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -6809,7 +6809,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6828,7 +6828,7 @@
         "operationId": "RunRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -6851,7 +6851,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6870,7 +6870,7 @@
         "operationId": "MoveUpRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -6890,7 +6890,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6909,7 +6909,7 @@
         "operationId": "MoveDownRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -6929,7 +6929,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6948,7 +6948,7 @@
         "operationId": "EnableRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -6965,7 +6965,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -6984,7 +6984,7 @@
         "operationId": "DisableRule",
         "parameters": [
           {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/storeIdOnlyGeneralParameters"
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
             "$ref": "#/parameters/ruleIdOnlyGeneralParameters"
@@ -7001,7 +7001,7 @@
             "description": "Rules for this store are currently running. Please try again later."
           },
           "default": {
-            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
