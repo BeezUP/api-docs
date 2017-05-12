@@ -17,7 +17,7 @@
     }
   },
   "host": "api.beezup.com",
-  "basePath": "",
+  "basePath": "/v2",
   "schemes": [
     "https"
   ],
@@ -193,7 +193,7 @@
     }
   ],
   "paths": {
-    "/login": {
+    "/public/security/login": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -233,7 +233,7 @@
         }
       }
     },
-    "/register": {
+    "/public/security/register": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -270,7 +270,7 @@
         ]
       }
     },
-    "/lostpassword": {
+    "/public/security/lostpassword": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -314,7 +314,7 @@
         }
       }
     },
-    "/v2/public/channels/": {
+    "/public/channels/": {
       "get": {
         "tags": [
           "Public - Channels - Public Channels"
@@ -335,7 +335,7 @@
         }
       }
     },
-    "/v2/public/channels/{countryIsoCode}": {
+    "/public/channels/{countryIsoCode}": {
       "get": {
         "tags": [
           "Public - Channels - Public Channels"
@@ -395,7 +395,7 @@
         }
       }
     },
-    "/v2/public/lov/": {
+    "/public/lov/": {
       "get": {
         "summary": "Get all list names",
         "operationId": "GetPublicLovIndex",
@@ -451,7 +451,7 @@
         }
       }
     },
-    "/v2/public/lov/{listName}": {
+    "/public/lov/{listName}": {
       "get": {
         "tags": [
           "Public - List of Values - LOV"
@@ -531,7 +531,7 @@
         }
       }
     },
-    "/v2/user/lov/": {
+    "/user/lov/": {
       "get": {
         "summary": "Get all list names",
         "operationId": "GetUserLovIndex",
@@ -587,7 +587,7 @@
         ]
       }
     },
-    "/v2/user/lov/{listName}": {
+    "/user/lov/{listName}": {
       "get": {
         "tags": [
           "User - List of Values - LOV"
@@ -672,7 +672,7 @@
         ]
       }
     },
-    "/v2/user/customer/account": {
+    "/user/customer/account": {
       "get": {
         "tags": [
           "Customer - Account"
@@ -697,7 +697,7 @@
         ]
       }
     },
-    "/v2/user/customer/account/resendEmailActivation": {
+    "/user/customer/account/resendEmailActivation": {
       "post": {
         "tags": [
           "Customer - Account"
@@ -728,7 +728,7 @@
         ]
       }
     },
-    "/v2/user/customer/account/activate": {
+    "/user/customer/account/activate": {
       "post": {
         "tags": [
           "Customer - Account"
@@ -765,7 +765,7 @@
         ]
       }
     },
-    "/v2/user/customer/account/personalInfo": {
+    "/user/customer/account/personalInfo": {
       "put": {
         "tags": [
           "Customer - Account"
@@ -803,7 +803,7 @@
         ]
       }
     },
-    "/v2/user/customer/account/companyInfo": {
+    "/user/customer/account/companyInfo": {
       "put": {
         "tags": [
           "Customer - Account"
@@ -844,7 +844,7 @@
         ]
       }
     },
-    "/v2/user/customer/account/profilePictureInfo": {
+    "/user/customer/account/profilePictureInfo": {
       "get": {
         "tags": [
           "Customer - Account"
@@ -911,7 +911,7 @@
         ]
       }
     },
-    "/v2/user/customer/account/creditCardInfo": {
+    "/user/customer/account/creditCardInfo": {
       "get": {
         "tags": [
           "Customer - Account"
@@ -982,7 +982,7 @@
         ]
       }
     },
-    "/v2/user/customer/account/changePassword": {
+    "/user/customer/account/changePassword": {
       "post": {
         "tags": [
           "Customer - Account"
@@ -1017,7 +1017,7 @@
         ]
       }
     },
-    "/v2/user/customer/security/logout": {
+    "/user/customer/security/logout": {
       "post": {
         "tags": [
           "Customer - Security"
@@ -1040,7 +1040,7 @@
         ]
       }
     },
-    "/v2/user/customer/stores": {
+    "/user/customer/stores": {
       "get": {
         "tags": [
           "Customer - Stores"
@@ -1104,7 +1104,7 @@
         ]
       }
     },
-    "/v2/user/customer/stores/{storeId}": {
+    "/user/customer/stores/{storeId}": {
       "get": {
         "tags": [
           "Customer - Stores"
@@ -1205,7 +1205,7 @@
         ]
       }
     },
-    "/v2/user/customer/stores/{storeId}/shares": {
+    "/user/customer/stores/{storeId}/shares": {
       "get": {
         "tags": [
           "Customer - Shares"
@@ -1278,7 +1278,7 @@
         ]
       }
     },
-    "/v2/user/customer/friends/{userId}": {
+    "/user/customer/friends/{userId}": {
       "get": {
         "tags": [
           "Customer - Friends"
@@ -1316,7 +1316,7 @@
         ]
       }
     },
-    "/v2/user/customer/stores/{storeId}/shares/{userId}": {
+    "/user/customer/stores/{storeId}/shares/{userId}": {
       "delete": {
         "tags": [
           "Customer - Shares"
@@ -1354,7 +1354,7 @@
         ]
       }
     },
-    "/v2/user/customer/stores/{storeId}/rights": {
+    "/user/customer/stores/{storeId}/rights": {
       "post": {
         "tags": [
           "Customer - Rights"
@@ -1409,7 +1409,7 @@
         ]
       }
     },
-    "/v2/user/customer/stores/{storeId}/alerts": {
+    "/user/customer/stores/{storeId}/alerts": {
       "get": {
         "tags": [
           "Customer - Alerts"
@@ -1442,7 +1442,7 @@
         ]
       }
     },
-    "/v2/user/customer/stores/{storeId}/alerts/{alertId}": {
+    "/user/customer/stores/{storeId}/alerts/{alertId}": {
       "put": {
         "tags": [
           "Customer - Alerts"
@@ -1496,7 +1496,7 @@
         ]
       }
     },
-    "/v2/user/customer/billingPeriods": {
+    "/user/customer/billingPeriods": {
       "get": {
         "tags": [
           "Customer - Contracts"
@@ -1521,7 +1521,7 @@
         ]
       }
     },
-    "/v2/user/customer/offers": {
+    "/user/customer/offers": {
       "get": {
         "tags": [
           "Customer - Contracts"
@@ -1589,7 +1589,7 @@
         ]
       }
     },
-    "/v2/user/customer/contracts": {
+    "/user/customer/contracts": {
       "get": {
         "tags": [
           "Customer - Contracts"
@@ -1663,7 +1663,7 @@
         ]
       }
     },
-    "/v2/user/customer/contracts/current/disableAutoRenewal": {
+    "/user/customer/contracts/current/disableAutoRenewal": {
       "post": {
         "tags": [
           "Customer - Contracts"
@@ -1706,7 +1706,7 @@
         ]
       }
     },
-    "/v2/user/customer/contracts/current/reenableAutoRenewal": {
+    "/user/customer/contracts/current/reenableAutoRenewal": {
       "post": {
         "tags": [
           "Customer - Contracts"
@@ -1732,7 +1732,7 @@
         ]
       }
     },
-    "/v2/user/customer/contracts/next": {
+    "/user/customer/contracts/next": {
       "delete": {
         "tags": [
           "Customer - Contracts"
@@ -1754,7 +1754,7 @@
         ]
       }
     },
-    "/v2/user/customer/invoices": {
+    "/user/customer/invoices": {
       "get": {
         "tags": [
           "Customer - Invoices"
@@ -1779,7 +1779,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/beezupColumns": {
+    "/user/catalogs/beezupColumns": {
       "get": {
         "tags": [
           "Catalogs - Global"
@@ -1808,7 +1808,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/inputConfiguration": {
+    "/user/catalogs/{storeId}/inputConfiguration": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -1841,7 +1841,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/catalogColumns": {
+    "/user/catalogs/{storeId}/catalogColumns": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -1874,7 +1874,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/catalogColumns/{columnId}/rename": {
+    "/user/catalogs/{storeId}/catalogColumns/{columnId}/rename": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -1924,7 +1924,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/customColumns": {
+    "/user/catalogs/{storeId}/customColumns": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -1957,7 +1957,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/customColumns/{columnId}": {
+    "/user/catalogs/{storeId}/customColumns/{columnId}": {
       "put": {
         "tags": [
           "Catalogs - Catalog"
@@ -2047,7 +2047,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/customColumns/{columnId}/rename": {
+    "/user/catalogs/{storeId}/customColumns/{columnId}/rename": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -2097,7 +2097,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/customColumns/{columnId}/expression": {
+    "/user/catalogs/{storeId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2179,7 +2179,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/customColumns/computeExpression": {
+    "/user/catalogs/{storeId}/customColumns/computeExpression": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -2217,7 +2217,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/categories": {
+    "/user/catalogs/{storeId}/categories": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2271,7 +2271,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/products": {
+    "/user/catalogs/{storeId}/products": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -2311,7 +2311,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/products/random": {
+    "/user/catalogs/{storeId}/products/random": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2356,7 +2356,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/products/{productId}": {
+    "/user/catalogs/{storeId}/products/{productId}": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2397,7 +2397,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations": {
+    "/user/catalogs/{storeId}/importations": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2475,7 +2475,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}": {
+    "/user/catalogs/{storeId}/importations/{executionId}": {
       "get": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2545,7 +2545,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/technicalProgression": {
+    "/user/catalogs/{storeId}/importations/{executionId}/technicalProgression": {
       "get": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2584,7 +2584,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/configureRemainingCatalogColumns": {
+    "/user/catalogs/{storeId}/importations/{executionId}/configureRemainingCatalogColumns": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2627,7 +2627,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/commitColumns": {
+    "/user/catalogs/{storeId}/importations/{executionId}/commitColumns": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2666,7 +2666,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/commit": {
+    "/user/catalogs/{storeId}/importations/{executionId}/commit": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2708,7 +2708,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}": {
+    "/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -2750,7 +2750,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}/customColumns/{columnId}": {
+    "/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}/customColumns/{columnId}": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -2806,7 +2806,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns": {
+    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -2845,7 +2845,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}": {
+    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -2898,7 +2898,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/ignore": {
+    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/ignore": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -2937,7 +2937,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/reattend": {
+    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/reattend": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -2976,7 +2976,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/map": {
+    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/map": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3023,7 +3023,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/unmap": {
+    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/unmap": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3062,7 +3062,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns": {
+    "/user/catalogs/{storeId}/importations/{executionId}/customColumns": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3101,7 +3101,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/expression": {
+    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3144,7 +3144,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}": {
+    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}": {
       "put": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3225,7 +3225,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/map": {
+    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/map": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3272,7 +3272,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/unmap": {
+    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/unmap": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3311,7 +3311,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/autoImport": {
+    "/user/catalogs/{storeId}/autoImport": {
       "get": {
         "tags": [
           "Catalogs - Auto"
@@ -3416,7 +3416,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/autoImport/start": {
+    "/user/catalogs/{storeId}/autoImport/start": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3458,7 +3458,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/autoImport/pause": {
+    "/user/catalogs/{storeId}/autoImport/pause": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3491,7 +3491,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/autoImport/resume": {
+    "/user/catalogs/{storeId}/autoImport/resume": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3524,7 +3524,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/autoImport/scheduling/interval": {
+    "/user/catalogs/{storeId}/autoImport/scheduling/interval": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3568,7 +3568,7 @@
         ]
       }
     },
-    "/v2/user/catalogs/{storeId}/autoImport/scheduling/schedules": {
+    "/user/catalogs/{storeId}/autoImport/scheduling/schedules": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3612,7 +3612,7 @@
         ]
       }
     },
-    "/v2/user/channels/": {
+    "/user/channels/": {
       "get": {
         "tags": [
           "Channels - Channels Global"
@@ -3648,7 +3648,7 @@
         ]
       }
     },
-    "/v2/user/channels/{channelId}": {
+    "/user/channels/{channelId}": {
       "get": {
         "tags": [
           "Channels - Channels Global"
@@ -3675,7 +3675,7 @@
         ]
       }
     },
-    "/v2/user/channels/{channelId}/categories": {
+    "/user/channels/{channelId}/categories": {
       "get": {
         "tags": [
           "Channels - Channels Global"
@@ -3723,7 +3723,7 @@
         ]
       }
     },
-    "/v2/user/channels/{channelId}/columns": {
+    "/user/channels/{channelId}/columns": {
       "post": {
         "tags": [
           "Channels - Channels Global"
@@ -3786,7 +3786,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/": {
+    "/user/channelCatalogs/": {
       "get": {
         "tags": [
           "Channel Catalogs - Global"
@@ -3810,6 +3810,9 @@
             "schema": {
               "$ref": "#/definitions/channelCatalogList"
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -3858,6 +3861,9 @@
                 "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link2"
               }
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -3867,7 +3873,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}": {
+    "/user/channelCatalogs/{channelCatalogId}": {
       "get": {
         "tags": [
           "Channel Catalogs - Global"
@@ -3885,6 +3891,9 @@
             "schema": {
               "$ref": "#/definitions/channelCatalog"
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -3907,6 +3916,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog deleted"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -3916,7 +3928,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/enable": {
+    "/user/channelCatalogs/{channelCatalogId}/enable": {
       "post": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -3937,6 +3949,9 @@
             "schema": {
               "$ref": "#/definitions/upgradeOfferRequired"
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -3946,7 +3961,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/disable": {
+    "/user/channelCatalogs/{channelCatalogId}/disable": {
       "post": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -3961,6 +3976,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog disabled"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -3970,7 +3988,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/settings/general": {
+    "/user/channelCatalogs/{channelCatalogId}/settings/general": {
       "post": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -3993,6 +4011,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog general settings configured"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4002,7 +4023,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/settings/cost": {
+    "/user/channelCatalogs/{channelCatalogId}/settings/cost": {
       "post": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -4025,6 +4046,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog cost settings configured"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4034,7 +4058,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/columnMappings": {
+    "/user/channelCatalogs/{channelCatalogId}/columnMappings": {
       "put": {
         "tags": [
           "Channel Catalogs - Column Mappings"
@@ -4057,6 +4081,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog column mappings configured"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4066,7 +4093,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings": {
+    "/user/channelCatalogs/{channelCatalogId}/categoryMappings": {
       "get": {
         "tags": [
           "Channel Catalogs - Category Mappings"
@@ -4084,6 +4111,9 @@
             "schema": {
               "$ref": "#/definitions/channelCatalogCategoryMappings"
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4093,7 +4123,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/map": {
+    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/map": {
       "post": {
         "tags": [
           "Channel Catalogs - Category Mappings"
@@ -4116,6 +4146,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog category mapped"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4125,7 +4158,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/unmap": {
+    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/unmap": {
       "post": {
         "tags": [
           "Channel Catalogs - Category Mappings"
@@ -4148,6 +4181,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog category unmapped"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4157,7 +4193,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/exclusionFilterOperators": {
+    "/user/channelCatalogs/exclusionFilterOperators": {
       "get": {
         "tags": [
           "Channel Catalogs - Exclusion Filters"
@@ -4173,6 +4209,9 @@
                 "$ref": "#/definitions/exclusionFilterOperator"
               }
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4182,7 +4221,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/exclusionFilters": {
+    "/user/channelCatalogs/{channelCatalogId}/exclusionFilters": {
       "put": {
         "tags": [
           "Channel Catalogs - Exclusion Filters"
@@ -4205,6 +4244,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog exclusion filter list configured"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4214,7 +4256,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/products": {
+    "/user/channelCatalogs/{channelCatalogId}/products": {
       "post": {
         "tags": [
           "Channel Catalogs - Products"
@@ -4240,6 +4282,9 @@
             "schema": {
               "$ref": "#/definitions/channelCatalogProductInfoList"
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4249,7 +4294,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/products/{productId}": {
+    "/user/channelCatalogs/products/{productId}": {
       "post": {
         "tags": [
           "Channel Catalogs - Products"
@@ -4274,6 +4319,9 @@
             "schema": {
               "$ref": "#/definitions/channelCatalogProductByChannelCatalogResponse"
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4283,7 +4331,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}": {
+    "/user/channelCatalogs/{channelCatalogId}/products/{productId}": {
       "get": {
         "tags": [
           "Channel Catalogs - Products"
@@ -4304,6 +4352,9 @@
             "schema": {
               "$ref": "#/definitions/channelCatalogProductInfo"
             }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4313,7 +4364,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides": {
+    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides": {
       "put": {
         "tags": [
           "Channel Catalogs - Products Overrides"
@@ -4339,6 +4390,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog product overriden"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4348,7 +4402,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/{channelColumnId}": {
+    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/{channelColumnId}": {
       "delete": {
         "tags": [
           "Channel Catalogs - Products Overrides"
@@ -4375,6 +4429,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog product value override deleted"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4384,7 +4441,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/disable": {
+    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/disable": {
       "post": {
         "tags": [
           "Channel Catalogs - Products Optimisation"
@@ -4403,6 +4460,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog product disabled"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4412,7 +4472,7 @@
         ]
       }
     },
-    "/v2/user/channelCatalogs/{channelCatalogId}/products/{productId}/reenable": {
+    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/reenable": {
       "post": {
         "tags": [
           "Channel Catalogs - Products Optimisation"
@@ -4431,6 +4491,9 @@
         "responses": {
           "204": {
             "description": "Channel catalog product reenabled"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
           }
         },
         "security": [
@@ -4440,7 +4503,92 @@
         ]
       }
     },
-    "/v2/user/marketplaces/channelcatalogs/": {
+    "/user/channelCatalogs/{channelCatalogId}/exportations/cache": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Exportations"
+        ],
+        "summary": "Get the exportation cache information",
+        "operationId": "GetChannelCatalogExportationCacheInfo",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel catalog exportation cache information",
+            "schema": {
+              "$ref": "#/definitions/channelCatalogExportCacheInfoResponse"
+            }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Channel Catalogs - Exportations"
+        ],
+        "summary": "Delete the exportation cache",
+        "operationId": "DeleteChannelCatalogExportationCache",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Channel catalog exportation cache deleted"
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/channelCatalogs/{channelCatalogId}/exportations/history": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Exportations"
+        ],
+        "summary": "Get the exportation history",
+        "operationId": "GetChannelCatalogExportationHistory",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel catalog exportation history",
+            "schema": {
+              "$ref": "#/definitions/channelCatalogExportationHistory"
+            }
+          },
+          "default": {
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/marketplaces/channelcatalogs/": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Global"
@@ -4462,7 +4610,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/channelcatalogs/publications/{marketplaceTechnicalCode}/{accountId}/history": {
+    "/user/marketplaces/channelcatalogs/publications/{marketplaceTechnicalCode}/{accountId}/history": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Publications"
@@ -4551,7 +4699,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/properties": {
+    "/user/marketplaces/channelcatalogs/{channelCatalogId}/properties": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Settings"
@@ -4591,7 +4739,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/settings": {
+    "/user/marketplaces/channelcatalogs/{channelCatalogId}/settings": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Settings"
@@ -4684,7 +4832,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/": {
+    "/user/marketplaces/orders/": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Global"
@@ -4711,7 +4859,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/status": {
+    "/user/marketplaces/orders/status": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Global"
@@ -4738,7 +4886,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/harvest": {
+    "/user/marketplaces/orders/harvest": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Global"
@@ -4779,7 +4927,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/automaticTransitions": {
+    "/user/marketplaces/orders/automaticTransitions": {
       "get": {
         "tags": [
           "Marketplaces - Orders - AutoTransitions"
@@ -4842,7 +4990,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/list/full": {
+    "/user/marketplaces/orders/list/full": {
       "post": {
         "tags": [
           "Marketplaces - Orders - List"
@@ -4896,7 +5044,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/list/light": {
+    "/user/marketplaces/orders/list/light": {
       "post": {
         "tags": [
           "Marketplaces - Orders - List"
@@ -4938,7 +5086,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/exportations": {
+    "/user/marketplaces/orders/exportations": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Exports"
@@ -4947,25 +5095,10 @@
         "summary": "Get a paginated list of Order report exportations",
         "parameters": [
           {
-            "name": "pageNumber",
-            "description": "The page number you want to get",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "minimum": 1,
-            "x-example": 1
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageNumberQueryStrngParameter"
           },
           {
-            "name": "pageSize",
-            "description": "The count of Order report exportations you want to get",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "minimum": 25,
-            "maximum": 100,
-            "x-example": 25
+            "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/parameters/pageSizeQueryStrngParameter"
           },
           {
             "name": "storeId",
@@ -5039,7 +5172,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/batches/setMerchantOrderInfos": {
+    "/user/marketplaces/orders/batches/setMerchantOrderInfos": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Batches"
@@ -5076,7 +5209,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
+    "/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Batches"
@@ -5113,7 +5246,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
+    "/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Batches"
@@ -5159,7 +5292,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
+    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -5220,7 +5353,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
+    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -5263,7 +5396,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
+    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -5315,7 +5448,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
+    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -5369,7 +5502,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
+    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -5415,7 +5548,7 @@
         ]
       }
     },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
+    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -5496,7 +5629,7 @@
         ]
       }
     },
-    "/v2/user/analytics/tracking/status": {
+    "/user/analytics/tracking/status": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -5522,7 +5655,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/filters": {
+    "/user/analytics/{storeId}/reports/filters": {
       "get": {
         "tags": [
           "Analytics - Reports"
@@ -5552,7 +5685,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/filters/{reportFilterId}": {
+    "/user/analytics/{storeId}/reports/filters/{reportFilterId}": {
       "get": {
         "tags": [
           "Analytics - Reports"
@@ -5670,7 +5803,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/byday": {
+    "/user/analytics/{storeId}/reports/byday": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -5709,7 +5842,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/byday/export": {
+    "/user/analytics/{storeId}/reports/byday/export": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -5764,7 +5897,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/bychannel": {
+    "/user/analytics/{storeId}/reports/bychannel": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -5803,7 +5936,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/bychannel/export": {
+    "/user/analytics/{storeId}/reports/bychannel/export": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -5857,7 +5990,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/bycategory": {
+    "/user/analytics/{storeId}/reports/bycategory": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -5896,7 +6029,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/bycategory/export": {
+    "/user/analytics/{storeId}/reports/bycategory/export": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -5950,7 +6083,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/byproduct": {
+    "/user/analytics/{storeId}/reports/byproduct": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -5989,7 +6122,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/reports/byproduct/export": {
+    "/user/analytics/{storeId}/reports/byproduct/export": {
       "post": {
         "tags": [
           "Analytics - Reports"
@@ -6043,7 +6176,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/optimisations/{actionName}": {
+    "/user/analytics/{storeId}/optimisations/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -6082,7 +6215,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/optimisations/byproduct/{productId}/{actionName}": {
+    "/user/analytics/{storeId}/optimisations/byproduct/{productId}/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -6140,7 +6273,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/optimisations/bycategory/{catalogCategoryId}/{actionName}": {
+    "/user/analytics/{storeId}/optimisations/bycategory/{catalogCategoryId}/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -6198,7 +6331,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/optimisations/bychannel/{channelId}/{actionName}": {
+    "/user/analytics/{storeId}/optimisations/bychannel/{channelId}/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -6237,7 +6370,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/tracking/status": {
+    "/user/analytics/{storeId}/tracking/status": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -6271,7 +6404,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/tracking/clicks": {
+    "/user/analytics/{storeId}/tracking/clicks": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -6314,7 +6447,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/tracking/orders": {
+    "/user/analytics/{storeId}/tracking/orders": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -6357,7 +6490,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/tracking/externalorders": {
+    "/user/analytics/{storeId}/tracking/externalorders": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -6400,7 +6533,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules": {
+    "/user/analytics/{storeId}/rules": {
       "get": {
         "tags": [
           "Analytics - Rules"
@@ -6476,7 +6609,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/run": {
+    "/user/analytics/{storeId}/rules/run": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -6512,7 +6645,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/executions": {
+    "/user/analytics/{storeId}/rules/executions": {
       "get": {
         "tags": [
           "Analytics - Rules"
@@ -6561,7 +6694,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/{ruleId}": {
+    "/user/analytics/{storeId}/rules/{ruleId}": {
       "get": {
         "tags": [
           "Analytics - Rules"
@@ -6676,7 +6809,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/{ruleId}/run": {
+    "/user/analytics/{storeId}/rules/{ruleId}/run": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -6718,7 +6851,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/{ruleId}/moveup": {
+    "/user/analytics/{storeId}/rules/{ruleId}/moveup": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -6757,7 +6890,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/{ruleId}/movedown": {
+    "/user/analytics/{storeId}/rules/{ruleId}/movedown": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -6796,7 +6929,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/{ruleId}/enable": {
+    "/user/analytics/{storeId}/rules/{ruleId}/enable": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -6832,7 +6965,7 @@
         ]
       }
     },
-    "/v2/user/analytics/{storeId}/rules/{ruleId}/disable": {
+    "/user/analytics/{storeId}/rules/{ruleId}/disable": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -10916,6 +11049,167 @@
         }
       }
     },
+    "links.GetChannelCatalogExportationCacheInfoLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exportations/cache",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogExportationHistoryLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exportations/history",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.DeleteChannelCatalogExportationCacheLink": {
+      "allOf": [
+        {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exportations/cache",
+            "method": "DELETE"
+          }
+        }
+      ]
+    },
+    "channelCatalogExportCacheInfoResponse": {
+      "type": "object",
+      "required": [
+        "cacheInfo",
+        "links"
+      ],
+      "properties": {
+        "cacheInfo": {
+          "$ref": "#/definitions/channelCatalogExportCacheInfo"
+        },
+        "links": {
+          "$ref": "#/definitions/channelCatalogExportCacheInfoResponseLinks"
+        }
+      }
+    },
+    "channelCatalogExportCacheInfoResponseLinks": {
+      "type": "object",
+      "required": [
+        "self",
+        "delete"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogExportationCacheInfoLink"
+        },
+        "delete": {
+          "$ref": "#/definitions/links.DeleteChannelCatalogExportationCacheLink"
+        }
+      }
+    },
+    "channelCatalogExportCacheInfo": {
+      "type": "object",
+      "required": [
+        "cacheStatus"
+      ],
+      "properties": {
+        "cacheStatus": {
+          "type": "string",
+          "enum": [
+            "ReadyForGeneration"
+          ],
+          "example": "ReadyForGeneration"
+        }
+      }
+    },
+    "channelCatalogExportationHistoryLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogExportationHistoryLink"
+        }
+      }
+    },
+    "channelCatalogExportationHistory": {
+      "type": "object",
+      "required": [
+        "links",
+        "exportations"
+      ],
+      "properties": {
+        "paginationResult": {
+          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.PaginationResult"
+        },
+        "exportations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogExportationReporting"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/channelCatalogExportationHistoryLinks"
+        }
+      }
+    },
+    "channelCatalogExportationReporting": {
+      "type": "object",
+      "required": [
+        "exportationUtcDate",
+        "clientIpAddress",
+        "clientUserAgent"
+      ],
+      "properties": {
+        "exportationUtcDate": {
+          "description": "The exportation UTC date",
+          "type": "string",
+          "format": "date-time",
+          "example": "2014-08-25T07:32:31.584Z"
+        },
+        "exportationDuration": {
+          "description": "The exportation duration. \\\n'00:01:00' measn 1 minute.\n",
+          "type": "string",
+          "pattern": "(00:1[5-9])|(00:[2-5][0-9])|(0[1-9]:[0-5][0-9])|(1[0-9]:[0-5][0-9])|(2[0-3]:[0-5][0-9])",
+          "example": "00:01:00"
+        },
+        "cacheStatus": {
+          "description": "The cache status during the exportation",
+          "type": "string",
+          "enum": [
+            "Error",
+            "Available",
+            "GeneratedManually"
+          ],
+          "example": "Available"
+        },
+        "exportedProductCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The exportated product count during this exportation",
+          "example": 10142
+        },
+        "clientIpAddress": {
+          "type": "string",
+          "description": "The IP address of the client who requests this exportation",
+          "example": "42.101.42.101"
+        },
+        "clientUserAgent": {
+          "type": "string",
+          "description": "The http header User-Agent sent by the client who requests this operation",
+          "example": "Wget/1.13.4 (linux-gnu)"
+        }
+      }
+    },
     "channelCatalogList": {
       "type": "object",
       "properties": {
@@ -11391,6 +11685,7 @@
                   "rel": "categoryMappings",
                   "operationId": "GetChannelCatalogCategoyMappings",
                   "href": "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings",
+                  "method": "GET",
                   "parameters": [
                     {
                       "name": "channelCatalogId",
@@ -11405,6 +11700,7 @@
                   "rel": "delete",
                   "operationId": "DeleteChannelCatalog",
                   "href": "/v2/user/channelCatalogs/{channelCatalogId}",
+                  "method": "DELETE",
                   "parameters": [
                     {
                       "name": "channelCatalogId",
@@ -11419,6 +11715,37 @@
                   "rel": "disable",
                   "operationId": "DisableChannelCatalog",
                   "href": "/v2/user/channelCatalogs/{channelCatalogId}/disable",
+                  "method": "POST",
+                  "parameters": [
+                    {
+                      "name": "channelCatalogId",
+                      "type": "string",
+                      "required": true,
+                      "in": "path",
+                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
+                    }
+                  ]
+                },
+                {
+                  "rel": "exportation",
+                  "operationId": "GetChannelCatalogExportationCacheInfo",
+                  "href": "/v2/user/channelCatalogs/{channelCatalogId}/exportations/cache",
+                  "method": "GET",
+                  "parameters": [
+                    {
+                      "name": "channelCatalogId",
+                      "type": "string",
+                      "required": true,
+                      "in": "path",
+                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
+                    }
+                  ]
+                },
+                {
+                  "rel": "exportationHistory",
+                  "operationId": "GetChannelCatalogExportationHistory",
+                  "href": "/v2/user/channelCatalogs/{channelCatalogId}/exportations/history",
+                  "method": "GET",
                   "parameters": [
                     {
                       "name": "channelCatalogId",
@@ -11643,7 +11970,7 @@
         }
       }
     },
-    "links.GetChannelCatalogProductInfo": {
+    "links.GetChannelCatalogProductInfoLink": {
       "allOf": [
         {
           "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
@@ -11658,7 +11985,7 @@
           "type": "object",
           "properties": {
             "self": {
-              "$ref": "#/definitions/links.GetChannelCatalogProductInfo"
+              "$ref": "#/definitions/links.GetChannelCatalogProductInfoLink"
             }
           }
         },
@@ -15460,19 +15787,6 @@
         }
       }
     },
-    "links.GetChannelCatalogProductInfoLink": {
-      "allOf": [
-        {
-          "$ref": "https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/channelCatalogs/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/products/6d469a54-8426-4855-abc2-9e062e2056b9",
-            "method": "GET"
-          }
-        }
-      ]
-    },
     "links.OptimiseByProductLink": {
       "allOf": [
         {
@@ -16973,9 +17287,9 @@
   },
   "securityDefinitions": {
     "api_key": {
-      "type": "api_key",
+      "type": "apiKey",
       "in": "header",
-      "name": "api_key"
+      "name": "Ocp-Apim-Subscription-Key"
     }
   },
   "x-tagGroups": [
