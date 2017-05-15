@@ -13284,10 +13284,9 @@
       ]
     },
     "orderExportations": {
-      "description": "The list of Order report exportations",
+      "description": "The list of Order report exportations.\\\nThe paginationResult properties can be null if the list is empty.\n",
       "type": "object",
       "required": [
-        "paginationResult",
         "links",
         "exportations"
       ],
@@ -14909,9 +14908,9 @@
       ]
     },
     "orderListLight": {
+      "description": "The order list with minimum information we have from the orders.\\\nThe paginationResult properties can be null if the list is empty. \n",
       "type": "object",
       "required": [
-        "paginationResult",
         "orders",
         "links"
       ],
@@ -14931,9 +14930,9 @@
       }
     },
     "orderListFull": {
+      "description": "The order list with all information we have from the orders and its items.\\\nThe paginationResult properties can be null if the list is empty. \n",
       "type": "object",
       "required": [
-        "paginationResult",
         "orders",
         "links"
       ],
