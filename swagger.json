@@ -9279,8 +9279,7 @@
     "creditCardInfoResponse": {
       "type": "object",
       "required": [
-        "links",
-        "currentPaymentMethod"
+        "links"
       ],
       "properties": {
         "links": {
