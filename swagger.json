@@ -17746,6 +17746,11 @@
         "href"
       ],
       "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
         "docUrl": {
           "$ref": "#/definitions/BeezUP.Common.DocUrl"
         },
@@ -17849,6 +17854,11 @@
         "in"
       ],
       "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link parameter. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
         "value": {
           "type": "object",
           "description": "The value of the parameter. It can be an integer a string or an object.",
@@ -17900,6 +17910,11 @@
     "BeezUP.Common.LinkParameterProperty3": {
       "type": "object",
       "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link parameter property. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
         "value": {
           "type": "object",
           "description": "The value of the parameter. It can be an integer a string or an object.",
