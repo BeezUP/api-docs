@@ -5377,6 +5377,7 @@
         ],
         "operationId": "HeadOrder",
         "summary": "Get the meta information about the order (ETag, Last-Modified)",
+        "description": "The purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful \n",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -5407,7 +5408,7 @@
             }
           },
           "304": {
-            "description": "The ETag sent in the http header If-None-Match did not change. So you can keep your version.",
+            "description": "The ETag sent in the http header If-None-Match did not change. So you are up to date!",
             "headers": {
               "Last-Modified": {
                 "type": "string",
@@ -5476,7 +5477,7 @@
             }
           },
           "304": {
-            "description": "The ETag sent in the http header If-None-Match did not change. So you can keep your version.",
+            "description": "The ETag sent in the http header If-None-Match did not change. So you are up to date !",
             "headers": {
               "Last-Modified": {
                 "type": "string",
