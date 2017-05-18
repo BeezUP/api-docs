@@ -5615,6 +5615,12 @@
               }
             }
           },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "409": {
             "description": "Failed to send harvest request because allowed rate limits have been exceeded",
             "headers": {
@@ -15151,9 +15157,6 @@
         "lastModificationUtcDate": {
           "format": "date-time",
           "type": "string"
-        },
-        "info": {
-          "$ref": "#/definitions/BeezUP.Common.InfoSummaries"
         }
       }
     },
