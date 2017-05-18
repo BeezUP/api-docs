@@ -8062,8 +8062,7 @@
         "firstName",
         "email",
         "countryIsoCodeAlpha3",
-        "company",
-        "whatIDo"
+        "company"
       ],
       "type": "object",
       "properties": {
