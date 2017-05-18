@@ -4930,6 +4930,9 @@
               "$ref": "#/definitions/orderIndex"
             }
           },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4961,6 +4964,9 @@
             "schema": {
               "$ref": "#/definitions/accountSynchronizations"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -5033,6 +5039,9 @@
             "schema": {
               "$ref": "#/definitions/automaticTransitionInfos"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -5211,6 +5220,9 @@
             "schema": {
               "$ref": "#/definitions/orderExportations"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
@@ -5555,18 +5567,7 @@
             }
           },
           "304": {
-            "description": "The ETag sent in the http header If-None-Match did not change. So you are up to date !",
-            "headers": {
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time",
-                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
-              },
-              "ETag": {
-                "type": "string",
-                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
-              }
-            }
+            "$ref": "#/responses/304_NotModified"
           },
           "404": {
             "description": "Requested Order could not be found",
