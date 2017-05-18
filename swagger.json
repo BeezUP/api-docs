@@ -48,6 +48,11 @@
       "x-displayName": "LOV"
     },
     {
+      "name": "Customer - Global",
+      "description": "All global operations",
+      "x-displayName": "Global"
+    },
+    {
       "name": "Customer - Account",
       "description": "All user account operations",
       "x-displayName": "Account"
@@ -709,6 +714,27 @@
           },
           "default": {
             "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/customer/": {
+      "get": {
+        "tags": [
+          "Customer - Global"
+        ],
+        "summary": "The index of all operations and LOV",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/customerIndex"
+            }
           }
         },
         "security": [
@@ -7435,6 +7461,28 @@
           "$ref": "#/definitions/links.GetUserListOfValuesLink"
         }
       }
+    },
+    "customerIndex": {
+      "description": "The index of the customer API",
+      "type": "object",
+      "required": [
+        "links",
+        "lovLinks"
+      ],
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/customerIndexLinks"
+        },
+        "lovLinks": {
+          "$ref": "#/definitions/customerIndexLovLinks"
+        }
+      }
+    },
+    "customerIndexLinks": {
+      "type": "object"
+    },
+    "customerIndexLovLinks": {
+      "type": "object"
     },
     "links.shareLink": {
       "allOf": [
@@ -18310,6 +18358,7 @@
     {
       "name": "Customer",
       "tags": [
+        "Customer - Global",
         "Customer - Account",
         "Customer - Stores",
         "Customer - Shares",
