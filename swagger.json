@@ -5371,6 +5371,72 @@
       }
     },
     "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
+      "head": {
+        "tags": [
+          "Marketplaces - Orders - Order"
+        ],
+        "operationId": "HeadOrder",
+        "summary": "Get the meta information about the order (ETag, Last-Modified)",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched Order and Order Item(s) properties",
+            "headers": {
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+              },
+              "ETag": {
+                "type": "string",
+                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
+            }
+          },
+          "304": {
+            "description": "The ETag sent in the http header If-None-Match did not change. So you can keep your version.",
+            "headers": {
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+              },
+              "ETag": {
+                "type": "string",
+                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
+            }
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
       "get": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -5395,6 +5461,11 @@
           "200": {
             "description": "Successfully fetched Order and Order Item(s) properties",
             "headers": {
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+              },
               "ETag": {
                 "type": "string",
                 "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
@@ -5407,6 +5478,11 @@
           "304": {
             "description": "The ETag sent in the http header If-None-Match did not change. So you can keep your version.",
             "headers": {
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+              },
               "ETag": {
                 "type": "string",
                 "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
