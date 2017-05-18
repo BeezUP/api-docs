@@ -4918,6 +4918,11 @@
         "x-tagGroups": "Martketplaces Orders",
         "operationId": "GetOrderIndex",
         "summary": "Get all actions you can do on the order API",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Order index",
@@ -4945,6 +4950,11 @@
         "x-tagGroups": "Martketplaces Orders",
         "operationId": "GetMarketplaceAccountsSynchronization",
         "summary": "Get current synchronization status between your marketplaces and BeezUP accounts",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successfully fetched current synchronization status",
@@ -5012,6 +5022,11 @@
         ],
         "operationId": "GetAutomaticTransitions",
         "summary": "Get list of configured automatic Order status transitions",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successfully fetched list of configured automatic Order status transitions",
@@ -5185,6 +5200,9 @@
             "type": "string",
             "format": "guid",
             "description": "The store identifier to regroup the order exportations"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -5394,7 +5412,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successfully fetched meta information about the order (ETag, Last-Modified)",
+            "description": "Successfully fetched Order and Order Item(s) properties",
             "headers": {
               "Last-Modified": {
                 "type": "string",
@@ -5524,6 +5542,9 @@
           },
           {
             "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -5531,6 +5552,20 @@
             "description": "Successfully fetched Order history",
             "schema": {
               "$ref": "#/definitions/orderHistory"
+            }
+          },
+          "304": {
+            "description": "The ETag sent in the http header If-None-Match did not change. So you are up to date !",
+            "headers": {
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+              },
+              "ETag": {
+                "type": "string",
+                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
             }
           },
           "404": {
@@ -18777,6 +18812,20 @@
       "description": "Occurs when something goes wrong",
       "schema": {
         "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "304_NotModified": {
+      "description": "The ETag sent in the http header If-None-Match did not change. So you are up to date !",
+      "headers": {
+        "Last-Modified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification UTC date of the resource\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+        },
+        "ETag": {
+          "type": "string",
+          "description": "ETag value to identify the current version of the resource\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+        }
       }
     },
     "412_PreConditionFailed": {
