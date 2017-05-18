@@ -17941,9 +17941,17 @@
             "$ref": "#/definitions/BeezUP.Common.LinkParameter3"
           }
         },
-        "templated": {
+        "urlTemplated": {
           "type": "boolean",
           "description": "indicates whether the href is templated or not"
+        },
+        "allRequiredParamsProvided": {
+          "type": "boolean",
+          "description": "indicates whether all required params have been provided"
+        },
+        "allOptionalParamsProvided": {
+          "type": "boolean",
+          "description": "indicates whether all optionals params have been provided"
         },
         "info": {
           "$ref": "#/definitions/BeezUP.Common.InfoSummaries"
