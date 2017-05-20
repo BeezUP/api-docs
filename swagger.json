@@ -3764,9 +3764,9 @@
             "in": "header",
             "required": true,
             "type": "array",
+            "collectionFormat": "csv",
             "items": {
-              "type": "string",
-              "collectionFormat": "csv"
+              "type": "string"
             }
           }
         ],
@@ -3777,9 +3777,9 @@
               "Content-Encoding": {
                 "description": "Indicates the compression use in the response",
                 "type": "array",
+                "collectionFormat": "csv",
                 "items": {
-                  "type": "string",
-                  "collectionFormat": "csv"
+                  "type": "string"
                 }
               }
             },
@@ -3812,9 +3812,9 @@
             "in": "header",
             "required": true,
             "type": "array",
+            "collectionFormat": "csv",
             "items": {
-              "type": "string",
-              "collectionFormat": "csv"
+              "type": "string"
             }
           },
           {
@@ -3837,9 +3837,9 @@
               "Content-Encoding": {
                 "description": "Indicates the compression use in the response",
                 "type": "array",
+                "collectionFormat": "csv",
                 "items": {
-                  "type": "string",
-                  "collectionFormat": "csv"
+                  "type": "string"
                 }
               }
             },
