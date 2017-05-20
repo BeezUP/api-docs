@@ -5107,9 +5107,9 @@
             "in": "header",
             "required": true,
             "type": "array",
+            "collectionFormat": "csv",
             "items": {
-              "type": "string",
-              "collectionFormat": "csv"
+              "type": "string"
             }
           },
           {
