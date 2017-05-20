@@ -16962,7 +16962,8 @@
       "enum": [
         "ByChannel",
         "ByCategory",
-        "ByProduct"
+        "ByProduct",
+        "ByDate"
       ],
       "example": "ByProduct"
     },
