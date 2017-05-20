@@ -469,9 +469,9 @@
               "Cache-Control": {
                 "description": "Indicates the directive around the caching mechanisms.\\\nFor more information, please go to this link: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9\n",
                 "type": "array",
+                "collectionFormat": "csv",
                 "items": {
-                  "type": "string",
-                  "collectionFormat": "csv"
+                  "type": "string"
                 }
               }
             },
@@ -489,9 +489,9 @@
               "Cache-Control": {
                 "description": "Indicates the directive around the caching mechanisms.\\\nFor more information, please go to this link: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9\n",
                 "type": "array",
+                "collectionFormat": "csv",
                 "items": {
-                  "type": "string",
-                  "collectionFormat": "csv"
+                  "type": "string"
                 }
               }
             }
@@ -535,17 +535,17 @@
               "Cache-Control": {
                 "description": "Indicates the directive around the caching mechanisms.\\\nFor more information, please go to this link: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9\n",
                 "type": "array",
+                "collectionFormat": "csv",
                 "items": {
-                  "type": "string",
-                  "collectionFormat": "csv"
+                  "type": "string"
                 }
               },
               "Content-Language": {
                 "description": "Indicates the language use in the response",
                 "type": "array",
+                "collectionFormat": "csv",
                 "items": {
-                  "type": "string",
-                  "collectionFormat": "csv"
+                  "type": "string"
                 }
               }
             },
@@ -563,9 +563,9 @@
               "Cache-Control": {
                 "description": "Indicates the directive around the caching mechanisms.\\\nFor more information, please go to this link: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9\n",
                 "type": "array",
+                "collectionFormat": "csv",
                 "items": {
-                  "type": "string",
-                  "collectionFormat": "csv"
+                  "type": "string"
                 }
               }
             }
