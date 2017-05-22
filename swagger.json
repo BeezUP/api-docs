@@ -5305,6 +5305,12 @@
               "$ref": "#/definitions/batchOrderOperationResponse"
             }
           },
+          "400": {
+            "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -5340,6 +5346,12 @@
             "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
             "schema": {
               "$ref": "#/definitions/batchOrderOperationResponse"
+            }
+          },
+          "400": {
+            "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5386,6 +5398,12 @@
             "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
             "schema": {
               "$ref": "#/definitions/batchOrderOperationResponse"
+            }
+          },
+          "400": {
+            "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
