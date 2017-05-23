@@ -16,8 +16,15 @@
       "url": "http://www.beezup.com"
     }
   },
+  "x-beezup-api-ops": {
+    "repo": "Customer",
+    "appRoot": "BeezUP.Customer.WebService",
+    "namespace": "BeezUP.Customer.WebService",
+    "comment": "Change the product name from BeezUP API to UserApi to correspond to the reality\n"
+  },
   "host": "api.beezup.com",
   "basePath": "/v2",
+  "x-basePath": "/v2/public/security",
   "schemes": [
     "https"
   ],
