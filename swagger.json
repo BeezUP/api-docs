@@ -2356,7 +2356,7 @@
         ]
       }
     },
-    "/user/catalogs/{storeId}/products": {
+    "/user/catalogs/{storeId}/products/list": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
