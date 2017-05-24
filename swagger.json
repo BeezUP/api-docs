@@ -2482,7 +2482,7 @@
         ]
       }
     },
-    "/user/catalogs/{storeId}/importations": {
+    "/user/catalogs/{storeId}/importations/start": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2527,7 +2527,9 @@
             "api_key": []
           }
         ]
-      },
+      }
+    },
+    "/user/catalogs/{storeId}/importations": {
       "get": {
         "tags": [
           "Catalogs - Importation Process"
