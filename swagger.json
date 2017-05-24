@@ -3396,38 +3396,7 @@
         ]
       }
     },
-    "/user/catalogs/{storeId}/autoImport": {
-      "get": {
-        "tags": [
-          "Catalogs - Auto"
-        ],
-        "operationId": "Auto_GetAutoImportConfiguration",
-        "summary": "Get the auto import configuration",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Auto import configuration",
-            "schema": {
-              "$ref": "#/definitions/autoImportConfiguration"
-            }
-          },
-          "404": {
-            "description": "StoreId or Auto Import configuration not found"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      },
+    "/user/catalogs/{storeId}/autoImport/activate": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3458,6 +3427,39 @@
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/catalogs/{storeId}/autoImport": {
+      "get": {
+        "tags": [
+          "Catalogs - Auto"
+        ],
+        "operationId": "Auto_GetAutoImportConfiguration",
+        "summary": "Get the auto import configuration",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Auto import configuration",
+            "schema": {
+              "$ref": "#/definitions/autoImportConfiguration"
+            }
+          },
+          "404": {
+            "description": "StoreId or Auto Import configuration not found"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
