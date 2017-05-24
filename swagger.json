@@ -2482,6 +2482,39 @@
         ]
       }
     },
+    "/user/catalogs/{storeId}/importations": {
+      "get": {
+        "tags": [
+          "Catalogs - Importation Process"
+        ],
+        "summary": "Get the latest catalog importation reporting",
+        "operationId": "Importation_GetReportings",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The last importation reportings",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/importationReporting"
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
     "/user/catalogs/{storeId}/importations/start": {
       "post": {
         "tags": [
@@ -2529,39 +2562,6 @@
         ]
       }
     },
-    "/user/catalogs/{storeId}/importations": {
-      "get": {
-        "tags": [
-          "Catalogs - Importation Process"
-        ],
-        "summary": "Get the latest catalog importation reporting",
-        "operationId": "Importation_GetReportings",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The last importation reportings",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/importationReporting"
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
     "/user/catalogs/{storeId}/importations/{executionId}": {
       "get": {
         "tags": [
@@ -2596,8 +2596,10 @@
             "api_key": []
           }
         ]
-      },
-      "delete": {
+      }
+    },
+    "/user/catalogs/{storeId}/importations/{executionId}/cancel": {
+      "post": {
         "tags": [
           "Catalogs - Importation Process"
         ],
