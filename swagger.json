@@ -2585,7 +2585,10 @@
             }
           },
           "404": {
-            "description": "ExecutionId not found or not yet synchronized. If not synchronized within 30 sec after the import has been started, please contact our support"
+            "description": "ExecutionId not found or not yet synchronized. If not synchronized within 30 sec after the import has been started, please contact our support",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -2618,10 +2621,16 @@
             "description": "Catalog importation canceled"
           },
           "404": {
-            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution."
+            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Occurs when this importation is already finished."
+            "description": "Occurs when this importation is already finished.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -2657,10 +2666,16 @@
             }
           },
           "404": {
-            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution."
+            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Occurs when this importation is already finished."
+            "description": "Occurs when this importation is already finished.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -2700,7 +2715,10 @@
             }
           },
           "404": {
-            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.\nOccurs when a catalog column is not found."
+            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.\nOccurs when a catalog column is not found.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
             "description": "Occurs when this importation is already finished."
@@ -2742,7 +2760,10 @@
             }
           },
           "404": {
-            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.\nOccurs when a catalog column is not found."
+            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.\nOccurs when a catalog column is not found.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -2781,10 +2802,16 @@
             }
           },
           "404": {
-            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution."
+            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Occurs when this importation is already finished."
+            "description": "Occurs when this importation is already finished.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -2823,10 +2850,13 @@
             }
           },
           "404": {
-            "description": "ExecutionId not found or not yet synchronized. If not synchronized within 30 sec, please contact our support"
+            "description": "ExecutionId not found or not yet synchronized. If not synchronized within 30 sec, please contact our support\n      schema:\n$ref: '#/definitions/BeezUP.Common.ErrorResponseMessage'"
           },
           "409": {
-            "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details."
+            "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -9984,8 +10014,62 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c",
+            "method": "GET"
+          }
         }
       ]
+    },
+    "links.Importation_CancelLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c/cancel",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "importAlreadyInProgressResponse": {
+      "type": "object",
+      "required": [
+        "errors",
+        "links"
+      ],
+      "properties": {
+        "errors": {
+          "description": "The error message list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BeezUP.Common.UserErrorMessage"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/importAlreadyInProgressResponseLinks"
+        }
+      }
+    },
+    "importAlreadyInProgressResponseLinks": {
+      "description": "The action links",
+      "type": "object",
+      "required": [
+        "currentImportation",
+        "cancelCurrentImportation"
+      ],
+      "properties": {
+        "currentImportation": {
+          "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
+        },
+        "cancelCurrentImportation": {
+          "$ref": "#/definitions/links.Importation_CancelLink"
+        }
+      }
     },
     "schedulingType": {
       "description": "Indicate the scheduling type. Schedule or Interval. We recommand you to use interval for a better reporting.",
@@ -10560,6 +10644,23 @@
             "isCatalogUpdateCompleted": false,
             "isSavedInDb": false
           }
+        },
+        "links": {
+          "$ref": "#/definitions/importationMonitoringLinks"
+        }
+      }
+    },
+    "importationMonitoringLinks": {
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.Importation_GetImportationMonitoringLink"
+        },
+        "cancel": {
+          "$ref": "#/definitions/links.Importation_CancelLink"
         }
       }
     },
@@ -18841,9 +18942,9 @@
       }
     },
     "importAlreadyInProgress": {
-      "description": "When a catalog importation is already in progress!",
+      "description": "A catalog importation is already in progress!",
       "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+        "$ref": "#/definitions/importAlreadyInProgressResponse"
       }
     },
     "processingResponse": {
