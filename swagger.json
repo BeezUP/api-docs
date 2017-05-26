@@ -4755,13 +4755,15 @@
             "api_key": []
           }
         ]
-      },
-      "delete": {
+      }
+    },
+    "/user/channelCatalogs/{channelCatalogId}/exportations/cache/clear": {
+      "post": {
         "tags": [
           "Channel Catalogs - Exportations"
         ],
-        "summary": "Delete the exportation cache",
-        "operationId": "DeleteChannelCatalogExportationCache",
+        "summary": "Clear the exportation cache",
+        "operationId": "ClearChannelCatalogExportationCache",
         "parameters": [
           {
             "$ref": "#/parameters/channelCatalogIdParameter"
@@ -4769,7 +4771,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Channel catalog exportation cache deleted"
+            "description": "Channel catalog exportation cache cleared"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -11802,15 +11804,15 @@
         }
       ]
     },
-    "links.DeleteChannelCatalogExportationCacheLink": {
+    "links.ClearChannelCatalogExportationCacheLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
           "example": {
-            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exportations/cache",
-            "method": "DELETE"
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exportations/cache/clear",
+            "method": "POST"
           }
         }
       ]
@@ -11839,8 +11841,8 @@
         "self": {
           "$ref": "#/definitions/links.GetChannelCatalogExportationCacheInfoLink"
         },
-        "delete": {
-          "$ref": "#/definitions/links.DeleteChannelCatalogExportationCacheLink"
+        "clear": {
+          "$ref": "#/definitions/links.ClearChannelCatalogExportationCacheLink"
         }
       }
     },
