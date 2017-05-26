@@ -16,14 +16,15 @@
       "url": "http://www.beezup.com"
     }
   },
+  "host": "api.beezup.com",
+  "basePath": "/v2",
   "x-beezup-api-ops": {
     "repo": "Customer",
+    "apiName": "V2PublicSecurity",
     "appRoot": "BeezUP.Customer.WebService",
     "namespace": "BeezUP.Customer.WebService",
     "comment": "Change the product name from BeezUP API to UserApi to correspond to the reality\n"
   },
-  "host": "api.beezup.com",
-  "basePath": "/v2",
   "x-basePath": "/v2/public/security",
   "schemes": [
     "https"
@@ -742,12 +743,23 @@
           "Customer - Global"
         ],
         "summary": "The index of all operations and LOV",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/customerIndex"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -764,12 +776,20 @@
         ],
         "summary": "Get user account information",
         "operationId": "GetUserAccountInfo",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "User account information",
             "schema": {
               "$ref": "#/definitions/accountInfo"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -936,12 +956,20 @@
         ],
         "summary": "Get profile picture information",
         "operationId": "GetProfilePictureInfo",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Profile picture information",
             "schema": {
               "$ref": "#/definitions/profilePictureInfoResponse"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1003,12 +1031,20 @@
         ],
         "summary": "Get credit card information",
         "operationId": "GetCreditCardInfo",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "User credit card information",
             "schema": {
               "$ref": "#/definitions/creditCardInfoResponse"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "404": {
             "description": "Credit Card not found"
@@ -1132,12 +1168,20 @@
         ],
         "summary": "Get store list",
         "operationId": "GetStores",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Store list response",
             "schema": {
               "$ref": "#/definitions/stores"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1199,6 +1243,9 @@
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -1207,6 +1254,9 @@
             "schema": {
               "$ref": "#/definitions/storeHeader"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "404": {
             "description": "Store not found or not authorized"
@@ -1300,6 +1350,9 @@
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -1308,6 +1361,9 @@
             "schema": {
               "$ref": "#/definitions/storeShares"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "404": {
             "description": "Store not found or customer not the owner"
@@ -1378,6 +1434,9 @@
             "required": true,
             "type": "string",
             "format": "guid"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -1386,6 +1445,9 @@
             "schema": {
               "$ref": "#/definitions/userFriendInfo"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "404": {
             "description": "User not found"
@@ -1504,6 +1566,9 @@
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
         "responses": {
@@ -1512,6 +1577,9 @@
             "schema": {
               "$ref": "#/definitions/storeAlerts"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "404": {
             "description": "Store not found or not authorized"
@@ -1588,12 +1656,20 @@
         ],
         "summary": "Get billing periods conditions",
         "operationId": "GetBillingPeriods",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Get the billing periods conditions",
             "schema": {
               "$ref": "#/definitions/billingPeriods"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1613,12 +1689,20 @@
         ],
         "summary": "Get all standard offers",
         "operationId": "GetStandardOffers",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Get all standard offers",
             "schema": {
               "$ref": "#/definitions/standardOffers"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1681,12 +1765,23 @@
         ],
         "summary": "Get contract list",
         "operationId": "GetContracts",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Contract list",
             "schema": {
               "$ref": "#/definitions/contracts"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
           }
         },
         "security": [
@@ -1846,12 +1941,20 @@
         ],
         "summary": "Get all your invoices",
         "operationId": "GetInvoices",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Get all invoices of a customer",
             "schema": {
               "$ref": "#/definitions/invoices"
             }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7661,11 +7764,169 @@
         }
       }
     },
+    "links.customerIndexLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer",
+            "method": "GET"
+          }
+        }
+      ]
+    },
     "customerIndexLinks": {
-      "type": "object"
+      "description": "Gives you want you can do on this API",
+      "type": "object",
+      "required": [
+        "self",
+        "accountInfo",
+        "billingPeriods",
+        "standardOffers",
+        "friendInfo"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.customerIndexLink"
+        },
+        "accountInfo": {
+          "$ref": "#/definitions/links.getUserAccountInfoLink"
+        },
+        "billingPeriods": {
+          "$ref": "#/definitions/links.getBillingPeriodsLink"
+        },
+        "standardOffers": {
+          "$ref": "#/definitions/links.getStandardOffersLink"
+        },
+        "friendInfo": {
+          "$ref": "#/definitions/links.getFriendInfoLink"
+        },
+        "logout": {
+          "$ref": "#/definitions/links.logoutLink"
+        },
+        "stores": {
+          "$ref": "#/definitions/links.getStoresLink"
+        },
+        "invoices": {
+          "$ref": "#/definitions/links.getInvoicesLink"
+        },
+        "contracts": {
+          "$ref": "#/definitions/links.getContractsLink"
+        }
+      }
     },
     "customerIndexLovLinks": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "customerStatusLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "beezUPTimeZoneLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "storeCountryLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "storeSectorLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "countryLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "contractTerminationReasonLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "invoicePaymentStatusLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        }
+      }
+    },
+    "links.logoutLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/security/logout",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.getFriendInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/friends/{userId}",
+            "method": "GET",
+            "parameters": {
+              "userId": {
+                "in": "path",
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.getStandardOffersLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/offers",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.getBillingPeriodsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/billingPeriods",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.getInvoicesLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/invoices",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.getUserAccountInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account",
+            "method": "GET"
+          }
+        }
+      ]
     },
     "links.shareLink": {
       "allOf": [
@@ -7685,6 +7946,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores",
+            "method": "GET"
+          }
         }
       ]
     },
@@ -7776,6 +8043,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/creditCardinfo",
+            "method": "GET"
+          }
         }
       ]
     },
@@ -7783,6 +8056,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/contracts",
+            "method": "GET"
+          }
         }
       ]
     },
@@ -8611,7 +8890,7 @@
     },
     "billingPeriodInMonth": {
       "format": "int32",
-      "description": "Can be null. The billing period in month based on /billingperiods",
+      "description": "Can be null. The billing period in month based on /billingPeriods",
       "type": "integer",
       "example": 12,
       "minimum": 1
@@ -9265,6 +9544,7 @@
       "description": "The different actions you can make on this account",
       "type": "object",
       "required": [
+        "self",
         "savePersonalInfo",
         "changePassword",
         "getProfilePictureInfo",
@@ -9274,6 +9554,9 @@
         "saveCreditCardInfo"
       ],
       "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getUserAccountInfoLink"
+        },
         "savePersonalInfo": {
           "$ref": "#/definitions/links.savePersonalInfoLink"
         },
@@ -9294,9 +9577,19 @@
         },
         "saveCreditCardInfo": {
           "$ref": "#/definitions/links.saveCreditCardInfoLink"
+        },
+        "activateUserAccount": {
+          "$ref": "#/definitions/links.activateUserAccountLink"
         }
       },
       "additionalProperties": false
+    },
+    "links.activateUserAccountLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        }
+      ]
     },
     "links.getProfilePictureInfoLink": {
       "allOf": [
