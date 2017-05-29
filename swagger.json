@@ -5116,7 +5116,7 @@
           "200": {
             "description": "Successfully fetched current synchronization status",
             "schema": {
-              "$ref": "#/definitions/accountSynchronizations"
+              "$ref": "#/definitions/accountSynchronizationList"
             }
           },
           "304": {
@@ -5288,6 +5288,12 @@
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
+          "404": {
+            "description": "No orders have been found for this request.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -5326,6 +5332,12 @@
           },
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "No orders have been found for this request.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -5418,6 +5430,12 @@
           },
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "No orders have been found for this request.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -14131,14 +14149,12 @@
       "type": "string",
       "example": "Monroe"
     },
-    "orderListRequest": {
+    "orderListRequestWithoutPagination": {
       "type": "object",
       "required": [
         "dateSearchType",
         "beginPeriodUtcDate",
-        "endPeriodUtcDate",
-        "pageSize",
-        "pageNumber"
+        "endPeriodUtcDate"
       ],
       "properties": {
         "marketplaceTechnicalCodes": {
@@ -14214,14 +14230,33 @@
           "example": [
             "MyOrderId1234"
           ]
-        },
-        "pageSize": {
-          "$ref": "#/definitions/pageSize"
-        },
-        "pageNumber": {
-          "$ref": "#/definitions/pageNumber"
         }
       }
+    },
+    "orderListRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderListRequestWithoutPagination"
+        },
+        {
+          "type": "object",
+          "required": [
+            "dateSearchType",
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "pageSize",
+            "pageNumber"
+          ],
+          "properties": {
+            "pageSize": {
+              "$ref": "#/definitions/pageSize"
+            },
+            "pageNumber": {
+              "$ref": "#/definitions/pageNumber"
+            }
+          }
+        }
+      ]
     },
     "exportOrderListFormat": {
       "description": "The type of the file to export",
@@ -14237,7 +14272,7 @@
       "type": "object",
       "required": [
         "storeId",
-        "orderListRequest"
+        "orderListRequestWithoutPagination"
       ],
       "properties": {
         "format": {
@@ -14246,8 +14281,8 @@
         "storeId": {
           "$ref": "#/definitions/BeezUP.Common.StoreId"
         },
-        "orderListRequest": {
-          "$ref": "#/definitions/orderListRequest"
+        "orderListRequestWithoutPagination": {
+          "$ref": "#/definitions/orderListRequestWithoutPagination"
         }
       }
     },
@@ -14442,6 +14477,8 @@
     "setMerchantOrderInfoListRequest": {
       "type": "object",
       "required": [
+        "order_MerchantECommerceSoftwareName",
+        "order_MerchantECommerceSoftwareVersion",
         "orders"
       ],
       "properties": {
@@ -14506,7 +14543,9 @@
     "setMerchantOrderInfoRequest": {
       "type": "object",
       "required": [
-        "order_MerchantOrderId"
+        "order_MerchantOrderId",
+        "order_MerchantECommerceSoftwareName",
+        "order_MerchantECommerceSoftwareVersion"
       ],
       "properties": {
         "order_MerchantOrderId": {
@@ -14520,7 +14559,7 @@
         }
       }
     },
-    "accountSynchronizations": {
+    "accountSynchronizationList": {
       "type": "object",
       "properties": {
         "accountSynchronizations": {
@@ -14533,6 +14572,11 @@
     },
     "accountSynchronization": {
       "type": "object",
+      "required": [
+        "accountId",
+        "marketplaceTechnicalCode",
+        "marketplaceBusinessCode"
+      ],
       "properties": {
         "accountId": {
           "$ref": "#/definitions/accountId"
@@ -15868,6 +15912,9 @@
     "batchOrderOperationResponse": {
       "description": "The response given by the batch operation",
       "type": "object",
+      "required": [
+        "operations"
+      ],
       "properties": {
         "operations": {
           "type": "array",
