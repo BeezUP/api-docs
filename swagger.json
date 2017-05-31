@@ -18078,6 +18078,99 @@
         }
       }
     },
+    "BeezUP.Common.CatalogCategoryFilter": {
+      "type": "object",
+      "properties": {
+        "categoryPath": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Indicates on which catalog category path you want to make the filter",
+          "example": [
+            "Maison",
+            "Chambre"
+          ]
+        }
+      }
+    },
+    "BeezUP.Common.ChannelCategoryFilter": {
+      "type": "object",
+      "properties": {
+        "categoryPath": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Indicates on which channel category path you want to make the filter",
+          "example": [
+            "Home",
+            "Bedroom"
+          ]
+        }
+      }
+    },
+    "BeezUP.Common.ProductFilters": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "The product sku filter",
+          "example": "M1234"
+        },
+        "title": {
+          "type": "string",
+          "description": "The product title filter",
+          "example": "RefrigÃ©rateur"
+        },
+        "additionalProductFilters": {
+          "$ref": "#/definitions/BeezUP.Common.AdditionalProductFilters"
+        }
+      }
+    },
+    "BeezUP.Common.AdditionalProductFilters": {
+      "type": "object",
+      "description": "Describe a filter on a product's column.\nThe key is the column identifier of your catalog or a custom column.\n",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "operatorName": {
+            "$ref": "#/definitions/BeezUP.Common.ProductFilterOperatorName"
+          },
+          "values": {
+            "description": "Must be null if the operator is \"IsNull\" or \"IsNotNull\". \nCan contains multiple value in case of \"InList\" operator. Otherwise a single value is expected.\n",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "My value"
+            ]
+          }
+        },
+        "example": {
+          "672644c7-5bd0-4e25-88c1-1f732bda5e4c": {
+            "operatorName": "GreaterTo",
+            "values": [
+              100
+            ]
+          }
+        }
+      }
+    },
+    "BeezUP.Common.ProductFilterOperatorName": {
+      "type": "string",
+      "description": "Indicate the operator you want to make on the columnId",
+      "enum": [
+        "Equals",
+        "Contains",
+        "GreaterTo",
+        "LowerTo",
+        "InList",
+        "IsNull",
+        "IsNotNull"
+      ]
+    },
     "BeezUP.Common.ProductBasicInfo": {
       "description": "The basic information related to a product",
       "type": "object",
