@@ -18900,11 +18900,6 @@
         "errors"
       ],
       "properties": {
-        "links": {
-          "additionalProperties": {
-            "$ref": "#/definitions/BeezUP.Common.Link3"
-          }
-        },
         "errors": {
           "type": "array",
           "uniqueItems": false,
