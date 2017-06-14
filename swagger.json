@@ -23,7 +23,7 @@
     "apiName": "V2PublicSecurity",
     "appRoot": "BeezUP.Customer.WebService",
     "namespace": "BeezUP.Customer.WebService",
-    "comment": "Change the product name from BeezUP API to UserApi to correspond to the reality\n"
+    "comment": "No change. Just server side generation.\n"
   },
   "x-basePath": "/v2/public/security",
   "schemes": [
@@ -66,6 +66,11 @@
       "x-displayName": "Account"
     },
     {
+      "name": "Customer - Security",
+      "description": "All security operations",
+      "x-displayName": "Security"
+    },
+    {
       "name": "Customer - Stores",
       "description": "All stores operations",
       "x-displayName": "Stores"
@@ -99,11 +104,6 @@
       "name": "Customer - Invoices",
       "description": "All invoice operations",
       "x-displayName": "Invoices"
-    },
-    {
-      "name": "Customer - Security",
-      "description": "All security operations",
-      "x-displayName": "Security"
     },
     {
       "name": "Catalogs - Auto",
@@ -743,6 +743,7 @@
           "Customer - Global"
         ],
         "summary": "The index of all operations and LOV",
+        "operationId": "GetCustomerIndex",
         "parameters": [
           {
             "$ref": "#/parameters/ifNoneMatchParameter"
@@ -814,13 +815,36 @@
             "description": "Email activation resent"
           },
           "400": {
-            "description": "Email activation not sent because of email problem. Ensure that your email is the correct one."
+            "description": "Email activation not sent because of email problem. Ensure that your email is the correct one.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
-          "403": {
-            "description": "Email activation sent recently, must retry later. (One per hour)"
+          "429": {
+            "description": "Email activation sent recently, must retry later. (One per hour)",
+            "headers": {
+              "Retry-After": {
+                "description": "The duration in second to wait before making another request",
+                "type": "integer",
+                "default": 60,
+                "x-example": 60
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "Email activation not available because user account already activated.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "502": {
-            "description": "Email activate send failed because of our email service. Ensure that your email is the correct one otherwise please contact our support if the problem persists."
+            "description": "Email activate send failed because of our email service. Ensure that your email is the correct one otherwise please contact our support if the problem persists.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -854,10 +878,19 @@
         ],
         "responses": {
           "204": {
-            "description": "User account activated"
+            "description": "User account activated."
           },
           "403": {
-            "description": "Invalid email activation id"
+            "description": "Invalid email activation id",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "User account already activated.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -936,7 +969,10 @@
             }
           },
           "403": {
-            "description": "User not found or unauthorized"
+            "description": "User not found or unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1008,10 +1044,16 @@
             }
           },
           "413": {
-            "description": "The picture size is too large"
+            "description": "The picture size is too large",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "415": {
-            "description": "The content type of the image must be an image"
+            "description": "The content type of the image must be an image",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1047,10 +1089,16 @@
             "$ref": "#/responses/304_NotModified"
           },
           "404": {
-            "description": "Credit Card not found"
+            "description": "Credit Card not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "503": {
-            "description": "We are unable to get your credit card info. This is a temporary state. Please retry later"
+            "description": "We are unable to get your credit card info. This is a temporary state. Please retry later",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1090,7 +1138,10 @@
             }
           },
           "502": {
-            "description": "Communication problem with our payment service"
+            "description": "Communication problem with our payment service",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1125,7 +1176,10 @@
             "description": "Password updated"
           },
           "400": {
-            "description": "Old password is invalid or the new password does not respect the password's constraints"
+            "description": "Old password is invalid or the new password does not respect the password's constraints",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1175,9 +1229,9 @@
         ],
         "responses": {
           "200": {
-            "description": "Store list response",
+            "description": "Store list",
             "schema": {
-              "$ref": "#/definitions/stores"
+              "$ref": "#/definitions/storeList"
             }
           },
           "304": {
@@ -1213,14 +1267,20 @@
           "201": {
             "description": "The store has been created successfully. The http header Location contains the new resource url. The body contains the link to the new resource.",
             "schema": {
-              "$ref": "#/definitions/links.getStoresLink"
+              "$ref": "#/definitions/links.getStoreLink"
             }
           },
-          "403": {
-            "description": "The maximum amount of store has been reached. Please upgrade your contract."
+          "402": {
+            "description": "The maximum amount of store has been reached. Please upgrade your contract.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessagePaymentRequired"
+            }
           },
           "409": {
-            "description": "The customer has a store with the same name"
+            "description": "The customer has a store with the same name",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1252,14 +1312,17 @@
           "200": {
             "description": "The store information",
             "schema": {
-              "$ref": "#/definitions/storeHeader"
+              "$ref": "#/definitions/store"
             }
           },
           "304": {
             "$ref": "#/responses/304_NotModified"
           },
           "404": {
-            "description": "Store not found or not authorized"
+            "description": "Store not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1296,10 +1359,16 @@
             "description": "Store updated"
           },
           "404": {
-            "description": "Store not found or customer not the owner"
+            "description": "Store not found or customer not the owner",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "The store name already used"
+            "description": "The store name already used",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1327,168 +1396,10 @@
             "description": "Store deleted"
           },
           "404": {
-            "description": "Store not found or customer not the owner"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/user/customer/stores/{storeId}/shares": {
-      "get": {
-        "tags": [
-          "Customer - Shares"
-        ],
-        "summary": "Get shares related to this store",
-        "operationId": "GetShares",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
-          },
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The sharing list of the store",
+            "description": "Store not found or customer not the owner",
             "schema": {
-              "$ref": "#/definitions/storeShares"
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "404": {
-            "description": "Store not found or customer not the owner"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Customer - Shares"
-        ],
-        "summary": "Share a store to another user",
-        "operationId": "Share",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
-          },
-          {
-            "name": "email",
-            "in": "body",
-            "description": "Your friend's email",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/friendEmail"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Store shared"
-          },
-          "403": {
-            "description": "Free offer is not allowed to share store."
-          },
-          "404": {
-            "description": "Only the owner of the store can make this operation or user not found"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/user/customer/friends/{userId}": {
-      "get": {
-        "tags": [
-          "Customer - Friends"
-        ],
-        "summary": "Get friend information",
-        "operationId": "GetFriendInfo",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "description": "Your friend user id",
-            "required": true,
-            "type": "string",
-            "format": "guid"
-          },
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Get friend info",
-            "schema": {
-              "$ref": "#/definitions/userFriendInfo"
-            }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "404": {
-            "description": "User not found"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/user/customer/stores/{storeId}/shares/{userId}": {
-      "delete": {
-        "tags": [
-          "Customer - Shares"
-        ],
-        "summary": "Delete a share to another user",
-        "operationId": "DeleteShare",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
-          },
-          {
-            "name": "userId",
-            "in": "path",
-            "description": "The friend user id",
-            "required": true,
-            "type": "string",
-            "format": "guid"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Share deleted"
-          },
-          "404": {
-            "description": "Store not found or customer not the owner"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1539,11 +1450,14 @@
           "403": {
             "description": "Functionality not found",
             "schema": {
-              "$ref": "#/definitions/BeezUP.Common.InfoSummaries"
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
-            "description": "Store not found or not authorized"
+            "description": "Store not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1582,7 +1496,56 @@
             "$ref": "#/responses/304_NotModified"
           },
           "404": {
-            "description": "Store not found or not authorized"
+            "description": "Store not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customer - Alerts"
+        ],
+        "summary": "Save store alerts",
+        "description": "You just have to send the alert you want to update, does not need all alerts. (PARTIAL UPDATE ACCEPTED)",
+        "operationId": "SaveStoreAlerts",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/saveStoreAlertsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Store alerts saved"
+          },
+          "400": {
+            "description": "BadRequest",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "Store not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1595,48 +1558,170 @@
         ]
       }
     },
-    "/user/customer/stores/{storeId}/alerts/{alertId}": {
-      "put": {
+    "/user/customer/stores/{storeId}/shares": {
+      "get": {
         "tags": [
-          "Customer - Alerts"
+          "Customer - Shares"
         ],
-        "summary": "Save store alert",
-        "operationId": "SaveStoreAlert",
+        "summary": "Get shares related to this store",
+        "operationId": "GetStoreShares",
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
-            "name": "alertId",
-            "in": "path",
-            "type": "integer",
-            "format": "int32",
-            "required": true
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The sharing list of the store",
+            "schema": {
+              "$ref": "#/definitions/storeShares"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "Store not found or customer not the owner",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customer - Shares"
+        ],
+        "summary": "Share a store to another user",
+        "operationId": "ShareStore",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
           },
           {
-            "name": "request",
+            "name": "email",
             "in": "body",
+            "description": "Your friend's email",
             "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/saveStoreAlertRequest"
-              }
+              "$ref": "#/definitions/friendEmail"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Store alert saved"
+            "description": "Store shared"
           },
-          "400": {
-            "description": "BadRequest",
+          "402": {
+            "description": "Free offer is not allowed to share store.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessagePaymentRequired"
+            }
+          },
+          "404": {
+            "description": "Only the owner of the store can make this operation or user not found",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/customer/stores/{storeId}/shares/{userId}": {
+      "delete": {
+        "tags": [
+          "Customer - Shares"
+        ],
+        "summary": "Delete a share of a store to another user",
+        "operationId": "DeleteStoreShare",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The friend user id",
+            "required": true,
+            "type": "string",
+            "format": "guid"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Share deleted"
+          },
           "404": {
-            "description": "Store not found or not authorized"
+            "description": "Store not found or customer not the owner",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/customer/friends/{userId}": {
+      "get": {
+        "tags": [
+          "Customer - Friends"
+        ],
+        "summary": "Get friend information",
+        "operationId": "GetFriendInfo",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Your friend user id",
+            "required": true,
+            "type": "string",
+            "format": "guid"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get friend info",
+            "schema": {
+              "$ref": "#/definitions/userFriendInfo"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "User not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1665,7 +1750,7 @@
           "200": {
             "description": "Get the billing periods conditions",
             "schema": {
-              "$ref": "#/definitions/billingPeriods"
+              "$ref": "#/definitions/billingPeriodList"
             }
           },
           "304": {
@@ -1739,13 +1824,16 @@
             }
           },
           "400": {
-            "description": "Bad request. (Invalid billing period, invalid offer, etc.)",
+            "description": "Bad request. (Invalid billing period, invalid offer, etc.). You cannot get a pricing for a free offer.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "403": {
-            "description": "You current contract is not modifiable. Please choose another offer."
+            "description": "You current contract is not modifiable. Please choose another offer.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1809,9 +1897,9 @@
         ],
         "responses": {
           "200": {
-            "description": "New contract has been saved. Some warnings can be present in response.",
+            "description": "New contract has been created. Some warnings can be present in response.",
             "schema": {
-              "$ref": "#/definitions/BeezUP.Common.InfoSummaries"
+              "$ref": "#/definitions/createContractResponse"
             }
           },
           "400": {
@@ -1821,12 +1909,6 @@
             }
           },
           "403": {
-            "description": "The contract is not modifiable or the coupon offer has been already used",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
             "description": "The contract is not modifiable or the coupon offer has been already used",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
@@ -1873,7 +1955,10 @@
             }
           },
           "404": {
-            "description": "No current contract"
+            "description": "No current contract",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1899,7 +1984,10 @@
             "description": "Your current contract has been resumed"
           },
           "404": {
-            "description": "No current contract"
+            "description": "No current contract",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -1950,7 +2038,7 @@
           "200": {
             "description": "Get all invoices of a customer",
             "schema": {
-              "$ref": "#/definitions/invoices"
+              "$ref": "#/definitions/invoiceList"
             }
           },
           "304": {
@@ -7768,101 +7856,6 @@
         }
       }
     },
-    "customerIndex": {
-      "description": "The index of the customer API",
-      "type": "object",
-      "required": [
-        "links",
-        "lovLinks"
-      ],
-      "properties": {
-        "links": {
-          "$ref": "#/definitions/customerIndexLinks"
-        },
-        "lovLinks": {
-          "$ref": "#/definitions/customerIndexLovLinks"
-        }
-      }
-    },
-    "links.customerIndexLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/customer",
-            "method": "GET"
-          }
-        }
-      ]
-    },
-    "customerIndexLinks": {
-      "description": "Gives you want you can do on this API",
-      "type": "object",
-      "required": [
-        "self",
-        "accountInfo",
-        "billingPeriods",
-        "standardOffers",
-        "friendInfo"
-      ],
-      "properties": {
-        "self": {
-          "$ref": "#/definitions/links.customerIndexLink"
-        },
-        "accountInfo": {
-          "$ref": "#/definitions/links.getUserAccountInfoLink"
-        },
-        "billingPeriods": {
-          "$ref": "#/definitions/links.getBillingPeriodsLink"
-        },
-        "standardOffers": {
-          "$ref": "#/definitions/links.getStandardOffersLink"
-        },
-        "friendInfo": {
-          "$ref": "#/definitions/links.getFriendInfoLink"
-        },
-        "logout": {
-          "$ref": "#/definitions/links.logoutLink"
-        },
-        "stores": {
-          "$ref": "#/definitions/links.getStoresLink"
-        },
-        "invoices": {
-          "$ref": "#/definitions/links.getInvoicesLink"
-        },
-        "contracts": {
-          "$ref": "#/definitions/links.getContractsLink"
-        }
-      }
-    },
-    "customerIndexLovLinks": {
-      "type": "object",
-      "properties": {
-        "customerStatusLov": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "beezUPTimeZoneLov": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "storeCountryLov": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "storeSectorLov": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "countryLov": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "contractTerminationReasonLov": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "invoicePaymentStatusLov": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        }
-      }
-    },
     "links.logoutLink": {
       "allOf": [
         {
@@ -7909,6 +7902,27 @@
         }
       ]
     },
+    "links.getOfferLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/offers",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "required": true,
+                "type": "object",
+                "schema": "offerRequest"
+              }
+            }
+          }
+        }
+      ]
+    },
     "links.getBillingPeriodsLink": {
       "allOf": [
         {
@@ -7948,17 +7962,36 @@
         }
       ]
     },
-    "links.shareLink": {
+    "links.shareStoreLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores/51afae05-277e-4902-8b17-5a811a23a2c6/shares",
+            "method": "POST",
+            "parameters": {
+              "email": {
+                "type": "string",
+                "in": "body",
+                "required": true
+              }
+            }
+          }
         }
       ]
     },
-    "links.deleteShareLink": {
+    "links.deleteStoreShareLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/stores/51afae05-277e-4902-8b17-5a811a23a2c6/shares/277596c1-a5a9-4cce-9f34-b5906451a98f",
+            "method": "DELETE"
+          }
         }
       ]
     },
@@ -7979,6 +8012,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores",
+            "method": "POST"
+          }
         }
       ]
     },
@@ -7986,6 +8025,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores/51afae05-277e-4902-8b17-5a811a23a2c6",
+            "method": "GET"
+          }
         }
       ]
     },
@@ -7993,6 +8038,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores/51afae05-277e-4902-8b17-5a811a23a2c6",
+            "method": "DELETE"
+          }
         }
       ]
     },
@@ -8000,13 +8051,25 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores/51afae05-277e-4902-8b17-5a811a23a2c6",
+            "method": "PATCH"
+          }
         }
       ]
     },
-    "links.getSharesLink": {
+    "links.getStoreSharesLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores/51afae05-277e-4902-8b17-5a811a23a2c6/shares",
+            "method": "GET"
+          }
         }
       ]
     },
@@ -8014,6 +8077,25 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/contracts",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "value": {
+                  "offerId": 1,
+                  "storeCount": 1,
+                  "couponDiscountCode": "I-LOVE-BEEZUP",
+                  "couponOfferCode": "04efc310-bc25-4710-a83a-faf200284fe5",
+                  "billingPeriodInMonth": 12
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -8021,13 +8103,25 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/creditCardInfo",
+            "method": "PUT"
+          }
         }
       ]
     },
-    "links.saveStoreAlertLink": {
+    "links.saveStoreAlertsLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/stores/51afae05-277e-4902-8b17-5a811a23a2c6/alerts",
+            "method": "POST"
+          }
         }
       ]
     },
@@ -8035,6 +8129,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/personalInfo",
+            "method": "PUT"
+          }
         }
       ]
     },
@@ -8042,6 +8142,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/changePassword",
+            "method": "POST"
+          }
         }
       ]
     },
@@ -8049,6 +8155,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/companyInfo",
+            "method": "PUT"
+          }
         }
       ]
     },
@@ -8056,6 +8168,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/profilePictureInfo",
+            "method": "PUT"
+          }
         }
       ]
     },
@@ -8066,7 +8184,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/customer/account/creditCardinfo",
+            "href": "/v2/user/customer/account/creditCardInfo",
             "method": "GET"
           }
         }
@@ -8089,6 +8207,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/contracts/current/reenableAutoRenewal",
+            "method": "POST"
+          }
         }
       ]
     },
@@ -8096,6 +8220,12 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/contracts/current/disableAutoRenewal",
+            "method": "POST"
+          }
         }
       ]
     },
@@ -8103,8 +8233,174 @@
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/contracts/next",
+            "method": "DELETE"
+          }
         }
       ]
+    },
+    "links.activateUserAccountLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/activate",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.getProfilePictureInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/profilePictureInfo",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetCustomerIndexLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "errorResponseMessagePaymentRequiredLinks": {
+      "type": "object",
+      "required": [
+        "offer"
+      ],
+      "properties": {
+        "offer": {
+          "$ref": "#/definitions/links.getOfferLink"
+        }
+      }
+    },
+    "errorResponseMessagePaymentRequired": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+        },
+        {
+          "type": "object",
+          "required": [
+            "errors",
+            "links"
+          ],
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/errorResponseMessagePaymentRequiredLinks"
+            }
+          }
+        }
+      ]
+    },
+    "customerIndex": {
+      "description": "The index of the customer API",
+      "type": "object",
+      "required": [
+        "links",
+        "lovLinks"
+      ],
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/customerIndexLinks"
+        },
+        "lovLinks": {
+          "$ref": "#/definitions/customerIndexLovLinks"
+        }
+      }
+    },
+    "customerIndexLinks": {
+      "description": "Gives you want you can do on this API",
+      "type": "object",
+      "required": [
+        "self",
+        "accountInfo",
+        "billingPeriods",
+        "standardOffers",
+        "friendInfo"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetCustomerIndexLink"
+        },
+        "accountInfo": {
+          "$ref": "#/definitions/links.getUserAccountInfoLink"
+        },
+        "friendInfo": {
+          "$ref": "#/definitions/links.getFriendInfoLink"
+        },
+        "logout": {
+          "$ref": "#/definitions/links.logoutLink"
+        },
+        "stores": {
+          "$ref": "#/definitions/links.getStoresLink"
+        },
+        "billingPeriods": {
+          "$ref": "#/definitions/links.getBillingPeriodsLink"
+        },
+        "standardOffers": {
+          "$ref": "#/definitions/links.getStandardOffersLink"
+        },
+        "getOffer": {
+          "$ref": "#/definitions/links.getOfferLink"
+        },
+        "invoices": {
+          "$ref": "#/definitions/links.getInvoicesLink"
+        },
+        "contracts": {
+          "$ref": "#/definitions/links.getContractsLink"
+        }
+      }
+    },
+    "customerIndexLovLinks": {
+      "type": "object",
+      "properties": {
+        "offerLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "activeOfferLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "customerStatusLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "beezUPTimeZoneLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "storeCountryLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "storeSectorLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "countryLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "contractTerminationReasonLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "invoicePaymentStatusLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        }
+      }
     },
     "storeShares": {
       "type": "object",
@@ -8114,39 +8410,24 @@
       ],
       "properties": {
         "links": {
-          "type": "object",
-          "required": [
-            "share"
-          ],
-          "properties": {
-            "share": {
-              "$ref": "#/definitions/links.shareLink"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/definitions/storeSharesLinks"
         },
         "shares": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/storeShare"
-          },
-          "example": [
-            {
-              "userId": "277596c1-a5a9-4cce-9f34-b5906451a98f",
-              "storeRole": "User",
-              "links": {
-                "deleteShare": {
-                  "href": "/v2/user/stores/{storeId}/shares/{userId}",
-                  "method": "DELETE",
-                  "operationId": "DeleteShare",
-                  "parameters": {
-                    "storeId": "51afae05-277e-4902-8b17-5a811a23a2c6",
-                    "userId": "277596c1-a5a9-4cce-9f34-b5906451a98f"
-                  }
-                }
-              }
-            }
-          ]
+          }
+        }
+      }
+    },
+    "storeSharesLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getStoreSharesLink"
+        },
+        "share": {
+          "$ref": "#/definitions/links.shareStoreLink"
         }
       }
     },
@@ -8165,90 +8446,46 @@
           "$ref": "#/definitions/storeUserRole"
         },
         "links": {
-          "description": "The different actions you can make on this share",
-          "type": "object",
-          "properties": {
-            "deleteShare": {
-              "$ref": "#/definitions/links.deleteShareLink"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/definitions/storeShareLinks"
         }
       }
     },
-    "stores": {
+    "storeShareLinks": {
+      "description": "The different actions you can make on this store share",
+      "type": "object",
+      "properties": {
+        "deleteShare": {
+          "$ref": "#/definitions/links.deleteStoreShareLink"
+        }
+      }
+    },
+    "storeListLinks": {
+      "type": "object",
+      "description": "The action links you can do globally on stores",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getStoresLink"
+        },
+        "createStore": {
+          "$ref": "#/definitions/links.createStoreLink"
+        }
+      }
+    },
+    "storeList": {
       "type": "object",
       "required": [
         "links",
-        "storeList"
+        "stores"
       ],
       "properties": {
         "links": {
-          "description": "The action links",
-          "type": "object",
-          "properties": {
-            "getStores": {
-              "$ref": "#/definitions/links.getStoresLink"
-            },
-            "createStore": {
-              "$ref": "#/definitions/links.createStoreLink"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/definitions/storeListLinks"
         },
-        "storeList": {
+        "stores": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/storeHeader"
-          },
-          "example": [
-            {
-              "storeId": "00000000-0000-0000-0000-000000000000",
-              "userRole": "Owner",
-              "status": "Active",
-              "ownerUserId": "00000000-0000-0000-0000-000000000000",
-              "creationUtcDate": "2001-01-01T00:00:00",
-              "name": "My Store",
-              "url": "http://www.mystore.com",
-              "sectors": [
-                1
-              ],
-              "links": [
-                {
-                  "href": "/v2/user/stores/{storeId}",
-                  "method": "GET",
-                  "rel": "self",
-                  "operationId": "GetStore"
-                },
-                {
-                  "href": "/v2/user/stores/{storeId}",
-                  "method": "DELETE",
-                  "rel": "DeleteStore",
-                  "operationId": "DeleteStore"
-                },
-                {
-                  "href": "/v2/user/stores/{storeId}",
-                  "method": "PATCH",
-                  "rel": "UpdateStore",
-                  "operationId": "UpdateStore",
-                  "parameters": [
-                    {
-                      "name": "request",
-                      "in": "body",
-                      "type": "object",
-                      "required": true
-                    }
-                  ]
-                },
-                {
-                  "href": "/v2/user/stores/{storeId}/shares",
-                  "method": "GET",
-                  "rel": "GetShares",
-                  "operationId": "GetShares"
-                }
-              ]
-            }
-          ]
+            "$ref": "#/definitions/store"
+          }
         }
       }
     },
@@ -8282,78 +8519,85 @@
       ],
       "example": "Active"
     },
-    "storeHeader": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/store"
+    "store": {
+      "type": "object",
+      "required": [
+        "storeId",
+        "name",
+        "url",
+        "countryIsoCodeAlpha3",
+        "userRole",
+        "status",
+        "ownerUserId",
+        "shareCount",
+        "creationUtcDate",
+        "sectors",
+        "links"
+      ],
+      "properties": {
+        "storeId": {
+          "$ref": "#/definitions/BeezUP.Common.StoreId"
         },
-        {
-          "type": "object",
-          "required": [
-            "storeId",
-            "name",
-            "url",
-            "countryIsoCodeAlpha3",
-            "userRole",
-            "status",
-            "ownerUserId",
-            "shareCount",
-            "creationUtcDate",
-            "sectors",
-            "links"
-          ],
-          "properties": {
-            "storeId": {
-              "$ref": "#/definitions/BeezUP.Common.StoreId"
-            },
-            "userRole": {
-              "$ref": "#/definitions/storeUserRole"
-            },
-            "status": {
-              "$ref": "#/definitions/storeStatus"
-            },
-            "ownerUserId": {
-              "format": "guid",
-              "description": "The user id of the owner of the store",
-              "type": "string",
-              "example": "00000000-0000-0000-0000-000000000000"
-            },
-            "shareCount": {
-              "description": "The share count related to this store",
-              "type": "integer",
-              "example": 5
-            },
-            "creationUtcDate": {
-              "format": "date-time",
-              "description": "The creation date of the store",
-              "type": "string",
-              "example": "2017-04-01T22:30:00Z"
-            },
-            "links": {
-              "description": "The action links for this store",
-              "type": "object",
-              "properties": {
-                "self": {
-                  "$ref": "#/definitions/links.getStoreLink"
-                },
-                "deleteStore": {
-                  "$ref": "#/definitions/links.deleteStoreLink"
-                },
-                "updateStore": {
-                  "$ref": "#/definitions/links.updateStoreLink"
-                },
-                "getShares": {
-                  "$ref": "#/definitions/links.getSharesLink"
-                },
-                "share": {
-                  "$ref": "#/definitions/links.shareLink"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
+        "name": {
+          "$ref": "#/definitions/storeName"
+        },
+        "url": {
+          "$ref": "#/definitions/storeUrl"
+        },
+        "countryIsoCodeAlpha3": {
+          "$ref": "#/definitions/storeCountryIsoCodeAlpha3"
+        },
+        "sectors": {
+          "$ref": "#/definitions/storeSectors"
+        },
+        "userRole": {
+          "$ref": "#/definitions/storeUserRole"
+        },
+        "status": {
+          "$ref": "#/definitions/storeStatus"
+        },
+        "ownerUserId": {
+          "format": "guid",
+          "description": "The user id of the owner of the store",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "shareCount": {
+          "description": "The share count related to this store",
+          "type": "integer",
+          "example": 5
+        },
+        "creationUtcDate": {
+          "format": "date-time",
+          "description": "The creation date of the store",
+          "type": "string",
+          "example": "2017-04-01T22:30:00Z"
+        },
+        "links": {
+          "$ref": "#/definitions/storeLinks"
         }
-      ]
+      }
+    },
+    "storeLinks": {
+      "description": "The action links for this store",
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getStoreLink"
+        },
+        "deleteStore": {
+          "$ref": "#/definitions/links.deleteStoreLink"
+        },
+        "updateStore": {
+          "$ref": "#/definitions/links.updateStoreLink"
+        },
+        "shares": {
+          "$ref": "#/definitions/links.getStoreSharesLink"
+        },
+        "share": {
+          "$ref": "#/definitions/links.shareStoreLink"
+        }
+      }
     },
     "storeName": {
       "description": "The store name. Must be unique.",
@@ -8379,13 +8623,14 @@
         "$ref": "#/definitions/storeSector"
       },
       "example": [
-        1
+        "ANIMALERIE",
+        "AUTOMOTO"
       ]
     },
     "storeSector": {
       "description": "The store's sector based on the list of values /user/lov/ParamSector",
-      "type": "integer",
-      "example": 1,
+      "type": "string",
+      "example": "ANIMALERIE",
       "x-lov": "ParamSector"
     },
     "contractId": {
@@ -8399,7 +8644,9 @@
       "description": "Your invoice number",
       "example": "B1234"
     },
-    "store": {
+    "createStoreRequest": {
+      "description": "The request to create a store",
+      "type": "object",
       "required": [
         "name",
         "url",
@@ -8420,14 +8667,6 @@
           "$ref": "#/definitions/storeSectors"
         }
       }
-    },
-    "createStoreRequest": {
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/store"
-        }
-      ]
     },
     "updateStoreRequest": {
       "required": [
@@ -8472,12 +8711,27 @@
         }
       }
     },
-    "invoices": {
+    "invoiceListLinks": {
       "type": "object",
       "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getInvoicesLink"
+        }
+      }
+    },
+    "invoiceList": {
+      "type": "object",
+      "required": [
+        "links",
         "invoices"
       ],
       "properties": {
+        "links": {
+          "$ref": "#/definitions/invoiceListLinks"
+        },
         "invoices": {
           "type": "array",
           "items": {
@@ -8640,6 +8894,28 @@
         }
       ]
     },
+    "createContractResponseLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.createContractLink"
+        },
+        "contracts": {
+          "$ref": "#/definitions/links.getContractsLink"
+        }
+      }
+    },
+    "createContractResponse": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/createContractResponseLinks"
+        },
+        "info": {
+          "$ref": "#/definitions/BeezUP.Common.InfoSummaries"
+        }
+      }
+    },
     "contractsLinks": {
       "type": "object",
       "properties": {
@@ -8653,13 +8929,7 @@
     },
     "currentContractInfoLinks": {
       "type": "object",
-      "required": [
-        "self"
-      ],
       "properties": {
-        "self": {
-          "$ref": "#/definitions/links.getContractsLink"
-        },
         "disable": {
           "$ref": "#/definitions/links.terminateCurrentContractLink"
         },
@@ -8670,13 +8940,7 @@
     },
     "nextContractInfoLinks": {
       "type": "object",
-      "required": [
-        "self"
-      ],
       "properties": {
-        "self": {
-          "$ref": "#/definitions/links.getContractsLink"
-        },
         "delete": {
           "$ref": "#/definitions/links.deleteNextContractLink"
         }
@@ -8703,6 +8967,9 @@
     },
     "contracts": {
       "type": "object",
+      "required": [
+        "links"
+      ],
       "properties": {
         "links": {
           "$ref": "#/definitions/contractsLinks"
@@ -8976,35 +9243,16 @@
           "$ref": "#/definitions/BeezUP.Common.InfoSummaries"
         },
         "links": {
-          "description": "The different actions you can make on this offer",
-          "type": "object",
-          "properties": {
-            "createContract": {
-              "$ref": "#/definitions/links.createContractLink"
-            }
-          },
-          "additionalProperties": false,
-          "example": [
-            {
-              "href": "/v2/user/customer/contracts",
-              "operationId": "CreateContract",
-              "rel": "CreateContract",
-              "parameters": [
-                {
-                  "name": "request",
-                  "in": "body",
-                  "type": "object",
-                  "value": {
-                    "offerId": 1,
-                    "storeCount": 1,
-                    "couponDiscountCode": "I-LOVE-BEEZUP",
-                    "couponOfferCode": "04efc310-bc25-4710-a83a-faf200284fe5",
-                    "billingPeriodInMonth": 12
-                  }
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/offerLinks"
+        }
+      }
+    },
+    "offerLinks": {
+      "description": "The different actions you can make on this offer",
+      "type": "object",
+      "properties": {
+        "createContract": {
+          "$ref": "#/definitions/links.createContractLink"
         }
       }
     },
@@ -9066,7 +9314,8 @@
         "computedProrataToBeDeducted": {
           "format": "double",
           "description": "The prorata amount",
-          "type": "number"
+          "type": "number",
+          "example": 194.66
         },
         "invoiceNumber": {
           "description": "The previous invoice number",
@@ -9092,14 +9341,16 @@
           "example": "8a7fbdec-9e71-472e-9974-27d5c1d57cf8"
         },
         "fixedPeriodEndDate": {
-          "format": "date-time",
+          "format": "date",
           "description": "The fixed end period of the previous invoice",
-          "type": "string"
+          "type": "string",
+          "example": "2017-05-01"
         },
         "fixedPeriodStartDate": {
-          "format": "date-time",
+          "format": "date",
           "description": "The fixed start period of the previous invoice",
-          "type": "string"
+          "type": "string",
+          "example": "2017-04-01"
         }
       }
     },
@@ -9110,12 +9361,14 @@
         "amountBillingPeriodDiscount": {
           "format": "double",
           "description": "The amount discounted related to the billing period",
-          "type": "number"
+          "type": "number",
+          "example": 20
         },
         "billingPeriodPercentDiscount": {
           "format": "double",
           "description": "The discount percent related to the billing period",
-          "type": "number"
+          "type": "number",
+          "example": 10
         },
         "billingPeriodInMonth": {
           "$ref": "#/definitions/billingPeriodInMonth"
@@ -9129,17 +9382,20 @@
         "additionalClickPrice": {
           "format": "double",
           "description": "The addition click price in the offer",
-          "type": "number"
+          "type": "number",
+          "example": 0.001
         },
         "clickIncluded": {
           "format": "int32",
           "description": "The click included in the offer",
-          "type": "integer"
+          "type": "integer",
+          "example": 5000
         },
         "initialOfferClickIncluded": {
           "format": "int32",
           "description": "The click included in your current contract",
-          "type": "integer"
+          "type": "integer",
+          "example": 5000
         }
       }
     },
@@ -9148,60 +9404,70 @@
       "type": "object",
       "properties": {
         "commitmentCalculatedFinishDate": {
-          "format": "date-time",
+          "format": "date",
           "description": "The commitment end date related to the offer",
-          "type": "string"
+          "type": "string",
+          "example": "2017-06-02"
         },
         "newContractStartDate": {
           "format": "date-time",
           "description": "The start date related to the offer",
-          "type": "string"
+          "type": "string",
+          "example": "2017-05-01T13:02:24"
         },
         "commitmentPeriodInMonth": {
           "format": "int32",
           "description": "The commitment period in month related to the offer",
-          "type": "integer"
+          "type": "integer",
+          "example": 1
         },
         "trialPeriodInMonth": {
           "format": "int32",
           "description": "The trial period in month related to the offer",
-          "type": "integer"
+          "type": "integer",
+          "example": 0
         },
         "trialPeriodFinishDate": {
-          "format": "date-time",
+          "format": "date",
           "description": "The trial period end date related to the offer",
           "type": "string"
         },
         "paymentDelayInDays": {
           "format": "int32",
           "description": "The payment delay in days related to the offer",
-          "type": "integer"
+          "type": "integer",
+          "example": 1
         },
         "offerId": {
           "$ref": "#/definitions/offerId"
         },
         "offerName": {
           "description": "The offer Name",
-          "type": "string"
+          "type": "string",
+          "example": "Premium"
         },
         "currentContractId": {
           "format": "guid",
           "description": "Your current contract id",
-          "type": "string"
+          "type": "string",
+          "example": "dce56457-aa23-478d-8d76-b56eb9be799f"
         },
         "commercialUserId": {
           "format": "guid",
           "description": "Your current commercial user id",
-          "type": "string"
+          "type": "string",
+          "example": "0ddc2b79-10fe-4071-8161-42faa897082f"
         },
         "model": {
           "description": "Interal usage: Old offer type. The model description",
-          "type": "string"
+          "type": "string",
+          "example": "BLABLA"
         },
         "currentContractTerminationDate": {
           "format": "date",
           "description": "The current contract termination date",
-          "type": "string"
+          "type": "string",
+          "example": "2017-06-02"
         },
         "requestedPaymentMethod": {
           "$ref": "#/definitions/paymentMethod"
@@ -9217,7 +9483,8 @@
         },
         "isModelMustBeTransmittedInNewContract": {
           "description": "Internal usage: Old offer type. Is the current contract model needs to be converted into a new contract type",
-          "type": "boolean"
+          "type": "boolean",
+          "example": false
         },
         "fixedAndVariableClickInfo": {
           "$ref": "#/definitions/fixedAndVariableClickModelInfo"
@@ -9234,7 +9501,8 @@
         "commercialCreatorUserId": {
           "format": "guid",
           "description": "The commercial that is responsible of the creation of your account",
-          "type": "string"
+          "type": "string",
+          "example": "6e07814d-26a9-494b-91b2-e5ed0b9aba8c"
         },
         "minBillingPeriodInMonths": {
           "format": "int32",
@@ -9399,6 +9667,9 @@
     "contractBonusInfo": {
       "description": "Describe the bonus information related to your current contract.",
       "type": "object",
+      "required": [
+        "bonuses"
+      ],
       "properties": {
         "bonuses": {
           "type": "array",
@@ -9411,6 +9682,9 @@
     "fixedAndVariableClickModelInfo": {
       "description": "Internal usage: Old offer type. Describe the fix and variable model information",
       "type": "object",
+      "required": [
+        "clickIncludedAndAdditionalClickPrices"
+      ],
       "properties": {
         "clickIncludedAndAdditionalClickPrices": {
           "type": "array",
@@ -9423,6 +9697,11 @@
     "variableModelInfo": {
       "description": "Internal usage: Old offer type. Describe the fix and variable model information",
       "type": "object",
+      "required": [
+        "clickIncludedAndVariablePrices",
+        "overflowClickCount",
+        "overflowClickPrice"
+      ],
       "properties": {
         "clickIncludedAndVariablePrices": {
           "description": "Click included with variable pricing information",
@@ -9445,6 +9724,10 @@
     },
     "bonusInfo": {
       "type": "object",
+      "required": [
+        "bonusType",
+        "amount"
+      ],
       "properties": {
         "bonusType": {
           "$ref": "#/definitions/bonusType"
@@ -9601,28 +9884,7 @@
         "activateUserAccount": {
           "$ref": "#/definitions/links.activateUserAccountLink"
         }
-      },
-      "additionalProperties": false
-    },
-    "links.activateUserAccountLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        }
-      ]
-    },
-    "links.getProfilePictureInfoLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/customer/account/profilePictureInfo",
-            "method": "GET"
-          }
-        }
-      ]
+      }
     },
     "accountInfo": {
       "type": "object",
@@ -9819,45 +10081,31 @@
         }
       }
     },
+    "creditCardInfoResponseLinks": {
+      "description": "The different actions you can make on this offer",
+      "type": "object",
+      "required": [
+        "self",
+        "saveCreditCardInfo"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getCreditCardInfoLink"
+        },
+        "saveCreditCardInfo": {
+          "$ref": "#/definitions/links.saveCreditCardInfoLink"
+        }
+      }
+    },
     "creditCardInfoResponse": {
       "type": "object",
       "required": [
-        "links"
+        "links",
+        "currentPaymentMethod"
       ],
       "properties": {
         "links": {
-          "description": "The different actions you can make on this offer",
-          "type": "object",
-          "properties": {
-            "self": {
-              "$ref": "#/definitions/links.getCreditCardInfoLink"
-            },
-            "saveCreditCardInfo": {
-              "$ref": "#/definitions/links.saveCreditCardInfoLink"
-            }
-          },
-          "additionalProperties": false,
-          "example": [
-            {
-              "href": "/v2/user/customer/creditCardinfo",
-              "rel": "self",
-              "operationId": "GetCreditCardInfo",
-              "method": "GET"
-            },
-            {
-              "href": "/v2/user/customer/creditCardinfo",
-              "ref": "SaveCreditCardInfo",
-              "method": "PUT",
-              "parameters": [
-                {
-                  "name": "request",
-                  "in": "body",
-                  "required": true,
-                  "type": "object"
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/creditCardInfoResponseLinks"
         },
         "currentPaymentMethod": {
           "$ref": "#/definitions/paymentMethod"
@@ -9953,54 +10201,22 @@
       "type": "string",
       "example": "NoImportSinceXDays"
     },
-    "alertIsActive": {
-      "description": "Is the alert is active ?",
+    "alertEnabled": {
+      "description": "Is the alert enable ?",
       "type": "boolean",
       "example": true
     },
     "storeAlert": {
       "type": "object",
       "required": [
+        "links",
         "alertId",
         "alertName",
-        "active"
+        "enabled"
       ],
       "properties": {
         "links": {
-          "description": "The different actions you can make on this offer",
-          "type": "object",
-          "properties": {
-            "saveStoreAlert": {
-              "$ref": "#/definitions/links.saveStoreAlertLink"
-            }
-          },
-          "additionalProperties": false,
-          "example": [
-            {
-              "href": "/v2/user/customer/stores/{storeId}/alerts/{alertId}",
-              "rel": "save",
-              "method": "PUT",
-              "parameters": [
-                {
-                  "name": "storeId",
-                  "in": "path",
-                  "required": true,
-                  "value": "00000000-0000-0000-0000-000000000000"
-                },
-                {
-                  "name": "alertId",
-                  "in": "path",
-                  "required": true,
-                  "value": 8
-                },
-                {
-                  "name": "request",
-                  "in": "body",
-                  "required": true
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/storeAlertLinks"
         },
         "alertId": {
           "$ref": "#/definitions/alertId"
@@ -10008,8 +10224,8 @@
         "alertName": {
           "$ref": "#/definitions/alertName"
         },
-        "active": {
-          "$ref": "#/definitions/alertIsActive"
+        "enabled": {
+          "$ref": "#/definitions/alertEnabled"
         },
         "properties": {
           "description": "The current configuration properties of the alert",
@@ -10024,6 +10240,15 @@
               "propertyValue": "2"
             }
           ]
+        }
+      }
+    },
+    "storeAlertLinks": {
+      "description": "The different actions you can make on this alert",
+      "type": "object",
+      "properties": {
+        "save": {
+          "$ref": "#/definitions/links.saveStoreAlertsLink"
         }
       }
     },
@@ -10065,14 +10290,21 @@
         }
       ]
     },
+    "saveStoreAlertsRequest": {
+      "type": "object",
+      "description": "The key is the alert identifier (alertId)",
+      "additionalProperties": {
+        "$ref": "#/definitions/saveStoreAlertRequest"
+      }
+    },
     "saveStoreAlertRequest": {
       "type": "object",
       "required": [
-        "active"
+        "enabled"
       ],
       "properties": {
-        "active": {
-          "$ref": "#/definitions/alertIsActive"
+        "enabled": {
+          "$ref": "#/definitions/alertEnabled"
         },
         "properties": {
           "description": "Properties to configure the alert",
@@ -10104,9 +10336,28 @@
         }
       }
     },
+    "standardOffersLinks": {
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getStandardOffersLink"
+        }
+      }
+    },
     "standardOffers": {
       "type": "object",
+      "required": [
+        "links",
+        "offers",
+        "functionalities"
+      ],
       "properties": {
+        "links": {
+          "$ref": "#/definitions/standardOffersLinks"
+        },
         "offers": {
           "description": "All standard offers",
           "type": "array",
@@ -10149,9 +10400,33 @@
         }
       }
     },
-    "standardOffer": {
+    "standardOfferLinks": {
       "type": "object",
       "properties": {
+        "getOffer": {
+          "$ref": "#/definitions/links.getOfferLink"
+        }
+      }
+    },
+    "standardOffer": {
+      "type": "object",
+      "required": [
+        "offerId",
+        "name",
+        "links"
+      ],
+      "properties": {
+        "offerId": {
+          "format": "int32",
+          "description": "The offer Id",
+          "type": "integer",
+          "example": 1234
+        },
+        "name": {
+          "description": "The offer name",
+          "type": "string",
+          "example": "Wonder offer"
+        },
         "additionalClickPrice": {
           "format": "double",
           "description": "The additional click price",
@@ -10173,17 +10448,6 @@
           "description": "Is an old offer",
           "type": "boolean",
           "example": false
-        },
-        "name": {
-          "description": "The offer name",
-          "type": "string",
-          "example": "Wonder offer"
-        },
-        "offerId": {
-          "format": "int32",
-          "description": "The offer Id",
-          "type": "integer",
-          "example": 1234
         },
         "fixedPrice": {
           "format": "double",
@@ -10213,11 +10477,18 @@
               "text": "Marketplace management"
             }
           ]
+        },
+        "links": {
+          "$ref": "#/definitions/standardOfferLinks"
         }
       }
     },
     "functionality": {
       "type": "object",
+      "required": [
+        "code",
+        "order"
+      ],
       "properties": {
         "code": {
           "description": "The functionality code",
@@ -10262,12 +10533,24 @@
         }
       }
     },
-    "billingPeriods": {
+    "billingPeriodListLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.getBillingPeriodsLink"
+        }
+      }
+    },
+    "billingPeriodList": {
       "type": "object",
       "required": [
+        "links",
         "billingPeriods"
       ],
       "properties": {
+        "links": {
+          "$ref": "#/definitions/billingPeriodListLinks"
+        },
         "billingPeriods": {
           "description": "The billing period list",
           "type": "array",
@@ -19169,14 +19452,14 @@
       "tags": [
         "Customer - Global",
         "Customer - Account",
+        "Customer - Security",
         "Customer - Stores",
         "Customer - Shares",
         "Customer - Alerts",
         "Customer - Rights",
         "Customer - Friends",
         "Customer - Contracts",
-        "Customer - Invoices",
-        "Customer - Security"
+        "Customer - Invoices"
       ]
     },
     {
