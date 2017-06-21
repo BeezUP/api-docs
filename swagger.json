@@ -18487,7 +18487,7 @@
         "productSku",
         "productTitle",
         "productImageUrl",
-        "productActive"
+        "productExists"
       ],
       "properties": {
         "productId": {
@@ -18512,7 +18512,7 @@
           "description": "The product image Url",
           "example": "http://i2.cdscdn.com/pdt2/3/9/0/1/550x550/hai6901018043390/rw/haier-b20fwrss-refrigerateur-americain.jpg"
         },
-        "productActive": {
+        "productExists": {
           "type": "boolean",
           "description": "Indicates if the product still exists in your catalog",
           "example": true
