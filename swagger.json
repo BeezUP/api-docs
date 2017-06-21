@@ -9892,10 +9892,7 @@
         "userId",
         "email",
         "status",
-        "links",
-        "personalInfo",
-        "companyInfo",
-        "profilePictureUrl"
+        "links"
       ],
       "properties": {
         "userId": {
