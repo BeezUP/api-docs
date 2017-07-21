@@ -8845,7 +8845,7 @@
       "example": "B1234"
     },
     "createStoreRequest": {
-      "description": "The request to create a store",
+      "description": "The request to create a store. The store identifier is optional, if null it will be automatically computed.",
       "type": "object",
       "required": [
         "name",
@@ -8854,6 +8854,9 @@
         "sectors"
       ],
       "properties": {
+        "id": {
+          "$ref": "#/definitions/BeezUP.Common.StoreId"
+        },
         "name": {
           "$ref": "#/definitions/storeName"
         },
