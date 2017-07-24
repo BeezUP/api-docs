@@ -5233,6 +5233,13 @@
             "required": true,
             "type": "string",
             "format": "guid"
+          },
+          {
+            "name": "redirectionPageUrl",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "format": "uri"
           }
         ],
         "responses": {
@@ -14711,11 +14718,17 @@
         }
       ]
     },
+    "externalLinks.GetExternalConfigurationPageLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        }
+      ]
+    },
     "channelCatalogMarketplacePropertiesLinks": {
       "type": "object",
       "required": [
-        "self",
-        "settings"
+        "self"
       ],
       "properties": {
         "self": {
@@ -14723,6 +14736,9 @@
         },
         "settings": {
           "$ref": "#/definitions/links.GetChannelCatalogMarketplaceSettingsLink"
+        },
+        "externalConfigurationPage": {
+          "$ref": "#/definitions/externalLinks.GetExternalConfigurationPageLink"
         }
       }
     },
@@ -15364,6 +15380,7 @@
       "description": "This object indicates you the association between a channel catalog and a marketplace. The account identifier will be automatically defined based on your marketplace merchant identfier.",
       "type": "object",
       "required": [
+        "enabled",
         "marketplaceTechnicalCode",
         "marketplaceBusinessCode",
         "marketplaceMarketPlaceId",
@@ -15377,6 +15394,11 @@
         "links"
       ],
       "properties": {
+        "enabled": {
+          "description": "The enabled status of the Channel Catalog",
+          "type": "boolean",
+          "example": true
+        },
         "marketplaceTechnicalCode": {
           "$ref": "#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
         },
