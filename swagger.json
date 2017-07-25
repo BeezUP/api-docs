@@ -5583,12 +5583,6 @@
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
-          "404": {
-            "description": "No orders have been found for this request.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -5627,12 +5621,6 @@
           },
           "400": {
             "description": "Could not process request for given parameters values. Please check error message for more details.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "404": {
-            "description": "No orders have been found for this request.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
