@@ -13312,7 +13312,7 @@
       ],
       "properties": {
         "self": {
-          "$ref": "#/definitions/BeezUP.Common.Link2"
+          "$ref": "#/definitions/BeezUP.Common.Link3"
         }
       }
     },
