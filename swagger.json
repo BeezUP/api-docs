@@ -4337,15 +4337,15 @@
         "tags": [
           "Channel Catalogs - Global"
         ],
-        "summary": "Create a new channel catalog",
-        "operationId": "CreateChannelCatalog",
+        "summary": "Add a new channel catalog",
+        "operationId": "AddChannelCatalog",
         "parameters": [
           {
             "name": "request",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/createChannelCatalogRequest"
+              "$ref": "#/definitions/addChannelCatalogRequest"
             }
           }
         ],
@@ -4367,11 +4367,7 @@
               }
             },
             "schema": {
-              "description": "Link to the new channel catalog",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/BeezUP.Common.Link2"
-              }
+              "$ref": "#/definitions/links.GetChannelCatalogLink"
             }
           },
           "default": {
@@ -4501,11 +4497,11 @@
       }
     },
     "/user/channelCatalogs/{channelCatalogId}/settings/general": {
-      "post": {
+      "put": {
         "tags": [
           "Channel Catalogs - Settings"
         ],
-        "summary": "Disable a channel catalog",
+        "summary": "Configure channel catalog general settings",
         "operationId": "ConfigureChannelCatalogGeneralSettings",
         "parameters": [
           {
@@ -4536,11 +4532,11 @@
       }
     },
     "/user/channelCatalogs/{channelCatalogId}/settings/cost": {
-      "post": {
+      "put": {
         "tags": [
           "Channel Catalogs - Settings"
         ],
-        "summary": "Disable a channel catalog",
+        "summary": "Configure channel catalog cost settings",
         "operationId": "ConfigureChannelCatalogCostSettings",
         "parameters": [
           {
@@ -4576,7 +4572,7 @@
           "Channel Catalogs - Column Mappings"
         ],
         "summary": "Configure channel catalog column mappings",
-        "operationId": "MapChannelCatalogColumns",
+        "operationId": "ConfigureChannelCatalogColumnMappings",
         "parameters": [
           {
             "$ref": "#/parameters/channelCatalogIdParameter"
@@ -4586,7 +4582,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/columnMappingList"
+              "$ref": "#/definitions/channelCatalogColumnMappingList"
             }
           }
         ],
@@ -4623,6 +4619,60 @@
             "schema": {
               "$ref": "#/definitions/channelCatalogCategoryMappings"
             }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/disable": {
+      "post": {
+        "tags": [
+          "Channel Catalogs - Category Mappings"
+        ],
+        "summary": "Disable a channel catalog category mapping",
+        "operationId": "DisableChannelCatalogCategoryMapping",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Channel catalog category mapping disabled"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/reenable": {
+      "post": {
+        "tags": [
+          "Channel Catalogs - Category Mappings"
+        ],
+        "summary": "Reenable a channel catalog category mapping",
+        "operationId": "ReenableChannelCatalogCategoryMapping",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Channel catalog category mapping reenabled"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -4734,6 +4784,34 @@
       }
     },
     "/user/channelCatalogs/{channelCatalogId}/exclusionFilters": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Exclusion Filters"
+        ],
+        "summary": "Get channel catalog exclusion filters",
+        "operationId": "GetChannelCatalogExclusionFilters",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel catalog exclusion filter list",
+            "schema": {
+              "$ref": "#/definitions/exclusionFiltersResponse"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
       "put": {
         "tags": [
           "Channel Catalogs - Exclusion Filters"
@@ -4782,6 +4860,7 @@
           {
             "name": "request",
             "in": "body",
+            "required": true,
             "description": "The channel catalog product list filter",
             "schema": {
               "$ref": "#/definitions/getChannelCatalogProductInfoListRequest"
@@ -4793,6 +4872,90 @@
             "description": "Channel catalog product information",
             "schema": {
               "$ref": "#/definitions/channelCatalogProductInfoList"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/channelCatalogs/{channelCatalogId}/products/export": {
+      "post": {
+        "tags": [
+          "Channel Catalogs - Products"
+        ],
+        "summary": "Export channel catalog product information list",
+        "operationId": "ExportChannelCatalogProductInfoList",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "description": "The channel catalog product list filter",
+            "schema": {
+              "$ref": "#/definitions/getChannelCatalogProductInfoListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel catalog product information list exported",
+            "headers": {
+              "Location": {
+                "description": "To indicate the url of the export file\nExample: https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Products.xslx\n",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.Link3"
+            },
+            "examples": {
+              "application/json": {
+                "href": "https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Products.xslx",
+                "method": "GET"
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/channelCatalogs/{channelCatalogId}/products/counters": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Products"
+        ],
+        "summary": "Get channel catalog products' counters",
+        "operationId": "GetChannelCatalogProductsCounters",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel catalog products' counters",
+            "schema": {
+              "$ref": "#/definitions/channelCatalogProductsCounters"
             }
           },
           "default": {
@@ -4882,7 +5045,7 @@
           "Channel Catalogs - Products Overrides"
         ],
         "summary": "Override channel catalog product values",
-        "operationId": "OverrideChannelCatalogProductOverrides",
+        "operationId": "OverrideChannelCatalogProductValues",
         "parameters": [
           {
             "$ref": "#/parameters/channelCatalogIdParameter"
@@ -13361,6 +13524,32 @@
         }
       }
     },
+    "links.GetChannelCatalogsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogExclusionFilterOperatorsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/exclusionFilterOperators",
+            "method": "GET"
+          }
+        }
+      ]
+    },
     "links.GetChannelCatalogExportationCacheInfoLink": {
       "allOf": [
         {
@@ -13395,6 +13584,305 @@
         {
           "example": {
             "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exportations/cache/clear",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.DeleteChannelCatalogLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0",
+            "method": "DELETE"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogCategoriesLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "description": "If you did not configure the cost settings this link will not be displayed."
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.DisableChannelCatalogCategoryMappingLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/disable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.ReenableChannelCatalogCategoryMappingLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/reenable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.MapChannelCatalogCategoryLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/map",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.UnmapChannelCatalogCategoryLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/unmap",
+            "method": "POST",
+            "parameters": [
+              {
+                "name": "request",
+                "in": "body",
+                "type": "object",
+                "required": true,
+                "value": {
+                  "catalogCategoryPath": [
+                    "VÃªtements",
+                    "Femmes",
+                    "Chaussures"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "links.EnableChannelCatalogLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/enable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.DisableChannelCatalogLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/disable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogProductInfoListLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.ExportChannelCatalogProductInfoListLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/export",
+            "method": "POST",
+            "parameters": {
+              "format": {
+                "in": "query",
+                "required": true,
+                "type": "string",
+                "value": "csv"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.ConfigureChannelCatalogColumnMappingsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/columnMappings",
+            "method": "PUT"
+          }
+        }
+      ]
+    },
+    "links.ConfigureChannelCatalogGeneralSettingsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/settings/general",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.ConfigureChannelCatalogCostSettingsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/settings/cost",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.AddChannelCatalogLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.ConfigureChannelCatalogExclusionFiltersLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exclusionFilters",
+            "method": "PUT"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogExclusionFiltersLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exclusionFilters",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogProductInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/578419df-1bbf-41a6-96fa-862e42182b67",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.DisableChannelCatalogProductLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/578419df-1bbf-41a6-96fa-862e42182b67/disable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.ReenableChannelCatalogProductLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/578419df-1bbf-41a6-96fa-862e42182b67/reenable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.OverrideChannelCatalogProductValuesLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/578419df-1bbf-41a6-96fa-862e42182b67/overrides",
             "method": "POST"
           }
         }
@@ -13543,25 +14031,68 @@
         }
       }
     },
-    "channelCatalogList": {
+    "externalLinks.Catalog_GetBeezUPColumnsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/catalogs/beezUPColumns",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "channelCatalogListLinks": {
+      "type": "object",
+      "description": "Indicates how global actions you can do like how to create a channel catalog, exclusion filter operators, etc...\n",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogsLink"
+        },
+        "beezUPColumns": {
+          "$ref": "#/definitions/externalLinks.Catalog_GetBeezUPColumnsLink"
+        },
+        "add": {
+          "$ref": "#/definitions/links.AddChannelCatalogLink"
+        },
+        "exclusionFilterOperators": {
+          "$ref": "#/definitions/links.GetChannelCatalogExclusionFilterOperatorsLink"
+        }
+      }
+    },
+    "channelCatalogListLovLinks": {
       "type": "object",
       "properties": {
+        "channelCatalogExclusionFilterOperatorLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "channelCatalogExportCacheStatusLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        }
+      }
+    },
+    "channelCatalogList": {
+      "type": "object",
+      "description": "This is the index of the channel catalog API",
+      "properties": {
         "links": {
-          "description": "Indicates how to create a channel catalog and how to get the channel catalog list",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BeezUP.Common.Link2"
-          }
+          "$ref": "#/definitions/channelCatalogListLinks"
+        },
+        "lovLinks": {
+          "$ref": "#/definitions/channelCatalogListLovLinks"
         },
         "channelCatalogs": {
-          "type": "array",
-          "items": {
+          "type": "object",
+          "description": "The channel catalog list. The key is the channel catalog identifier",
+          "additionalProperties": {
             "$ref": "#/definitions/channelCatalog"
           }
         }
       }
     },
-    "createChannelCatalogRequest": {
+    "addChannelCatalogRequest": {
       "type": "object",
       "required": [
         "channelId",
@@ -13582,7 +14113,6 @@
       "required": [
         "acceptToPublishInfo",
         "useBid",
-        "noCategoryMapping",
         "doNotExportOutOfStockProducts",
         "activeBeezUPTracking"
       ],
@@ -13594,11 +14124,6 @@
         },
         "useBid": {
           "description": "Activate bidding for this channel",
-          "type": "boolean",
-          "example": false
-        },
-        "noCategoryMapping": {
-          "description": "Indicates that the channel authorize you to do not map your categories with their categories",
           "type": "boolean",
           "example": false
         },
@@ -13627,8 +14152,26 @@
       ],
       "example": "Fixed_Global"
     },
+    "channelCostSettings": {
+      "description": "Indicate the default configuration of the cost on this channel.",
+      "type": "object",
+      "required": [
+        "costType"
+      ],
+      "properties": {
+        "costType": {
+          "$ref": "#/definitions/costType"
+        },
+        "globalCostValue": {
+          "description": "In case of global cost type, you have to indicate the cost value.",
+          "type": "number",
+          "format": "decimal",
+          "example": 10.21
+        }
+      }
+    },
     "costSettings": {
-      "description": "Depending to the cost type you will have to define a cost value.",
+      "description": "If this property is not indicated please force the user to configure the cost settings.\nDefines the cost type you have on this channel with the cost value.\n",
       "type": "object",
       "required": [
         "costType"
@@ -13681,6 +14224,24 @@
         }
       }
     },
+    "channelCatalogCategoryMappingsLinks": {
+      "type": "object",
+      "description": "The action you can do on the category mappings",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogCategoriesLink"
+        },
+        "disable": {
+          "$ref": "#/definitions/links.DisableChannelCatalogCategoryMappingLink"
+        },
+        "reenable": {
+          "$ref": "#/definitions/links.ReenableChannelCatalogCategoryMappingLink"
+        }
+      }
+    },
     "channelCatalogCategoryMappings": {
       "type": "object",
       "required": [
@@ -13689,26 +14250,7 @@
       ],
       "properties": {
         "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BeezUP.Common.Link2"
-          },
-          "example": [
-            {
-              "rel": "mapCategory",
-              "operationId": "MapChannelCatalogCategory",
-              "href": "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/map",
-              "parameters": [
-                {
-                  "name": "channelCatalogId",
-                  "type": "string",
-                  "required": true,
-                  "in": "path",
-                  "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/channelCatalogCategoryMappingsLinks"
         },
         "channelCatalogCategoryMappings": {
           "type": "array",
@@ -13718,57 +14260,44 @@
         }
       }
     },
-    "channelCatalogCategoryMappingInfo": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/channelCatalogCategoryMapping"
+    "channelCatalogCategoryMappingInfoLinks": {
+      "type": "object",
+      "properties": {
+        "mapCategory": {
+          "$ref": "#/definitions/links.MapChannelCatalogCategoryLink"
         },
-        {
-          "type": "object",
-          "required": [
-            "catalogCategoryPath",
-            "channelCategoryPath",
-            "links"
-          ],
-          "properties": {
-            "links": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/BeezUP.Common.Link2"
-              },
-              "example": [
-                {
-                  "rel": "unmapCategory",
-                  "operationId": "MapChannelCatalogCategory",
-                  "href": "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings/unmap",
-                  "parameters": [
-                    {
-                      "name": "channelCatalogId",
-                      "type": "string",
-                      "required": true,
-                      "in": "path",
-                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
-                    },
-                    {
-                      "name": "request",
-                      "in": "path",
-                      "type": "object",
-                      "required": true,
-                      "value": {
-                        "catalogCategoryPath": [
-                          "VÃªtements",
-                          "Femmes",
-                          "Chaussures"
-                        ]
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          }
+        "unmapCategory": {
+          "$ref": "#/definitions/links.UnmapChannelCatalogCategoryLink"
         }
-      ]
+      }
+    },
+    "channelCatalogCategoryMappingInfo": {
+      "type": "object",
+      "description": "For all catalog categories the current mapping applied",
+      "required": [
+        "catalogCategoryPath",
+        "links"
+      ],
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/channelCatalogCategoryMappingInfoLinks"
+        },
+        "catalogCategoryPath": {
+          "$ref": "#/definitions/BeezUP.Common.CatalogCategoryPath"
+        },
+        "channelCategoryPath": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelCategoryPath"
+        },
+        "costValue": {
+          "$ref": "#/definitions/channelCatalogCategoryCostValue"
+        }
+      }
+    },
+    "channelCatalogCategoryCostValue": {
+      "description": "In case of CPC_ByCategory or CPA_ByCategory cost type, you have to indicate the cost value.",
+      "type": "number",
+      "format": "decimal",
+      "example": 10.21
     },
     "channelCatalogCategoryMapping": {
       "type": "object",
@@ -13785,20 +14314,21 @@
           "$ref": "#/definitions/BeezUP.Common.ChannelCategoryPath"
         },
         "costValue": {
-          "description": "In case of CPC_ByCategory or CPA_ByCategory cost type, you have to indicate the cost value.",
-          "type": "number",
-          "format": "decimal",
-          "example": 10.21
+          "$ref": "#/definitions/channelCatalogCategoryCostValue"
         }
       }
     },
-    "columnMappingWithName": {
+    "channelCatalogColumnMappingWithName": {
       "allOf": [
         {
-          "$ref": "#/definitions/columnMapping"
+          "$ref": "#/definitions/channelCatalogColumnMapping"
         },
         {
           "type": "object",
+          "required": [
+            "channelColumnId",
+            "channelColumnName"
+          ],
           "properties": {
             "channelColumnName": {
               "$ref": "#/definitions/BeezUP.Common.ChannelColumnName"
@@ -13816,9 +14346,12 @@
         }
       ]
     },
-    "columnMapping": {
-      "description": "Represent a mapping between a channel column considering channel category mapping and a catalog column",
+    "channelCatalogColumnMapping": {
+      "description": "Represent a mapping between a channel column (considering channel category mapping) and a catalog column",
       "type": "object",
+      "required": [
+        "channelColumnId"
+      ],
       "properties": {
         "channelColumnId": {
           "$ref": "#/definitions/BeezUP.Common.ChannelColumnId"
@@ -13846,18 +14379,18 @@
         }
       }
     },
-    "columnMappingWithNameList": {
+    "channelCatalogColumnMappingListWithName": {
       "description": "The column mapping list between a channel and a catalog",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/columnMappingWithName"
+        "$ref": "#/definitions/channelCatalogColumnMappingWithName"
       }
     },
-    "columnMappingList": {
+    "channelCatalogColumnMappingList": {
       "description": "The column mapping list between a channel and a catalog",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/columnMapping"
+        "$ref": "#/definitions/channelCatalogColumnMapping"
       }
     },
     "channelCatalogState": {
@@ -13934,6 +14467,31 @@
       ],
       "example": "success"
     },
+    "channelCategorySettings": {
+      "type": "object",
+      "properties": {
+        "mappingRequired": {
+          "type": "boolean",
+          "description": "Indicates if the category mapping is required, otherwise you can map the categories but it will not block the publication of your catalog",
+          "example": true
+        },
+        "mappingLeafRequired": {
+          "type": "boolean",
+          "description": "Indicates if the category mapping is required on category path leaf or not",
+          "example": true
+        }
+      }
+    },
+    "channelCatalogCategoryMappingSettings": {
+      "type": "object",
+      "properties": {
+        "categoryMappingDisabledByMerchant": {
+          "description": "Optional parameter. Indicates that you have decided to do not map your categories with the channel's categories.",
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
     "channelCatalog": {
       "allOf": [
         {
@@ -13953,7 +14511,8 @@
             "state",
             "links",
             "generalSettings",
-            "costSettings",
+            "channelCostSettings",
+            "channelCategorySettings",
             "isMarketplace",
             "productCount"
           ],
@@ -13961,11 +14520,12 @@
             "productCount": {
               "type": "integer",
               "format": "int32",
-              "description": "The product count exported considering category mapping. Not all filters have been applied."
+              "description": "The product count exported considering category mapping. Not all filters have been applied.",
+              "example": 101
             },
             "enabled": {
               "type": "boolean",
-              "description": "Indicates if the channel catalog is active",
+              "description": "Indicates if the channel catalog is enable",
               "example": true
             },
             "isMarketplace": {
@@ -13982,11 +14542,20 @@
             "generalSettings": {
               "$ref": "#/definitions/generalSettings"
             },
+            "channelCostSettings": {
+              "$ref": "#/definitions/channelCostSettings"
+            },
+            "channelCategorySettings": {
+              "$ref": "#/definitions/channelCategorySettings"
+            },
             "costSettings": {
               "$ref": "#/definitions/costSettings"
             },
+            "categoryMappingSettings": {
+              "$ref": "#/definitions/channelCatalogCategoryMappingSettings"
+            },
             "columnMappings": {
-              "$ref": "#/definitions/columnMappingWithNameList"
+              "$ref": "#/definitions/channelCatalogColumnMappingListWithName"
             },
             "exclusionFilters": {
               "$ref": "#/definitions/exclusionFilters"
@@ -14008,92 +14577,75 @@
               ]
             },
             "links": {
-              "description": "Indicates the actions you can do on a channel catalog",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/BeezUP.Common.Link2"
-              },
-              "example": [
-                {
-                  "rel": "categoryMappings",
-                  "operationId": "GetChannelCatalogCategoyMappings",
-                  "href": "/v2/user/channelCatalogs/{channelCatalogId}/categoryMappings",
-                  "method": "GET",
-                  "parameters": [
-                    {
-                      "name": "channelCatalogId",
-                      "type": "string",
-                      "required": true,
-                      "in": "path",
-                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
-                    }
-                  ]
-                },
-                {
-                  "rel": "delete",
-                  "operationId": "DeleteChannelCatalog",
-                  "href": "/v2/user/channelCatalogs/{channelCatalogId}",
-                  "method": "DELETE",
-                  "parameters": [
-                    {
-                      "name": "channelCatalogId",
-                      "type": "string",
-                      "required": true,
-                      "in": "path",
-                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
-                    }
-                  ]
-                },
-                {
-                  "rel": "disable",
-                  "operationId": "DisableChannelCatalog",
-                  "href": "/v2/user/channelCatalogs/{channelCatalogId}/disable",
-                  "method": "POST",
-                  "parameters": [
-                    {
-                      "name": "channelCatalogId",
-                      "type": "string",
-                      "required": true,
-                      "in": "path",
-                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
-                    }
-                  ]
-                },
-                {
-                  "rel": "exportation",
-                  "operationId": "GetChannelCatalogExportationCacheInfo",
-                  "href": "/v2/user/channelCatalogs/{channelCatalogId}/exportations/cache",
-                  "method": "GET",
-                  "parameters": [
-                    {
-                      "name": "channelCatalogId",
-                      "type": "string",
-                      "required": true,
-                      "in": "path",
-                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
-                    }
-                  ]
-                },
-                {
-                  "rel": "exportationHistory",
-                  "operationId": "GetChannelCatalogExportationHistory",
-                  "href": "/v2/user/channelCatalogs/{channelCatalogId}/exportations/history",
-                  "method": "GET",
-                  "parameters": [
-                    {
-                      "name": "channelCatalogId",
-                      "type": "string",
-                      "required": true,
-                      "in": "path",
-                      "value": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
-                    }
-                  ]
-                }
-              ]
+              "$ref": "#/definitions/channelCatalogLinks"
             }
           }
         }
       ]
+    },
+    "externalLinks.GetChannelCatalogMarketplaceSettingsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/channelcatatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/settings",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "channelCatalogLinks": {
+      "type": "object",
+      "description": "Indicates the actions you can do on a channel catalog",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogLink"
+        },
+        "delete": {
+          "$ref": "#/definitions/links.DeleteChannelCatalogLink"
+        },
+        "enable": {
+          "$ref": "#/definitions/links.EnableChannelCatalogLink"
+        },
+        "disable": {
+          "$ref": "#/definitions/links.DisableChannelCatalogLink"
+        },
+        "configureGeneralSettings": {
+          "$ref": "#/definitions/links.ConfigureChannelCatalogGeneralSettingsLink"
+        },
+        "configureCostSettings": {
+          "$ref": "#/definitions/links.ConfigureChannelCatalogCostSettingsLink"
+        },
+        "configureColumnMappings": {
+          "$ref": "#/definitions/links.ConfigureChannelCatalogColumnMappingsLink"
+        },
+        "reenableCategoryMappings": {
+          "$ref": "#/definitions/links.ReenableChannelCatalogCategoryMappingLink"
+        },
+        "disableCategoryMappings": {
+          "$ref": "#/definitions/links.DisableChannelCatalogCategoryMappingLink"
+        },
+        "categoryMappings": {
+          "$ref": "#/definitions/links.GetChannelCatalogCategoriesLink"
+        },
+        "exclusionFilters": {
+          "$ref": "#/definitions/links.GetChannelCatalogExclusionFiltersLink"
+        },
+        "products": {
+          "$ref": "#/definitions/links.GetChannelCatalogProductInfoListLink"
+        },
+        "exportationCacheInfo": {
+          "$ref": "#/definitions/links.GetChannelCatalogExportationCacheInfoLink"
+        },
+        "marketplaceSettings": {
+          "$ref": "#/definitions/externalLinks.GetChannelCatalogMarketplaceSettingsLink"
+        }
+      }
     },
     "productOverrides": {
       "description": "The key is the channel column identifier",
@@ -14151,13 +14703,41 @@
       "properties": {
         "override": {
           "type": "string",
-          "description": "The overrided product value",
+          "description": "The overridden product value",
           "example": "Sony bravia"
         },
         "catalogValue": {
           "type": "string",
           "description": "The catalog product value",
           "example": "Sony"
+        }
+      }
+    },
+    "exclusionFiltersResponseLinks": {
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogExclusionFiltersLink"
+        },
+        "configure": {
+          "$ref": "#/definitions/links.ConfigureChannelCatalogExclusionFiltersLink"
+        }
+      }
+    },
+    "exclusionFiltersResponse": {
+      "type": "object",
+      "required": [
+        "links"
+      ],
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/exclusionFiltersResponseLinks"
+        },
+        "exclusionFilters": {
+          "$ref": "#/definitions/exclusionFilters"
         }
       }
     },
@@ -14221,7 +14801,7 @@
           "example": "sony"
         },
         "enabled": {
-          "description": "indicates if the filter is currently active.",
+          "description": "indicates if the filter is currently enable.",
           "type": "boolean",
           "example": true
         }
@@ -14263,32 +14843,31 @@
         }
       }
     },
-    "getChannelCatalogProductInfoListRequest": {
+    "productSetVisibilityCriteriaLogicType": {
+      "description": "Indicate how you want to combine the filters:\n* funnel: You will get the products which meet at least one of the product set criterion. The criteria are applied in the following order: \n  - categorization\n  - exclusion filters\n  - deactivations\n* cumulative: You will get the products which have all the product set criteria\n",
+      "type": "string",
+      "enum": [
+        "funnel",
+        "cumulative"
+      ]
+    },
+    "productSetVisibilityCriteria": {
       "type": "object",
+      "required": [
+        "logic"
+      ],
       "properties": {
-        "sku": {
-          "type": "string",
-          "description": "Search by product sku. If null the filter will not be taken in account.",
-          "example": "M123"
+        "logic": {
+          "$ref": "#/definitions/productSetVisibilityCriteriaLogicType"
         },
-        "title": {
-          "type": "string",
-          "description": "Search by product title. If null the filter will not be taken in account.",
-          "example": "RÃ©frigÃ©rateur"
-        },
-        "overrided": {
+        "exist": {
           "type": "boolean",
-          "description": "Search overrided products. If null the filter will not be taken in account.",
+          "description": "If false, search for products absent from the current catalog. If true, search for products currently in the catalog. If null the filter will not be taken in account.",
           "example": true
         },
-        "disabled": {
+        "uncategorized": {
           "type": "boolean",
-          "description": "Search disabled products. If null the filter will not be taken in account.",
-          "example": false
-        },
-        "categoryMapped": {
-          "type": "boolean",
-          "description": "Search product with category mapped with the channel. If null the filter will not be taken in account.",
+          "description": "Search product WITHOUT category mapped with the channel. If null the filter will not be taken in account.",
           "example": false
         },
         "excluded": {
@@ -14296,31 +14875,122 @@
           "description": "Search excluded products by at least an exclusion filter. If null the filter will not be taken in account.",
           "example": false
         },
-        "active": {
+        "disabled": {
           "type": "boolean",
-          "description": "If false, search for product absent from the current catalog. If null the filter will not be taken in account.",
-          "example": true
+          "description": "Search disabled products. If null the filter will not be taken in account.",
+          "example": false
         }
       }
     },
-    "links.GetChannelCatalogProductInfoLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
+    "getChannelCatalogProductInfoListRequest": {
+      "type": "object",
+      "required": [
+        "pageNumber",
+        "pageSize",
+        "criteria"
+      ],
+      "properties": {
+        "pageNumber": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "example": 1
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 100,
+          "example": 100
+        },
+        "criteria": {
+          "$ref": "#/definitions/productSetVisibilityCriteria"
+        },
+        "overridden": {
+          "type": "boolean",
+          "description": "Search overridden products. If null the filter will not be taken in account.",
+          "example": true
+        },
+        "productFilters": {
+          "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+        },
+        "catalogCategoryFilter": {
+          "$ref": "#/definitions/BeezUP.Common.CatalogCategoryFilter"
+        },
+        "channelCategoryFilter": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelCategoryFilter"
         }
-      ]
+      }
+    },
+    "channelCatalogProductsCounters": {
+      "type": "object",
+      "description": "The channel catalog products counters. For each counter you will have a count.",
+      "properties": {
+        "existingProductCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Imported product count currently in your catalog.",
+          "example": 1000
+        },
+        "uncategorizedProductCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Product count WITHOUT category mapped on existing products.",
+          "example": 250
+        },
+        "excludedProductCountIncludingUncategorized": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Excluded product count INCLUDING uncategorized products on existing products.",
+          "example": 169
+        },
+        "excludedProductCountExcludingUncategorized": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Excluded product count EXCLUDING uncategorized products on existing products.",
+          "example": 150
+        },
+        "disabledProductCountExcludingUncategorizedAndExcluded": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Disabled product count EXCLUDING uncategorized products AND excluded products on existing products.",
+          "example": 50
+        },
+        "disabledProductCountIncludingUncategorizedAndExcluded": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Disabled product count INCLUDING uncategorized products AND excluded products on existing products.",
+          "example": 66
+        }
+      }
+    },
+    "channelCatalogProductInfoListLinks": {
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogProductInfoListLink"
+        },
+        "export": {
+          "$ref": "#/definitions/links.ExportChannelCatalogProductInfoListLink"
+        }
+      }
     },
     "channelCatalogProductInfoList": {
       "description": "The channel catalog product info list",
       "type": "object",
+      "required": [
+        "paginationResult",
+        "links",
+        "productInfos"
+      ],
       "properties": {
+        "paginationResult": {
+          "$ref": "#/definitions/BeezUP.Common.PaginationResult"
+        },
         "links": {
-          "type": "object",
-          "properties": {
-            "self": {
-              "$ref": "#/definitions/links.GetChannelCatalogProductInfoLink"
-            }
-          }
+          "$ref": "#/definitions/channelCatalogProductInfoListLinks"
         },
         "productInfos": {
           "type": "array",
@@ -14340,9 +15010,10 @@
           "description": "The channel catalog product information",
           "required": [
             "productId",
+            "productExists",
             "overrides",
             "disabled",
-            "categoryMapped",
+            "uncategorized",
             "excluded",
             "links"
           ],
@@ -14356,9 +15027,9 @@
               "default": false,
               "example": false
             },
-            "categoryMapped": {
+            "uncategorized": {
               "type": "boolean",
-              "description": "Indicates if the product's category has been mapped to a channel category",
+              "description": "Indicates if the product's category has been NOT mapped to a channel category",
               "example": true
             },
             "excluded": {
@@ -14387,17 +15058,21 @@
       "description": "Indicates the differents actions you can do on a channel product",
       "type": "object",
       "required": [
+        "self",
         "override"
       ],
       "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetChannelCatalogProductInfoLink"
+        },
         "override": {
-          "$ref": "#/definitions/BeezUP.Common.Link2"
+          "$ref": "#/definitions/links.OverrideChannelCatalogProductValuesLink"
         },
         "disable": {
-          "$ref": "#/definitions/BeezUP.Common.Link2"
+          "$ref": "#/definitions/links.DisableChannelCatalogProductLink"
         },
         "reenable": {
-          "$ref": "#/definitions/BeezUP.Common.Link2"
+          "$ref": "#/definitions/links.ReenableChannelCatalogProductLink"
         }
       }
     },
@@ -20884,6 +21559,17 @@
       "format": "guid",
       "x-example": "578419df-1bbf-41a6-96fa-862e42182b67"
     },
+    "exportFormatInQueryGeneralParameter": {
+      "description": "The file type of the exportation",
+      "name": "format",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "enum": [
+        "xlsx",
+        "csv"
+      ]
+    },
     "marketplaceTechnicalCodeParameter": {
       "description": "The marketplace technical code",
       "name": "marketplaceTechnicalCode",
@@ -20933,16 +21619,6 @@
       "type": "boolean",
       "default": false,
       "x-example": false
-    },
-    "exportFormatInQueryGeneralParameter": {
-      "name": "format",
-      "in": "query",
-      "required": true,
-      "type": "string",
-      "enum": [
-        "xlsx",
-        "csv"
-      ]
     },
     "ruleIdOnlyGeneralParameters": {
       "name": "ruleId",
