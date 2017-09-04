@@ -16144,6 +16144,9 @@
         },
         "refundReasonCodeLOV": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "marketplaceStorePropertyLOV": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         }
       }
     },
