@@ -5649,7 +5649,7 @@
           "200": {
             "description": "Successfully fetched list of configured automatic Order status transitions",
             "schema": {
-              "$ref": "#/definitions/automaticTransitionInfos"
+              "$ref": "#/definitions/automaticTransitionInfoList"
             }
           },
           "304": {
@@ -5904,7 +5904,7 @@
           "Marketplaces - Orders - Batches"
         ],
         "operationId": "SetMerchantOrderInfoList",
-        "summary": "Send a batch of operations to set an Order's merchant information",
+        "summary": "Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -5947,7 +5947,7 @@
           "Marketplaces - Orders - Batches"
         ],
         "operationId": "ClearMerchantOrderInfoList",
-        "summary": "Send a batch of operations to clear an Order's merchant information",
+        "summary": "Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -16557,7 +16557,7 @@
       ],
       "example": "Done"
     },
-    "automaticTransitionInfosLinks": {
+    "automaticTransitionInfoListLinks": {
       "type": "object",
       "required": [
         "self",
@@ -16572,14 +16572,14 @@
         }
       }
     },
-    "automaticTransitionInfos": {
+    "automaticTransitionInfoList": {
       "type": "object",
       "required": [
         "links"
       ],
       "properties": {
         "links": {
-          "$ref": "#/definitions/automaticTransitionInfosLinks"
+          "$ref": "#/definitions/automaticTransitionInfoListLinks"
         },
         "automaticTransitionInfos": {
           "type": "array",
@@ -17423,8 +17423,19 @@
           "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
+          "type": "object",
+          "properties": {
+            "rel": {
+              "type": "string",
+              "description": "Indicate the relation name related to the link",
+              "example": "self"
+            }
+          }
+        },
+        {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/shipOrder",
+            "rel": "ShipOrder",
+            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
             "method": "POST",
             "templated": true,
             "parameters": {
@@ -17482,13 +17493,14 @@
     },
     "orderTransitionLinks": {
       "description": "Contains the authorized change actions for an order",
-      "type": "object",
-      "additionalProperties": {
+      "type": "array",
+      "items": {
         "$ref": "#/definitions/links.ChangeOrderLink"
       },
-      "example": {
-        "shipOrder": {
-          "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/shipOrder",
+      "example": [
+        {
+          "rel": "ShipOrder",
+          "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
           "method": "POST",
           "templated": true,
           "parameters": {
@@ -17541,8 +17553,9 @@
             }
           }
         },
-        "cancelOrder": {
-          "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/cancelOrder",
+        {
+          "rel": "CancelOrder",
+          "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/CancelOrder",
           "method": "POST",
           "templated": true,
           "parameters": {
@@ -17575,7 +17588,7 @@
             }
           }
         }
-      }
+      ]
     },
     "orderIndex": {
       "type": "object",
