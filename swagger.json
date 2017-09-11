@@ -6388,7 +6388,7 @@
           {
             "name": "request",
             "in": "body",
-            "required": true,
+            "required": false,
             "schema": {
               "$ref": "#/definitions/changeOrderRequest"
             }
@@ -18133,8 +18133,7 @@
       "type": "object",
       "description": "Contains the order identifier and the change order request",
       "required": [
-        "order",
-        "changeOrderRequest"
+        "order"
       ],
       "properties": {
         "order": {
