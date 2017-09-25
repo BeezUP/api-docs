@@ -1413,28 +1413,15 @@
       }
     },
     "/user/customer/stores/{storeId}/rights": {
-      "post": {
+      "get": {
         "tags": [
           "Customer - Rights"
         ],
         "summary": "Get store's rights",
         "operationId": "GetRights",
-        "deprecated": true,
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
-          },
-          {
-            "name": "functionalityCodeList",
-            "in": "body",
-            "description": "The functionality code list you want to check",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -1445,12 +1432,6 @@
               "items": {
                 "$ref": "#/definitions/functionalityRightInfo"
               }
-            }
-          },
-          "403": {
-            "description": "Functionality not found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
