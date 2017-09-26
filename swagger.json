@@ -2701,8 +2701,8 @@
         "tags": [
           "Catalogs - Catalog"
         ],
-        "operationId": "Catalog_GetProduct",
-        "summary": "Get product",
+        "operationId": "Catalog_GetProductByProductId",
+        "summary": "Get product by ProductId",
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
@@ -2725,6 +2725,49 @@
           },
           "404": {
             "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/catalogs/{storeId}/products": {
+      "get": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_GetProductBySku",
+        "summary": "Get product by Sku",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "sku",
+            "description": "The product sku you want to get",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product",
+            "schema": {
+              "$ref": "#/definitions/product"
+            }
+          },
+          "404": {
+            "description": "StoreId or Product not found",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -12579,40 +12622,15 @@
           "required": [
             "id",
             "catalogColumnName",
-            "detected",
             "links"
           ],
           "properties": {
-            "detected": {
-              "description": "Indicates if the column is detected or is from the current catalog",
-              "type": "boolean",
-              "example": true
-            },
-            "existingConfiguration": {
-              "$ref": "#/definitions/existingCatalogColumnConfiguration"
-            },
             "links": {
               "$ref": "#/definitions/detectedCatalogColumnLinks"
             }
           }
         }
       ]
-    },
-    "existingCatalogColumnConfiguration": {
-      "description": "In case your catalog column already exists we indicate you the existing configuration.",
-      "type": "object",
-      "required": [
-        "userColumName",
-        "configuration"
-      ],
-      "properties": {
-        "userColumName": {
-          "$ref": "#/definitions/userColumName"
-        },
-        "configuration": {
-          "$ref": "#/definitions/columnConfiguration"
-        }
-      }
     },
     "productValues": {
       "description": "The key is the column identifier",
