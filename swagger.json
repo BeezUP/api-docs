@@ -4394,6 +4394,12 @@
               "$ref": "#/definitions/links.GetChannelCatalogLink"
             }
           },
+          "404": {
+            "description": "StoreId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4424,6 +4430,12 @@
               "$ref": "#/definitions/channelCatalog"
             }
           },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4448,6 +4460,12 @@
         "responses": {
           "204": {
             "description": "Channel catalog deleted"
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -4475,6 +4493,12 @@
         "responses": {
           "204": {
             "description": "Channel catalog enabled"
+          },
+          "404": {
+            "description": "Occurs when a user tries to work on the wrong ChanelCatalogId.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "402": {
             "description": "You have to upgrade your offer to activate this channel catalog",
@@ -4508,6 +4532,12 @@
         "responses": {
           "204": {
             "description": "Channel catalog disabled"
+          },
+          "404": {
+            "description": "Occurs when a user tries to work on the wrong ChanelCatalogId.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -4544,6 +4574,12 @@
           "204": {
             "description": "Channel catalog general settings configured"
           },
+          "404": {
+            "description": "Occurs when a user tries to work on the wrong ChanelCatalogId.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4578,6 +4614,12 @@
         "responses": {
           "204": {
             "description": "Channel catalog cost settings configured"
+          },
+          "404": {
+            "description": "Occurs when a user tries to work on the wrong ChanelCatalogId.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -4614,6 +4656,12 @@
           "204": {
             "description": "Channel catalog column mappings configured"
           },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4641,7 +4689,13 @@
           "200": {
             "description": "Channel catalog category mappings",
             "schema": {
-              "$ref": "#/definitions/channelCatalogCategoryMappings"
+              "$ref": "#/definitions/channelCatalogCategoryMappingList"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -4671,6 +4725,12 @@
           "204": {
             "description": "Channel catalog category mapping disabled"
           },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4697,6 +4757,12 @@
         "responses": {
           "204": {
             "description": "Channel catalog category mapping reenabled"
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -4733,6 +4799,18 @@
           "204": {
             "description": "Channel catalog category mapped"
           },
+          "400": {
+            "description": "BadRequest. See Error Response for more details",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4767,6 +4845,18 @@
         "responses": {
           "204": {
             "description": "Channel catalog category unmapped"
+          },
+          "400": {
+            "description": "BadRequest. See Error Response for more details",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -4826,6 +4916,12 @@
               "$ref": "#/definitions/exclusionFiltersResponse"
             }
           },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4858,6 +4954,18 @@
         "responses": {
           "204": {
             "description": "Channel catalog exclusion filter list configured"
+          },
+          "400": {
+            "description": "BadRequest. See Error Response for more details",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -4896,6 +5004,12 @@
             "description": "Channel catalog product information",
             "schema": {
               "$ref": "#/definitions/channelCatalogProductInfoList"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -4952,6 +5066,12 @@
               }
             }
           },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4982,6 +5102,12 @@
               "$ref": "#/definitions/channelCatalogProductsCounters"
             }
           },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -4993,7 +5119,7 @@
         ]
       }
     },
-    "/user/channelCatalogs/products/{productId}": {
+    "/user/channelCatalogs/products": {
       "post": {
         "tags": [
           "Channel Catalogs - Products"
@@ -5002,11 +5128,9 @@
         "operationId": "GetChannelCatalogProductByChannelCatalog",
         "parameters": [
           {
-            "$ref": "#/parameters/productIdParameter"
-          },
-          {
             "name": "request",
             "in": "body",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/channelCatalogProductByChannelCatalogRequest"
             }
@@ -5017,6 +5141,12 @@
             "description": "The channel catalog product by channel catalog",
             "schema": {
               "$ref": "#/definitions/channelCatalogProductByChannelCatalogResponse"
+            }
+          },
+          "404": {
+            "description": "ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5050,6 +5180,12 @@
             "description": "Channel catalog product information",
             "schema": {
               "$ref": "#/definitions/channelCatalogProductInfo"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalog or ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -5090,6 +5226,18 @@
           "204": {
             "description": "Channel catalog product overriden"
           },
+          "400": {
+            "description": "BadRequest. See Error Response for more details",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId or ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -5129,6 +5277,12 @@
           "204": {
             "description": "Channel catalog product value override deleted"
           },
+          "404": {
+            "description": "ChannelCatalogId or ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -5159,6 +5313,12 @@
         "responses": {
           "204": {
             "description": "Channel catalog product disabled"
+          },
+          "404": {
+            "description": "ChannelCatalogId Or ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -5191,6 +5351,12 @@
           "204": {
             "description": "Channel catalog product reenabled"
           },
+          "404": {
+            "description": "ChannelCatalogId or ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -5221,6 +5387,12 @@
               "$ref": "#/definitions/channelCatalogExportCacheInfoResponse"
             }
           },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -5247,6 +5419,12 @@
         "responses": {
           "204": {
             "description": "Channel catalog exportation cache cleared"
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -5282,6 +5460,12 @@
             "description": "Channel catalog exportation history",
             "schema": {
               "$ref": "#/definitions/channelCatalogExportationHistory"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -14005,12 +14189,8 @@
         "cacheStatus": {
           "description": "The cache status during the exportation",
           "type": "string",
-          "enum": [
-            "Error",
-            "Available",
-            "GeneratedManually"
-          ],
-          "example": "Available"
+          "example": "Available",
+          "x-lov": "ChannelCatalogExportationCacheGenerationStatus"
         },
         "exportedProductCount": {
           "type": "integer",
@@ -14241,7 +14421,7 @@
         }
       }
     },
-    "channelCatalogCategoryMappings": {
+    "channelCatalogCategoryMappingList": {
       "type": "object",
       "required": [
         "links",
@@ -15077,7 +15257,18 @@
     },
     "channelCatalogProductByChannelCatalogRequest": {
       "type": "object",
+      "required": [
+        "storeId",
+        "productId",
+        "channelCatalogIds"
+      ],
       "properties": {
+        "storeId": {
+          "$ref": "#/definitions/BeezUP.Common.StoreId"
+        },
+        "productId": {
+          "$ref": "#/definitions/BeezUP.Common.ProductId"
+        },
         "channelCatalogIds": {
           "description": "The list of channel catalog identifier",
           "type": "array",
