@@ -21080,7 +21080,6 @@
           "$ref": "#/definitions/BeezUP.Common.HttpMethod"
         },
         "parameters": {
-          "type": "object",
           "properties": {
             "type": "object",
             "default": {
@@ -21088,7 +21087,6 @@
             }
           },
           "additionalProperties": {
-            "type": "object",
             "$ref": "#/definitions/BeezUP.Common.LinkParameter3"
           }
         },
