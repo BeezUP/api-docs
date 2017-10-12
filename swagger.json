@@ -21080,12 +21080,7 @@
           "$ref": "#/definitions/BeezUP.Common.HttpMethod"
         },
         "parameters": {
-          "properties": {
-            "type": "object",
-            "default": {
-              "$ref": "#/definitions/BeezUP.Common.LinkParameter3"
-            }
-          },
+          "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/BeezUP.Common.LinkParameter3"
           }
