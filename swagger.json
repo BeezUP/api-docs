@@ -226,6 +226,11 @@
       "x-displayName": "Exports"
     },
     {
+      "name": "Analytics - Global",
+      "description": "All global operations concerning Analytics API",
+      "x-displayName": "Global"
+    },
+    {
       "name": "Analytics - Tracking",
       "description": "All tracking operations",
       "x-displayName": "Tracking"
@@ -6648,6 +6653,64 @@
         ]
       }
     },
+    "/user/analytics/": {
+      "get": {
+        "tags": [
+          "Analytics - Global"
+        ],
+        "summary": "Get the Analytics API operation index",
+        "operationId": "AnalyticsIndex",
+        "responses": {
+          "200": {
+            "description": "Analytics API operation index",
+            "schema": {
+              "$ref": "#/definitions/analyticsIndex"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/analytics/{storeId}": {
+      "get": {
+        "tags": [
+          "Analytics - Global"
+        ],
+        "summary": "Get the Analytics API operation index for one store",
+        "operationId": "AnalyticsStoreIndex",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Analytics API operation index for one store",
+            "schema": {
+              "$ref": "#/definitions/analyticsStoreIndex"
+            }
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
     "/user/analytics/tracking/status": {
       "get": {
         "tags": [
@@ -6690,8 +6753,11 @@
           "200": {
             "description": "Report filter list",
             "schema": {
-              "$ref": "#/definitions/reportFilters"
+              "$ref": "#/definitions/reportFilterList"
             }
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6727,7 +6793,10 @@
             }
           },
           "404": {
-            "description": "Report filter not found"
+            "description": "Report filter not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6758,7 +6827,10 @@
             "description": "Report filter deleted"
           },
           "404": {
-            "description": "Report filter not found"
+            "description": "Report filter not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "401": {
             "description": "This report filter is used by rule. In the error message you will find the rule identifier.",
@@ -6803,13 +6875,28 @@
             "description": "Report filter saved"
           },
           "409": {
-            "description": "Report filter name already exists"
+            "description": "Report filter name already exists",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "401": {
             "description": "This report filter is used by rule. In the error message you will find the rule identifier.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
+          },
+          "403": {
+            "description": "This report filter identifier is already used by another store, please check your identifiers.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6850,60 +6937,11 @@
               "$ref": "#/definitions/reportByDayResponse"
             }
           },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/user/analytics/{storeId}/reports/byday/export": {
-      "post": {
-        "tags": [
-          "Analytics - Reports"
-        ],
-        "summary": "Get the report by day",
-        "description": "Get the report by day",
-        "operationId": "GetStoreReportByDayExport",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
           },
-          {
-            "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/reportByDayRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Your reporting by day exported into a file",
-            "headers": {
-              "Location": {
-                "description": "To indicate the url of the export file\nExample: https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Days.xslx\n",
-                "type": "string",
-                "x-example": "https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Days.xslx"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.Link3"
-            },
-            "examples": {
-              "application/json": {
-                "href": "https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Days.xslx",
-                "method": "GET"
-              }
-            }
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6944,59 +6982,11 @@
               "$ref": "#/definitions/reportByChannelResponse"
             }
           },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/user/analytics/{storeId}/reports/bychannel/export": {
-      "post": {
-        "tags": [
-          "Analytics - Reports"
-        ],
-        "summary": "Export the report by channel",
-        "description": "Export the report by channel",
-        "operationId": "ExportStoreReportByChannel",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
           },
-          {
-            "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/reportByChannelRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Your reporting by channel exported",
-            "headers": {
-              "Location": {
-                "description": "To indicate the url of the export file\nExample: https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Channels.xslx\n",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.Link3"
-            },
-            "examples": {
-              "application/json": {
-                "href": "https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Channels.xslx",
-                "method": "GET"
-              }
-            }
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7037,59 +7027,11 @@
               "$ref": "#/definitions/reportByCategoryResponse"
             }
           },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/user/analytics/{storeId}/reports/bycategory/export": {
-      "post": {
-        "tags": [
-          "Analytics - Reports"
-        ],
-        "summary": "Export the report by category",
-        "description": "Export the report by category",
-        "operationId": "ExportStoreReportByCategory",
-        "parameters": [
-          {
-            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
           },
-          {
-            "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/reportByCategoryRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Your reporting by category exported",
-            "headers": {
-              "Location": {
-                "description": "To indicate the url of the export file\nExample: https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Categories.xslx\n",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.Link3"
-            },
-            "examples": {
-              "application/json": {
-                "href": "https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Channels.xslx",
-                "method": "GET"
-              }
-            }
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7130,6 +7072,12 @@
               "$ref": "#/definitions/reportByProductResponse"
             }
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -7141,48 +7089,35 @@
         ]
       }
     },
-    "/user/analytics/{storeId}/reports/byproduct/export": {
+    "/user/analytics/{storeId}/optimisations/copy": {
       "post": {
         "tags": [
-          "Analytics - Reports"
+          "Analytics - Optimisations"
         ],
-        "summary": "Export the report by product",
-        "description": "Export the report by product",
-        "operationId": "ExportStoreReportByProduct",
+        "summary": "Copy products optimisation between 2 channels",
+        "operationId": "CopyOptimisation",
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
-          },
-          {
-            "$ref": "#/parameters/exportFormatInQueryGeneralParameter"
           },
           {
             "name": "request",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/reportByProductRequest"
+              "$ref": "#/definitions/copyOptimisationRequest"
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "Your reporting by product exported",
-            "headers": {
-              "Location": {
-                "description": "To indicate the url of the export file\nExample: https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Products.xslx\n",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.Link3"
-            },
-            "examples": {
-              "application/json": {
-                "href": "https://beezupchannel.blob.core.windows.net/reports/exports/Excel_Report_Channels.xslx",
-                "method": "GET"
-              }
-            }
+          "204": {
+            "description": "Products optimisatisation copied"
+          },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7223,6 +7158,12 @@
           "204": {
             "description": "Products optimisatized"
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -7240,7 +7181,7 @@
           "Analytics - Optimisations"
         ],
         "summary": "Optimise products",
-        "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable this product for every channel indicated in the body. \n",
+        "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable this product for every channel indicated in the body.\n",
         "operationId": "OptimiseByProduct",
         "parameters": [
           {
@@ -7281,6 +7222,12 @@
           "204": {
             "description": "Product(s) optimisatized"
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -7298,7 +7245,7 @@
           "Analytics - Optimisations"
         ],
         "summary": "Optimise products's category",
-        "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable products's category for every channel indicated in the body. \n",
+        "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable products's category for every channel indicated in the body.\n",
         "operationId": "OptimiseByCategory",
         "parameters": [
           {
@@ -7339,6 +7286,12 @@
           "204": {
             "description": "Products optimisatized"
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -7378,6 +7331,12 @@
           "204": {
             "description": "Products optimisatized"
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -7410,7 +7369,7 @@
             }
           },
           "404": {
-            "description": "Store not found"
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7453,7 +7412,7 @@
             }
           },
           "404": {
-            "description": "Store not found"
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7495,8 +7454,11 @@
               "$ref": "#/definitions/trackedOrders"
             }
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
           "404": {
-            "description": "Store not found"
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7538,8 +7500,11 @@
               "$ref": "#/definitions/trackedExternalOrders"
             }
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
           "404": {
-            "description": "Store not found"
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7570,6 +7535,9 @@
             "schema": {
               "$ref": "#/definitions/ruleList"
             }
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7609,13 +7577,25 @@
             "description": "Rule created"
           },
           "400": {
-            "description": "Period on filter cannot be custom or filter does not exist"
+            "description": "Period on filter cannot be custom or filter does not exist",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "401": {
-            "description": "Store not allowed to use rules. Please upgrade your offer or contact us."
+            "description": "Store not allowed to use rules. Please upgrade your offer or contact us.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
           },
           "403": {
-            "description": "Reached the maximum amount of rules allowed for your offer. Please upgrade your offer or contact us."
+            "description": "Reached the maximum amount of rules allowed for your offer. Please upgrade your offer or contact us.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7645,13 +7625,22 @@
             "description": "All rules executed."
           },
           "401": {
-            "description": "Store not allowed to use rules. Please upgrade your offer or contact us."
+            "description": "Store not allowed to use rules. Please upgrade your offer or contact us.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7702,6 +7691,12 @@
               "$ref": "#/definitions/ruleExecutionReportings"
             }
           },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -7735,6 +7730,9 @@
               "$ref": "#/definitions/rule"
             }
           },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -7764,10 +7762,16 @@
             "description": "Rule deleted"
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7806,16 +7810,28 @@
             "description": "Rule updated"
           },
           "400": {
-            "description": "Filter does not exist or period on filter cannot be custom"
+            "description": "Filter does not exist or period on filter cannot be custom",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "401": {
-            "description": "Store not allowed to use rules. Please upgrade your offer or contact us."
+            "description": "Store not allowed to use rules. Please upgrade your offer or contact us.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7848,16 +7864,28 @@
             "description": "Rule executed"
           },
           "400": {
-            "description": "Rule is not enabled. Please enable this run before trying to run it."
+            "description": "Rule is not enabled. Please enable this run before trying to run it.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "401": {
-            "description": "Store not allowed to use rules. Please upgrade your offer or contact us."
+            "description": "Store not allowed to use rules. Please upgrade your offer or contact us.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7890,13 +7918,22 @@
             "description": "Rule moved up"
           },
           "400": {
-            "description": "Priority can only be changed when more than one rule is defined"
+            "description": "Priority can only be changed when more than one rule is defined",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7929,13 +7966,22 @@
             "description": "Rule moved down"
           },
           "400": {
-            "description": "Priority can only be changed when more than one rule is defined"
+            "description": "Priority can only be changed when more than one rule is defined",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -7968,10 +8014,16 @@
             "description": "Rune enabled"
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -8004,10 +8056,16 @@
             "description": "Rule disabled"
           },
           "404": {
-            "description": "Rule not found"
+            "description": "Rule not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "409": {
-            "description": "Rules for this store are currently running. Please try again later."
+            "description": "Rules for this store are currently running. Please try again later.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -18595,153 +18653,162 @@
         }
       }
     },
-    "productStateFilter": {
-      "type": "string",
-      "description": "You can filter on the product state.",
-      "enum": [
-        "All",
-        "Enabled",
-        "Disabled"
-      ],
-      "default": "All",
-      "example": "All"
-    },
-    "reportByProductRequest": {
+    "links.AnalyticsIndexLink": {
       "allOf": [
         {
-          "$ref": "#/definitions/reportFilterCommonParameters"
+          "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
-          "$ref": "#/definitions/paginationRequestParameters"
+          "example": {
+            "href": "/v2/user/analytics",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetTrackingStatusLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
-          "type": "object",
-          "required": [
-            "beginPeriodUtcDate",
-            "endPeriodUtcDate",
-            "advancedFilters",
-            "productState"
-          ],
-          "properties": {
-            "productColumnsToDisplay": {
-              "type": "array",
-              "minItems": 0,
-              "maxItems": 1,
-              "items": {
-                "$ref": "#/definitions/BeezUP.Common.CatalogColumnId"
-              },
-              "example": [
-                "4b460e31-3d1f-4117-922d-b159a64ec1d2"
-              ]
-            },
-            "productState": {
-              "$ref": "#/definitions/productStateFilter"
-            },
-            "productFilters": {
-              "$ref": "#/definitions/productFilters"
+          "example": {
+            "href": "/v2/user/analytics/tracking/status",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetStoreTrackingStatusLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/tracking/status",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetStoreTrackedClicksLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/tracking/clicks",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetStoreTrackedOrdersLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/tracking/orders",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetStoreTrackedExternalOrdersLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/tracking/externalorders",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetStoreReportByDayLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/byday",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "reportByDayRequest"
+              }
             }
           }
         }
       ]
     },
-    "productFilters": {
-      "type": "object",
-      "properties": {
-        "sku": {
-          "type": "string",
-          "description": "The product sku filter",
-          "example": "M1234"
-        },
-        "title": {
-          "type": "string",
-          "description": "The product title filter",
-          "example": "RefrigÃ©rateur"
-        },
-        "additionalProductFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/reportProductFilter"
-          },
-          "example": [
-            {
-              "columnId": "672644c7-5bd0-4e25-88c1-1f732bda5e4c",
-              "operatorName": "GreaterTo",
-              "values": [
-                100
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "optimiseRequest": {
+    "links.GetStoreReportByChannelLink": {
       "allOf": [
         {
-          "$ref": "#/definitions/reportFilterCommonParameters"
+          "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
-          "$ref": "#/definitions/paginationRequestParameters"
-        },
-        {
-          "type": "object",
-          "required": [
-            "beginPeriodUtcDate",
-            "endPeriodUtcDate",
-            "advancedFilters",
-            "pageSize",
-            "pageNumber"
-          ],
-          "properties": {
-            "productState": {
-              "$ref": "#/definitions/productStateFilter"
-            },
-            "productFilters": {
-              "$ref": "#/definitions/productFilters"
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/bychannel",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "reportByChannelRequest"
+              }
             }
           }
         }
       ]
     },
-    "reportProductFilter": {
-      "type": "object",
-      "description": "Describe a filter on a product's column",
-      "required": [
-        "columnId",
-        "operatorName"
-      ],
-      "properties": {
-        "columnId": {
-          "type": "string",
-          "format": "guid",
-          "description": "The column identifier of your catalog or a custom column.",
-          "example": "672644c7-5bd0-4e25-88c1-1f732bda5e4c"
+    "links.GetStoreReportByCategoryLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
         },
-        "operatorName": {
-          "$ref": "#/definitions/reportProductFilterOperatorName"
-        },
-        "values": {
-          "description": "Must be null if the operator is \"IsNull\" or \"IsNotNull\". Can contains multiple value in case of \"InList\" operator. Otherwise a single value is expected.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "example": [
-            "My value"
-          ]
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/bycategory",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "reportByCategoryRequest"
+              }
+            }
+          }
         }
-      }
+      ]
     },
-    "reportProductFilterOperatorName": {
-      "type": "string",
-      "description": "Indicate the operator you want to make on the columnId",
-      "enum": [
-        "Equals",
-        "Contains",
-        "GreaterTo",
-        "LowerTo",
-        "InList",
-        "IsNull",
-        "IsNotNull"
+    "links.GetStoreReportByProductLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/byproduct",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "reportByProductRequest"
+              }
+            }
+          }
+        }
       ]
     },
     "links.OptimiseLink": {
@@ -18776,8 +18843,8 @@
                     }
                   ],
                   "advancedFilters": {
-                    "margingType": "Global",
-                    "globalMarginPercent": 10,
+                    "marginType": "Global",
+                    "globalmarginPercent": 10,
                     "linkClickToOrderType": "OnClickDate",
                     "linkClickToOrderMaxDay": 5,
                     "onlyPaymentValidatedOrders": true,
@@ -18807,6 +18874,527 @@
                   }
                 }
               }
+            }
+          }
+        }
+      ]
+    },
+    "links.OptimiseByProductLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/optimisations/byProduct/6d469a54-8426-4855-abc2-9e062e2056b9/enable",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "â€‹array",
+                "value": [
+                  "a2d38563-50f0-43f1-be2b-b16e7ec4f007"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.OptimiseByCategoryLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/optimisations/byCategory/4c376178-25b4-4656-a86e-e3bd3a25b139/enable",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "â€‹array",
+                "value": [
+                  "a2d38563-50f0-43f1-be2b-b16e7ec4f007"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.OptimiseByChannelLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/optimisations/byChannel/a2d38563-50f0-43f1-be2b-b16e7ec4f007/enable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.GetReportFiltersLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/filters",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.SaveReportFilterLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/filters/{reportFilterId}",
+            "method": "PUT",
+            "templated": true,
+            "parameters": [
+              {
+                "name": "reportFilterId",
+                "type": "string",
+                "in": "path"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "links.DeleteReportFilterLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/filters/fb19c53c-2f63-4262-9d94-2d7faa500acd",
+            "method": "DELETE"
+          }
+        }
+      ]
+    },
+    "links.CreateRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "createRuleRequest",
+                "value": {
+                  "optimisationActionName": "reenable",
+                  "ruleName": "My rule",
+                  "reportFilterId": "fb19c53c-2f63-4262-9d94-2d7faa500acd",
+                  "startUtcDate": "2016-08-29T09:12:33.001Z",
+                  "endUtcDate": "2017-09-30T10:42:40.001Z"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.GetRulesExecutionsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/executions",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.RunRulesLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/run",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.GetRulesLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetReportFilterLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/reports/filters/fb19c53c-2f63-4262-9d94-2d7faa500acd",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.RunRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/run",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.GetRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.DeleteRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8",
+            "method": "DELETE"
+          }
+        }
+      ]
+    },
+    "links.MoveUpRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/moveup",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.MoveDownRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/movedown",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.EnableRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/enable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.DisableRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/disable",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.UpdateRuleLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8",
+            "method": "PATCH",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "updateRuleRequest",
+                "value": {
+                  "ruleName": "My Rule Renamed",
+                  "startUtcDate": "2016-08-29T09:12:33.001Z",
+                  "endUtcDate\"": "2016-08-29T09:12:33.001Z"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "analyticsIndexLovLinks": {
+      "type": "object",
+      "properties": {
+        "performanceIndicatorFormulaParameterTypeLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "performanceIndicatorLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "storeOptimisationRuleExecutionStatusLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        }
+      }
+    },
+    "analyticsIndexLinks": {
+      "type": "object",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.AnalyticsIndexLink"
+        },
+        "trackingStatus": {
+          "$ref": "#/definitions/links.GetTrackingStatusLink"
+        }
+      }
+    },
+    "analyticsIndex": {
+      "type": "object",
+      "description": "The analytics API operation index.",
+      "required": [
+        "links",
+        "stores"
+      ],
+      "properties": {
+        "stores": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/analyticsStoreIndex"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/analyticsIndexLinks"
+        },
+        "lovLinks": {
+          "$ref": "#/definitions/analyticsIndexLovLinks"
+        }
+      }
+    },
+    "analyticsStoreIndexLinks": {
+      "type": "object",
+      "required": [
+        "self",
+        "trackingStatus",
+        "trackedClicks",
+        "trackedOrders",
+        "reportFilters"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.AnalyticsIndexLink"
+        },
+        "trackingStatus": {
+          "$ref": "#/definitions/links.GetStoreTrackingStatusLink"
+        },
+        "trackedClicks": {
+          "$ref": "#/definitions/links.GetStoreTrackedClicksLink"
+        },
+        "trackedOrders": {
+          "$ref": "#/definitions/links.GetStoreTrackedOrdersLink"
+        },
+        "trackedExternalOrders": {
+          "$ref": "#/definitions/links.GetStoreTrackedExternalOrdersLink"
+        },
+        "reportFilters": {
+          "$ref": "#/definitions/links.GetReportFiltersLink"
+        },
+        "reportByDay": {
+          "$ref": "#/definitions/links.GetStoreReportByDayLink"
+        },
+        "reportByChannel": {
+          "$ref": "#/definitions/links.GetStoreReportByChannelLink"
+        },
+        "reportByCategory": {
+          "$ref": "#/definitions/links.GetStoreReportByCategoryLink"
+        },
+        "reportByProduct": {
+          "$ref": "#/definitions/links.GetStoreReportByProductLink"
+        },
+        "optimise": {
+          "$ref": "#/definitions/links.OptimiseLink"
+        },
+        "optimiseByChannel": {
+          "$ref": "#/definitions/links.OptimiseByChannelLink"
+        },
+        "optimiseByCategory": {
+          "$ref": "#/definitions/links.OptimiseByCategoryLink"
+        },
+        "optimiseByProduct": {
+          "$ref": "#/definitions/links.OptimiseByProductLink"
+        },
+        "rules": {
+          "$ref": "#/definitions/links.GetRulesLink"
+        }
+      }
+    },
+    "analyticsStoreIndex": {
+      "type": "object",
+      "required": [
+        "links"
+      ],
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/analyticsStoreIndexLinks"
+        }
+      }
+    },
+    "productStateFilter": {
+      "type": "string",
+      "description": "You can filter on the product state.",
+      "enum": [
+        "All",
+        "Enabled",
+        "Disabled"
+      ],
+      "default": "All",
+      "example": "All"
+    },
+    "productColumnsToDisplay": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 1,
+      "items": {
+        "$ref": "#/definitions/BeezUP.Common.CatalogColumnId"
+      },
+      "example": [
+        "4b460e31-3d1f-4117-922d-b159a64ec1d2"
+      ]
+    },
+    "reportByProductRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/reportFilterCommonParameters"
+        },
+        {
+          "$ref": "#/definitions/paginationRequestParameters"
+        },
+        {
+          "type": "object",
+          "required": [
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "advancedFilters",
+            "productState"
+          ],
+          "properties": {
+            "productColumnsToDisplay": {
+              "$ref": "#/definitions/productColumnsToDisplay"
+            },
+            "productState": {
+              "$ref": "#/definitions/productStateFilter"
+            },
+            "productFilters": {
+              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+            }
+          }
+        }
+      ]
+    },
+    "copyOptimisationRequest": {
+      "type": "object",
+      "description": "Copy the optimisation between 2 channels",
+      "required": [
+        "channelIdSource",
+        "channelIdTarget",
+        "keepExistingOptimisation"
+      ],
+      "properties": {
+        "channelIdSource": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelId"
+        },
+        "channelIdTarget": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelId"
+        },
+        "keepExistingOptimisation": {
+          "type": "boolean",
+          "description": "If true the existing optimisation will be kept",
+          "example": false
+        }
+      }
+    },
+    "optimiseRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/reportFilterCommonParameters"
+        },
+        {
+          "$ref": "#/definitions/paginationRequestParameters"
+        },
+        {
+          "type": "object",
+          "required": [
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "advancedFilters",
+            "reportType"
+          ],
+          "properties": {
+            "productState": {
+              "$ref": "#/definitions/productStateFilter"
+            },
+            "reportType": {
+              "$ref": "#/definitions/reportType"
+            },
+            "productFilters": {
+              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
             }
           }
         }
@@ -18894,12 +19482,16 @@
       "type": "object",
       "required": [
         "paginationResult",
+        "currencyCode",
         "products",
         "links"
       ],
       "properties": {
         "paginationResult": {
           "$ref": "#/definitions/BeezUP.Common.PaginationResult"
+        },
+        "currencyCode": {
+          "$ref": "#/definitions/BeezUP.Common.CurrencyCode"
         },
         "products": {
           "type": "array",
@@ -18912,32 +19504,50 @@
         }
       }
     },
+    "reportFilterPeriodType": {
+      "description": "Indicates the period type we want use for the report filter",
+      "type": "string",
+      "enum": [
+        "Custom",
+        "Yesterday",
+        "Last7Days",
+        "LastWeek",
+        "ThisMonth",
+        "Last30Days",
+        "LastMonth",
+        "Last60Days",
+        "Last90Days",
+        "Last3Months"
+      ]
+    },
     "reportFilterCommonParameters": {
       "description": "Contains common filter parameters",
       "type": "object",
       "required": [
-        "beginPeriodUtcDate",
-        "endPeriodUtcDate",
+        "periodType",
         "advancedFilters"
       ],
       "properties": {
         "channelId": {
           "$ref": "#/definitions/BeezUP.Common.ChannelId"
         },
+        "periodType": {
+          "$ref": "#/definitions/reportFilterPeriodType"
+        },
         "beginPeriodUtcDate": {
           "type": "string",
           "format": "date-time",
-          "description": "The begin date period you want to get the report",
+          "description": "The begin date period you want to get the report. It's required only in case of custom period type !",
           "example": "2006-11-20T00:00:00Z"
         },
         "endPeriodUtcDate": {
           "type": "string",
           "format": "date-time",
-          "description": "The end date period you want to get the report.",
+          "description": "The end date period you want to get the report. It's required only in case of custom period type !",
           "example": "2006-12-20T00:00:00Z"
         },
         "categoryFilter": {
-          "$ref": "#/definitions/reportCategoryFilter"
+          "$ref": "#/definitions/BeezUP.Common.CatalogCategoryFilter"
         },
         "indicatorFilters": {
           "type": "array",
@@ -18971,10 +19581,10 @@
       "type": "object",
       "properties": {
         "pageSize": {
-          "$ref": "#/definitions/pageSize"
+          "$ref": "#/definitions/BeezUP.Common.PageSize"
         },
         "pageNumber": {
-          "$ref": "#/definitions/pageNumber"
+          "$ref": "#/definitions/BeezUP.Common.PageNumber"
         }
       }
     },
@@ -19019,22 +19629,6 @@
         }
       }
     },
-    "reportCategoryFilter": {
-      "type": "object",
-      "properties": {
-        "categoryPath": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Indicates on which category path you want to make the filter",
-          "example": [
-            "Home",
-            "Bedroom"
-          ]
-        }
-      }
-    },
     "performanceIndicatorType": {
       "type": "string",
       "description": "Indicate on which indicator or value you want to make your formula",
@@ -19044,7 +19638,26 @@
         "Margin",
         "OrderCount",
         "ClickCount",
-        "TotalSales"
+        "TotalSales",
+        "SoldProductCount",
+        "DisabledProductCount",
+        "EnabledProductCount"
+      ],
+      "example": "Cost"
+    },
+    "performanceIndicatorFormulaParameterType": {
+      "type": "string",
+      "description": "Indicate on which indicator or value you want to make your formula",
+      "enum": [
+        "Cost",
+        "Turnover",
+        "Margin",
+        "TunoverMinusCost",
+        "MarginMinusCost",
+        "OrderCount",
+        "ClickCount",
+        "SoldProductCount",
+        "One"
       ],
       "example": "Cost"
     },
@@ -19088,7 +19701,7 @@
         }
       }
     },
-    "margingType": {
+    "marginType": {
       "type": "string",
       "enum": [
         "Tracker",
@@ -19109,15 +19722,15 @@
     "reportAdvancedFilters": {
       "type": "object",
       "required": [
-        "margingType",
+        "marginType",
         "linkClickToOrderType",
         "onlyPaymentValidatedOrders",
         "onlyDirectSales",
         "performanceIndicatorFormula"
       ],
       "properties": {
-        "margingType": {
-          "$ref": "#/definitions/margingType"
+        "marginType": {
+          "$ref": "#/definitions/marginType"
         },
         "globalMarginPercent": {
           "type": "integer",
@@ -19220,74 +19833,42 @@
         }
       }
     },
-    "links.OptimiseByProductLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/optimisations/byProduct/6d469a54-8426-4855-abc2-9e062e2056b9/enable",
-            "method": "POST",
-            "parameters": {
-              "request": {
-                "in": "body",
-                "type": "array",
-                "value": [
-                  "a2d38563-50f0-43f1-be2b-b16e7ec4f007"
-                ]
-              }
-            }
-          }
+    "reportByProductOneChannelLinks": {
+      "type": "object",
+      "description": "If the report concerned one product for one channel the channel catalog product info will give you all you need to enable or disable the product.",
+      "required": [
+        "productInfo"
+      ],
+      "properties": {
+        "productInfo": {
+          "$ref": "#/definitions/links.GetChannelCatalogProductInfoLink"
         }
-      ]
+      }
     },
-    "links.OptimiseByCategoryLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
+    "reportByProductAllChannelsLinks": {
+      "type": "object",
+      "required": [
+        "enableProductForAllChannels",
+        "disableProductForAllChannels"
+      ],
+      "properties": {
+        "enableProductForAllChannels": {
+          "$ref": "#/definitions/links.OptimiseByProductLink"
         },
-        {
-          "example": {
-            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/optimisations/byCategory/4c376178-25b4-4656-a86e-e3bd3a25b139/enable",
-            "method": "POST",
-            "parameters": {
-              "request": {
-                "in": "body",
-                "type": "array",
-                "value": [
-                  "a2d38563-50f0-43f1-be2b-b16e7ec4f007"
-                ]
-              }
-            }
-          }
+        "disableProductForAllChannels": {
+          "$ref": "#/definitions/links.OptimiseByProductLink"
         }
-      ]
-    },
-    "links.OptimiseByChannelLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/optimisations/byChannel/a2d38563-50f0-43f1-be2b-b16e7ec4f007/enable",
-            "method": "POST"
-          }
-        }
-      ]
+      }
     },
     "reportByProductLinks": {
+      "description": "Depending if the report concerned multiple channels or one channel.",
       "type": "object",
       "properties": {
-        "editProduct": {
-          "$ref": "#/definitions/links.GetChannelCatalogProductInfoLink"
+        "oneChannelLinks": {
+          "$ref": "#/definitions/reportByProductOneChannelLinks"
         },
-        "enableProduct": {
-          "$ref": "#/definitions/links.OptimiseByProductLink"
-        },
-        "disableProduct": {
-          "$ref": "#/definitions/links.OptimiseByProductLink"
+        "allChannelsLinks": {
+          "$ref": "#/definitions/reportByProductAllChannelsLinks"
         }
       }
     },
@@ -19325,6 +19906,8 @@
         "turnOver",
         "margin",
         "performanceIndicator",
+        "totalSales",
+        "soldProductCount",
         "links"
       ],
       "properties": {
@@ -19371,6 +19954,16 @@
           "description": "The performance indicator based on the performance indicator formula indicated in the request for this product",
           "example": 10.12
         },
+        "totalSales": {
+          "type": "number",
+          "description": "The total sales related to this product",
+          "example": 234.42
+        },
+        "soldProductCount": {
+          "type": "integer",
+          "description": "The product sold count count for this product",
+          "example": 2
+        },
         "links": {
           "$ref": "#/definitions/reportByProductLinks"
         }
@@ -19387,7 +19980,10 @@
         "orderCount",
         "turnOver",
         "margin",
-        "performanceIndicator"
+        "performanceIndicator",
+        "totalSales",
+        "soldProductCount",
+        "links"
       ],
       "properties": {
         "catalogCategoryId": {
@@ -19436,6 +20032,16 @@
           "description": "The performance indicator based on the performance indicator formula indicated in the request for this category",
           "example": 25.33
         },
+        "totalSales": {
+          "type": "number",
+          "description": "The total sales related to this category",
+          "example": 234.42
+        },
+        "soldProductCount": {
+          "type": "integer",
+          "description": "The product sold count count for this category",
+          "example": 2
+        },
         "links": {
           "$ref": "#/definitions/reportByCategoryLinks"
         }
@@ -19452,7 +20058,10 @@
         "orderCount",
         "turnOver",
         "margin",
-        "performanceIndicator"
+        "performanceIndicator",
+        "totalSales",
+        "soldProductCount",
+        "links"
       ],
       "properties": {
         "channel": {
@@ -19498,6 +20107,16 @@
           "description": "The performance indicator based on the performance indicator formula indicated in the request for this channel",
           "example": 12.21
         },
+        "totalSales": {
+          "type": "number",
+          "description": "The total sales related to this channel",
+          "example": 234.42
+        },
+        "soldProductCount": {
+          "type": "integer",
+          "description": "The product sold count count for this channel",
+          "example": 2
+        },
         "links": {
           "$ref": "#/definitions/reportByChannelLinks"
         }
@@ -19511,38 +20130,50 @@
         "orderCount",
         "turnOver",
         "margin",
-        "performanceIndicator"
+        "performanceIndicator",
+        "totalSales",
+        "soldProductCount"
       ],
       "properties": {
         "clickCount": {
           "type": "integer",
-          "description": "The click count for this channel",
+          "description": "The click count for this day and all channels",
           "example": 101
         },
         "cost": {
           "type": "number",
-          "description": "The cost for this channel",
+          "description": "The cost  for this day and all channels",
           "example": 10.42
         },
         "orderCount": {
           "type": "integer",
-          "description": "The order count for this channel",
+          "description": "The order count for this day and all channels",
           "example": 42
         },
         "turnOver": {
           "type": "number",
-          "description": "The Turnover for this channel",
+          "description": "The Turnover for this day and all channels",
           "example": 23.11
         },
         "margin": {
           "type": "number",
-          "description": "The margin for this channel",
+          "description": "The margin for this day and all channels",
           "example": 42.42
         },
         "performanceIndicator": {
           "type": "number",
-          "description": "The performance indicator based on the performance indicator formula indicated in the request for this channel",
+          "description": "The performance indicator based on the performance indicator formula indicated in the request for this day and all channels",
           "example": 23.09
+        },
+        "totalSales": {
+          "type": "number",
+          "description": "The total sales related to this day and all channels",
+          "example": 234.42
+        },
+        "soldProductCount": {
+          "type": "integer",
+          "description": "The product sold count count for this day and all channels",
+          "example": 2
         }
       }
     },
@@ -19555,7 +20186,9 @@
         "orderCount",
         "turnOver",
         "margin",
-        "performanceIndicator"
+        "performanceIndicator",
+        "totalSales",
+        "soldProductCount"
       ],
       "properties": {
         "channel": {
@@ -19563,33 +20196,43 @@
         },
         "clickCount": {
           "type": "integer",
-          "description": "The click count for this channel",
+          "description": "The click count for this day and this channel",
           "example": 101
         },
         "cost": {
           "type": "number",
-          "description": "The cost for this channel",
+          "description": "The cost for this day and this channel",
           "example": 10.42
         },
         "orderCount": {
           "type": "integer",
-          "description": "The order count for this channel",
+          "description": "The order count for this day and this channel",
           "example": 42
         },
         "turnOver": {
           "type": "number",
-          "description": "The Turnover for this channel",
+          "description": "The Turnover for this day and this channel",
           "example": 23.11
         },
         "margin": {
           "type": "number",
-          "description": "The margin for this channel",
+          "description": "The margin for this day and this channel",
           "example": 42.42
         },
         "performanceIndicator": {
           "type": "number",
-          "description": "The performance indicator based on the performance indicator formula indicated in the request for this channel",
+          "description": "The performance indicator based on the performance indicator formula indicated in the request for this day and this channel",
           "example": 23.09
+        },
+        "totalSales": {
+          "type": "number",
+          "description": "The total sales related to this day and this channel",
+          "example": 234.42
+        },
+        "soldProductCount": {
+          "type": "integer",
+          "description": "The product sold count count for this day and this channel",
+          "example": 2
         }
       }
     },
@@ -19627,20 +20270,6 @@
           "default": 100
         }
       }
-    },
-    "performanceIndicatorFormulaParameterType": {
-      "type": "string",
-      "description": "Indicate on which indicator or value you want to make your formula",
-      "enum": [
-        "Cost",
-        "Turnover",
-        "Margin",
-        "OrderCount",
-        "ClickCount",
-        "TotalSales",
-        "One"
-      ],
-      "example": "Cost"
     },
     "trackedClicks": {
       "type": "object",
@@ -19770,7 +20399,7 @@
             "productSku",
             "productTitle",
             "productImageUrl",
-            "productActive",
+            "productExists",
             "unitPrice",
             "quantity",
             "margin"
@@ -19970,55 +20599,12 @@
         }
       }
     },
-    "links.GetReportFiltersLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/filters",
-            "method": "GET"
-          }
-        }
-      ]
-    },
-    "links.SaveReportFilterLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/filters/{reportFilterId}",
-            "method": "PUT",
-            "templated": true,
-            "parameters": [
-              {
-                "name": "reportFilterId",
-                "type": "string",
-                "in": "path"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "links.DeleteReportFilterLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/8f95eb1a-3691-4750-950d-a13c4a8a9bcc/reports/filters/fb19c53c-2f63-4262-9d94-2d7faa500acd",
-            "method": "DELETE"
-          }
-        }
-      ]
-    },
     "reportFiltersLinks": {
       "type": "object",
+      "required": [
+        "self",
+        "save"
+      ],
       "properties": {
         "self": {
           "$ref": "#/definitions/links.GetReportFiltersLink"
@@ -20028,8 +20614,12 @@
         }
       }
     },
-    "reportFilters": {
+    "reportFilterList": {
       "type": "object",
+      "required": [
+        "reportFilters",
+        "links"
+      ],
       "properties": {
         "reportFilters": {
           "type": "array",
@@ -20042,21 +20632,11 @@
         }
       }
     },
-    "links.GetReportFilterLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/reports/filters/fb19c53c-2f63-4262-9d94-2d7faa500acd",
-            "method": "GET"
-          }
-        }
-      ]
-    },
     "reportFilterHeaderLinks": {
       "type": "object",
+      "required": [
+        "self"
+      ],
       "properties": {
         "self": {
           "$ref": "#/definitions/links.GetReportFilterLink"
@@ -20171,7 +20751,10 @@
               "$ref": "#/definitions/productStateFilter"
             },
             "productFilters": {
-              "$ref": "#/definitions/productFilters"
+              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+            },
+            "productColumnsToDisplay": {
+              "$ref": "#/definitions/productColumnsToDisplay"
             }
           }
         }
@@ -20191,6 +20774,12 @@
     "ruleListLinks": {
       "description": "Links to know if the user can create a rule or run all rules",
       "type": "object",
+      "required": [
+        "self",
+        "create",
+        "history",
+        "run"
+      ],
       "properties": {
         "self": {
           "$ref": "#/definitions/links.GetRulesLink"
@@ -20205,72 +20794,6 @@
           "$ref": "#/definitions/links.RunRulesLink"
         }
       }
-    },
-    "links.CreateRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules",
-            "method": "POST",
-            "parameters": {
-              "request": {
-                "in": "body",
-                "type": "object",
-                "schema": "createRuleRequest",
-                "value": {
-                  "optimisationActionName": "reenable",
-                  "ruleName": "My rule",
-                  "reportFilterId": "fb19c53c-2f63-4262-9d94-2d7faa500acd",
-                  "startUtcDate": "2016-08-29T09:12:33.001Z",
-                  "endUtcDate": "2017-09-30T10:42:40.001Z"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "links.GetRulesExecutionsLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/executions",
-            "method": "GET"
-          }
-        }
-      ]
-    },
-    "links.RunRulesLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/run",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.GetRulesLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules",
-            "method": "GET"
-          }
-        }
-      ]
     },
     "ruleList": {
       "type": "object",
@@ -20311,125 +20834,12 @@
       "type": "string",
       "example": "Succeeded"
     },
-    "links.RunRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/run",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.GetRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8",
-            "method": "GET"
-          }
-        }
-      ]
-    },
-    "links.DeleteRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8",
-            "method": "DELETE"
-          }
-        }
-      ]
-    },
-    "links.MoveUpRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/moveup",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.MoveDownRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/movedown",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.EnableRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/enable",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.DisableRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8/disable",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.UpdateRuleLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/analytics/10af9486-e28e-47ab-b045-e13e4acd55c3/rules/c38006b4-29d0-4b8a-978b-701a0b12d5a8",
-            "method": "PATCH",
-            "parameters": {
-              "request": {
-                "in": "body",
-                "type": "object",
-                "schema": "updateRuleRequest",
-                "value": {
-                  "ruleName": "My Rule Renamed",
-                  "startUtcDate": "2016-08-29T09:12:33.001Z",
-                  "endUtcDate\"": "2016-08-29T09:12:33.001Z"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "ruleLinks": {
       "description": "Links to retrieve/action on other entities",
       "type": "object",
+      "required": [
+        "self"
+      ],
       "properties": {
         "self": {
           "$ref": "#/definitions/links.GetRuleLink"
@@ -20610,6 +21020,8 @@
       "enum": [
         "InProgress",
         "Succeeded",
+        "AlreadyInProgress",
+        "Aborted",
         "Failed",
         "Unknown"
       ],
@@ -21879,6 +22291,7 @@
     {
       "name": "Analytics",
       "tags": [
+        "Analytics - Global",
         "Analytics - Tracking",
         "Analytics - Statistics",
         "Analytics - Rules",
@@ -22150,6 +22563,18 @@
           "format": "int32",
           "x-example": 120
         }
+      }
+    },
+    "StoreNotFoundResponse": {
+      "description": "Store or resource not found",
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "BadRequestResponse": {
+      "description": "Invalid request",
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
       }
     },
     "GeneralError": {
