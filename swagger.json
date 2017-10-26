@@ -82,7 +82,7 @@
     },
     {
       "name": "Customer - Alerts",
-      "description": "All stores's alerts operations",
+      "description": "All stores' alerts operations",
       "x-displayName": "Alerts"
     },
     {
@@ -9115,7 +9115,7 @@
     },
     "storeUserRole": {
       "type": "string",
-      "description": "Indicates the role can have a user on a store. \n* Owner: Indicates that you are the owner of this store\n* User: Indicates that you are a simple user on this store\n",
+      "description": "Indicates the role can have a user on a store.\n* Owner: Indicates that you are the owner of this store\n* User: Indicates that you are a simple user on this store\n",
       "enum": [
         "Owner",
         "User"
