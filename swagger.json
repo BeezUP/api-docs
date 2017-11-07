@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "BeezUP API",
-    "description": "# The REST API of BeezUP system\n## Overview\nThe REST APIs provide programmatic access to read and write BeezUP data. \nBasically, with this API you will be able to do everything like you were with your browser on https://go.beezup.com !\n\nThe main features are:\n- Register and manage your account\n- Create and manage and share your stores with your friends/co-workers.\n- Import your product catalog and schedule the auto importation\n- Search the channels your want to use\n- Configure your channels for your catalogs to export your product information:\n    - cost and general settings\n    - category and columns mappings\n    - your will be able to create and manage your custom column\n    - put in place exlusion filters based on simple conditions on your product data\n    - override product values\n    - get product vision for a channel catalog scope\n- Analyze and optimize your performance of your catalogs on all yours channels with different type of reportings by day, channel, category and by product.\n- Automatize your optimisation by using rules!\n- And of course... Manage your orders harvested from all your marketplaces:\n    - Synchronize your orders in an uniformized way\n    - Get the available actions and update the order status\n- ...and more!\n\n## Authentication credentials\nThe public API with the base path **/v2/public** have been put in place to give you an entry point to our system for the user registration, login and lost password. The public API does not require any credentials.\nWe give you the some public list of values and public channels for our public commercial web site [www.beezup.com](http://www.beezup.com).\n\nThe user API with the base path **/v2/user** requires a token which is available on this page:\nhttps://go.beezup.com/Account/MyAccount\n\n## Things to keep in mind\n### API Rate Limits\n- The BeezUP REST API is limited to 100 calls/minute.\n\n### Media type\nThe default media type for requests and responses is application/json. Where noted, some operations support other content types. If no additional content type is mentioned for a specific operation, then the media type is application/json.\n\n### Required content type\nThe required and default encoding for the request and responses is UTF8.\n\n### Required date time format\nAll our date time are formatted in ISO 8601 format: 2014-06-24T16:25:00Z.\n\n### Base URL\nThe Base URL of the BeezUP API Order Management REST API conforms to the following template.\n\nhttps://api.beezup.com\n\nAll URLs returned by the BeezUP API are relative to this base URL, and all requests to the REST API must use this base URL template.\n\nYou can test our API on https://api-docs.beezup.com/swagger-ui\\\nYou can contact us on [gitter, #BeezUP/API](https://gitter.im/beezUP/API)\n",
+    "description": "# The REST API of BeezUP system\n## Overview\nThe REST APIs provide programmatic access to read and write BeezUP data. \nBasically, with this API you will be able to do everything like you were with your browser on https://go.beezup.com !\n\nThe main features are:\n- Register and manage your account\n- Create and manage and share your stores with your friends/co-workers.\n- Import your product catalog and schedule the auto importation\n- Search the channels your want to use\n- Configure your channels for your catalogs to export your product information:\n    - cost and general settings\n    - category and columns mappings\n    - your will be able to create and manage your custom column\n    - put in place exlusion filters based on simple conditions on your product data\n    - override product values\n    - get product vision for a channel catalog scope\n- Analyze and optimize your performance of your catalogs on all yours channels with different type of reportings by day, channel, category and by product.\n- Automatize your optimisation by using rules!\n- And of course... Manage your orders harvested from all your marketplaces:\n    - Synchronize your orders in an uniformized way\n    - Get the available actions and update the order status\n- ...and more!\n\n## Authentication credentials\nThe public API with the base path **/v2/public** have been put in place to give you an entry point to our system for the user registration, login and lost password. The public API does not require any credentials.\nWe give you the some public list of values and public channels for our public commercial web site [www.beezup.com](http://www.beezup.com).\n\nThe user API with the base path **/v2/user** requires a token which is available on this page:\nhttps://go.beezup.com/Account/MyAccount\n\n## Things to keep in mind\n### API Rate Limits\n- The BeezUP REST API is limited to 100 calls/minute.\n\n### Media type\nThe default media type for requests and responses is application/json. Where noted, some operations support other content types. If no additional content type is mentioned for a specific operation, then the media type is application/json.\n\n### Required content type\nThe required and default encoding for the request and responses is UTF8.\n\n### Required date time format\nAll our date time are formatted in ISO 8601 format: 2014-06-24T16:25:00Z.\n\n### Base URL\nThe Base URL of the BeezUP API Order Management REST API conforms to the following template.\n\nhttps://api.beezup.com\n\nAll URLs returned by the BeezUP API are relative to this base URL, and all requests to the REST API must use this base URL template.\n\nYou can test our API on https://api-docs.beezup.com/swagger-ui\\\nYou can contact us on [gitter, #BeezUP/API](https://gitter.im/BeezUP/API)\n",
     "version": "2.0",
     "x-logo": {
       "url": "https://avatars0.githubusercontent.com/u/25665430",
@@ -151,9 +151,9 @@
       "x-displayName": "Column Mappings"
     },
     {
-      "name": "Channel Catalogs - Category Mappings",
-      "description": "All category mapping operations",
-      "x-displayName": "Category Mappings"
+      "name": "Channel Catalogs - Categories",
+      "description": "All categories operations",
+      "x-displayName": "Categories"
     },
     {
       "name": "Channel Catalogs - Exclusion Filters",
@@ -4678,10 +4678,10 @@
         ]
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categoryMappings": {
+    "/user/channelCatalogs/{channelCatalogId}/categories": {
       "get": {
         "tags": [
-          "Channel Catalogs - Category Mappings"
+          "Channel Catalogs - Categories"
         ],
         "summary": "Get channel catalog categories",
         "operationId": "GetChannelCatalogCategories",
@@ -4694,7 +4694,7 @@
           "200": {
             "description": "Channel catalog category mappings",
             "schema": {
-              "$ref": "#/definitions/channelCatalogCategoryMappingList"
+              "$ref": "#/definitions/channelCatalogCategoryConfigurationList"
             }
           },
           "404": {
@@ -4714,10 +4714,10 @@
         ]
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/disable": {
+    "/user/channelCatalogs/{channelCatalogId}/categories/disableMapping": {
       "post": {
         "tags": [
-          "Channel Catalogs - Category Mappings"
+          "Channel Catalogs - Categories"
         ],
         "summary": "Disable a channel catalog category mapping",
         "operationId": "DisableChannelCatalogCategoryMapping",
@@ -4747,10 +4747,10 @@
         ]
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/reenable": {
+    "/user/channelCatalogs/{channelCatalogId}/categories/reenableMapping": {
       "post": {
         "tags": [
-          "Channel Catalogs - Category Mappings"
+          "Channel Catalogs - Categories"
         ],
         "summary": "Reenable a channel catalog category mapping",
         "operationId": "ReenableChannelCatalogCategoryMapping",
@@ -4780,13 +4780,13 @@
         ]
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/map": {
+    "/user/channelCatalogs/{channelCatalogId}/categories/configure": {
       "post": {
         "tags": [
-          "Channel Catalogs - Category Mappings"
+          "Channel Catalogs - Categories"
         ],
-        "summary": "Map channel catalog category",
-        "operationId": "MapChannelCatalogCategory",
+        "summary": "Configure channel catalog category",
+        "operationId": "ConfigureChannelCatalogCategory",
         "parameters": [
           {
             "$ref": "#/parameters/channelCatalogIdParameter"
@@ -4796,60 +4796,13 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/mapCategoryRequest"
+              "$ref": "#/definitions/configureCategoryRequest"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Channel catalog category mapped"
-          },
-          "400": {
-            "description": "BadRequest. See Error Response for more details",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "404": {
-            "description": "ChannelCatalogId not found or not authorized",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/user/channelCatalogs/{channelCatalogId}/categoryMappings/unmap": {
-      "post": {
-        "tags": [
-          "Channel Catalogs - Category Mappings"
-        ],
-        "summary": "Unmap channel catalog category",
-        "operationId": "UnmapChannelCatalogCategory",
-        "parameters": [
-          {
-            "$ref": "#/parameters/channelCatalogIdParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/unmapCategoryRequest"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Channel catalog category unmapped"
+            "description": "Channel catalog category configured"
           },
           "400": {
             "description": "BadRequest. See Error Response for more details",
@@ -5276,6 +5229,76 @@
             "format": "guid",
             "required": true,
             "x-example": "8a76f06a-fefc-4c0d-bcfe-b210f1482977"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Channel catalog product value override deleted"
+          },
+          "404": {
+            "description": "ChannelCatalogId or ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/copy": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Products Overrides"
+        ],
+        "summary": "Get channel catalog product value override compatibilities status",
+        "operationId": "GetChannelCatalogProductValueOverrideCopy",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "$ref": "#/parameters/productIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "placeholder. will be completed soon."
+          },
+          "404": {
+            "description": "ChannelCatalog or ProductId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Channel Catalogs - Products Overrides"
+        ],
+        "summary": "Copy channel catalog product value override",
+        "operationId": "ConfigureChannelCatalogProductValueOverrideCopy",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "$ref": "#/parameters/productIdParameter"
           }
         ],
         "responses": {
@@ -13866,7 +13889,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings",
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categories",
             "method": "GET"
           }
         }
@@ -13879,7 +13902,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/disable",
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categories/disableMapping",
             "method": "POST"
           }
         }
@@ -13892,49 +13915,21 @@
         },
         {
           "example": {
-            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/reenable",
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categories/reenableMapping",
             "method": "POST"
           }
         }
       ]
     },
-    "links.MapChannelCatalogCategoryLink": {
+    "links.ConfigureChannelCatalogCategoryLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
           "example": {
-            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/map",
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/category/configure",
             "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.UnmapChannelCatalogCategoryLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/categoryMappings/unmap",
-            "method": "POST",
-            "parameters": [
-              {
-                "name": "request",
-                "in": "body",
-                "type": "object",
-                "required": true,
-                "value": {
-                  "catalogCategoryPath": [
-                    "VÃªtements",
-                    "Femmes",
-                    "Chaussures"
-                  ]
-                }
-              }
-            ]
           }
         }
       ]
@@ -14064,6 +14059,32 @@
         }
       ]
     },
+    "links.GetChannelCatalogExclusionFiltersCopyLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exclusionFilters/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/copy",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.ConfigureChannelCatalogExclusionFiltersCopyLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/exclusionFilters/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/copy",
+            "method": "POST"
+          }
+        }
+      ]
+    },
     "links.GetChannelCatalogExclusionFiltersLink": {
       "allOf": [
         {
@@ -14124,6 +14145,32 @@
         {
           "example": {
             "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/578419df-1bbf-41a6-96fa-862e42182b67/overrides",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "links.GetChannelCatalogProductValueOverrideCopyLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/578419df-1bbf-41a6-96fa-862e42182b67/overrides/copy",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.ConfigureChannelCatalogProductValueOverrideCopyLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/products/578419df-1bbf-41a6-96fa-862e42182b67/overrides/copy",
             "method": "POST"
           }
         }
@@ -14437,13 +14484,12 @@
         }
       }
     },
-    "mapCategoryRequest": {
+    "configureCategoryRequest": {
       "description": "The request message to make a mapping between catalog category path and a channel category path",
       "type": "object",
       "required": [
         "overrideSubCategoryMappings",
-        "autoMapNewSubCategories",
-        "channelCatalogCategoryMapping"
+        "channelCatalogCategories"
       ],
       "properties": {
         "overrideSubCategoryMappings": {
@@ -14451,13 +14497,11 @@
           "type": "boolean",
           "example": true
         },
-        "autoMapNewSubCategories": {
-          "description": "Great feature! In case of mapping to parent catalog category, you can ask to automatically map new sub catalog category in the next importation to this channel category path.",
-          "type": "boolean",
-          "example": true
-        },
-        "channelCatalogCategoryMapping": {
-          "$ref": "#/definitions/channelCatalogCategoryMapping"
+        "channelCatalogCategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogCategoryConfiguration"
+          }
         }
       }
     },
@@ -14479,36 +14523,59 @@
         }
       }
     },
-    "channelCatalogCategoryMappingList": {
+    "channelCatalogCategoryConfigurationList": {
       "type": "object",
       "required": [
         "links",
-        "channelCatalogCategoryMappings"
+        "channelCatalogCategoryConfigurations",
+        "mappingStatus",
+        "costStatus"
       ],
       "properties": {
         "links": {
           "$ref": "#/definitions/channelCatalogCategoryMappingsLinks"
         },
-        "channelCatalogCategoryMappings": {
+        "channelCatalogCategoryConfigurations": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/channelCatalogCategoryMappingInfo"
+            "$ref": "#/definitions/channelCatalogCategoryConfigurationInfo"
           }
+        },
+        "mappingStatus": {
+          "$ref": "#/definitions/mappingStatus"
+        },
+        "costStatus": {
+          "$ref": "#/definitions/costStatus"
         }
       }
+    },
+    "mappingStatus": {
+      "type": "string",
+      "enum": [
+        "required",
+        "optional",
+        "notConfigurable"
+      ],
+      "example": "required"
+    },
+    "costStatus": {
+      "type": "string",
+      "enum": [
+        "required",
+        "optional",
+        "notConfigurable"
+      ],
+      "example": "required"
     },
     "channelCatalogCategoryMappingInfoLinks": {
       "type": "object",
       "properties": {
-        "mapCategory": {
-          "$ref": "#/definitions/links.MapChannelCatalogCategoryLink"
-        },
-        "unmapCategory": {
-          "$ref": "#/definitions/links.UnmapChannelCatalogCategoryLink"
+        "configureCategories": {
+          "$ref": "#/definitions/links.ConfigureChannelCatalogCategoryLink"
         }
       }
     },
-    "channelCatalogCategoryMappingInfo": {
+    "channelCatalogCategoryConfigurationInfo": {
       "type": "object",
       "description": "For all catalog categories the current mapping applied",
       "required": [
@@ -14536,14 +14603,19 @@
       "format": "decimal",
       "example": 10.21
     },
-    "channelCatalogCategoryMapping": {
+    "channelCatalogCategoryConfiguration": {
       "type": "object",
       "description": "Represent a mapping between a catalog category path and a channel category path. \nThe cost on this mapping can be applied.\n",
       "required": [
-        "catalogCategoryPath",
-        "channelCategoryPath"
+        "autoMapNewSubCategories",
+        "catalogCategoryPath"
       ],
       "properties": {
+        "autoMapNewSubCategories": {
+          "description": "Great feature! In case of mapping to parent catalog category, you can ask to automatically map new sub catalog category in the next importation to this channel category path.",
+          "type": "boolean",
+          "example": true
+        },
         "catalogCategoryPath": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryPath"
         },
@@ -14882,6 +14954,21 @@
         "marketplaceSettings": {
           "$ref": "#/definitions/externalLinks.GetChannelCatalogMarketplaceSettingsLink"
         }
+      }
+    },
+    "productOverridesCopyResponse": {
+      "description": "Product overrides compatibilites list",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "8a76f06a-fefc-4c0d-bcfe-b210f1482977": "3563",
+        "B7B79A0B-A8DE-54DA-964C-E2704DF3738A": "SHBELNL56",
+        "57F70E81-E4F2-5034-BC65-E1D5C48EBEDA": "Sony bravia",
+        "2A77749D-0AAB-5245-89B5-6A1A4E06DACA": "http://www.blalbla.nl/images/cache/dldldl.jpg",
+        "54B3B3CB-5CA5-5471-9DAE-5310C032059A": "http://www.blalbla.nl/images/cache/dlmdl.jpg",
+        "0EA21509-1141-57BD-B679-371BC98B2ADA": "http://www.blalbla.nl/images/cache/ldldld.jpg"
       }
     },
     "productOverrides": {
@@ -22261,7 +22348,7 @@
         "Channel Catalogs - Global",
         "Channel Catalogs - Settings",
         "Channel Catalogs - Column Mappings",
-        "Channel Catalogs - Category Mappings",
+        "Channel Catalogs - Categories",
         "Channel Catalogs - Exclusion Filters",
         "Channel Catalogs - Products",
         "Channel Catalogs - Products Overrides",
@@ -22372,6 +22459,15 @@
         "xlsx",
         "csv"
       ]
+    },
+    "groupIdParameter": {
+      "name": "groupId",
+      "in": "path",
+      "required": true,
+      "description": "The exclusion filter group identifier",
+      "type": "string",
+      "format": "guid",
+      "x-example": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
     },
     "marketplaceTechnicalCodeParameter": {
       "description": "The marketplace technical code",
