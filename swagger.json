@@ -20854,7 +20854,7 @@
         "ByChannel",
         "ByCategory",
         "ByProduct",
-        "ByDate"
+        "ByDay"
       ],
       "example": "ByProduct"
     },
@@ -21348,7 +21348,6 @@
         "productId",
         "productSku",
         "productTitle",
-        "productImageUrl",
         "productExists"
       ],
       "properties": {
