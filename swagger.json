@@ -19990,7 +19990,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnOver",
+        "turnover",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20026,7 +20026,7 @@
           "description": "The order count for this product",
           "example": 234.42
         },
-        "turnOver": {
+        "turnover": {
           "type": "number",
           "description": "The Turnover for this product",
           "example": 42.01
@@ -20065,7 +20065,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnOver",
+        "turnover",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20104,7 +20104,7 @@
           "description": "The order count for this category",
           "example": 25.33
         },
-        "turnOver": {
+        "turnover": {
           "type": "number",
           "description": "The Turnover for this category",
           "example": 25.33
@@ -20143,7 +20143,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnOver",
+        "turnover",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20179,7 +20179,7 @@
           "description": "The order count for this channel",
           "example": 42
         },
-        "turnOver": {
+        "turnover": {
           "type": "number",
           "description": "The Turnover for this channel",
           "example": 42.42
@@ -20215,7 +20215,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnOver",
+        "turnover",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20237,7 +20237,7 @@
           "description": "The order count for this day and all channels",
           "example": 42
         },
-        "turnOver": {
+        "turnover": {
           "type": "number",
           "description": "The Turnover for this day and all channels",
           "example": 23.11
@@ -20271,7 +20271,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnOver",
+        "turnover",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20296,7 +20296,7 @@
           "description": "The order count for this day and this channel",
           "example": 42
         },
-        "turnOver": {
+        "turnover": {
           "type": "number",
           "description": "The Turnover for this day and this channel",
           "example": 23.11
