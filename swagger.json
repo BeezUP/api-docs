@@ -15761,8 +15761,8 @@
           },
           "example": [
             {
-              "displayGroupCode": "AccountInformations",
-              "displayGroupPosition": 1,
+              "name": "AccountInformations",
+              "position": 1,
               "properties": [
                 {
                   "name": "EbayToken",
@@ -15918,18 +15918,18 @@
     },
     "channelCatalogMarketplacePropertyGroup": {
       "required": [
-        "displayGroupCode",
-        "displayGroupPosition",
+        "name",
+        "position",
         "properties"
       ],
       "properties": {
-        "displayGroupCode": {
+        "name": {
           "type": "string",
           "description": "Indicate the code identifier of the group",
           "example": "AccountInformations",
-          "x-lov": "MarketplacePropertiesDisplayGroup"
+          "x-lov": "MarketplaceStorePropertyGroup"
         },
-        "displayGroupPosition": {
+        "position": {
           "type": "integer",
           "description": "Indicate the position of the group",
           "minimum": 1,
@@ -16661,6 +16661,9 @@
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
         "marketplaceStorePropertyLOV": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "marketplaceStorePropertyGroupLOV": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         }
       }
