@@ -14718,8 +14718,7 @@
       "required": [
         "exportedProductCount",
         "columnMappingStatus",
-        "categoryMappingState",
-        "apiSettingStatus"
+        "categoryMappingState"
       ],
       "properties": {
         "exportedProductCount": {
@@ -14733,8 +14732,8 @@
         "categoryMappingState": {
           "$ref": "#/definitions/categoryMappingState"
         },
-        "apiSettingStatus": {
-          "$ref": "#/definitions/apiSettingStatus"
+        "apiSettingsStatus": {
+          "$ref": "#/definitions/BeezUP.Common.ApiSettingsStatus"
         }
       }
     },
@@ -14769,15 +14768,6 @@
       }
     },
     "categoryMappingStatus": {
-      "type": "string",
-      "enum": [
-        "warning",
-        "success",
-        "failed"
-      ],
-      "example": "success"
-    },
-    "apiSettingStatus": {
       "type": "string",
       "enum": [
         "warning",
@@ -14915,6 +14905,19 @@
         }
       ]
     },
+    "externalLinks.GetChannelInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channels/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0",
+            "method": "GET"
+          }
+        }
+      ]
+    },
     "channelCatalogLinks": {
       "type": "object",
       "description": "Indicates the actions you can do on a channel catalog",
@@ -14963,6 +14966,9 @@
         },
         "marketplaceSettings": {
           "$ref": "#/definitions/externalLinks.GetChannelCatalogMarketplaceSettingsLink"
+        },
+        "channelInfo": {
+          "$ref": "#/definitions/externalLinks.GetChannelInfoLink"
         }
       }
     },
