@@ -13511,24 +13511,40 @@
     "category": {
       "description": "The catalog category",
       "required": [
-        "categoryId",
         "categoryPath",
-        "productCount"
+        "totalProductCount",
+        "selfProductCount"
       ],
       "properties": {
-        "categoryId": {
-          "$ref": "#/definitions/BeezUP.Common.CatalogCategoryId"
-        },
         "categoryPath": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryPath"
         },
-        "productCount": {
+        "totalProductCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The total product count related to this category and his sub categories",
+          "example": 101
+        },
+        "selfProductCount": {
           "type": "integer",
           "format": "int32",
           "description": "The product count related to this category",
           "example": 101
         }
       }
+    },
+    "links.GetChannelInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/channels/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0",
+            "method": "GET"
+          }
+        }
+      ]
     },
     "channelHeader": {
       "description": "The available channel",
@@ -13537,9 +13553,8 @@
         "channelId",
         "channelName",
         "channelLogoUrl",
-        "descriptionAvailable",
         "links",
-        "isMarketplace"
+        "types"
       ],
       "properties": {
         "channelId": {
@@ -13551,17 +13566,15 @@
         "channelLogoUrl": {
           "$ref": "#/definitions/BeezUP.Common.HttpUrl"
         },
-        "descriptionAvailable": {
-          "type": "boolean",
-          "description": "Indicates if we have more detailed information about this channel",
-          "default": false,
-          "example": true
-        },
-        "isMarketplace": {
-          "type": "boolean",
-          "description": "Indicates if the channel is a marketplace",
-          "default": false,
-          "example": true
+        "types": {
+          "description": "The type list related to a channel",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "Marketplace"
+          ]
         },
         "links": {
           "$ref": "#/definitions/channelHeaderLinks"
@@ -13571,12 +13584,9 @@
     "channelHeaderLinks": {
       "description": "The links related to an available channel",
       "type": "object",
-      "required": [
-        "self"
-      ],
       "properties": {
         "self": {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
+          "$ref": "#/definitions/links.GetChannelInfoLink"
         }
       }
     },
