@@ -19795,13 +19795,13 @@
         },
         "beginPeriodUtcDate": {
           "type": "string",
-          "format": "date-time",
+          "format": "date",
           "description": "The begin date period you want to get the report",
           "example": "2006-11-20T00:00:00Z"
         },
         "endPeriodUtcDate": {
           "type": "string",
-          "format": "date-time",
+          "format": "date",
           "description": "The end date period you want to get the report.",
           "example": "2006-12-20T00:00:00Z"
         },
@@ -19929,7 +19929,7 @@
         "day": {
           "type": "string",
           "format": "date",
-          "example": "2017-04-23T18:25:43.511Z"
+          "example": "2017-04-23T00:00:00Z"
         },
         "allChannels": {
           "$ref": "#/definitions/reportByDayAllChannels"
