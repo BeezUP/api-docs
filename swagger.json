@@ -7120,7 +7120,7 @@
         "tags": [
           "Analytics - Optimisations"
         ],
-        "summary": "Copy products optimisation between 2 channels",
+        "summary": "Copy product optimisations between 2 channels",
         "operationId": "CopyOptimisation",
         "parameters": [
           {
@@ -7161,7 +7161,7 @@
         "tags": [
           "Analytics - Optimisations"
         ],
-        "summary": "Optimise products",
+        "summary": "Optimise products by page",
         "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product related to this request. \\\nThis operation is used at the bottom of the analytics page result.\n",
         "operationId": "Optimise",
         "parameters": [
@@ -7201,12 +7201,57 @@
         ]
       }
     },
+    "/user/analytics/{storeId}/optimisations/all/{actionName}": {
+      "post": {
+        "tags": [
+          "Analytics - Optimisations"
+        ],
+        "summary": "Optimise all products",
+        "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product related to this request. \\\nThis operation is used at the bottom of the analytics page result.\n",
+        "operationId": "OptimiseAll",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/optimisationActionNameGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/optimiseAllRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Products optimisatized"
+          },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
     "/user/analytics/{storeId}/optimisations/byproduct/{productId}/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
         ],
-        "summary": "Optimise products",
+        "summary": "Optimise product",
         "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable this product for every channel indicated in the body.\n",
         "operationId": "OptimiseByProduct",
         "parameters": [
@@ -7270,7 +7315,7 @@
         "tags": [
           "Analytics - Optimisations"
         ],
-        "summary": "Optimise products's category",
+        "summary": "Optimise products by category",
         "description": "/!\\ WARNING /!\\ \\\nThis operation will reenable or disable products's category for every channel indicated in the body.\n",
         "operationId": "OptimiseByCategory",
         "parameters": [
@@ -7334,7 +7379,7 @@
         "tags": [
           "Analytics - Optimisations"
         ],
-        "summary": "Optimise products's category",
+        "summary": "Optimise products by channel",
         "description": "/!\\ WARNING /!\\ \\\nApply the operation on every product on this channel.\n",
         "operationId": "OptimiseByChannel",
         "parameters": [
@@ -19479,10 +19524,40 @@
         }
       }
     },
-    "optimiseRequest": {
+    "optimiseAllRequest": {
       "allOf": [
         {
           "$ref": "#/definitions/reportFilterCommonParameters"
+        },
+        {
+          "type": "object",
+          "required": [
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "advancedFilters",
+            "reportType"
+          ],
+          "properties": {
+            "reportType": {
+              "$ref": "#/definitions/reportType"
+            },
+            "productColumnsToDisplay": {
+              "$ref": "#/definitions/productColumnsToDisplay"
+            },
+            "productState": {
+              "$ref": "#/definitions/productStateFilter"
+            },
+            "productFilters": {
+              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+            }
+          }
+        }
+      ]
+    },
+    "optimiseRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/optimiseAllRequest"
         },
         {
           "$ref": "#/definitions/paginationRequestParameters"
@@ -20856,14 +20931,14 @@
             "reportType": {
               "$ref": "#/definitions/reportType"
             },
+            "productColumnsToDisplay": {
+              "$ref": "#/definitions/productColumnsToDisplay"
+            },
             "productState": {
               "$ref": "#/definitions/productStateFilter"
             },
             "productFilters": {
               "$ref": "#/definitions/BeezUP.Common.ProductFilters"
-            },
-            "productColumnsToDisplay": {
-              "$ref": "#/definitions/productColumnsToDisplay"
             }
           }
         }
