@@ -19006,7 +19006,7 @@
                     "performanceIndicatorFormula": {
                       "firstParameter": "Cost",
                       "operatorName": "Multiply",
-                      "secondParamter": "Turnover",
+                      "secondParamter": "ROI",
                       "thirdParameter": 100
                     }
                   },
@@ -19818,11 +19818,12 @@
       "description": "Indicate on which indicator or value you want to make your formula",
       "enum": [
         "Cost",
-        "Turnover",
+        "TotalSales",
         "Margin",
         "OrderCount",
         "ClickCount",
-        "TotalSales",
+        "ROI",
+        "ProductCount",
         "SoldProductCount",
         "DisabledProductCount",
         "EnabledProductCount"
@@ -19834,9 +19835,9 @@
       "description": "Indicate on which indicator or value you want to make your formula",
       "enum": [
         "Cost",
-        "Turnover",
+        "TotalSales",
         "Margin",
-        "TunoverMinusCost",
+        "TotalSalesMinusCost",
         "MarginMinusCost",
         "OrderCount",
         "ClickCount",
@@ -20087,7 +20088,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnover",
+        "roi",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20123,9 +20124,9 @@
           "description": "The order count for this product",
           "example": 234.42
         },
-        "turnover": {
+        "roi": {
           "type": "number",
-          "description": "The Turnover for this product",
+          "description": "The Return On Investment for this product",
           "example": 42.01
         },
         "margin": {
@@ -20162,7 +20163,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnover",
+        "roi",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20201,9 +20202,9 @@
           "description": "The order count for this category",
           "example": 25.33
         },
-        "turnover": {
+        "roi": {
           "type": "number",
-          "description": "The Turnover for this category",
+          "description": "The Return On Investment for this category",
           "example": 25.33
         },
         "margin": {
@@ -20240,7 +20241,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnover",
+        "roi",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20276,9 +20277,9 @@
           "description": "The order count for this channel",
           "example": 42
         },
-        "turnover": {
+        "roi": {
           "type": "number",
-          "description": "The Turnover for this channel",
+          "description": "The Return On Investment for this channel",
           "example": 42.42
         },
         "margin": {
@@ -20312,7 +20313,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnover",
+        "roi",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20334,9 +20335,9 @@
           "description": "The order count for this day and all channels",
           "example": 42
         },
-        "turnover": {
+        "roi": {
           "type": "number",
-          "description": "The Turnover for this day and all channels",
+          "description": "The Return On Investment for this day and all channels",
           "example": 23.11
         },
         "margin": {
@@ -20368,7 +20369,7 @@
         "clickCount",
         "cost",
         "orderCount",
-        "turnover",
+        "roi",
         "margin",
         "performanceIndicator",
         "totalSales",
@@ -20393,9 +20394,9 @@
           "description": "The order count for this day and this channel",
           "example": 42
         },
-        "turnover": {
+        "roi": {
           "type": "number",
-          "description": "The Turnover for this day and this channel",
+          "description": "The Return On Investment for this day and this channel",
           "example": 23.11
         },
         "margin": {
@@ -20434,7 +20435,7 @@
       "example": {
         "firstParameter": "Cost",
         "operatorName": "Multiply",
-        "secondParamter": "Turnover",
+        "secondParamter": "ROI",
         "thirdParameter": 100
       },
       "properties": {
