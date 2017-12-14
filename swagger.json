@@ -21425,6 +21425,9 @@
     },
     "BeezUP.Common.CatalogCategoryFilter": {
       "type": "object",
+      "required": [
+        "withoutSubcategories"
+      ],
       "properties": {
         "categoryPath": {
           "type": "array",
@@ -21436,6 +21439,10 @@
             "Maison",
             "Chambre"
           ]
+        },
+        "withoutSubcategories": {
+          "type": "boolean",
+          "example": false
         }
       }
     },
@@ -21480,7 +21487,7 @@
           "$ref": "#/definitions/BeezUP.Common.ProductFilterOperatorName"
         },
         "values": {
-          "description": "Must be null if the operator is \"IsNull\" or \"IsNotNull\". \nCan contains multiple value in case of \"InList\" operator. Otherwise a single value is expected.\n",
+          "description": "Must be null if the operator is \"IsNull\" or \"IsNotNull\".\nCan contains multiple value in case of \"InList\" operator. Otherwise a single value is expected.\n",
           "type": "array",
           "items": {
             "type": "string"
@@ -22779,7 +22786,7 @@
     },
     "acceptEncodingRequiredParameter": {
       "name": "Accept-Encoding",
-      "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size.",
+      "description": "Allows the client to indicate whether it accepts a compressed encoding to reduce traffic size.",
       "in": "header",
       "required": true,
       "type": "array",
@@ -22790,7 +22797,7 @@
     },
     "acceptEncodingOptionalParameter": {
       "name": "Accept-Encoding",
-      "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size.",
+      "description": "Allows the client to indicate whether it accepts a compressed encoding to reduce traffic size.",
       "in": "header",
       "required": false,
       "type": "array",
