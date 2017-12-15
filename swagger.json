@@ -21425,9 +21425,6 @@
     },
     "BeezUP.Common.CatalogCategoryFilter": {
       "type": "object",
-      "required": [
-        "withoutSubcategories"
-      ],
       "properties": {
         "categoryPath": {
           "type": "array",
@@ -21439,10 +21436,6 @@
             "Maison",
             "Chambre"
           ]
-        },
-        "withoutSubcategories": {
-          "type": "boolean",
-          "example": false
         }
       }
     },
