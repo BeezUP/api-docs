@@ -19538,35 +19538,14 @@
         "4b460e31-3d1f-4117-922d-b159a64ec1d2"
       ]
     },
-    "reportByProductRequest": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/reportFilterCommonParameters"
-        },
-        {
-          "$ref": "#/definitions/paginationRequestParameters"
-        },
-        {
-          "type": "object",
-          "required": [
-            "beginPeriodUtcDate",
-            "endPeriodUtcDate",
-            "advancedFilters",
-            "productState"
-          ],
-          "properties": {
-            "productColumnsToDisplay": {
-              "$ref": "#/definitions/productColumnsToDisplay"
-            },
-            "productState": {
-              "$ref": "#/definitions/productStateFilter"
-            },
-            "productFilters": {
-              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
-            }
-          }
-        }
-      ]
+    "optimisationActionName": {
+      "description": "The optimisation action",
+      "type": "string",
+      "enum": [
+        "reenable",
+        "disable"
+      ],
+      "example": "reenable"
     },
     "copyOptimisationRequest": {
       "type": "object",
@@ -19589,66 +19568,6 @@
           "example": false
         }
       }
-    },
-    "optimiseAllRequest": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/reportFilterCommonParameters"
-        },
-        {
-          "type": "object",
-          "required": [
-            "beginPeriodUtcDate",
-            "endPeriodUtcDate",
-            "advancedFilters",
-            "reportType"
-          ],
-          "properties": {
-            "reportType": {
-              "$ref": "#/definitions/reportType"
-            },
-            "productColumnsToDisplay": {
-              "$ref": "#/definitions/productColumnsToDisplay"
-            },
-            "productState": {
-              "$ref": "#/definitions/productStateFilter"
-            },
-            "productFilters": {
-              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
-            }
-          }
-        }
-      ]
-    },
-    "optimiseRequest": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/optimiseAllRequest"
-        },
-        {
-          "$ref": "#/definitions/paginationRequestParameters"
-        },
-        {
-          "type": "object",
-          "required": [
-            "beginPeriodUtcDate",
-            "endPeriodUtcDate",
-            "advancedFilters",
-            "reportType"
-          ],
-          "properties": {
-            "productState": {
-              "$ref": "#/definitions/productStateFilter"
-            },
-            "reportType": {
-              "$ref": "#/definitions/reportType"
-            },
-            "productFilters": {
-              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
-            }
-          }
-        }
-      ]
     },
     "reportByCommonResponseLinks": {
       "type": "object",
@@ -19823,13 +19742,22 @@
         }
       }
     },
-    "reportByCategoryRequest": {
+    "orderedReportFilterCommonParameters": {
+      "description": "Contains common filter parameters with Order By functionnality",
       "allOf": [
         {
           "$ref": "#/definitions/reportFilterCommonParameters"
         },
         {
-          "$ref": "#/definitions/paginationRequestParameters"
+          "type": "object",
+          "properties": {
+            "orderBy": {
+              "$ref": "#/definitions/performanceIndicatorType"
+            },
+            "orderByDirection": {
+              "$ref": "#/definitions/orderByDirection"
+            }
+          }
         }
       ]
     },
@@ -19844,13 +19772,113 @@
         }
       }
     },
-    "reportByChannelRequest": {
+    "reportByCategoryRequest": {
       "allOf": [
         {
-          "$ref": "#/definitions/reportFilterCommonParameters"
+          "$ref": "#/definitions/orderedReportFilterCommonParameters"
         },
         {
           "$ref": "#/definitions/paginationRequestParameters"
+        }
+      ]
+    },
+    "reportByChannelRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderedReportFilterCommonParameters"
+        },
+        {
+          "$ref": "#/definitions/paginationRequestParameters"
+        }
+      ]
+    },
+    "reportByProductRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderedReportFilterCommonParameters"
+        },
+        {
+          "$ref": "#/definitions/paginationRequestParameters"
+        },
+        {
+          "type": "object",
+          "required": [
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "advancedFilters",
+            "productState"
+          ],
+          "properties": {
+            "productColumnsToDisplay": {
+              "$ref": "#/definitions/productColumnsToDisplay"
+            },
+            "productState": {
+              "$ref": "#/definitions/productStateFilter"
+            },
+            "productFilters": {
+              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+            }
+          }
+        }
+      ]
+    },
+    "optimiseAllRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderedReportFilterCommonParameters"
+        },
+        {
+          "type": "object",
+          "required": [
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "advancedFilters",
+            "reportType"
+          ],
+          "properties": {
+            "reportType": {
+              "$ref": "#/definitions/reportType"
+            },
+            "productColumnsToDisplay": {
+              "$ref": "#/definitions/productColumnsToDisplay"
+            },
+            "productState": {
+              "$ref": "#/definitions/productStateFilter"
+            },
+            "productFilters": {
+              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+            }
+          }
+        }
+      ]
+    },
+    "optimiseRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/optimiseAllRequest"
+        },
+        {
+          "$ref": "#/definitions/paginationRequestParameters"
+        },
+        {
+          "type": "object",
+          "required": [
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "advancedFilters",
+            "reportType"
+          ],
+          "properties": {
+            "productState": {
+              "$ref": "#/definitions/productStateFilter"
+            },
+            "reportType": {
+              "$ref": "#/definitions/reportType"
+            },
+            "productFilters": {
+              "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+            }
+          }
         }
       ]
     },
@@ -19884,6 +19912,15 @@
           "example": 10.42
         }
       }
+    },
+    "orderByDirection": {
+      "type": "string",
+      "description": "Indicate which direction to order results by",
+      "enum": [
+        "Ascending",
+        "Descending"
+      ],
+      "example": "Ascending"
     },
     "performanceIndicatorType": {
       "type": "string",
@@ -20090,6 +20127,40 @@
         }
       }
     },
+    "reportByCategoryLinks": {
+      "type": "object",
+      "properties": {
+        "enableProducts": {
+          "$ref": "#/definitions/links.OptimiseByCategoryLink"
+        },
+        "disableProducts": {
+          "$ref": "#/definitions/links.OptimiseByCategoryLink"
+        }
+      }
+    },
+    "reportByChannelLinks": {
+      "type": "object",
+      "properties": {
+        "enableProducts": {
+          "$ref": "#/definitions/links.OptimiseByChannelLink"
+        },
+        "disableProducts": {
+          "$ref": "#/definitions/links.OptimiseByChannelLink"
+        }
+      }
+    },
+    "reportByProductLinks": {
+      "description": "Depending if the report concerned multiple channels or one channel.",
+      "type": "object",
+      "properties": {
+        "oneChannelLinks": {
+          "$ref": "#/definitions/reportByProductOneChannelLinks"
+        },
+        "allChannelsLinks": {
+          "$ref": "#/definitions/reportByProductAllChannelsLinks"
+        }
+      }
+    },
     "reportByProductOneChannelLinks": {
       "type": "object",
       "description": "If the report concerned one product for one channel the channel catalog product info will give you all you need to enable or disable the product.",
@@ -20122,115 +20193,6 @@
         },
         "disableProductForAllChannels": {
           "$ref": "#/definitions/links.OptimiseByProductLink"
-        }
-      }
-    },
-    "reportByProductLinks": {
-      "description": "Depending if the report concerned multiple channels or one channel.",
-      "type": "object",
-      "properties": {
-        "oneChannelLinks": {
-          "$ref": "#/definitions/reportByProductOneChannelLinks"
-        },
-        "allChannelsLinks": {
-          "$ref": "#/definitions/reportByProductAllChannelsLinks"
-        }
-      }
-    },
-    "reportByCategoryLinks": {
-      "type": "object",
-      "properties": {
-        "enableProducts": {
-          "$ref": "#/definitions/links.OptimiseByCategoryLink"
-        },
-        "disableProducts": {
-          "$ref": "#/definitions/links.OptimiseByCategoryLink"
-        }
-      }
-    },
-    "reportByChannelLinks": {
-      "type": "object",
-      "properties": {
-        "enableProducts": {
-          "$ref": "#/definitions/links.OptimiseByChannelLink"
-        },
-        "disableProducts": {
-          "$ref": "#/definitions/links.OptimiseByChannelLink"
-        }
-      }
-    },
-    "reportByProduct": {
-      "type": "object",
-      "required": [
-        "product",
-        "enabledOnChannelCount",
-        "channelCount",
-        "clickCount",
-        "cost",
-        "orderCount",
-        "roi",
-        "margin",
-        "performanceIndicator",
-        "totalSales",
-        "soldProductCount",
-        "links"
-      ],
-      "properties": {
-        "product": {
-          "$ref": "#/definitions/BeezUP.Common.ProductBasicInfo"
-        },
-        "enabledOnChannelCount": {
-          "type": "integer",
-          "description": "The count of channel where this product is enabled",
-          "example": 1
-        },
-        "channelCount": {
-          "type": "integer",
-          "description": "The channel count where this product can be enabled",
-          "example": 2
-        },
-        "clickCount": {
-          "type": "integer",
-          "description": "The click count for this product",
-          "example": 1234
-        },
-        "cost": {
-          "type": "number",
-          "description": "The cost for this product",
-          "example": 101.42
-        },
-        "orderCount": {
-          "type": "integer",
-          "description": "The order count for this product",
-          "example": 234.42
-        },
-        "roi": {
-          "type": "number",
-          "description": "The Return On Investment for this product",
-          "example": 42.01
-        },
-        "margin": {
-          "type": "number",
-          "description": "The margin for this product",
-          "example": 50.0
-        },
-        "performanceIndicator": {
-          "type": "number",
-          "description": "The performance indicator based on the performance indicator formula indicated in the request for this product",
-          "example": 10.12
-        },
-        "totalSales": {
-          "type": "number",
-          "description": "The total sales related to this product",
-          "example": 234.42
-        },
-        "soldProductCount": {
-          "type": "integer",
-          "description": "The product sold count count for this product",
-          "example": 2
-        },
-        "links": {
-          "$ref": "#/definitions/reportByProductLinks"
         }
       }
     },
@@ -20384,6 +20346,81 @@
         },
         "links": {
           "$ref": "#/definitions/reportByChannelLinks"
+        }
+      }
+    },
+    "reportByProduct": {
+      "type": "object",
+      "required": [
+        "product",
+        "enabledOnChannelCount",
+        "channelCount",
+        "clickCount",
+        "cost",
+        "orderCount",
+        "roi",
+        "margin",
+        "performanceIndicator",
+        "totalSales",
+        "soldProductCount",
+        "links"
+      ],
+      "properties": {
+        "product": {
+          "$ref": "#/definitions/BeezUP.Common.ProductBasicInfo"
+        },
+        "enabledOnChannelCount": {
+          "type": "integer",
+          "description": "The count of channel where this product is enabled",
+          "example": 1
+        },
+        "channelCount": {
+          "type": "integer",
+          "description": "The channel count where this product can be enabled",
+          "example": 2
+        },
+        "clickCount": {
+          "type": "integer",
+          "description": "The click count for this product",
+          "example": 1234
+        },
+        "cost": {
+          "type": "number",
+          "description": "The cost for this product",
+          "example": 101.42
+        },
+        "orderCount": {
+          "type": "integer",
+          "description": "The order count for this product",
+          "example": 234.42
+        },
+        "roi": {
+          "type": "number",
+          "description": "The Return On Investment for this product",
+          "example": 42.01
+        },
+        "margin": {
+          "type": "number",
+          "description": "The margin for this product",
+          "example": 50.0
+        },
+        "performanceIndicator": {
+          "type": "number",
+          "description": "The performance indicator based on the performance indicator formula indicated in the request for this product",
+          "example": 10.12
+        },
+        "totalSales": {
+          "type": "number",
+          "description": "The total sales related to this product",
+          "example": 234.42
+        },
+        "soldProductCount": {
+          "type": "integer",
+          "description": "The product sold count count for this product",
+          "example": 2
+        },
+        "links": {
+          "$ref": "#/definitions/reportByProductLinks"
         }
       }
     },
@@ -21079,15 +21116,6 @@
         }
       }
     },
-    "optimisationActionName": {
-      "description": "The optimisation action",
-      "type": "string",
-      "enum": [
-        "reenable",
-        "disable"
-      ],
-      "example": "reenable"
-    },
     "ruleLastExecutionStatus": {
       "description": "The status of the last execution",
       "enum": [
@@ -21265,21 +21293,6 @@
         }
       }
     },
-    "ruleExecutionReportings": {
-      "type": "object",
-      "properties": {
-        "executions": {
-          "description": "The rules executions history",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ruleExecutionReporting"
-          }
-        },
-        "paginationResult": {
-          "$ref": "#/definitions/BeezUP.Common.PaginationResult"
-        }
-      }
-    },
     "ruleExecutionReportingStatus": {
       "description": "The status of the execution of the rule",
       "enum": [
@@ -21392,6 +21405,21 @@
         },
         "links": {
           "$ref": "#/definitions/ruleExecutionReportingLinks"
+        }
+      }
+    },
+    "ruleExecutionReportings": {
+      "type": "object",
+      "properties": {
+        "executions": {
+          "description": "The rules executions history",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleExecutionReporting"
+          }
+        },
+        "paginationResult": {
+          "$ref": "#/definitions/BeezUP.Common.PaginationResult"
         }
       }
     },
