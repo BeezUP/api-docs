@@ -18828,6 +18828,18 @@
         "performanceIndicatorFormulaOperatorNameLov": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
+        "performanceIndicatorFilterOperatorNameLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "productColumnFilterOperatorNameLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "numericProductColumnFilterOperatorNameLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
+        "stringProductColumnFilterOperatorNameLov": {
+          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
+        },
         "storeOptimisationRuleExecutionStatusLov": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         }
@@ -19015,9 +19027,9 @@
                       "Bedroom"
                     ]
                   },
-                  "indicatorFilters": [
+                  "performanceIndicatorFilters": [
                     {
-                      "indicator": "Cost",
+                      "performanceIndicator": "Cost",
                       "operatorName": "Equals",
                       "value": 10.42
                     }
@@ -19077,9 +19089,9 @@
                       "Bedroom"
                     ]
                   },
-                  "indicatorFilters": [
+                  "performanceIndicatorFilters": [
                     {
-                      "indicator": "Cost",
+                      "performanceIndicator": "Cost",
                       "operatorName": "Equals",
                       "value": 10.42
                     }
@@ -20434,10 +20446,10 @@
         "categoryFilter": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryFilter"
         },
-        "indicatorFilters": {
+        "performanceIndicatorFilters": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/reportIndicatorFilter"
+            "$ref": "#/definitions/performanceIndicatorFilter"
           },
           "example": [
             {
@@ -20468,19 +20480,19 @@
         "Last3Months"
       ]
     },
-    "reportIndicatorFilter": {
+    "performanceIndicatorFilter": {
       "type": "object",
       "required": [
-        "indicator",
+        "performanceIndicator",
         "operatorName",
         "value"
       ],
       "properties": {
-        "indicator": {
+        "performanceIndicator": {
           "$ref": "#/definitions/performanceIndicatorType"
         },
         "operatorName": {
-          "$ref": "#/definitions/reportIndicatorFilterOperatorName"
+          "$ref": "#/definitions/performanceIndicatorFilterOperatorName"
         },
         "value": {
           "type": "number",
@@ -20507,7 +20519,7 @@
       ],
       "example": "Cost"
     },
-    "reportIndicatorFilterOperatorName": {
+    "performanceIndicatorFilterOperatorName": {
       "type": "string",
       "description": "Indicates the operator you want to apply on this indicator",
       "enum": [
