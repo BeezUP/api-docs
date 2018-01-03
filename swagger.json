@@ -13281,7 +13281,7 @@
       }
     },
     "startManualImportRequest": {
-      "description": "The message request start a manual importation process.  Indicate the way to handle duplicate product. Can be null if you want to reuse the configuration of the previous importation succeed.",
+      "description": "The message request start a manual importation process. Indicate the way to handle duplicate product. Can be null if you want to reuse the configuration of the previous importation succeed.",
       "required": [
         "input"
       ],
@@ -13537,6 +13537,14 @@
         },
         "categoryPath": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryPath"
+        },
+        "orderbyCatalogColumnId": {
+          "$ref": "#/definitions/BeezUP.Common.CatalogColumnId"
+        },
+        "withoutSubCategories": {
+          "type": "boolean",
+          "description": "Do not retrieve sub categories. By default, this value is set to false",
+          "example": false
         }
       }
     },
