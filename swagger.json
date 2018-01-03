@@ -6282,7 +6282,7 @@
         ],
         "operationId": "HeadOrder",
         "summary": "Get the meta information about the order (ETag, Last-Modified)",
-        "description": "The purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful \n",
+        "description": "The purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful\n",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6653,7 +6653,7 @@
             }
           },
           "409": {
-            "description": "Already processing a change request for this Order.\\\nPlease refresh your clients Order information and retry later. \n",
+            "description": "Already processing a change request for this Order.\\\nPlease refresh your clients Order information and retry later.\n",
             "headers": {
               "Retry-After": {
                 "type": "integer",
@@ -14462,7 +14462,6 @@
       "type": "object",
       "required": [
         "acceptToPublishInfo",
-        "useBid",
         "doNotExportOutOfStockProducts",
         "activeBeezUPTracking"
       ],
@@ -14471,11 +14470,6 @@
           "description": "If true then you authorize disclosure of my statistics generated from clicks and sales",
           "type": "boolean",
           "example": true
-        },
-        "useBid": {
-          "description": "Activate bidding for this channel",
-          "type": "boolean",
-          "example": false
         },
         "doNotExportOutOfStockProducts": {
           "description": "Do not export \"out of stock\" products. Note: this option is not taken into account by the counter.\n",
@@ -14671,7 +14665,7 @@
     },
     "channelCatalogCategoryConfiguration": {
       "type": "object",
-      "description": "Represent a mapping between a catalog category path and a channel category path. \nThe cost on this mapping can be applied.\n",
+      "description": "Represent a mapping between a catalog category path and a channel category path.\nThe cost on this mapping can be applied.\n",
       "required": [
         "autoMapNewSubCategories",
         "catalogCategoryPath"
@@ -15240,7 +15234,7 @@
       }
     },
     "productSetVisibilityCriteriaLogicType": {
-      "description": "Indicate how you want to combine the filters:\n* funnel: You will get the products which meet at least one of the product set criterion. The criteria are applied in the following order: \n  - categorization\n  - exclusion filters\n  - deactivations\n* cumulative: You will get the products which have all the product set criteria\n",
+      "description": "Indicate how you want to combine the filters:\n* funnel: You will get the products which meet at least one of the product set criterion. The criteria are applied in the following order:\n  - categorization\n  - exclusion filters\n  - deactivations\n* cumulative: You will get the products which have all the product set criteria\n",
       "type": "string",
       "enum": [
         "funnel",
@@ -17046,13 +17040,13 @@
           "$ref": "#/definitions/dateSearchType"
         },
         "beginPeriodUtcDate": {
-          "description": "The begin period you want to make the search. \\\nThe period MUST not be greater than 30 days.\nThe begin period MUST be lower than the end period. \n",
+          "description": "The begin period you want to make the search. \\\nThe period MUST not be greater than 30 days.\nThe begin period MUST be lower than the end period.\n",
           "format": "date-time",
           "type": "string",
           "example": "2017-03-01T13:10:01Z"
         },
         "endPeriodUtcDate": {
-          "description": "The end period of you search. \\\nThe period MUST not be greater than 30 days. \\\nThe end period MUST be greater than the begin period. \nThe end period MUST be lower to the current date.\n",
+          "description": "The end period of you search. \\\nThe period MUST not be greater than 30 days. \\\nThe end period MUST be greater than the begin period.\nThe end period MUST be lower to the current date.\n",
           "format": "date-time",
           "type": "string",
           "example": "2017-04-01T13:10:01Z"
@@ -18032,7 +18026,8 @@
               "If-Match": {
                 "in": "header",
                 "value": "\"ca071a4580129f932a03971968ffef69\"",
-                "required": true
+                "required": true,
+                "type": "string"
               },
               "testMode": {
                 "in": "query",
@@ -18097,7 +18092,8 @@
             "If-Match": {
               "in": "header",
               "value": "\"ca071a4580129f932a03971968ffef69\"",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "testMode": {
               "in": "query",
@@ -18152,7 +18148,8 @@
             "If-Match": {
               "in": "header",
               "value": "\"ca071a4580129f932a03971968ffef69\"",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "testMode": {
               "in": "query",
@@ -18292,7 +18289,7 @@
               "Accept-Encoding": {
                 "in": "header",
                 "required": true,
-                "type": "array",
+                "type": "â€‹array",
                 "schema": "string"
               },
               "request": {
@@ -18495,7 +18492,7 @@
       ]
     },
     "orderListLight": {
-      "description": "The order list with minimum information we have from the orders.\\\nThe paginationResult properties can be null if the list is empty. \n",
+      "description": "The order list with minimum information we have from the orders.\\\nThe paginationResult properties can be null if the list is empty.\n",
       "type": "object",
       "required": [
         "orders",
@@ -18517,7 +18514,7 @@
       }
     },
     "orderListFull": {
-      "description": "The order list with all information we have from the orders and its items.\\\nThe paginationResult properties can be null if the list is empty. \n",
+      "description": "The order list with all information we have from the orders and its items.\\\nThe paginationResult properties can be null if the list is empty.\n",
       "type": "object",
       "required": [
         "orders",
