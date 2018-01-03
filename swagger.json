@@ -9,7 +9,7 @@
       "backgroundColor": "#FFFFFF"
     },
     "contact": {
-      "email": "support@beezup.com"
+      "email": "help@beezup.com"
     },
     "license": {
       "name": "BeezUP",
@@ -23,7 +23,7 @@
     "apiName": "V2PublicSecurity",
     "appRoot": "BeezUP.Customer.WebService",
     "namespace": "BeezUP.Customer.WebService",
-    "comment": "No change. Just server side generation.\n"
+    "comment": "Changing contact email support to help\nNo change. Just server side generation.\n"
   },
   "x-basePath": "/v2/public/security",
   "schemes": [
