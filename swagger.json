@@ -19054,15 +19054,19 @@
                     }
                   },
                   "productState": "All",
-                  "productColumnFilters": [
-                    {
-                      "columnId": "672644c7-5bd0-4e25-88c1-1f732bda5e4c",
-                      "operatorName": "GreaterTo",
-                      "values": [
-                        100
-                      ]
-                    }
-                  ]
+                  "productColumnFilters": {
+                    "sku": "M1234",
+                    "title": "RefrigÃ©rateur",
+                    "additionalProductColumnFilters": [
+                      {
+                        "columnId": "672644c7-5bd0-4e25-88c1-1f732bda5e4c",
+                        "operatorName": "NumericGreaterTo",
+                        "values": [
+                          100
+                        ]
+                      }
+                    ]
+                  }
                 }
               }
             }
@@ -19118,15 +19122,19 @@
                   "pageSize": 100,
                   "pageNumber": 1,
                   "productState": "All",
-                  "productColumnFilters": [
-                    {
-                      "columnId": "672644c7-5bd0-4e25-88c1-1f732bda5e4c",
-                      "operatorName": "GreaterTo",
-                      "values": [
-                        100
-                      ]
-                    }
-                  ]
+                  "productColumnFilters": {
+                    "sku": "M1234",
+                    "title": "RefrigÃ©rateur",
+                    "additionalProductColumnFilters": [
+                      {
+                        "columnId": "672644c7-5bd0-4e25-88c1-1f732bda5e4c",
+                        "operatorName": "NumericGreaterTo",
+                        "values": [
+                          100
+                        ]
+                      }
+                    ]
+                  }
                 }
               }
             }
@@ -20823,6 +20831,24 @@
       ]
     },
     "productColumnFilters": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "The product sku filter",
+          "example": "M1234"
+        },
+        "title": {
+          "type": "string",
+          "description": "The product title filter",
+          "example": "RefrigÃ©rateur"
+        },
+        "additionalProductColumnFilters": {
+          "$ref": "#/definitions/additionalProductColumnFilters"
+        }
+      }
+    },
+    "additionalProductColumnFilters": {
       "type": "object",
       "description": "Describes a filter on a product's column.\nThe key is the column identifier of your catalog or a custom column.\n",
       "additionalProperties": {
