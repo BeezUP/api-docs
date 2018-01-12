@@ -19850,7 +19850,7 @@
         },
         "ipAddress": {
           "type": "string",
-          "description": "The user IP address related to the click",
+          "description": "The user IP address for the click",
           "example": "127.0.0.1"
         },
         "channel": {
@@ -20023,7 +20023,7 @@
           "example": false
         },
         "products": {
-          "description": "Can be null. The product list related of the external order",
+          "description": "Can be null. The product list included in the external order",
           "type": "array",
           "items": {
             "$ref": "#/definitions/trackedExternalOrderProduct"
@@ -20361,7 +20361,7 @@
         },
         "totalSales": {
           "type": "number",
-          "description": "The total sales related to this day and all channels",
+          "description": "The total sales for this day and all channels",
           "example": 234.42
         },
         "soldProductCount": {
@@ -20420,7 +20420,7 @@
         },
         "totalSales": {
           "type": "number",
-          "description": "The total sales related to this day and this channel",
+          "description": "The total sales for this day and this channel",
           "example": 234.42
         },
         "soldProductCount": {
@@ -20621,8 +20621,8 @@
       "type": "object",
       "required": [
         "channel",
-        "enabledProductCount",
         "catalogProductCount",
+        "enabledProductCount",
         "clickCount",
         "cost",
         "orderCount",
@@ -20637,14 +20637,14 @@
         "channel": {
           "$ref": "#/definitions/BeezUP.Common.ChannelBasicInfo"
         },
-        "enabledProductCount": {
-          "type": "integer",
-          "description": "The enabled product count for this channel",
-          "example": 101
-        },
         "catalogProductCount": {
           "type": "integer",
           "description": "The catalog product count for this channel",
+          "example": 101
+        },
+        "enabledProductCount": {
+          "type": "integer",
+          "description": "The enabled product count for this channel",
           "example": 101
         },
         "clickCount": {
@@ -20679,7 +20679,7 @@
         },
         "totalSales": {
           "type": "number",
-          "description": "The total sales related to this channel",
+          "description": "The total sales for this channel",
           "example": 234.42
         },
         "soldProductCount": {
@@ -20726,8 +20726,9 @@
       "type": "object",
       "required": [
         "catalogCategoryId",
-        "enabledProductCount",
+        "allProductCount",
         "catalogProductCount",
+        "enabledProductCount",
         "clickCount",
         "cost",
         "orderCount",
@@ -20745,14 +20746,19 @@
         "catalogCategoryPath": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryPath"
         },
-        "enabledProductCount": {
+        "allProductCount": {
           "type": "integer",
-          "description": "The enabled product count for this category",
+          "description": "The product count for this category. This includes all the products that have been imported and can still have associated clicks and orders.",
           "example": 101
         },
         "catalogProductCount": {
           "type": "integer",
-          "description": "The catalog product count related to this category",
+          "description": "The catalog product count for this category. This includes all products that are still present in your imported catalog.",
+          "example": 101
+        },
+        "enabledProductCount": {
+          "type": "integer",
+          "description": "The enabled product count for this category. This includes all products that are still present in your imported catalog and have not been disabled via the optimisation feature.",
           "example": 101
         },
         "clickCount": {
@@ -20787,7 +20793,7 @@
         },
         "totalSales": {
           "type": "number",
-          "description": "The total sales related to this category",
+          "description": "The total sales for this category",
           "example": 234.42
         },
         "soldProductCount": {
@@ -21008,7 +21014,7 @@
         },
         "totalSales": {
           "type": "number",
-          "description": "The total sales related to this product",
+          "description": "The total sales for this product",
           "example": 234.42
         },
         "soldProductCount": {
