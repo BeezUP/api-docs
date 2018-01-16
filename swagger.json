@@ -5512,14 +5512,28 @@
         "tags": [
           "Marketplaces - Channel catalogs - Global"
         ],
-        "summary": "Get  you marketplace channel catalog list",
-        "operationId": "GetMarketplaceAccountStores",
+        "summary": "Get your marketplace channel catalog list",
+        "operationId": "GetMarketplaceChannelCatalogs",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": false,
+            "description": "The StoreId to filter by",
+            "type": "string",
+            "format": "guid",
+            "x-example": "04730364-9826-4ff3-92e4-51fccd02bf10"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Marketplace channel catalog list",
             "schema": {
               "$ref": "#/definitions/marketplaceChannelCatalogList"
             }
+          },
+          "404": {
+            "description": "Store not found"
           }
         },
         "security": [
@@ -5652,7 +5666,7 @@
             }
           },
           "404": {
-            "description": "Requested channel catalog or authorization for current user not found"
+            "description": "Marketplace channel Catalog not found"
           },
           "503": {
             "$ref": "#/responses/processingResponse"
@@ -5693,7 +5707,7 @@
             }
           },
           "404": {
-            "description": "Requested channel catalog or authorization for current user not found"
+            "description": "Marketplace channel catalog not found"
           },
           "503": {
             "$ref": "#/responses/processingResponse"
@@ -5736,16 +5750,16 @@
         ],
         "responses": {
           "204": {
-            "description": "Successfully saved channel catalog settings"
+            "description": "Successfully saved channel catalog marketplace settings"
           },
           "400": {
-            "description": "One or more channel catalog property keys or values are invalid for requested channel catalog. See response for details.",
+            "description": "One or more channel catalog marketplace property keys or values are invalid for requested marketplace channel catalog. See response for details.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
-            "description": "Requested channel catalog or authorization for current user not found"
+            "description": "Marketplace channel catalog not found"
           },
           "503": {
             "$ref": "#/responses/processingResponse"
@@ -16593,7 +16607,7 @@
         }
       }
     },
-    "links.GetMarketplaceAccountStoresLink": {
+    "links.GetMarketplaceChannelCatalogsLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
@@ -16612,7 +16626,7 @@
       ],
       "properties": {
         "self": {
-          "$ref": "#/definitions/links.GetMarketplaceAccountStoresLink"
+          "$ref": "#/definitions/links.GetMarketplaceChannelCatalogsLink"
         }
       }
     },
