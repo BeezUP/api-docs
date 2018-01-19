@@ -17032,7 +17032,7 @@
           ]
         },
         "accountIds": {
-          "description": "Account id list",
+          "description": "Account Id list",
           "type": "array",
           "items": {
             "$ref": "#/definitions/accountId"
@@ -17040,6 +17040,13 @@
           "example": [
             12345
           ]
+        },
+        "storeIds": {
+          "description": "Store Id list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BeezUP.Common.StoreId"
+          }
         },
         "beezUPOrderStatuses": {
           "type": "array",
