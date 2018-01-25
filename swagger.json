@@ -5820,6 +5820,15 @@
         "summary": "Get current synchronization status between your marketplaces and BeezUP accounts",
         "parameters": [
           {
+            "name": "storeId",
+            "in": "query",
+            "required": false,
+            "description": "The StoreId to filter by",
+            "type": "string",
+            "format": "guid",
+            "x-example": "04730364-9826-4ff3-92e4-51fccd02bf10"
+          },
+          {
             "$ref": "#/parameters/ifNoneMatchParameter"
           }
         ],
@@ -5832,6 +5841,12 @@
           },
           "304": {
             "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "Requested Store could not be found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -9235,6 +9250,7 @@
         "name",
         "url",
         "countryIsoCodeAlpha3",
+        "currencyCode",
         "userRole",
         "status",
         "ownerUserId",
@@ -9255,6 +9271,9 @@
         },
         "countryIsoCodeAlpha3": {
           "$ref": "#/definitions/storeCountryIsoCodeAlpha3"
+        },
+        "currencyCode": {
+          "$ref": "#/definitions/BeezUP.Common.CurrencyCode"
         },
         "sectors": {
           "$ref": "#/definitions/storeSectors"
