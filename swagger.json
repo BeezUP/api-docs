@@ -5867,6 +5867,17 @@
         ],
         "operationId": "HarvestAll",
         "summary": "Send harvest request to all your marketplaces",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": false,
+            "description": "The StoreId to filter by",
+            "type": "string",
+            "format": "guid",
+            "x-example": "04730364-9826-4ff3-92e4-51fccd02bf10"
+          }
+        ],
         "responses": {
           "202": {
             "description": "Successfully sent harvest request to all marketplaces",
@@ -5875,6 +5886,12 @@
                 "type": "integer",
                 "description": "Indicates the duration in seconds to wait to be able to make this request again"
               }
+            }
+          },
+          "404": {
+            "description": "Requested Store could not be found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "409": {
