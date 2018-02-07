@@ -7457,8 +7457,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Products optimisatisation copied"
+          "200": {
+            "description": "Products optimisatisation copied",
+            "schema": {
+              "$ref": "#/definitions/copyOptimisationResponse"
+            }
           },
           "400": {
             "$ref": "#/responses/BadRequestResponse"
@@ -20333,11 +20336,8 @@
         "currencyCode": {
           "$ref": "#/definitions/BeezUP.Common.CurrencyCode"
         },
-        "globalPerformanceIndicators": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/globalPerformanceIndicatorByChannel"
-          }
+        "global": {
+          "$ref": "#/definitions/reportByDayGlobal"
         },
         "days": {
           "type": "array",
@@ -20347,22 +20347,54 @@
         }
       }
     },
-    "globalPerformanceIndicatorByChannel": {
+    "reportByDayGlobal": {
       "type": "object",
       "required": [
-        "channel",
-        "globalPerformanceIndicator"
+        "allChannels",
+        "byChannels"
       ],
       "properties": {
-        "channel": {
-          "$ref": "#/definitions/BeezUP.Common.ChannelBasicInfo"
+        "allChannels": {
+          "$ref": "#/definitions/reportByDayGlobalAllChannels"
         },
-        "globalPerformanceIndicator": {
+        "byChannels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reportByDayGlobalByChannel"
+          }
+        }
+      }
+    },
+    "reportByDayGlobalAllChannels": {
+      "type": "object",
+      "required": [
+        "performanceIndicator"
+      ],
+      "properties": {
+        "performanceIndicator": {
           "type": "number",
-          "description": "Indicates the global performance indicator for this channel",
+          "description": "Indicates the global performance indicator",
           "example": 10.42
         }
       }
+    },
+    "reportByDayGlobalByChannel": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/reportByDayGlobalAllChannels"
+        },
+        {
+          "type": "object",
+          "required": [
+            "channel"
+          ],
+          "properties": {
+            "channel": {
+              "$ref": "#/definitions/BeezUP.Common.ChannelBasicInfo"
+            }
+          }
+        }
+      ]
     },
     "reportByDay": {
       "type": "object",
@@ -20403,104 +20435,63 @@
       "properties": {
         "clickCount": {
           "type": "integer",
-          "description": "The click count for this day and all channels",
+          "description": "The click count",
           "example": 101
         },
         "cost": {
           "type": "number",
-          "description": "The cost for this day and all channels",
+          "description": "The cost",
           "example": 10.42
         },
         "orderCount": {
           "type": "integer",
-          "description": "The order count for this day and all channels",
+          "description": "The order count",
           "example": 42
         },
         "roi": {
           "type": "number",
-          "description": "The Return On Investment for this day and all channels",
+          "description": "The Return On Investment",
           "example": 23.11
         },
         "margin": {
           "type": "number",
-          "description": "The margin for this day and all channels",
+          "description": "The margin",
           "example": 42.42
         },
         "performanceIndicator": {
           "type": "number",
-          "description": "The performance indicator based on the performance indicator formula indicated in the request for this day and all channels",
+          "description": "The performance indicator based on the performance indicator formula indicated in the request",
           "example": 23.09
         },
         "totalSales": {
           "type": "number",
-          "description": "The total sales for this day and all channels",
+          "description": "The total sales",
           "example": 234.42
         },
         "soldProductCount": {
           "type": "integer",
-          "description": "The product sold count count for this day and all channels",
+          "description": "The product sold count count",
           "example": 2
         }
       }
     },
     "reportByDayByChannel": {
-      "type": "object",
-      "required": [
-        "channel",
-        "clickCount",
-        "cost",
-        "orderCount",
-        "roi",
-        "margin",
-        "performanceIndicator",
-        "totalSales",
-        "soldProductCount"
-      ],
-      "properties": {
-        "channel": {
-          "$ref": "#/definitions/BeezUP.Common.ChannelBasicInfo"
+      "allOf": [
+        {
+          "$ref": "#/definitions/reportByDayAllChannels"
         },
-        "clickCount": {
-          "type": "integer",
-          "description": "The click count for this day and this channel",
-          "example": 101
-        },
-        "cost": {
-          "type": "number",
-          "description": "The cost for this day and this channel",
-          "example": 10.42
-        },
-        "orderCount": {
-          "type": "integer",
-          "description": "The order count for this day and this channel",
-          "example": 42
-        },
-        "roi": {
-          "type": "number",
-          "description": "The Return On Investment for this day and this channel",
-          "example": 23.11
-        },
-        "margin": {
-          "type": "number",
-          "description": "The margin for this day and this channel",
-          "example": 42.42
-        },
-        "performanceIndicator": {
-          "type": "number",
-          "description": "The performance indicator based on the performance indicator formula indicated in the request for this day and this channel",
-          "example": 23.09
-        },
-        "totalSales": {
-          "type": "number",
-          "description": "The total sales for this day and this channel",
-          "example": 234.42
-        },
-        "soldProductCount": {
-          "type": "integer",
-          "description": "The product sold count count for this day and this channel",
-          "example": 2
+        {
+          "type": "object",
+          "required": [
+            "channel"
+          ],
+          "properties": {
+            "channel": {
+              "$ref": "#/definitions/BeezUP.Common.ChannelBasicInfo"
+            }
+          }
         }
-      }
+      ]
     },
     "reportFilterCommonParameters": {
       "description": "Contains common filter parameters",
@@ -20705,52 +20696,52 @@
         },
         "catalogProductCount": {
           "type": "integer",
-          "description": "The catalog product count for this channel",
+          "description": "The catalog product count",
           "example": 101
         },
         "enabledProductCount": {
           "type": "integer",
-          "description": "The enabled product count for this channel",
+          "description": "The enabled product count",
           "example": 101
         },
         "clickCount": {
           "type": "integer",
-          "description": "The click count for this channel",
+          "description": "The click count",
           "example": 1024
         },
         "cost": {
           "type": "number",
-          "description": "The cost for this channel",
+          "description": "The cost for",
           "example": 1234.12
         },
         "orderCount": {
           "type": "integer",
-          "description": "The order count for this channel",
+          "description": "The order count",
           "example": 42
         },
         "roi": {
           "type": "number",
-          "description": "The Return On Investment for this channel",
+          "description": "The Return On Investment",
           "example": 42.42
         },
         "margin": {
           "type": "number",
-          "description": "The margin for this channel",
+          "description": "The margin",
           "example": 23.1
         },
         "performanceIndicator": {
           "type": "number",
-          "description": "The performance indicator based on the performance indicator formula indicated in the request for this channel",
+          "description": "The performance indicator based on the performance indicator formula indicated in the request",
           "example": 12.21
         },
         "totalSales": {
           "type": "number",
-          "description": "The total sales for this channel",
+          "description": "The total sales",
           "example": 234.42
         },
         "soldProductCount": {
           "type": "integer",
-          "description": "The product sold count count for this channel",
+          "description": "The product sold count count",
           "example": 2
         },
         "links": {
@@ -21140,6 +21131,30 @@
           "type": "boolean",
           "description": "If true the existing optimisation will be kept",
           "example": false
+        }
+      }
+    },
+    "copyOptimisationResponse": {
+      "type": "object",
+      "description": "Products optimisatisation copied",
+      "required": [
+        "channel",
+        "catalogProductCount",
+        "enabledProductCount"
+      ],
+      "properties": {
+        "channel": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelBasicInfo"
+        },
+        "catalogProductCount": {
+          "type": "integer",
+          "description": "The catalog product count",
+          "example": 101
+        },
+        "enabledProductCount": {
+          "type": "integer",
+          "description": "The enabled product count",
+          "example": 101
         }
       }
     },
