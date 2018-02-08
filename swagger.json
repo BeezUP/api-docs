@@ -18911,13 +18911,13 @@
         "performanceIndicatorFilterOperatorNameLov": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
-        "productColumnFilterOperatorNameLov": {
+        "analyticsProductColumnFilterOperatorNameLov": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
-        "numericalProductColumnFilterOperatorNameLov": {
+        "analyticsNumericalProductColumnFilterOperatorNameLov": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
-        "stringProductColumnFilterOperatorNameLov": {
+        "analyticsStringProductColumnFilterOperatorNameLov": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
         "storeOptimisationRuleExecutionStatusLov": {
@@ -19129,10 +19129,10 @@
                     }
                   },
                   "productState": "All",
-                  "productColumnFilters": {
+                  "analyticsProductColumnFilters": {
                     "sku": "M1234",
                     "title": "RefrigÃ©rateur",
-                    "additionalProductColumnFilters": [
+                    "additionalAnalyticsProductColumnFilters": [
                       {
                         "columnId": "672644c7-5bd0-4e25-88c1-1f732bda5e4c",
                         "operatorName": "NumericalGreaterThan",
@@ -19197,10 +19197,10 @@
                   "pageSize": 100,
                   "pageNumber": 1,
                   "productState": "All",
-                  "productColumnFilters": {
+                  "analyticsProductColumnFilters": {
                     "sku": "M1234",
                     "title": "RefrigÃ©rateur",
-                    "additionalProductColumnFilters": [
+                    "additionalAnalyticsProductColumnFilters": [
                       {
                         "columnId": "672644c7-5bd0-4e25-88c1-1f732bda5e4c",
                         "operatorName": "NumericalGreaterThan",
@@ -20884,14 +20884,14 @@
             "productState": {
               "$ref": "#/definitions/productStateFilter"
             },
-            "productColumnFilters": {
-              "$ref": "#/definitions/productColumnFilters"
+            "analyticsProductColumnFilters": {
+              "$ref": "#/definitions/analyticsProductColumnFilters"
             }
           }
         }
       ]
     },
-    "productColumnFilters": {
+    "analyticsProductColumnFilters": {
       "type": "object",
       "properties": {
         "sku": {
@@ -20904,26 +20904,26 @@
           "description": "The product title filter",
           "example": "RefrigÃ©rateur"
         },
-        "additionalProductColumnFilters": {
-          "$ref": "#/definitions/additionalProductColumnFilters"
+        "additionalAnalyticsProductColumnFilters": {
+          "$ref": "#/definitions/additionalAnalyticsProductColumnFilters"
         }
       }
     },
-    "additionalProductColumnFilters": {
+    "additionalAnalyticsProductColumnFilters": {
       "type": "object",
       "description": "Describes a filter on a product's column.\nThe key is the column identifier of your catalog or a custom column.\n",
       "additionalProperties": {
-        "$ref": "#/definitions/productColumnFilter"
+        "$ref": "#/definitions/analyticsProductColumnFilter"
       }
     },
-    "productColumnFilter": {
+    "analyticsProductColumnFilter": {
       "type": "object",
       "required": [
         "operatorName"
       ],
       "properties": {
         "operatorName": {
-          "$ref": "#/definitions/productColumnFilterOperatorName"
+          "$ref": "#/definitions/analyticsProductColumnFilterOperatorName"
         },
         "values": {
           "description": "Must be null if the operator is \"IsNull\" or \"IsNotNull\".\nCan contains multiple value in case of \"InList\" operator. Otherwise a single value is expected.\n",
@@ -20945,7 +20945,7 @@
         }
       }
     },
-    "productColumnFilterOperatorName": {
+    "analyticsProductColumnFilterOperatorName": {
       "type": "string",
       "description": "Indicate the operator you want to apply on the columnId",
       "x-lov": "AnalyticsProductColumnFilterOperatorName"
@@ -21094,8 +21094,8 @@
             "productState": {
               "$ref": "#/definitions/productStateFilter"
             },
-            "productColumnFilters": {
-              "$ref": "#/definitions/productColumnFilters"
+            "analyticsProductColumnFilters": {
+              "$ref": "#/definitions/analyticsProductColumnFilters"
             }
           }
         }
@@ -21281,8 +21281,8 @@
             "productState": {
               "$ref": "#/definitions/productStateFilter"
             },
-            "productColumnFilters": {
-              "$ref": "#/definitions/productColumnFilters"
+            "analyticsProductColumnFilters": {
+              "$ref": "#/definitions/analyticsProductColumnFilters"
             }
           }
         }
