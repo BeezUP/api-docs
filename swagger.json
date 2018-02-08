@@ -22218,6 +22218,9 @@
         "in": {
           "$ref": "#/definitions/BeezUP.Common.ParameterIn"
         },
+        "type": {
+          "$ref": "#/definitions/BeezUP.Common.ParameterType"
+        },
         "lovLink": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
@@ -22235,6 +22238,9 @@
           "type": "string",
           "description": "schema of the parameter",
           "example": "orderListRequest"
+        },
+        "properties": {
+          "$ref": "#/definitions/BeezUP.Common.LinkParameterProperties3"
         }
       }
     },
