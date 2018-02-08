@@ -22240,16 +22240,19 @@
           "example": "orderListRequest"
         },
         "properties": {
-          "description": "If the parameter is an object with flexible properties (additionProperties/dictionary), we will describe the properties of the object.",
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/BeezUP.Common.LinkParameterProperty3"
-          },
-          "example": {
-            "shipOrder": {
-              "type": "string"
-            }
-          }
+          "$ref": "#/definitions/BeezUP.Common.LinkParameterProperties3"
+        }
+      }
+    },
+    "BeezUP.Common.LinkParameterProperties3": {
+      "description": "If the parameter is an object with flexible properties (additionProperties/dictionary), we will describe the properties of the object.",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/BeezUP.Common.LinkParameterProperty3"
+      },
+      "example": {
+        "shipOrder": {
+          "type": "string"
         }
       }
     },
