@@ -20948,7 +20948,6 @@
     "productColumnFilterOperatorName": {
       "type": "string",
       "description": "Indicate the operator you want to apply on the columnId",
-      "enum": null,
       "x-lov": "AnalyticsProductColumnFilterOperatorName"
     },
     "productColumnsToDisplay": {
