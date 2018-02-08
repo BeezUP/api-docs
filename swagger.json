@@ -22218,9 +22218,6 @@
         "in": {
           "$ref": "#/definitions/BeezUP.Common.ParameterIn"
         },
-        "type": {
-          "$ref": "#/definitions/BeezUP.Common.ParameterType"
-        },
         "lovLink": {
           "$ref": "#/definitions/BeezUP.Common.LOVLink3"
         },
