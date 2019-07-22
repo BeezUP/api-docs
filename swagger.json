@@ -21987,6 +21987,17 @@
       "type": "string",
       "example": "ChannelNotPresent"
     },
+    "executionId": {
+      "description": "The execution identifier of the catalog importation",
+      "format": "guid",
+      "type": "string",
+      "example": "bf3bc288-604c-4267-925e-66b1a15dca75"
+    },
+    "userColumName": {
+      "description": "Column named by the user",
+      "type": "string",
+      "example": "My SKU"
+    },
     "productVATPercent": {
       "description": "Product VAT in percent",
       "type": "number",
