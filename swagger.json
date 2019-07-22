@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "BeezUP API",
-    "description": "# The REST API of BeezUP system\n## Overview\nThe REST APIs provide programmatic access to read and write BeezUP data. \nBasically, with this API you will be able to do everything like you were with your browser on https://go.beezup.com !\n\nThe main features are:\n- Register and manage your account\n- Create and manage and share your stores with your friends/co-workers.\n- Import your product catalog and schedule the auto importation\n- Search the channels your want to use\n- Configure your channels for your catalogs to export your product information:\n    - cost and general settings\n    - category and columns mappings\n    - your will be able to create and manage your custom column\n    - put in place exlusion filters based on simple conditions on your product data\n    - override product values\n    - get product vision for a channel catalog scope\n- Analyze and optimize your performance of your catalogs on all yours channels with different type of reportings by day, channel, category and by product.\n- Automatize your optimisation by using rules!\n- And of course... Manage your orders harvested from all your marketplaces:\n    - Synchronize your orders in an uniformized way\n    - Get the available actions and update the order status\n- ...and more!\n\n## Authentication credentials\nThe public API with the base path **/v2/public** have been put in place to give you an entry point to our system for the user registration, login and lost password. The public API does not require any credentials.\nWe give you the some public list of values and public channels for our public commercial web site [www.beezup.com](http://www.beezup.com).\n\nThe user API with the base path **/v2/user** requires a token which is available on this page:\nhttps://go.beezup.com/Account/MyAccount\n\n## Things to keep in mind\n### API Rate Limits\n- The BeezUP REST API is limited to 100 calls/minute.\n\n### Media type\nThe default media type for requests and responses is application/json. Where noted, some operations support other content types. If no additional content type is mentioned for a specific operation, then the media type is application/json.\n\n### Required content type\nThe required and default encoding for the request and responses is UTF8.\n\n### Required date time format\nAll our date time are formatted in ISO 8601 format: 2014-06-24T16:25:00Z.\n\n### Base URL\nThe Base URL of the BeezUP API Order Management REST API conforms to the following template.\n\nhttps://api.beezup.com\n\nAll URLs returned by the BeezUP API are relative to this base URL, and all requests to the REST API must use this base URL template.\n\nYou can test our API on https://api-docs.beezup.com/swagger-ui\\\nYou can contact us on [gitter, #BeezUP/API](https://gitter.im/BeezUP/API)\n",
+    "title": "BeezUP  API",
+    "description": "\r\n\r\n# The REST API of BeezUP system\r\n## Overview\r\nThe REST APIs provide programmatic access to read and write BeezUP data. \r\nBasically, with this API you will be able to do everything like you were with your browser on https://go.beezup.com !\r\n\r\nThe main features are:\r\n- Register and manage your account\r\n- Create and manage and share your stores with your friends/co-workers.\r\n- Import your product catalog and schedule the auto importation\r\n- Search the channels your want to use\r\n- Configure your channels for your catalogs to export your product information:\r\n    - cost and general settings\r\n    - category and columns mappings\r\n    - your will be able to create and manage your custom column\r\n    - put in place exlusion filters based on simple conditions on your product data\r\n    - override product values\r\n    - get product vision for a channel catalog scope\r\n- Analyze and optimize your performance of your catalogs on all yours channels with different type of reportings by day, channel, category and by product.\r\n- Automatize your optimisation by using rules!\r\n- And of course... Manage your orders harvested from all your marketplaces:\r\n    - Synchronize your orders in an uniformized way\r\n    - Get the available actions and update the order status\r\n- ...and more!\r\n\r\n## Authentication credentials\r\nThe public API with the base path **/v2/public** have been put in place to give you an entry point to our system for the user registration, login and lost password. The public API does not require any credentials.\r\nWe give you the some public list of values and public channels for our public commercial web site [www.beezup.com](http://www.beezup.com).\r\n\r\nThe user API with the base path **/v2/user** requires a token which is available on this page:\r\nhttps://go.beezup.com/Account/MyAccount\r\n\r\n## Things to keep in mind\r\n### API Rate Limits\r\n- The BeezUP REST API is limited to 100 calls/minute.\r\n\r\n### Media type\r\nThe default media type for requests and responses is application/json. Where noted, some operations support other content types. If no additional content type is mentioned for a specific operation, then the media type is application/json.\r\n\r\n### Required content type\r\nThe required and default encoding for the request and responses is UTF8.\r\n\r\n### Required date time format\r\nAll our date time are formatted in ISO 8601 format: 2014-06-24T16:25:00Z.\r\n\r\n### Base URL\r\nThe Base URL of the BeezUP API Order Management REST API conforms to the following template.\r\n\r\nhttps://api.beezup.com\r\n\r\nAll URLs returned by the BeezUP API are relative to this base URL, and all requests to the REST API must use this base URL template.\r\n\r\nYou can test our API on https://api-docs.beezup.com/swagger-ui\\\\\r\nYou can contact us on [gitter, #BeezUP/API](https://gitter.im/BeezUP/API)\r\n\r\n\r\n",
     "version": "2.0",
     "x-logo": {
       "url": "https://avatars0.githubusercontent.com/u/25665430",
@@ -17,7 +17,6 @@
     }
   },
   "host": "api.beezup.com",
-  "basePath": "/v2",
   "x-beezup-api-ops": {
     "repo": "Customer",
     "apiName": "V2PublicSecurity",
@@ -231,6 +230,16 @@
       "x-displayName": "Subscriptions"
     },
     {
+      "name": "OM Invoice - API - Settings",
+      "description": "Settings Operations",
+      "x-displayName": "Settings"
+    },
+    {
+      "name": "OM Invoice - API - Generation",
+      "description": "Generation Operations",
+      "x-displayName": "Generation"
+    },
+    {
       "name": "Analytics - Global",
       "description": "All global operations concerning Analytics API",
       "x-displayName": "Global"
@@ -262,7 +271,7 @@
     }
   ],
   "paths": {
-    "/public/security/login": {
+    "/v2/public/security/login": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -302,7 +311,7 @@
         }
       }
     },
-    "/public/security/register": {
+    "/v2/public/security/register": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -339,7 +348,7 @@
         ]
       }
     },
-    "/public/security/lostpassword": {
+    "/v2/public/security/lostpassword": {
       "post": {
         "tags": [
           "Public - Security - Security"
@@ -383,7 +392,7 @@
         }
       }
     },
-    "/public/channels/": {
+    "/v2/public/channels/": {
       "get": {
         "tags": [
           "Public - Channels - Public Channels"
@@ -412,7 +421,7 @@
         }
       }
     },
-    "/public/channels/{countryIsoCode}": {
+    "/v2/public/channels/{countryIsoCode}": {
       "get": {
         "tags": [
           "Public - Channels - Public Channels"
@@ -470,7 +479,7 @@
         }
       }
     },
-    "/public/lov/": {
+    "/v2/public/lov/": {
       "get": {
         "summary": "Get all list names",
         "operationId": "GetPublicLovIndex",
@@ -526,7 +535,7 @@
         }
       }
     },
-    "/public/lov/{listName}": {
+    "/v2/public/lov/{listName}": {
       "get": {
         "tags": [
           "Public - List of Values - LOV"
@@ -606,7 +615,7 @@
         }
       }
     },
-    "/user/lov/": {
+    "/v2/user/lov/": {
       "get": {
         "summary": "Get all list names",
         "operationId": "GetUserLovIndex",
@@ -654,15 +663,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/lov/{listName}": {
+    "/v2/user/lov/{listName}": {
       "get": {
         "tags": [
           "User - List of Values - LOV"
@@ -739,15 +743,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/": {
+    "/v2/user/customer/": {
       "get": {
         "tags": [
           "Customer - Global"
@@ -772,15 +771,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account": {
+    "/v2/user/customer/account": {
       "get": {
         "tags": [
           "Customer - Account"
@@ -805,15 +799,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account/resendEmailActivation": {
+    "/v2/user/customer/account/resendEmailActivation": {
       "post": {
         "tags": [
           "Customer - Account"
@@ -859,15 +848,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account/activate": {
+    "/v2/user/customer/account/activate": {
       "post": {
         "tags": [
           "Customer - Account"
@@ -905,15 +889,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account/personalInfo": {
+    "/v2/user/customer/account/personalInfo": {
       "put": {
         "tags": [
           "Customer - Account"
@@ -943,15 +922,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account/companyInfo": {
+    "/v2/user/customer/account/companyInfo": {
       "put": {
         "tags": [
           "Customer - Account"
@@ -987,15 +961,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account/profilePictureInfo": {
+    "/v2/user/customer/account/profilePictureInfo": {
       "get": {
         "tags": [
           "Customer - Account"
@@ -1020,12 +989,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -1068,15 +1032,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account/creditCardInfo": {
+    "/v2/user/customer/account/creditCardInfo": {
       "get": {
         "tags": [
           "Customer - Account"
@@ -1113,12 +1072,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -1156,15 +1110,43 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/account/changePassword": {
+    "/v2/user/customer/account/changeEmail": {
+      "post": {
+        "tags": [
+          "Customer - Account"
+        ],
+        "summary": "Change user email",
+        "operationId": "ChangeEmail",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changeEmailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Email updated"
+          },
+          "400": {
+            "description": "New email does not respect the emails's constraints",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/customer/account/changePassword": {
       "post": {
         "tags": [
           "Customer - Account"
@@ -1194,15 +1176,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/security/logout": {
+    "/v2/user/customer/security/logout": {
       "post": {
         "tags": [
           "Customer - Security"
@@ -1217,15 +1194,31 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/stores": {
+    "/v2/user/customer/zendeskToken": {
+      "get": {
+        "tags": [
+          "Customer - Security"
+        ],
+        "summary": "Zendesk token",
+        "description": "Zendesk token - Generates a JWT token to access BeezUP restricted Help Center in SSO as described here: https://support.zendesk.com/hc/en-us/articles/222874768-Using-restricted-Help-Center-content-with-the-Web-Widget",
+        "operationId": "ZendeskToken",
+        "responses": {
+          "200": {
+            "description": "A JWT token to connect the Zendesk Web Widget",
+            "schema": {
+              "$ref": "#/definitions/zendeskToken"
+            }
+          },
+          "500": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/customer/stores": {
       "get": {
         "tags": [
           "Customer - Stores"
@@ -1250,12 +1243,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -1295,15 +1283,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/stores/{storeId}": {
+    "/v2/user/customer/stores/{storeId}": {
       "get": {
         "tags": [
           "Customer - Stores"
@@ -1337,12 +1320,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "patch": {
         "tags": [
@@ -1383,12 +1361,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -1414,15 +1387,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/stores/{storeId}/rights": {
+    "/v2/user/customer/stores/{storeId}/rights": {
       "get": {
         "tags": [
           "Customer - Rights"
@@ -1453,15 +1421,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/stores/{storeId}/alerts": {
+    "/v2/user/customer/stores/{storeId}/alerts": {
       "get": {
         "tags": [
           "Customer - Alerts"
@@ -1495,12 +1458,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -1541,15 +1499,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/stores/{storeId}/shares": {
+    "/v2/user/customer/stores/{storeId}/shares": {
       "get": {
         "tags": [
           "Customer - Shares"
@@ -1583,12 +1536,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -1629,15 +1577,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/stores/{storeId}/shares/{userId}": {
+    "/v2/user/customer/stores/{storeId}/shares/{userId}": {
       "delete": {
         "tags": [
           "Customer - Shares"
@@ -1670,15 +1613,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/friends/{userId}": {
+    "/v2/user/customer/friends/{userId}": {
       "get": {
         "tags": [
           "Customer - Friends"
@@ -1717,15 +1655,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/billingPeriods": {
+    "/v2/user/customer/billingPeriods": {
       "get": {
         "tags": [
           "Customer - Contracts"
@@ -1750,15 +1683,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/offers": {
+    "/v2/user/customer/offers": {
       "get": {
         "tags": [
           "Customer - Contracts"
@@ -1783,12 +1711,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -1829,15 +1752,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/contracts": {
+    "/v2/user/customer/contracts": {
       "get": {
         "tags": [
           "Customer - Contracts"
@@ -1862,12 +1780,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -1908,15 +1821,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/contracts/current/disableAutoRenewal": {
+    "/v2/user/customer/contracts/current/disableAutoRenewal": {
       "post": {
         "tags": [
           "Customer - Contracts"
@@ -1954,15 +1862,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/contracts/current/reenableAutoRenewal": {
+    "/v2/user/customer/contracts/current/reenableAutoRenewal": {
       "post": {
         "tags": [
           "Customer - Contracts"
@@ -1983,15 +1886,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/contracts/next": {
+    "/v2/user/customer/contracts/next": {
       "delete": {
         "tags": [
           "Customer - Contracts"
@@ -2005,15 +1903,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/customer/invoices": {
+    "/v2/user/customer/invoices": {
       "get": {
         "tags": [
           "Customer - Invoices"
@@ -2038,15 +1931,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/": {
+    "/v2/user/catalogs/": {
       "get": {
         "tags": [
           "Catalogs - Global"
@@ -2064,15 +1952,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/beezupColumns": {
+    "/v2/user/catalogs/beezupColumns": {
       "get": {
         "tags": [
           "Catalogs - Global"
@@ -2093,15 +1976,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}": {
+    "/v2/user/catalogs/{storeId}": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2124,15 +2002,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/inputConfiguration": {
+    "/v2/user/catalogs/{storeId}/inputConfiguration": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2160,15 +2033,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/catalogColumns": {
+    "/v2/user/catalogs/{storeId}/catalogColumns": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2196,15 +2064,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/catalogColumns/{columnId}/rename": {
+    "/v2/user/catalogs/{storeId}/catalogColumns/{columnId}/rename": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -2249,15 +2112,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/customColumns": {
+    "/v2/user/catalogs/{storeId}/customColumns": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2285,15 +2143,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/customColumns/{columnId}": {
+    "/v2/user/catalogs/{storeId}/customColumns/{columnId}": {
       "put": {
         "tags": [
           "Catalogs - Catalog"
@@ -2335,12 +2188,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -2381,15 +2229,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/customColumns/{columnId}/rename": {
+    "/v2/user/catalogs/{storeId}/customColumns/{columnId}/rename": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -2434,15 +2277,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/customColumns/{columnId}/expression": {
+    "/v2/user/catalogs/{storeId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2471,12 +2309,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -2522,15 +2355,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/customColumns/computeExpression": {
+    "/v2/user/catalogs/{storeId}/customColumns/computeExpression": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -2557,18 +2385,19 @@
               "type": "string"
             }
           },
+          "400": {
+            "description": "Occurs when the expression cannot be computed",
+            "schema": {
+              "type": "string"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/categories": {
+    "/v2/user/catalogs/{storeId}/categories": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2617,15 +2446,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/products/list": {
+    "/v2/user/catalogs/{storeId}/products/list": {
       "post": {
         "tags": [
           "Catalogs - Catalog"
@@ -2661,15 +2485,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/products/random": {
+    "/v2/user/catalogs/{storeId}/products/random": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2698,15 +2517,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/products/{productId}": {
+    "/v2/user/catalogs/{storeId}/products/{productId}": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2742,15 +2556,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/products": {
+    "/v2/user/catalogs/{storeId}/products": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2785,15 +2594,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations": {
+    "/v2/user/catalogs/{storeId}/importations": {
       "get": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2821,15 +2625,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/start": {
+    "/v2/user/catalogs/{storeId}/importations/start": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2871,15 +2670,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}": {
       "get": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2910,15 +2704,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/cancel": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/cancel": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2952,15 +2741,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/technicalProgression": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/technicalProgression": {
       "get": {
         "tags": [
           "Catalogs - Importation Process"
@@ -2997,15 +2781,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/configureRemainingCatalogColumns": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/configureRemainingCatalogColumns": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -3043,15 +2822,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/commitColumns": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/commitColumns": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -3085,15 +2859,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/commit": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/commit": {
       "post": {
         "tags": [
           "Catalogs - Importation Process"
@@ -3133,15 +2902,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3167,7 +2931,7 @@
             }
           },
           "404": {
-            "description": "ExecutionId not found or not yet synchronized. If not synchronized within 30 sec, please contact our support\n      schema:\n$ref: '#/definitions/BeezUP.Common.ErrorResponseMessage'"
+            "description": "ExecutionId not found or not yet synchronized. If not synchronized within 30 sec, please contact our support\n      schema:\n$ref: 'https://api.swaggerhub.com/domains/BeezUP/api.beezup.com/v2#/definitions/BeezUP.Common.ErrorResponseMessage'"
           },
           "409": {
             "description": "Catalog preparation read step is not completed. Please refer to the reporting of this execution for more details.",
@@ -3178,15 +2942,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}/customColumns/{columnId}": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/productSamples/{productSampleIndex}/customColumns/{columnId}": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3240,15 +2999,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3285,15 +3039,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3344,15 +3093,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/ignore": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/ignore": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3389,15 +3133,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/reattend": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/reattend": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3434,15 +3173,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/map": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/map": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3487,15 +3221,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/unmap": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/catalogColumns/{columnId}/unmap": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3532,15 +3261,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/customColumns": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3577,15 +3301,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/expression": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/expression": {
       "get": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3626,15 +3345,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}": {
       "put": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3679,12 +3393,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -3716,15 +3425,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/map": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/map": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3769,15 +3473,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/unmap": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/customColumns/{columnId}/unmap": {
       "post": {
         "tags": [
           "Catalogs - Importation Catalog Info"
@@ -3814,15 +3513,80 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/autoImport/activate": {
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/products/list": {
+      "post": {
+        "tags": [
+          "Catalogs - Importation Process"
+        ],
+        "summary": "Importation Get Products Report",
+        "operationId": "Importation_GetProductsReport",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/executionId"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getImportationProductsReportRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Products Report Response",
+            "schema": {
+              "$ref": "#/definitions/getImportationProductsReportResponse"
+            }
+          },
+          "404": {
+            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution."
+          },
+          "409": {
+            "description": "Report Not ready Yet. Please retry in a few minutes."
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/importations/{executionId}/report": {
+      "get": {
+        "tags": [
+          "Catalogs - Importation Process"
+        ],
+        "summary": "Importation Get Report",
+        "operationId": "Importation_GetReport",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/executionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Report Response",
+            "schema": {
+              "$ref": "#/definitions/getImportationReportResponse"
+            }
+          },
+          "404": {
+            "description": "Occurs when a user tries to work on the wrong store.\nOccurs when the message concerns the wrong execution."
+          },
+          "409": {
+            "description": "Report Not ready Yet. Please retry in a few minutes."
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/autoImport/activate": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3860,15 +3624,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/autoImport": {
+    "/v2/user/catalogs/{storeId}/autoImport": {
       "get": {
         "tags": [
           "Catalogs - Auto"
@@ -3896,12 +3655,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -3933,15 +3687,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/autoImport/start": {
+    "/v2/user/catalogs/{storeId}/autoImport/start": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -3970,7 +3719,7 @@
             }
           },
           "409": {
-            "description": "When a catalog importation is already in progress!",
+            "description": "An importation is already in progress",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -3978,15 +3727,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/autoImport/pause": {
+    "/v2/user/catalogs/{storeId}/autoImport/pause": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -4017,15 +3761,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/autoImport/resume": {
+    "/v2/user/catalogs/{storeId}/autoImport/resume": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -4056,15 +3795,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/autoImport/scheduling/interval": {
+    "/v2/user/catalogs/{storeId}/autoImport/scheduling/interval": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -4103,15 +3837,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/catalogs/{storeId}/autoImport/scheduling/schedules": {
+    "/v2/user/catalogs/{storeId}/autoImport/scheduling/schedules": {
       "post": {
         "tags": [
           "Catalogs - Auto"
@@ -4150,15 +3879,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channels/": {
+    "/v2/user/channels/": {
       "get": {
         "tags": [
           "Channels - Channels Global"
@@ -4186,15 +3910,10 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channels/{channelId}": {
+    "/v2/user/channels/{channelId}": {
       "get": {
         "tags": [
           "Channels - Channels Global"
@@ -4213,15 +3932,10 @@
               "$ref": "#/definitions/channelInfo"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channels/{channelId}/categories": {
+    "/v2/user/channels/{channelId}/categories": {
       "get": {
         "tags": [
           "Channels - Channels Global"
@@ -4261,15 +3975,10 @@
               "$ref": "#/definitions/channelRootCategory"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channels/{channelId}/columns": {
+    "/v2/user/channels/{channelId}/columns": {
       "post": {
         "tags": [
           "Channels - Channels Global"
@@ -4324,15 +4033,10 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/": {
+    "/v2/user/channelcatalogs/": {
       "get": {
         "tags": [
           "Channel Catalogs - Global"
@@ -4360,12 +4064,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -4413,15 +4112,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}": {
+    "/v2/user/channelcatalogs/{channelCatalogId}": {
       "get": {
         "tags": [
           "Channel Catalogs - Global"
@@ -4449,12 +4143,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -4480,15 +4169,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/enable": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/enable": {
       "post": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -4519,15 +4203,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/disable": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/disable": {
       "post": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -4552,15 +4231,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/settings/general": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/settings/general": {
       "put": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -4593,15 +4267,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/settings/cost": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/settings/cost": {
       "put": {
         "tags": [
           "Channel Catalogs - Settings"
@@ -4634,15 +4303,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/columnMappings": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/columnMappings": {
       "put": {
         "tags": [
           "Channel Catalogs - Column Mappings"
@@ -4675,15 +4339,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categories": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/categories": {
       "get": {
         "tags": [
           "Channel Catalogs - Categories"
@@ -4711,15 +4370,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categories/disableMapping": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/categories/disableMapping": {
       "post": {
         "tags": [
           "Channel Catalogs - Categories"
@@ -4744,15 +4398,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categories/reenableMapping": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/categories/reenableMapping": {
       "post": {
         "tags": [
           "Channel Catalogs - Categories"
@@ -4777,15 +4426,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/categories/configure": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/categories/configure": {
       "post": {
         "tags": [
           "Channel Catalogs - Categories"
@@ -4824,15 +4468,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/exclusionFilterOperators": {
+    "/v2/user/channelcatalogs/exclusionFilterOperators": {
       "get": {
         "tags": [
           "Channel Catalogs - Exclusion Filters"
@@ -4852,15 +4491,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/exclusionFilters": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/exclusionFilters": {
       "get": {
         "tags": [
           "Channel Catalogs - Exclusion Filters"
@@ -4888,12 +4522,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -4933,15 +4562,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products": {
       "post": {
         "tags": [
           "Channel Catalogs - Products"
@@ -4978,15 +4602,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/export": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/export": {
       "post": {
         "tags": [
           "Channel Catalogs - Products"
@@ -5038,15 +4657,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/counters": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/counters": {
       "get": {
         "tags": [
           "Channel Catalogs - Products"
@@ -5074,15 +4688,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/products": {
+    "/v2/user/channelcatalogs/products": {
       "post": {
         "tags": [
           "Channel Catalogs - Products"
@@ -5115,15 +4724,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/{productId}": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/{productId}": {
       "get": {
         "tags": [
           "Channel Catalogs - Products"
@@ -5154,15 +4758,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/{productId}/overrides": {
       "put": {
         "tags": [
           "Channel Catalogs - Products Overrides"
@@ -5204,15 +4803,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/{channelColumnId}": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/{productId}/overrides/{channelColumnId}": {
       "delete": {
         "tags": [
           "Channel Catalogs - Products Overrides"
@@ -5249,15 +4843,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/overrides/copy": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/{productId}/overrides/copy": {
       "get": {
         "tags": [
           "Channel Catalogs - Products Overrides"
@@ -5285,12 +4874,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -5319,15 +4903,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/disable": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/{productId}/disable": {
       "post": {
         "tags": [
           "Channel Catalogs - Products Optimisation"
@@ -5356,15 +4935,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/products/{productId}/reenable": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/products/{productId}/reenable": {
       "post": {
         "tags": [
           "Channel Catalogs - Products Optimisation"
@@ -5393,15 +4967,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/exportations/cache": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/exportations/cache": {
       "get": {
         "tags": [
           "Channel Catalogs - Exportations"
@@ -5429,15 +4998,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/exportations/cache/clear": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/exportations/cache/clear": {
       "post": {
         "tags": [
           "Channel Catalogs - Exportations"
@@ -5462,15 +5026,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/channelCatalogs/{channelCatalogId}/exportations/history": {
+    "/v2/user/channelcatalogs/{channelCatalogId}/exportations/history": {
       "get": {
         "tags": [
           "Channel Catalogs - Exportations"
@@ -5504,15 +5063,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/marketplaces/channelcatalogs/": {
+    "/v2/user/marketplaces/channelcatalogs/": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Global"
@@ -5540,15 +5094,10 @@
           "404": {
             "description": "Store not found"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/marketplaces/channelcatalogs/publications/{marketplaceTechnicalCode}/{accountId}/history": {
+    "/v2/user/marketplaces/channelcatalogs/publications/{marketplaceTechnicalCode}/{accountId}/history": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Publications"
@@ -5629,15 +5178,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/channelcatalogs/{channelCatalogId}/properties": {
+    "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/properties": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Settings"
@@ -5679,15 +5223,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/marketplaces/channelcatalogs/{channelCatalogId}/settings": {
+    "/v2/user/marketplaces/channelcatalogs/{channelCatalogId}/settings": {
       "get": {
         "tags": [
           "Marketplaces - Channel catalogs - Settings"
@@ -5720,12 +5259,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -5772,15 +5306,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/marketplaces/orders/": {
+    "/v2/user/marketplaces/orders/": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Global"
@@ -5807,15 +5336,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/status": {
+    "/v2/user/marketplaces/orders/status": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Global"
@@ -5857,15 +5381,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/harvest": {
+    "/v2/user/marketplaces/orders/harvest": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Global"
@@ -5915,15 +5434,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/automaticTransitions": {
+    "/v2/user/marketplaces/orders/automaticTransitions": {
       "get": {
         "tags": [
           "Marketplaces - Orders - AutoTransitions"
@@ -5964,12 +5478,7 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -6001,15 +5510,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/list/full": {
+    "/v2/user/marketplaces/orders/list/full": {
       "post": {
         "tags": [
           "Marketplaces - Orders - List"
@@ -6055,15 +5559,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/list/light": {
+    "/v2/user/marketplaces/orders/list/light": {
       "post": {
         "tags": [
           "Marketplaces - Orders - List"
@@ -6097,15 +5596,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/exportations": {
+    "/v2/user/marketplaces/orders/exportations": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Exports"
@@ -6151,12 +5645,7 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -6195,15 +5684,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/batches/setMerchantOrderInfos": {
+    "/v2/user/marketplaces/orders/batches/setMerchantOrderInfos": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Batches"
@@ -6238,15 +5722,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
+    "/v2/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Batches"
@@ -6281,22 +5760,17 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
+    "/v2/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Batches"
         ],
         "operationId": "ChangeOrderList",
-        "summary": "Send a batch of operations to change your marketplace Order information (accept, ship, etc.)",
-        "description": "The purpose of this operation is to reduce the amount of request to the API.",
+        "summary": "Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
+        "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
         "parameters": [
           {
             "$ref": "#/parameters/changeOrderTypeParameter"
@@ -6333,15 +5807,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
+    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
       "head": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -6391,12 +5860,7 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       },
       "get": {
         "tags": [
@@ -6449,15 +5913,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
+    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -6498,15 +5957,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
+    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -6556,15 +6010,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
+    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -6610,15 +6059,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
+    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -6656,15 +6100,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
+    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Order"
@@ -6737,15 +6176,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/subscriptions": {
+    "/v2/user/marketplaces/orders/subscriptions": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Subscriptions"
@@ -6785,12 +6219,7 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       },
       "get": {
         "tags": [
@@ -6824,15 +6253,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/subscriptions/{id}": {
+    "/v2/user/marketplaces/orders/subscriptions/{id}": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Subscriptions"
@@ -6867,12 +6291,7 @@
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -6909,15 +6328,10 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/marketplaces/orders/subscriptions/{id}/activate": {
+    "/v2/user/marketplaces/orders/subscriptions/{id}/activate": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Subscriptions"
@@ -6952,15 +6366,10 @@
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/marketplaces/orders/subscriptions/{id}/deactivate": {
+    "/v2/user/marketplaces/orders/subscriptions/{id}/deactivate": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Subscriptions"
@@ -6999,15 +6408,324 @@
             "$ref": "#/responses/GeneralError"
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        "deprecated": false
       }
     },
-    "/user/analytics/": {
+    "/v2/user/marketplaces/orders/invoices/settings/general": {
+      "put": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "SaveOrderInvoiceGeneralSettings",
+        "summary": "Save Order Invoice general settings",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceGeneralSettings"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "General Settings successfully saved"
+          },
+          "400": {
+            "$ref": "#/responses/saveOrderInvoiceGeneralSettingsBadRequestResponse"
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "GetOrderInvoiceGeneralSettings",
+        "summary": "Get Order Invoice general settings",
+        "responses": {
+          "200": {
+            "description": "Settings successfully retrieved",
+            "schema": {
+              "$ref": "#/definitions/getOrderInvoiceGeneralSettingsResponse"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderInvoiceGeneralSettingsNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/settings/design": {
+      "put": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "SaveOrderInvoiceDesignSettings",
+        "summary": "Save Order Invoice design settings",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceDesignSettings"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Design successfully saved"
+          },
+          "400": {
+            "$ref": "#/responses/saveOrderInvoiceDesignSettingsBadRequestResponse"
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "GetOrderInvoiceDesignSettings",
+        "summary": "Get Order Invoice design settings",
+        "responses": {
+          "200": {
+            "description": "Design successfully retrieved",
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceDesignSettings"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderInvoiceDesignSettingsNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/settings/design/preview": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "GetOrderInvoiceDesignSettingsPreview",
+        "summary": "View a preview an Order Invoice using custom design settings",
+        "parameters": [
+          {
+            "name": "Accept-Encoding",
+            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "collectionFormat": "csv",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceDesignSettings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Design Preview successfully retrieved",
+            "schema": {
+              "$ref": "#/definitions/getOrderInvoiceDesignPreviewResponse"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderUUID}/generate": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Generation"
+        ],
+        "operationId": "GenerateOrderInvoice",
+        "summary": "Generate an Order Invoice",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCode"
+          },
+          {
+            "$ref": "#/parameters/accountId"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderUUID"
+          },
+          {
+            "$ref": "#/parameters/userNameInQueryParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generateOrderInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Request Accepted.",
+            "headers": {
+              "Location": {
+                "description": "The location of the generated invoice. Might take a few seconds to be available",
+                "type": "string",
+                "x-example": "http://blob.com/generated.html"
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/responses/orderGenerateForbiddenResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/responses/orderInvoiceConflictResponse"
+          },
+          "429": {
+            "$ref": "#/responses/orderGenerateTooManyRequestsResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderUUID}/preview": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Generation"
+        ],
+        "operationId": "GetOrderInvoicePreview",
+        "summary": "View a preview an Order Invoice",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCode"
+          },
+          {
+            "$ref": "#/parameters/accountId"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderUUID"
+          },
+          {
+            "name": "Accept-Encoding",
+            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "collectionFormat": "csv",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/previewOrderInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Invoice preview successfully returned.",
+            "schema": {
+              "$ref": "#/definitions/previewOrderInvoiceResponse"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/orderGenerateForbiddenResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/responses/orderInvoiceConflictResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/getPdfInvoice": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Generation"
+        ],
+        "operationId": "GetOrderInvoicePdf",
+        "summary": "Returns the PDF version of the invoice",
+        "produces": [
+          "application/pdf"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getOrderInvoicePdfFromHtmlInvoiceUrlRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The PDF version of the HTML invoice URL in the request",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderInvoiceNotFound"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/analytics/": {
       "get": {
         "tags": [
           "Analytics - Global"
@@ -7024,15 +6742,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}": {
+    "/v2/user/analytics/{storeId}": {
       "get": {
         "tags": [
           "Analytics - Global"
@@ -7057,15 +6770,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/tracking/status": {
+    "/v2/user/analytics/tracking/status": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -7083,15 +6791,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/tracking/status": {
+    "/v2/user/analytics/{storeId}/tracking/status": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -7117,15 +6820,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/tracking/clicks": {
+    "/v2/user/analytics/{storeId}/tracking/clicks": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -7160,15 +6858,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/tracking/orders": {
+    "/v2/user/analytics/{storeId}/tracking/orders": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -7206,15 +6899,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/tracking/externalorders": {
+    "/v2/user/analytics/{storeId}/tracking/externalorders": {
       "get": {
         "tags": [
           "Analytics - Tracking"
@@ -7252,15 +6940,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/reports/byday": {
+    "/v2/user/analytics/{storeId}/reports/byday": {
       "post": {
         "tags": [
           "Analytics - Statistics"
@@ -7297,15 +6980,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/reports/bychannel": {
+    "/v2/user/analytics/{storeId}/reports/bychannel": {
       "post": {
         "tags": [
           "Analytics - Statistics"
@@ -7342,15 +7020,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/reports/bycategory": {
+    "/v2/user/analytics/{storeId}/reports/bycategory": {
       "post": {
         "tags": [
           "Analytics - Statistics"
@@ -7387,15 +7060,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/reports/byproduct": {
+    "/v2/user/analytics/{storeId}/reports/byproduct": {
       "post": {
         "tags": [
           "Analytics - Statistics"
@@ -7432,15 +7100,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/optimisations/all/{actionName}": {
+    "/v2/user/analytics/{storeId}/optimisations/all/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -7477,15 +7140,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/optimisations/{actionName}": {
+    "/v2/user/analytics/{storeId}/optimisations/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -7522,15 +7180,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/optimisations/bychannel/{channelId}/{actionName}": {
+    "/v2/user/analytics/{storeId}/optimisations/bychannel/{channelId}/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -7567,15 +7220,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/optimisations/bycategory/{catalogCategoryId}/{actionName}": {
+    "/v2/user/analytics/{storeId}/optimisations/bycategory/{catalogCategoryId}/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -7631,15 +7279,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/optimisations/byproduct/{productId}/{actionName}": {
+    "/v2/user/analytics/{storeId}/optimisations/byproduct/{productId}/{actionName}": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -7695,15 +7338,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/optimisations/copy": {
+    "/v2/user/analytics/{storeId}/optimisations/copy": {
       "post": {
         "tags": [
           "Analytics - Optimisations"
@@ -7739,15 +7377,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/reports/filters": {
+    "/v2/user/analytics/{storeId}/reports/filters": {
       "get": {
         "tags": [
           "Analytics - Reports"
@@ -7772,15 +7405,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/reports/filters/{reportFilterId}": {
+    "/v2/user/analytics/{storeId}/reports/filters/{reportFilterId}": {
       "get": {
         "tags": [
           "Analytics - Reports"
@@ -7811,12 +7439,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "put": {
         "tags": [
@@ -7871,12 +7494,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -7911,15 +7529,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules": {
+    "/v2/user/analytics/{storeId}/rules": {
       "get": {
         "tags": [
           "Analytics - Rules"
@@ -7944,12 +7557,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -8002,15 +7610,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/{ruleId}": {
+    "/v2/user/analytics/{storeId}/rules/{ruleId}": {
       "get": {
         "tags": [
           "Analytics - Rules"
@@ -8038,12 +7641,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "patch": {
         "tags": [
@@ -8098,12 +7696,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -8138,15 +7731,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/{ruleId}/moveup": {
+    "/v2/user/analytics/{storeId}/rules/{ruleId}/moveup": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -8186,15 +7774,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/{ruleId}/movedown": {
+    "/v2/user/analytics/{storeId}/rules/{ruleId}/movedown": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -8234,15 +7817,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/{ruleId}/enable": {
+    "/v2/user/analytics/{storeId}/rules/{ruleId}/enable": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -8276,15 +7854,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/{ruleId}/disable": {
+    "/v2/user/analytics/{storeId}/rules/{ruleId}/disable": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -8318,15 +7891,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/run": {
+    "/v2/user/analytics/{storeId}/rules/run": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -8363,15 +7931,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/{ruleId}/run": {
+    "/v2/user/analytics/{storeId}/rules/{ruleId}/run": {
       "post": {
         "tags": [
           "Analytics - Rules"
@@ -8417,15 +7980,10 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     },
-    "/user/analytics/{storeId}/rules/executions": {
+    "/v2/user/analytics/{storeId}/rules/executions": {
       "get": {
         "tags": [
           "Analytics - Rules"
@@ -8472,12 +8030,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     }
   },
@@ -9164,6 +8717,19 @@
         }
       ]
     },
+    "links.changeEmailLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/customer/account/changeEmail",
+            "method": "POST"
+          }
+        }
+      ]
+    },
     "links.changePasswordLink": {
       "allOf": [
         {
@@ -9559,7 +9125,10 @@
         "shareCount",
         "creationUtcDate",
         "sectors",
-        "links"
+        "goVersion",
+        "links",
+        "offerId",
+        "offerName"
       ],
       "properties": {
         "storeId": {
@@ -9592,6 +9161,14 @@
           "type": "string",
           "example": "00000000-0000-0000-0000-000000000000"
         },
+        "offerId": {
+          "$ref": "#/definitions/offerId"
+        },
+        "offerName": {
+          "description": "The offer Name",
+          "type": "string",
+          "example": "Premium"
+        },
         "shareCount": {
           "description": "The share count related to this store",
           "type": "integer",
@@ -9602,6 +9179,12 @@
           "description": "The creation date of the store",
           "type": "string",
           "example": "2017-04-01T22:30:00Z"
+        },
+        "goVersion": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The version of GO to use",
+          "example": 2
         },
         "links": {
           "$ref": "#/definitions/storeLinks"
@@ -10882,6 +10465,7 @@
       "required": [
         "self",
         "savePersonalInfo",
+        "changeEmail",
         "changePassword",
         "getProfilePictureInfo",
         "saveCompanyInfo",
@@ -10895,6 +10479,9 @@
         },
         "savePersonalInfo": {
           "$ref": "#/definitions/links.savePersonalInfoLink"
+        },
+        "changeEmail": {
+          "$ref": "#/definitions/links.changeEmailLink"
         },
         "changePassword": {
           "$ref": "#/definitions/links.changePasswordLink"
@@ -10977,6 +10564,17 @@
         },
         "beezUPTimeZoneId": {
           "$ref": "#/definitions/beezUPTimeZoneId"
+        }
+      }
+    },
+    "changeEmailRequest": {
+      "required": [
+        "newEmail"
+      ],
+      "type": "object",
+      "properties": {
+        "newEmail": {
+          "$ref": "#/definitions/BeezUP.Common.Email"
         }
       }
     },
@@ -11636,6 +11234,17 @@
       ],
       "type": "string"
     },
+    "zendeskToken": {
+      "description": "JWT token to access Zendesk restricted help center",
+      "type": "object",
+      "properties": {
+        "token": {
+          "description": "A JWT token build from your name and email to use on Zendesk",
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+        }
+      }
+    },
     "links.Catalog_ComputeExpressionLink": {
       "allOf": [
         {
@@ -12137,6 +11746,19 @@
         }
       ]
     },
+    "links.Importation_GetReportLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e911432/report",
+            "method": "GET"
+          }
+        }
+      ]
+    },
     "links.Importation_GetReportingsLink": {
       "allOf": [
         {
@@ -12502,6 +12124,14 @@
         }
       }
     },
+    "importationReportingLinks": {
+      "type": "object",
+      "properties": {
+        "report": {
+          "$ref": "#/definitions/links.Importation_GetReportLink"
+        }
+      }
+    },
     "importationsResponse": {
       "type": "object",
       "properties": {
@@ -12850,6 +12480,12 @@
         }
       }
     },
+    "csvSeparator": {
+      "description": "Indicate the separator of the values in the CSV file. Generally \";\"",
+      "type": "string",
+      "default": ";",
+      "example": ";"
+    },
     "inputFileReadCsvConfiguration": {
       "description": "The CSV file description",
       "required": [
@@ -12872,10 +12508,7 @@
           "example": true
         },
         "csvSeparator": {
-          "description": "Indicate the separator of the values in the CSV file. Generally \";\"",
-          "type": "string",
-          "default": ";",
-          "example": ";"
+          "$ref": "#/definitions/csvSeparator"
         },
         "csvTextQualifier": {
           "description": "Indicate the text qualifier of the CSV file. Generally the value is \"",
@@ -12972,11 +12605,6 @@
       "type": "boolean",
       "default": false,
       "example": false
-    },
-    "userColumName": {
-      "description": "Column named by the user",
-      "type": "string",
-      "example": "My SKU"
     },
     "beezUPColumnConfiguration": {
       "description": "Describe a BeezUP column",
@@ -13092,12 +12720,6 @@
           "$ref": "#/definitions/encryptedExpression"
         }
       }
-    },
-    "executionId": {
-      "description": "The execution identifier of the catalog importation",
-      "format": "guid",
-      "type": "string",
-      "example": "bf3bc288-604c-4267-925e-66b1a15dca75"
     },
     "importationMonitoring": {
       "description": "Describe the reporting of the catalog importation",
@@ -13528,11 +13150,18 @@
       "description": "The catalog importation reporting",
       "type": "object",
       "required": [
+        "executionId",
         "beginUtcDate",
         "lastUpdateUtcDate",
         "steps"
       ],
       "properties": {
+        "links": {
+          "$ref": "#/definitions/importationReportingLinks"
+        },
+        "executionId": {
+          "$ref": "#/definitions/executionId"
+        },
         "stepName": {
           "description": "The last step name of the importation process",
           "type": "string",
@@ -13830,8 +13459,7 @@
       "description": "The request message to get products based on these filters",
       "required": [
         "pageNumber",
-        "pageSize",
-        "columnIdList"
+        "pageSize"
       ],
       "properties": {
         "pageNumber": {
@@ -13861,7 +13489,17 @@
           }
         },
         "sku": {
-          "description": "Search for products containing this SKU (merchant product dentifier).",
+          "description": "Search for product by sku",
+          "type": "string",
+          "example": "MySku123"
+        },
+        "ean": {
+          "description": "Search for product by ean",
+          "type": "string",
+          "example": "MySku123"
+        },
+        "mpn": {
+          "description": "Search for product by mpn",
           "type": "string",
           "example": "MySku123"
         },
@@ -13873,7 +13511,7 @@
         "categoryPath": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryPath"
         },
-        "orderbyCatalogColumnId": {
+        "orderByCatalogColumnId": {
           "$ref": "#/definitions/BeezUP.Common.CatalogColumnId"
         },
         "withoutSubCategories": {
@@ -13907,6 +13545,9 @@
         "selfProductCount"
       ],
       "properties": {
+        "categoryId": {
+          "$ref": "#/definitions/BeezUP.Common.CatalogCategoryId"
+        },
         "categoryPath": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryPath"
         },
@@ -13921,6 +13562,261 @@
           "format": "int32",
           "description": "The product count related to this category",
           "example": 101
+        }
+      }
+    },
+    "getImportationProductsReportRequest": {
+      "description": "Get Importation Products Report Request",
+      "required": [
+        "pageNumber",
+        "pageSize"
+      ],
+      "properties": {
+        "pageNumber": {
+          "$ref": "#/definitions/BeezUP.Common.PageNumber"
+        },
+        "pageSize": {
+          "$ref": "#/definitions/BeezUP.Common.PageSize"
+        },
+        "sku": {
+          "description": "Filter by Sku (equals)",
+          "type": "string"
+        },
+        "ean": {
+          "description": "Filter by EAN (equals)",
+          "type": "string"
+        },
+        "mpn": {
+          "description": "Filter by MPN (equals)",
+          "type": "string"
+        },
+        "title": {
+          "description": "Filter by Title (StartsWith)",
+          "type": "string"
+        },
+        "errorCodes": {
+          "$ref": "#/definitions/getImportationProductsReportRequestErrorCodes"
+        }
+      }
+    },
+    "getImportationProductsReportRequestErrorCodes": {
+      "description": "Get Importation Products Report Request Error Codes",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/getImportationProductsReportRequestErrorCode"
+      }
+    },
+    "getImportationProductsReportRequestErrorCode": {
+      "description": "Get Importation Products Report Request Error Codes",
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "$ref": "#/definitions/errorCode"
+        },
+        "userColumName": {
+          "$ref": "#/definitions/userColumName"
+        }
+      }
+    },
+    "getImportationProductsReportResponse": {
+      "description": "Get Importation Products Report Response",
+      "required": [
+        "paginationResult"
+      ],
+      "properties": {
+        "paginationResult": {
+          "$ref": "#/definitions/BeezUP.Common.PaginationResult"
+        },
+        "productErrors": {
+          "$ref": "#/definitions/productErrors"
+        }
+      }
+    },
+    "productErrors": {
+      "type": "array",
+      "description": "Product Errors",
+      "items": {
+        "$ref": "#/definitions/productError"
+      }
+    },
+    "productError": {
+      "type": "object",
+      "required": [
+        "lineNumber",
+        "errors"
+      ],
+      "properties": {
+        "lineNumber": {
+          "type": "integer"
+        },
+        "sku": {
+          "$ref": "#/definitions/sku"
+        },
+        "ean": {
+          "type": "string"
+        },
+        "mpn": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "errors": {
+          "$ref": "#/definitions/productErrorCodes"
+        }
+      }
+    },
+    "productErrorCodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/productErrorCode"
+      }
+    },
+    "productErrorCode": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "$ref": "#/definitions/errorCode"
+        },
+        "userColumName": {
+          "$ref": "#/definitions/userColumName"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "errorCode": {
+      "description": "Error Code",
+      "type": "string"
+    },
+    "getImportationReportResponseDiff": {
+      "type": "object",
+      "required": [
+        "createdCount",
+        "updatedCount",
+        "deletedCount"
+      ],
+      "properties": {
+        "createdCount": {
+          "type": "integer"
+        },
+        "updatedCount": {
+          "type": "integer"
+        },
+        "deletedCount": {
+          "type": "integer"
+        },
+        "unchangedCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "getImportationReportResponseProductMetrics": {
+      "type": "object",
+      "required": [
+        "detectedCount",
+        "duplicatedCount",
+        "failedCount",
+        "activeCount"
+      ],
+      "properties": {
+        "detectedCount": {
+          "type": "integer"
+        },
+        "duplicatedCount": {
+          "type": "integer"
+        },
+        "failedCount": {
+          "type": "integer"
+        },
+        "activeCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "getImportationReportResponse": {
+      "description": "Get Importation Report Response",
+      "type": "object",
+      "required": [
+        "importationInfo",
+        "columns",
+        "categories",
+        "products",
+        "errors"
+      ],
+      "properties": {
+        "importationInfo": {
+          "$ref": "#/definitions/getImportationReportResponseImportationInfo"
+        },
+        "columns": {
+          "$ref": "#/definitions/getImportationReportResponseDiff"
+        },
+        "categories": {
+          "$ref": "#/definitions/getImportationReportResponseDiff"
+        },
+        "products": {
+          "$ref": "#/definitions/getImportationReportResponseDiff"
+        },
+        "productMetrics": {
+          "$ref": "#/definitions/getImportationReportResponseProductMetrics"
+        },
+        "errors": {
+          "$ref": "#/definitions/getImportationReportResponseErrors"
+        }
+      }
+    },
+    "getImportationReportResponseImportationInfo": {
+      "type": "object",
+      "required": [
+        "beginUtcDate",
+        "endUtcDate",
+        "userId",
+        "inputConfiguration"
+      ],
+      "properties": {
+        "beginUtcDate": {
+          "description": "The start date of the importation",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:01:01Z"
+        },
+        "endUtcDate": {
+          "description": "The start date of the importation",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:01:01Z"
+        },
+        "userId": {
+          "$ref": "#/definitions/BeezUP.Common.UserId"
+        },
+        "inputConfiguration": {
+          "$ref": "#/definitions/inputFileConfiguration"
+        }
+      }
+    },
+    "getImportationReportResponseErrors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/getImportationReportResponseError"
+      }
+    },
+    "getImportationReportResponseError": {
+      "type": "object",
+      "required": [
+        "errorCode",
+        "userColumName",
+        "productCount"
+      ],
+      "properties": {
+        "errorCode": {
+          "$ref": "#/definitions/errorCode"
+        },
+        "userColumName": {
+          "$ref": "#/definitions/userColumName"
+        },
+        "productCount": {
+          "type": "integer"
         }
       }
     },
@@ -16605,7 +16501,7 @@
           "example": {
             "href": "/v2/user/marketplaces/channelcatatalogs/6a90fcfd-24c7-422e-a65f-aadb1725bbfe/settings",
             "method": "POST",
-            "paramters": {
+            "parameters": {
               "request": {
                 "in": "body",
                 "type": "object",
@@ -17304,6 +17200,18 @@
       ],
       "default": "Modification"
     },
+    "invoiceAvailabilityType": {
+      "type": "string",
+      "description": "Indicates on which invoice availability to filter",
+      "example": "All",
+      "x-lov": "InvoiceAvailabilityType"
+    },
+    "orderMerchantInfoSynchronizationStatus": {
+      "type": "string",
+      "description": "Indicates on which order merchant info synchronization status to filter",
+      "example": "All",
+      "x-lov": "OrderMerchantInfoSynchronizationStatus"
+    },
     "pageSize": {
       "description": "Indicate the order count per page",
       "type": "integer",
@@ -17392,6 +17300,9 @@
           "type": "string",
           "example": "2017-04-01T13:10:01Z"
         },
+        "invoiceAvailabilityType": {
+          "$ref": "#/definitions/invoiceAvailabilityType"
+        },
         "order_Buyer_Name": {
           "$ref": "#/definitions/order_Buyer_Name"
         },
@@ -17403,6 +17314,9 @@
           "example": [
             "AmazonOrderId1234"
           ]
+        },
+        "orderMerchantInfoSynchronizationStatus": {
+          "$ref": "#/definitions/orderMerchantInfoSynchronizationStatus"
         },
         "order_MerchantOrderIds": {
           "description": "Merchant order id list",
@@ -17885,6 +17799,14 @@
         "order_CurrencyCode": {
           "$ref": "#/definitions/BeezUP.Common.CurrencyCode"
         },
+        "order_Invoice_Number": {
+          "description": "The order invoice number",
+          "type": "string"
+        },
+        "order_Invoice_Uri": {
+          "description": "The order invoice URI",
+          "type": "string"
+        },
         "processing": {
           "$ref": "#/definitions/processing"
         },
@@ -17970,6 +17892,11 @@
           "example": "",
           "type": "string"
         },
+        "orderItem_gtin": {
+          "description": "The order item gtin",
+          "example": "gtin_sample",
+          "type": "string"
+        },
         "orderItem_ItemPrice": {
           "description": "The price of the order item",
           "example": 6.86,
@@ -17993,6 +17920,21 @@
           "type": "number",
           "example": 0.0,
           "format": "decimal"
+        },
+        "orderItem_Condition": {
+          "description": "The merchant product condition of the order item",
+          "example": "New",
+          "type": "string"
+        },
+        "orderItem_MarketplaceProductUri": {
+          "description": "The merchant product uri of the order item",
+          "type": "string",
+          "example": "http://beezupblob.com/productLink.xml"
+        },
+        "orderItem_MarketplaceImageUri": {
+          "description": "The marketplace image uri",
+          "type": "string",
+          "example": "http://beezupblob.com/marketplaceImg.jpg"
         }
       }
     },
@@ -18147,6 +18089,16 @@
               "type": "string",
               "example": "This is a comment"
             },
+            "order_Shipping_FirstName": {
+              "description": "Order Shipping first name",
+              "type": "string",
+              "example": "Monroe"
+            },
+            "order_Shipping_LastName": {
+              "description": "Order Shipping last name",
+              "type": "string",
+              "example": "Monroe"
+            },
             "order_Shipping_Civility": {
               "description": "The civility of the person in the shipping address for this order",
               "type": "string",
@@ -18251,6 +18203,16 @@
               "type": "string",
               "example": "1234567890"
             },
+            "order_Buyer_FirstName": {
+              "description": "Order Buyer first name",
+              "type": "string",
+              "example": "Monroe"
+            },
+            "order_Buyer_LastName": {
+              "description": "Order Buyer last name",
+              "type": "string",
+              "example": "Monroe"
+            },
             "order_Buyer_Civility": {
               "description": "The buyer civility for this order",
               "type": "string",
@@ -18315,6 +18277,11 @@
               "description": "The mobile phone number of the buyer for this order",
               "type": "string",
               "example": "+33000000042"
+            },
+            "order_IsPrime": {
+              "description": "Indicates if the order is considered as Prime (only on Amazon)",
+              "type": "boolean",
+              "example": true
             },
             "order_OrderSourceUri": {
               "description": "Technical information: The url to the source of this order. We received this information from the marketplace.\n",
@@ -19040,7 +19007,7 @@
     },
     "changeOrderListRequest": {
       "type": "object",
-      "description": "Contains all change order operations you want to make",
+      "description": "Contains all change order operations you want to make.  (max 100 items per call)",
       "required": [
         "changeOrders"
       ],
@@ -19253,7 +19220,8 @@
       "enum": [
         "active",
         "inactive"
-      ]
+      ],
+      "example": "active"
     },
     "orderEventType": {
       "type": "string",
@@ -19261,7 +19229,72 @@
       "enum": [
         "order_created",
         "order_updated"
+      ],
+      "example": "order_created"
+    },
+    "getOrderInvoiceGeneralSettingsResponse": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderInvoiceGeneralSettings"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "lastInvoiceSequenceNumber": {
+              "$ref": "#/definitions/invoiceSequenceNumber"
+            }
+          }
+        }
       ]
+    },
+    "getOrderInvoiceDesignPreviewResponse": {
+      "type": "object",
+      "required": [
+        "invoiceHtmlContent"
+      ],
+      "properties": {
+        "invoiceHtmlContent": {
+          "$ref": "#/definitions/invoiceContentHtml"
+        }
+      }
+    },
+    "generateOrderInvoiceRequest": {
+      "type": "object",
+      "properties": {
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "previewOrderInvoiceRequest": {
+      "type": "object",
+      "properties": {
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "previewOrderInvoiceResponse": {
+      "type": "object",
+      "required": [
+        "invoiceHtmlContent"
+      ],
+      "properties": {
+        "invoiceHtmlContent": {
+          "$ref": "#/definitions/invoiceContentHtml"
+        }
+      }
+    },
+    "getOrderInvoicePdfFromHtmlInvoiceUrlRequest": {
+      "type": "object",
+      "required": [
+        "orderInvoiceUri"
+      ],
+      "properties": {
+        "orderInvoiceUri": {
+          "$ref": "#/definitions/orderInvoiceUri"
+        }
+      }
     },
     "analyticsIndexLovLinks": {
       "type": "object",
@@ -21954,6 +21987,1400 @@
       "type": "string",
       "example": "ChannelNotPresent"
     },
+    "productVATPercent": {
+      "description": "Product VAT in percent",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "example": 4
+    },
+    "shippingVATPercent": {
+      "description": "Shipping cost VAT in percent",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "example": 8
+    },
+    "headerContentUri": {
+      "description": "Header Content Uri",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "example": "http://www.mydomain.com"
+    },
+    "footerContentUri": {
+      "description": "Footer Content Uri",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "example": "http://www.mydomain.com"
+    },
+    "invoiceContentHtml": {
+      "description": "Invoice Content HTML",
+      "type": "string"
+    },
+    "xsltTemplateUri": {
+      "description": "XSLT Content Uri",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "example": "http://www.mydomain.com"
+    },
+    "sourceRequest": {
+      "description": "Source Request",
+      "type": "object",
+      "required": [
+        "userId",
+        "userName",
+        "userIPAddress"
+      ],
+      "properties": {
+        "userId": {
+          "$ref": "#/definitions/userId"
+        },
+        "userName": {
+          "$ref": "#/definitions/userName"
+        },
+        "userIPAddress": {
+          "$ref": "#/definitions/userIPAddress"
+        }
+      }
+    },
+    "invoiceSequenceNumber": {
+      "description": "Invoice Sequence Number",
+      "type": "integer",
+      "minimum": 0,
+      "example": 879
+    },
+    "invoicePrefix": {
+      "description": "Invoice Prefix. Can contain 1 to 50 characters, with alphanumeric characters in lowercase uppercase and #, _, -",
+      "type": "string",
+      "example": "TOTO",
+      "pattern": "^[a-zA-Z0-9#_-]{1,50}$",
+      "x-pattern": "^[a-zA-Z0-9#_-]{1,50}$"
+    },
+    "marketplaceAccountId": {
+      "description": "Marketplace Account Identifier",
+      "type": "integer",
+      "example": 50
+    },
+    "marketplaceTechnicalCode": {
+      "description": "Marketplace Technical Code",
+      "type": "string",
+      "example": "CDISCOUNT"
+    },
+    "beezUPOrderUUID": {
+      "description": "beezUPOrderUUID",
+      "type": "string"
+    },
+    "headerContentHtml": {
+      "description": "Header Content HTML",
+      "type": "string",
+      "maxLength": 1000
+    },
+    "footerContentHtml": {
+      "description": "Footer Content HTML",
+      "type": "string",
+      "maxLength": 1000
+    },
+    "orderInvoiceGeneralSettings": {
+      "description": "Order Invoice General Settings",
+      "type": "object",
+      "required": [
+        "cultureName",
+        "productVATPercent",
+        "shippingVATPercent",
+        "invoicePrefix",
+        "invoiceStartingSequenceNumber"
+      ],
+      "properties": {
+        "cultureName": {
+          "$ref": "#/definitions/cultureName"
+        },
+        "productVATPercent": {
+          "$ref": "#/definitions/productVATPercent"
+        },
+        "shippingVATPercent": {
+          "$ref": "#/definitions/shippingVATPercent"
+        },
+        "invoicePrefix": {
+          "$ref": "#/definitions/invoicePrefix"
+        },
+        "invoiceStartingSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "orderInvoiceDesignSettings": {
+      "type": "object",
+      "properties": {
+        "headerContentHtml": {
+          "$ref": "#/definitions/headerContentHtml"
+        },
+        "footerContentHtml": {
+          "$ref": "#/definitions/footerContentHtml"
+        }
+      }
+    },
+    "orderInvoiceDesignUris": {
+      "type": "object",
+      "required": [
+        "headerContentUri",
+        "footerContentUri"
+      ],
+      "properties": {
+        "headerContentUri": {
+          "$ref": "#/definitions/headerContentUri"
+        },
+        "footerContentUri": {
+          "$ref": "#/definitions/footerContentUri"
+        }
+      }
+    },
+    "orderInvoiceIdentifier": {
+      "description": "A wrapper to identify an invoice order",
+      "type": "object",
+      "required": [
+        "invoicePrefix",
+        "invoiceSequenceNumber"
+      ],
+      "properties": {
+        "invoicePrefix": {
+          "$ref": "#/definitions/invoicePrefix"
+        },
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "orderInvoiceUri": {
+      "x-exclude": true,
+      "description": "order invoice url",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
+      "example": "http://www.mydomain.com"
+    },
+    "userNotOwnerException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The user '{ownerId}' does not own any store\n",
+      "type": "object",
+      "required": [
+        "ownerId"
+      ],
+      "properties": {
+        "ownerId": {
+          "$ref": "#/definitions/userId"
+        }
+      }
+    },
+    "orderInvoiceGenerationForbiddenException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The user '{ownerId}' is forbbiden to generate an invoice for the Order {beezUPOrderUUID} in the MarketplaceTechnicalCode {marketplaceTechnicalCode} and the AccountId {accountId}\n",
+      "type": "object",
+      "required": [
+        "ownerId",
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderUUID"
+      ],
+      "properties": {
+        "ownerId": {
+          "$ref": "#/definitions/userId"
+        },
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/marketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/marketplaceAccountId"
+        },
+        "beezUPOrderUUID": {
+          "$ref": "#/definitions/beezUPOrderUUID"
+        }
+      }
+    },
+    "orderInvoiceGeneralSettingsValidationFailedException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The general settings did not pass the validation because of the following error => #'{errorMessage}'\n",
+      "type": "object",
+      "required": [
+        "errorMessage"
+      ],
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "orderInvoiceDesignSettingsValidationFailedException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The design did not pass the validation because of the following error => #'{errorMessage}'\n",
+      "type": "object",
+      "required": [
+        "errorMessage"
+      ],
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "orderNotFoundException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The order {beezUPOrderUUID} for the MarketplaceTechnicalCode {marketplaceTechnicalCode} and the accountId {accountId} cannot be retrieved\n",
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderUUID"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/marketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/marketplaceAccountId"
+        },
+        "beezUPOrderUUID": {
+          "$ref": "#/definitions/beezUPOrderUUID"
+        }
+      }
+    },
+    "orderInvoiceTooManyRequestsException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "Too many Requests. Please retry in a few seconds\n",
+      "type": "object"
+    },
+    "orderInvoiceNumberAlreadyUsedException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "There is already an invoice with the InvoicePrefix {invoicePrefix} and the #InvoiceSequenceNumber {invoiceSequenceNumber}' for the order {beezUPOrderUUID} for the MarketplaceTechnicalCode #{marketplaceTechnicalCode} and the accountId {accountId}\n",
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderUUID",
+        "invoicePrefix",
+        "invoiceSequenceNumber"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/marketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/marketplaceAccountId"
+        },
+        "beezUPOrderUUID": {
+          "$ref": "#/definitions/beezUPOrderUUID"
+        },
+        "invoicePrefix": {
+          "$ref": "#/definitions/invoicePrefix"
+        },
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "orderAlreadyHasInvoiceException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The order {beezUPOrderUUID} for the MarketplaceTechnicalCode #{marketplaceTechnicalCode} and the accountId {accountId} has already an invoice with #the prefix {invoicePrefix} and the sequence number {invoiceSequenceNumber}'\n",
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderUUID",
+        "invoicePrefix",
+        "invoiceSequenceNumber"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/marketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/marketplaceAccountId"
+        },
+        "beezUPOrderUUID": {
+          "$ref": "#/definitions/beezUPOrderUUID"
+        },
+        "invoicePrefix": {
+          "$ref": "#/definitions/invoicePrefix"
+        },
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "orderInvoiceGeneralSettingsNotFoundException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "Order invoice general settings not found for the ownerId {ownerId}\n",
+      "type": "object",
+      "required": [
+        "ownerId"
+      ],
+      "properties": {
+        "ownerId": {
+          "$ref": "#/definitions/userId"
+        }
+      }
+    },
+    "orderInvoiceDesignSettingsNotFoundException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "Order invoice design settings not found for the ownerId {ownerId}\n",
+      "type": "object",
+      "required": [
+        "ownerId"
+      ],
+      "properties": {
+        "ownerId": {
+          "$ref": "#/definitions/userId"
+        }
+      }
+    },
+    "orderInvoiceGenerationBeezUPOrderStatusForbiddenException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "'The BeezUPOrderStatus {beezUPOrderStatus} for the  order {beezUPOrderUUID} for the MarketplaceTechnicalCode #{marketplaceTechnicalCode} and the accountId {accountId} is forbidden. Only the following status are authorized: InProgress, Shipped, Closed'\n",
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderUUID",
+        "beezUPOrderStatus"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/marketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/marketplaceAccountId"
+        },
+        "beezUPOrderUUID": {
+          "$ref": "#/definitions/beezUPOrderUUID"
+        },
+        "beezUPOrderStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "orderInvoiceNotFoundException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "HTML order invoice does not exist a this URL\n",
+      "type": "object",
+      "properties": {
+        "orderInvoiceUri": {
+          "$ref": "#/definitions/orderInvoiceUri"
+        }
+      }
+    },
+    "deliveryMethod": {
+      "type": "string",
+      "description": "A delivery method is a standardized procedure for transferring the product or service to the destination of fulfillment chosen by the customer. Delivery methods are characterized by the means of transportation used, and by the organization or group that is the contracting party for the sending organization or person."
+    },
+    "ecommerceSoftwareName": {
+      "description": "The e-commerce software name of the merchant",
+      "type": "string",
+      "example": "Prestashop"
+    },
+    "userName": {
+      "description": "User Name",
+      "type": "string"
+    },
+    "userIPAddress": {
+      "description": "User IP Address",
+      "type": "string"
+    },
+    "correlationId": {
+      "x-exclude": true,
+      "description": "The correlation identifier. It's a guid.",
+      "format": "CorrelationId",
+      "type": "string",
+      "example": "b0d3faea-f881-439f-ba92-02b1168511ea"
+    },
+    "requestId": {
+      "type": "string",
+      "description": "The request identifier. It's a guid.",
+      "format": "guid"
+    },
+    "messageId": {
+      "x-exclude": true,
+      "description": "The message identifier. It's a guid.",
+      "format": "MessageId",
+      "type": "string",
+      "example": "b0d3faea-f881-439f-ba92-02b1168511ea"
+    },
+    "causeId": {
+      "x-exclude": true,
+      "description": "The cause identifier. It's a guid.",
+      "format": "CauseId",
+      "type": "string",
+      "example": "b0d3faea-f881-439f-ba92-02b1168511ea"
+    },
+    "merchantCode": {
+      "type": "string",
+      "description": "The merchant code identifier in IMN",
+      "pattern": "^([A-Z|0-9]){5}$",
+      "x-pattern": "^([A-Z|0-9]){5}$",
+      "example": "MLT01"
+    },
+    "marketplaceCode": {
+      "type": "string",
+      "description": "The marketplace code identifier in IMN.\nFor now we have:\n- C1 for Cdiscount\n- E1 for ePrice\n- R1 for Real.DE\n- B1 for BOL\n- E2 for eMAG\n",
+      "pattern": "^([A-Z]|[0-9]){2}$",
+      "x-pattern": "^([A-Z]|[0-9]){2}$",
+      "example": "C1"
+    },
+    "marketplaceMerchantCode": {
+      "type": "string",
+      "description": "The merchant code for a marketplace",
+      "example": "005145"
+    },
+    "productFilterOperatorName": {
+      "type": "string",
+      "description": "Indicate the operator you want to make on the columnId",
+      "enum": [
+        "Equals",
+        "Contains",
+        "GreaterTo",
+        "LowerTo",
+        "InList",
+        "IsNull",
+        "IsNotNull"
+      ]
+    },
+    "sku": {
+      "type": "string",
+      "description": "The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers. http://schema.org/sku",
+      "maxLength": 50
+    },
+    "ean": {
+      "type": "string",
+      "description": "European Article Number",
+      "maxLength": 128
+    },
+    "gtin": {
+      "type": "string",
+      "description": "Global Trade Item Number (GTIN) of the item.\nSupported values:\n\n- UPC (in North America / GTIN-12)\n12-digit number like 323456789012\n8-digit UPC-E codes should be converted to 12-digit codes\n- EAN (in Europe / GTIN-13)\n13-digit number like 3001234567892\n- JAN (in Japan / GTIN-13)\n8 or 13-digit number like 49123456 or 4901234567894\n- ISBN (for books)\n10 or 13-digit number like 1455582344 or 978-1455582341. If you have both, only include the 13-digit number. ISBN-10 are deprecated and should be converted to ISBN-13\n- ITF-14 (for multipacks / GTIN-14)\n14-digit number like 10856435001702\n\nSchema.org property:\n- [Offer.gtin8](http://schema.org/gtin8)\n- [Offer.gtin12](http://schema.org/gtin12)\n- [Offer.gtin13](http://schema.org/gtin13)\n- [Offer.gtin14](http://schema.org/gtin14)\n- [Offer.isbn](http://schema.org/isbn)\n",
+      "maxLength": 50
+    },
+    "productBasicInfo": {
+      "description": "The basic information related to a product",
+      "type": "object",
+      "required": [
+        "productId",
+        "productSku",
+        "productTitle",
+        "productImageUrl",
+        "productExists"
+      ],
+      "properties": {
+        "productId": {
+          "format": "guid",
+          "type": "string",
+          "description": "The product identifier",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "productSku": {
+          "type": "string",
+          "description": "The product SKU",
+          "example": "SKU1234"
+        },
+        "productTitle": {
+          "type": "string",
+          "description": "The product tile",
+          "example": "My supert product"
+        },
+        "productImageUrl": {
+          "type": "string",
+          "format": "HttpUrl",
+          "description": "The product image Url",
+          "example": "http://i2.cdscdn.com/pdt2/3/9/0/1/550x550/hai6901018043390/rw/haier-b20fwrss-refrigerateur-americain.jpg"
+        },
+        "productExists": {
+          "type": "boolean",
+          "description": "Indicates if the product still exists in your catalog",
+          "example": true
+        }
+      }
+    },
+    "countryIsoCodeAlpha3": {
+      "description": "The country iso code alpha 3 <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3\">(ISO 3166-1_alpha-3)</a>",
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "x-pattern": "^[A-Z]{3}$",
+      "x-lov": "Country",
+      "example": "FRA"
+    },
+    "currencyCode": {
+      "x-exclude": true,
+      "description": "The currency code <a href=\"https://en.wikipedia.org/wiki/ISO_4217\">(ISO 4217)</a>\n",
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "x-pattern": "^[A-Z]{3}$",
+      "example": "EUR"
+    },
+    "email": {
+      "x-exclude": true,
+      "description": "The email",
+      "format": "email",
+      "pattern": "^(.+)@(.+)$",
+      "x-pattern": "^(.+)@(.+)$",
+      "example": "paulsimon@mysupercompany.com"
+    },
+    "userId": {
+      "x-exclude": true,
+      "format": "guid",
+      "description": "The user identifier",
+      "type": "string",
+      "example": "8a7fbdec-9e71-472e-9974-27d5c1d57cf8"
+    },
+    "productId": {
+      "type": "string",
+      "format": "guid",
+      "description": "The product identifier",
+      "example": "578419df-1bbf-41a6-96fa-862e42182b67"
+    },
+    "listOfValueItem": {
+      "description": "This object is used by LOV apis",
+      "type": "object",
+      "required": [
+        "codeIdentifier",
+        "intIdentifier"
+      ],
+      "properties": {
+        "position": {
+          "format": "int32",
+          "type": "integer",
+          "example": 1
+        },
+        "codeIdentifier": {
+          "type": "string",
+          "example": "FRA"
+        },
+        "translationText": {
+          "type": "string",
+          "example": "France"
+        },
+        "intIdentifier": {
+          "format": "int32",
+          "type": "integer",
+          "example": 1
+        }
+      }
+    },
+    "paginationResult": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "entryCount",
+        "pageCount",
+        "totalEntryCount",
+        "links"
+      ],
+      "properties": {
+        "entryCount": {
+          "type": "integer",
+          "description": "The entry count currently returned",
+          "example": 25,
+          "minimum": 0
+        },
+        "pageCount": {
+          "type": "integer",
+          "description": "The page count",
+          "example": 38,
+          "minimum": 0
+        },
+        "totalEntryCount": {
+          "type": "integer",
+          "description": "The total entry count",
+          "example": 943,
+          "minimum": 0
+        },
+        "links": {
+          "$ref": "#/definitions/paginationResultLinks"
+        }
+      },
+      "example": {
+        "entryCount": 25,
+        "pageCount": 38,
+        "totalEntryCount": 943,
+        "links": {
+          "first": {
+            "href": "/merchant/orders/v1/list/full",
+            "method": "POST",
+            "parameters": [
+              {
+                "name": "request",
+                "in": "body",
+                "type": "object",
+                "schema": "orderListRequest",
+                "value": {
+                  "beginPeriodUtcDate": "2014-08-25T07:32:31.584Z",
+                  "endPeriodUtcDate": "2014-09-24T07:32:31.584Z",
+                  "pageSize": 25,
+                  "pageNumber": 1
+                }
+              }
+            ]
+          },
+          "last": {
+            "href": "/merchant/orders/v1/list/full",
+            "method": "POST",
+            "parameters": [
+              {
+                "name": "request",
+                "in": "body",
+                "type": "object",
+                "schema": "orderListRequest",
+                "value": {
+                  "beginPeriodUtcDate": "2014-08-25T07:32:31.584Z",
+                  "endPeriodUtcDate": "2014-09-24T07:32:31.584Z",
+                  "pageSize": 25,
+                  "pageNumber": 38
+                }
+              }
+            ]
+          },
+          "next": {
+            "href": "/merchant/orders/v1/list/full",
+            "method": "POST",
+            "parameters": [
+              {
+                "name": "request",
+                "in": "body",
+                "type": "object",
+                "schema": "orderListRequest",
+                "value": {
+                  "beginPeriodUtcDate": "2014-08-25T07:32:31.584Z",
+                  "endPeriodUtcDate": "2014-09-24T07:32:31.584Z",
+                  "pageSize": 25,
+                  "pageNumber": 2
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "paginationResultLinks": {
+      "x-exclude": true,
+      "description": "The navigation links 'first', 'last', 'next', 'previous'",
+      "type": "object",
+      "required": [
+        "first",
+        "last"
+      ],
+      "properties": {
+        "first": {
+          "$ref": "#/definitions/link3"
+        },
+        "last": {
+          "$ref": "#/definitions/link3"
+        },
+        "previous": {
+          "$ref": "#/definitions/link3"
+        },
+        "next": {
+          "$ref": "#/definitions/link3"
+        }
+      }
+    },
+    "href": {
+      "x-exclude": true,
+      "type": "string",
+      "example": "/merchant/orders/v1/{marketplaceCode}/{IMNOrderId}",
+      "description": "Indicate the relative uri for this link"
+    },
+    "operationId": {
+      "x-exclude": true,
+      "type": "string",
+      "description": "The operationId to call.",
+      "example": "GetOrder"
+    },
+    "httpMethod": {
+      "x-exclude": true,
+      "type": "string",
+      "enum": [
+        "GET",
+        "POST",
+        "PATCH",
+        "DELETE",
+        "PUT",
+        "HEAD"
+      ],
+      "default": "GET",
+      "example": "GET",
+      "description": "Indicate the http method to use on this link"
+    },
+    "link3": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
+        "docUrl": {
+          "$ref": "#/definitions/docUrl"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the link",
+          "example": "This is a description link"
+        },
+        "href": {
+          "$ref": "#/definitions/href"
+        },
+        "operationId": {
+          "$ref": "#/definitions/operationId"
+        },
+        "method": {
+          "$ref": "#/definitions/httpMethod"
+        },
+        "parameters": {
+          "$ref": "#/definitions/linkParameter3Types"
+        },
+        "urlTemplated": {
+          "type": "boolean",
+          "description": "indicates whether the href is templated or not"
+        },
+        "allRequiredParamsProvided": {
+          "type": "boolean",
+          "description": "indicates whether all required params have been provided"
+        },
+        "allOptionalParamsProvided": {
+          "type": "boolean",
+          "description": "indicates whether all optionals params have been provided"
+        },
+        "info": {
+          "$ref": "#/definitions/infoSummaries"
+        }
+      }
+    },
+    "linkParameter3Types": {
+      "x-exclude": true,
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/linkParameter3"
+      }
+    },
+    "parameterIn": {
+      "x-exclude": true,
+      "type": "string",
+      "description": "* path: if the parameter must be pass in the path uri\n* header: if the parameter must be passed in http header\n* query: if the parameter must be passed in querystring\n* body: if the parameter must be passed in the body\n* file: if the parameter must be passed in a multipart/form-data (https://swagger.io/docs/specification/2-0/file-upload/)\n",
+      "example": "path",
+      "enum": [
+        "path",
+        "header",
+        "query",
+        "body",
+        "file"
+      ]
+    },
+    "parameterType": {
+      "x-exclude": true,
+      "description": "The value type of the parameter",
+      "type": "string",
+      "enum": [
+        "string",
+        "integer",
+        "number",
+        "boolean",
+        "object",
+        "array",
+        "date",
+        "date-time",
+        "file"
+      ],
+      "default": "string",
+      "example": "string"
+    },
+    "linkParameter3": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "in"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link parameter. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
+        "value": {
+          "type": "object",
+          "description": "The value of the parameter. It can be an integer a string or an object.",
+          "example": "1234"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false,
+          "example": true
+        },
+        "in": {
+          "$ref": "#/definitions/parameterIn"
+        },
+        "lovLink": {
+          "$ref": "#/definitions/LOVLink3"
+        },
+        "lovRequired": {
+          "type": "boolean",
+          "description": "If true, you MUST indicate a value from the list of values otherwise it's a freetext",
+          "example": true
+        },
+        "description": {
+          "type": "string",
+          "description": "description of the parameter",
+          "example": "the store identifier"
+        },
+        "schema": {
+          "type": "string",
+          "description": "schema of the parameter",
+          "example": "orderListRequest"
+        },
+        "pattern": {
+          "$ref": "#/definitions/validationPattern"
+        },
+        "properties": {
+          "description": "If the parameter is an object with flexible properties (additionProperties/dictionary), we will describe the properties of the object.",
+          "additionalProperties": {
+            "$ref": "#/definitions/linkParameterProperty3"
+          },
+          "example": {
+            "shipOrder": {
+              "type": "â€‹string"
+            }
+          }
+        }
+      }
+    },
+    "validationPattern": {
+      "type": "string",
+      "description": "The regular expression to validate the value",
+      "example": "*.-api$"
+    },
+    "linkParameterProperty3": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link parameter property. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
+        "value": {
+          "type": "object",
+          "description": "The value of the parameter. It can be an integer a string or an object.",
+          "example": "1234"
+        },
+        "required": {
+          "type": "boolean",
+          "example": true
+        },
+        "type": {
+          "$ref": "#/definitions/parameterType"
+        },
+        "lovLink": {
+          "$ref": "#/definitions/LOVLink3"
+        },
+        "lovRequired": {
+          "type": "boolean",
+          "description": "If true, you MUST use indicate a value from the list of values otherwise it's a freetext",
+          "example": true
+        },
+        "description": {
+          "type": "string",
+          "description": "description of the parameter",
+          "example": "the store identifier"
+        },
+        "schema": {
+          "type": "string",
+          "description": "schema of the parameter",
+          "example": "orderListRequest"
+        },
+        "pattern": {
+          "$ref": "#/definitions/validationPattern"
+        }
+      }
+    },
+    "LOVLink2": {
+      "description": "Describe the way you have to follow to get access to the LOV",
+      "x-deprecated": true,
+      "type": "object",
+      "required": [
+        "listName"
+      ],
+      "properties": {
+        "rel": {
+          "type": "string",
+          "description": "Indicate the relation name related to the link",
+          "example": "LOV_Go2CultureName"
+        },
+        "href": {
+          "type": "string",
+          "example": "/merchant/lov/v1/{listName}",
+          "description": "Indicate the relative uri pattern to the list of value"
+        },
+        "listName": {
+          "type": "string",
+          "description": "The name of the list of value",
+          "example": "Go2CultureName"
+        }
+      }
+    },
+    "LOVLink3": {
+      "x-exclude": true,
+      "description": "Describe the way you have to follow to get access to the LOV",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "example": "/merchant/lov/v1/Go2CultureName",
+          "description": "Indicate the uri to the list of value"
+        },
+        "method": {
+          "$ref": "#/definitions/httpMethod"
+        }
+      }
+    },
+    "httpUrl": {
+      "x-exclude": true,
+      "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "example": "http://www.mydomain.com"
+    },
+    "errorResponseMessage": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "errors"
+      ],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "uniqueItems": false,
+          "items": {
+            "$ref": "#/definitions/userErrorMessage"
+          }
+        }
+      }
+    },
+    "docUrl": {
+      "x-exclude": true,
+      "type": "string",
+      "format": "uri",
+      "description": "The documentation related to this operation.",
+      "example": "https://api-docs.imn.io/#operation/EnableChannelCatalog"
+    },
+    "cultureName": {
+      "x-exclude": true,
+      "type": "string",
+      "description": "If the error is translated, the culture name will be indicated",
+      "example": "en",
+      "x-lov": "Go2CultureName"
+    },
+    "userErrorMessage": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "docUrl": {
+          "$ref": "#/definitions/docUrl"
+        },
+        "code": {
+          "$ref": "#/definitions/errorCode"
+        },
+        "message": {
+          "type": "string",
+          "description": "The error message",
+          "example": "There is already an importation in progress: b24d0dd8-a561-478a-9b26-34f573f03527\n"
+        },
+        "cultureName": {
+          "$ref": "#/definitions/cultureName"
+        },
+        "arguments": {
+          "$ref": "#/definitions/userErrorMessageArguments"
+        }
+      }
+    },
+    "userErrorMessageArguments": {
+      "x-exclude": true,
+      "type": "object",
+      "description": "a dictionary string/object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "exceptionDetail": {
+      "type": "object",
+      "properties": {
+        "helpLink": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "stackTrace": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "infoSummaries": {
+      "type": "object",
+      "properties": {
+        "successes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/successSummary"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/errorSummary"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warningSummary"
+          }
+        },
+        "informations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/infoSummary"
+          }
+        }
+      }
+    },
+    "successSummary": {
+      "type": "object",
+      "properties": {
+        "successCode": {
+          "type": "string"
+        },
+        "successMessage": {
+          "type": "string"
+        },
+        "successArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyValue": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        }
+      }
+    },
+    "errorSummary": {
+      "type": "object",
+      "properties": {
+        "utcDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "errorGuid": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "technicalErrorMessage": {
+          "type": "string"
+        },
+        "exceptionDetail": {
+          "$ref": "#/definitions/exceptionDetail"
+        },
+        "errorArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyValue": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "warningSummary": {
+      "type": "object",
+      "properties": {
+        "technicalErrorMessage": {
+          "type": "string"
+        },
+        "warningMessage": {
+          "type": "string"
+        },
+        "warningCode": {
+          "type": "string"
+        },
+        "warningArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "infoSummary": {
+      "type": "object",
+      "properties": {
+        "informationCode": {
+          "type": "string"
+        },
+        "informationMessage": {
+          "type": "string"
+        },
+        "informationArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyValue": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        }
+      }
+    },
+    "marketplaceApiCredential": {
+      "description": "The API credentials of the merchant on his marketplace.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "example": {
+          "login": "mylogin",
+          "password": "myPassword"
+        }
+      }
+    },
+    "merchantMarketplaceBase": {
+      "type": "object",
+      "required": [
+        "merchantCode",
+        "marketplaceCode"
+      ],
+      "properties": {
+        "merchantCode": {
+          "$ref": "#/definitions/merchantCode"
+        },
+        "marketplaceCode": {
+          "$ref": "#/definitions/marketplaceCode"
+        }
+      }
+    },
+    "sort": {
+      "x-excludeSql": true,
+      "type": "string",
+      "default": "ascending",
+      "enum": [
+        "ascending",
+        "descending"
+      ]
+    },
+    "operationSourceType": {
+      "description": "Indicates the origin of the operation:\n* api: the operation has been done using our api directly.\n* ui: the operation has been done using our user interface. \n",
+      "type": "string",
+      "enum": [
+        "api",
+        "ui"
+      ],
+      "example": "api"
+    },
+    "processingStatus": {
+      "x-exclude": true,
+      "description": "The processing status of an operation",
+      "type": "string",
+      "enum": [
+        "none",
+        "inProgress",
+        "done",
+        "failed",
+        "aborted"
+      ]
+    },
+    "healthCheck": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Health check name",
+          "example": "MyDatabaseCheck"
+        },
+        "message": {
+          "type": "string",
+          "description": "Gets the status message of the check.",
+          "example": "Database connection OK"
+        },
+        "status": {
+          "$ref": "#/definitions/healthCheckStatus"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "healthCheckStatus": {
+      "type": "string",
+      "description": "Possible status values of a health check result.\n* degraded:  The check is degraded, failing but not critical\n* healthy: The check is healthy\n* ignored: The check was ignored\n* unhealthy:  The check is unhealthy\n",
+      "enum": [
+        "degraded",
+        "healthy",
+        "ignored",
+        "unhealthy"
+      ]
+    },
+    "messageBase": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "messageId",
+        "correlationId"
+      ],
+      "properties": {
+        "messageId": {
+          "allOf": [
+            {
+              "x-excludeProperty": true
+            },
+            {
+              "$ref": "#/definitions/messageId"
+            }
+          ]
+        },
+        "correlationId": {
+          "$ref": "#/definitions/correlationId"
+        },
+        "causeId": {
+          "$ref": "#/definitions/causeId"
+        }
+      }
+    },
+    "eventType": {
+      "x-exclude": true,
+      "description": "The event type",
+      "type": "string"
+    },
+    "eventBase": {
+      "x-exclude": true,
+      "allOf": [
+        {
+          "$ref": "#/definitions/messageBase"
+        },
+        {
+          "type": "object",
+          "discriminator": "eventType",
+          "required": [
+            "eventType"
+          ],
+          "properties": {
+            "eventType": {
+              "$ref": "#/definitions/eventType"
+            }
+          }
+        }
+      ]
+    },
+    "exchangedMessagesItem": {
+      "type": "object",
+      "required": [
+        "operationName",
+        "requestUri",
+        "responseUri",
+        "requestUtcDate",
+        "responseUtcDate"
+      ],
+      "properties": {
+        "operationName": {
+          "type": "string"
+        },
+        "requestUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "responseUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "requestUtcDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "responseUtcDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "BeezUP.Common.PaginationRequestParameters": {
       "type": "object",
       "properties": {
@@ -23001,6 +24428,46 @@
         "failed"
       ],
       "example": "success"
+    },
+    "BeezUP.Common.ApiCredentials": {
+      "type": "object",
+      "properties": {
+        "credentials": {
+          "description": "Your API credential list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BeezUP.Common.ApiCredential"
+          },
+          "example": [
+            {
+              "productName": "UserApi",
+              "primaryToken": "3b22980d8d1143c6ba7adf4e55b9a153",
+              "secondaryToken": "162ae17fd52044c38cce3388ea5b0c91"
+            }
+          ]
+        }
+      }
+    },
+    "BeezUP.Common.ApiCredential": {
+      "description": "Your api credential",
+      "type": "object",
+      "properties": {
+        "productName": {
+          "description": "The product name related to this credential",
+          "type": "string",
+          "example": "UserAPI"
+        },
+        "primaryToken": {
+          "description": "The primary token to be used in the next call in the user scope API",
+          "type": "string",
+          "example": "3b22980d8d1143c6ba7adf4e55b9a153"
+        },
+        "secondaryToken": {
+          "description": "The secondary token. Could be usefull if you want to share your access with someone else.",
+          "type": "string",
+          "example": "162ae17fd52044c38cce3388ea5b0c91"
+        }
+      }
     }
   },
   "externalDocs": {
@@ -23102,6 +24569,13 @@
         "Marketplaces - Orders - Batches",
         "Marketplaces - Orders - Exports",
         "Marketplaces - Orders - Subscriptions"
+      ]
+    },
+    {
+      "name": "OM Invoice - API",
+      "tags": [
+        "OM Invoice - API - Settings",
+        "OM Invoice - API - Generation"
       ]
     },
     {
@@ -23247,6 +24721,30 @@
       "default": false,
       "x-example": false
     },
+    "marketplaceTechnicalCode": {
+      "name": "marketplaceTechnicalCode",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "MarketplaceTechnicalCode",
+      "description": "The Marketplace Technical Code"
+    },
+    "accountId": {
+      "name": "accountId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "MarketplaceAccountId",
+      "description": "The Account Identifier"
+    },
+    "beezUPOrderUUID": {
+      "name": "beezUPOrderUUID",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "BeezUPOrderUUID",
+      "description": "The BeezUP Order UUID"
+    },
     "optimisationActionNameGeneralParameters": {
       "name": "actionName",
       "in": "path",
@@ -23274,15 +24772,23 @@
       "format": "guid",
       "description": "Your rule identifier"
     },
-    "storeIdOnlyGeneralParameters": {
-      "name": "storeId",
+    "correlationIdParameter": {
+      "name": "correlationId",
       "in": "path",
-      "required": true,
       "type": "string",
-      "format": "guid",
-      "description": "Your store identifier"
+      "format": "CorrelationId",
+      "required": true,
+      "description": "It's the guid corresponding to the operation.\n"
     },
-    "pageNumberQueryStrngParameter": {
+    "beezUPTraceIdHeaderParameter": {
+      "name": "x-BeezUP-TraceId",
+      "in": "header",
+      "type": "string",
+      "format": "Guid",
+      "required": true,
+      "description": "Indicates to the server the BeezUP trace id related to this call. All traces must use this id to be able to follow it."
+    },
+    "pageNumberQueryStringParameter": {
       "name": "pageNumber",
       "description": "The page number you want to get",
       "in": "query",
@@ -23290,9 +24796,10 @@
       "type": "integer",
       "format": "int32",
       "minimum": 1,
+      "x-minimum": 1,
       "x-example": 1
     },
-    "pageSizeQueryStrngParameter": {
+    "pageSizeQueryStringParameter": {
       "name": "pageSize",
       "description": "The entry count you want to get",
       "in": "query",
@@ -23300,7 +24807,9 @@
       "type": "integer",
       "format": "int32",
       "minimum": 25,
+      "x-minimum": 25,
       "maximum": 100,
+      "x-maximum": 100,
       "x-example": 25
     },
     "ifNoneMatchParameter": {
@@ -23330,7 +24839,7 @@
     },
     "acceptEncodingRequiredParameter": {
       "name": "Accept-Encoding",
-      "description": "Allows the client to indicate whether it accepts a compressed encoding to reduce traffic size.",
+      "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size.",
       "in": "header",
       "required": true,
       "type": "array",
@@ -23341,7 +24850,7 @@
     },
     "acceptEncodingOptionalParameter": {
       "name": "Accept-Encoding",
-      "description": "Allows the client to indicate whether it accepts a compressed encoding to reduce traffic size.",
+      "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size.",
       "in": "header",
       "required": false,
       "type": "array",
@@ -23349,6 +24858,58 @@
       "items": {
         "type": "string"
       }
+    },
+    "walletPropertyCodeParameter": {
+      "name": "walletPropertyCode",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The wallet document code"
+    },
+    "marketplaceCodeParameter": {
+      "format": "MarketplaceCode",
+      "name": "marketplaceCode",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The marketplace code"
+    },
+    "merchantCodeParameter": {
+      "format": "MerchantCode",
+      "name": "merchantCode",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The merchant code"
+    },
+    "storeIdOnlyGeneralParameters": {
+      "name": "storeId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "guid",
+      "description": "Your store identifier"
+    },
+    "pageNumberQueryStrngParameter": {
+      "name": "pageNumber",
+      "description": "The page number you want to get",
+      "in": "query",
+      "required": true,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "x-example": 1
+    },
+    "pageSizeQueryStrngParameter": {
+      "name": "pageSize",
+      "description": "The entry count you want to get",
+      "in": "query",
+      "required": true,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 25,
+      "maximum": 100,
+      "x-example": 25
     }
   },
   "responses": {
@@ -23401,10 +24962,113 @@
         "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
       }
     },
+    "ownerIdNotAuthorizedResponse": {
+      "description": "The ownerId is not found or not authorized",
+      "x-exceptions": [
+        "UserNotOwnerException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "saveOrderInvoiceGeneralSettingsBadRequestResponse": {
+      "description": "The settingsgeneral did not pass the validation\n",
+      "x-exceptions": [
+        "OrderInvoiceGeneralSettingsValidationFailedException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "saveOrderInvoiceDesignSettingsBadRequestResponse": {
+      "description": "The design did not pass the validation\n",
+      "x-exceptions": [
+        "OrderInvoiceDesignSettingsValidationFailedException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "orderNotFoundResponse": {
+      "description": "The order cannot be retrieved\n",
+      "x-exceptions": [
+        "OrderNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "orderInvoiceConflictResponse": {
+      "description": "The InvoiceNumber is already used\nThere is already an invoice for this order\n",
+      "x-exceptions": [
+        "OrderInvoiceNumberAlreadyUsedException",
+        "OrderAlreadyHasInvoiceException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "orderInvoiceGeneralSettingsNotFoundResponse": {
+      "description": "The order invoice general settings are not found\n",
+      "x-exceptions": [
+        "OrderInvoiceGeneralSettingsNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "orderInvoiceDesignSettingsNotFoundResponse": {
+      "description": "The order invoice design is not found\n",
+      "x-exceptions": [
+        "OrderInvoiceDesignSettingsNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "orderGenerateForbiddenResponse": {
+      "description": "OwnerId not authorized\nThe required order invoice settings have not been set\nBeezUPOrderStatus forbidden\n",
+      "x-exceptions": [
+        "UserNotOwnerException",
+        "OrderInvoiceDesignSettingsNotFoundException",
+        "OrderInvoiceGeneralSettingsNotFoundException",
+        "OrderInvoiceGenerationBeezUPOrderStatusForbiddenException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "orderGenerateTooManyRequestsResponse": {
+      "description": "Too many Requests. Please retry in a few seconds\n",
+      "x-exceptions": [
+        "OrderInvoiceTooManyRequestsException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "orderInvoiceNotFound": {
+      "description": "The order invoice does not exist\n",
+      "x-exceptions": [
+        "OrderInvoiceNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "200_HealthCheck": {
+      "description": "The health check of the API",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/healthCheck"
+        }
+      }
+    },
     "GeneralError": {
       "description": "Occurs when something goes wrong",
       "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+        "$ref": "#/definitions/errorResponseMessage"
       }
     },
     "304_NotModified": {
@@ -23428,6 +25092,88 @@
           "type": "string",
           "description": "The ETag value to identify the resource.\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
         }
+      }
+    },
+    "merchantNotFound": {
+      "description": "The merchant code is not found.",
+      "x-exceptions": [
+        "MerchantCodeNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "marketplaceNotFound": {
+      "description": "The marketplace code is not found.",
+      "x-exceptions": [
+        "MarketplaceCodeNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "invalidMarketplaceCredential": {
+      "description": "The marketplace credential is invalid",
+      "x-exceptions": [
+        "InvalidMarketplaceCredentialException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "merchantOrMarketplaceNotFound": {
+      "description": "The merchant code or marketplace code is not found.",
+      "x-exceptions": [
+        "MarketplaceCodeNotFoundException",
+        "MerchantCodeNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "merchantCodeAlreadyUsed": {
+      "description": "The merchant code is not available",
+      "x-exceptions": [
+        "MerchantCodeAlreadyUsedException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "invalidMerchantCode": {
+      "description": "The merchant code is different from the state",
+      "x-exceptions": [
+        "InvalidMerchantCodeException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "notOfferSourceMarketplace": {
+      "description": "The marketplace is not the offer source",
+      "x-exceptions": [
+        "NotOfferSourceMarketplaceException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "subscriptionNotAccepted": {
+      "description": "The subscription is not accepted by the marketplace",
+      "x-exceptions": [
+        "SubscriptionNotAcceptedException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/userErrorMessage"
+      }
+    },
+    "credentialNotConfigured": {
+      "description": "The credential is not configured for the marketplace",
+      "x-exceptions": [
+        "CredentialNotConfiguredException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/userErrorMessage"
       }
     }
   }
