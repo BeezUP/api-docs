@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "BeezUP  API",
+    "title": "BeezUP  API- DEV",
     "description": "\r\n\r\n# The REST API of BeezUP system\r\n## Overview\r\nThe REST APIs provide programmatic access to read and write BeezUP data. \r\nBasically, with this API you will be able to do everything like you were with your browser on https://go.beezup.com !\r\n\r\nThe main features are:\r\n- Register and manage your account\r\n- Create and manage and share your stores with your friends/co-workers.\r\n- Import your product catalog and schedule the auto importation\r\n- Search the channels your want to use\r\n- Configure your channels for your catalogs to export your product information:\r\n    - cost and general settings\r\n    - category and columns mappings\r\n    - your will be able to create and manage your custom column\r\n    - put in place exlusion filters based on simple conditions on your product data\r\n    - override product values\r\n    - get product vision for a channel catalog scope\r\n- Analyze and optimize your performance of your catalogs on all yours channels with different type of reportings by day, channel, category and by product.\r\n- Automatize your optimisation by using rules!\r\n- And of course... Manage your orders harvested from all your marketplaces:\r\n    - Synchronize your orders in an uniformized way\r\n    - Get the available actions and update the order status\r\n- ...and more!\r\n\r\n## Authentication credentials\r\nThe public API with the base path **/v2/public** have been put in place to give you an entry point to our system for the user registration, login and lost password. The public API does not require any credentials.\r\nWe give you the some public list of values and public channels for our public commercial web site [www.beezup.com](http://www.beezup.com).\r\n\r\nThe user API with the base path **/v2/user** requires a token which is available on this page:\r\nhttps://go.beezup.com/Account/MyAccount\r\n\r\n## Things to keep in mind\r\n### API Rate Limits\r\n- The BeezUP REST API is limited to 100 calls/minute.\r\n\r\n### Media type\r\nThe default media type for requests and responses is application/json. Where noted, some operations support other content types. If no additional content type is mentioned for a specific operation, then the media type is application/json.\r\n\r\n### Required content type\r\nThe required and default encoding for the request and responses is UTF8.\r\n\r\n### Required date time format\r\nAll our date time are formatted in ISO 8601 format: 2014-06-24T16:25:00Z.\r\n\r\n### Base URL\r\nThe Base URL of the BeezUP API Order Management REST API conforms to the following template.\r\n\r\nhttps://api.beezup.com\r\n\r\nAll URLs returned by the BeezUP API are relative to this base URL, and all requests to the REST API must use this base URL template.\r\n\r\nYou can test our API on https://api-docs.beezup.com/swagger-ui\\\\\r\nYou can contact us on [gitter, #BeezUP/API](https://gitter.im/BeezUP/API)\r\n\r\n\r\n",
     "version": "2.0",
     "x-logo": {
@@ -293,7 +293,7 @@
           "200": {
             "description": "Your tokens",
             "schema": {
-              "$ref": "#/definitions/apiCredentials"
+              "$ref": "#/definitions/BeezUP.Common.ApiCredentials"
             }
           },
           "400": {
@@ -4172,6 +4172,29 @@
         }
       }
     },
+    "/v2/user/channelcatalogs/filterOperators": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Global"
+        ],
+        "summary": "Get channel catalog filter operators",
+        "operationId": "GetChannelCatalogFilterOperators",
+        "responses": {
+          "200": {
+            "description": "Channel catalog  filter operator list",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/filterOperator"
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/user/channelcatalogs/{channelCatalogId}/enable": {
       "post": {
         "tags": [
@@ -4463,29 +4486,6 @@
             "description": "ChannelCatalogId not found or not authorized",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/channelcatalogs/exclusionFilterOperators": {
-      "get": {
-        "tags": [
-          "Channel Catalogs - Exclusion Filters"
-        ],
-        "summary": "Get channel catalog exclusion filter operators",
-        "operationId": "GetChannelCatalogExclusionFilterOperators",
-        "responses": {
-          "200": {
-            "description": "Channel catalog exclusion filter operator list",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/exclusionFilterOperator"
-              }
             }
           },
           "default": {
@@ -6180,47 +6180,6 @@
       }
     },
     "/v2/user/marketplaces/orders/subscriptions": {
-      "post": {
-        "tags": [
-          "Marketplaces - Orders - Subscriptions"
-        ],
-        "operationId": "CreateSubscription",
-        "summary": "Creates a subscription to the orders",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/createSubscriptionRequest"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Subscription created",
-            "schema": {
-              "$ref": "#/definitions/subscription"
-            }
-          },
-          "400": {
-            "description": "Invalid subscription request.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
-            "description": "There is already a subscription on for the same eventType and the same target Url.\n",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "deprecated": false
-      },
       "get": {
         "tags": [
           "Marketplaces - Orders - Subscriptions"
@@ -6229,24 +6188,12 @@
         "summary": "Get the subscription list",
         "responses": {
           "200": {
-            "description": "The suscription list",
+            "description": "The subscription list",
             "schema": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/subscription"
               }
-            }
-          },
-          "400": {
-            "description": "Invalid subscription request.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
-            "description": "There is already a subscription on for the same eventType and the same target Url.\n",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -6257,6 +6204,46 @@
       }
     },
     "/v2/user/marketplaces/orders/subscriptions/{id}": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders - Subscriptions"
+        ],
+        "operationId": "CreateSubscription",
+        "summary": "Creates a subscription to the orders",
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdPathParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createSubscriptionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Subscription creation accepted"
+          },
+          "400": {
+            "description": "Invalid subscription request.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "There subscription id is already used.\n",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
       "get": {
         "tags": [
           "Marketplaces - Orders - Subscriptions"
@@ -6265,17 +6252,7 @@
         "summary": "Get a subscription to the orders",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
+            "$ref": "#/parameters/subscriptionIdPathParameter"
           }
         ],
         "responses": {
@@ -6286,10 +6263,13 @@
             }
           },
           "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
+            "description": "Invalid subscription id.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
           }
         }
       },
@@ -6301,22 +6281,12 @@
         "summary": "Delete a subscription to the orders",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
+            "$ref": "#/parameters/subscriptionIdPathParameter"
           }
         ],
         "responses": {
-          "204": {
-            "description": "Subscription deleted"
+          "202": {
+            "description": "Subscription deletion accepted"
           },
           "404": {
             "description": "Invalid subscription id or X-Hook-Secret.",
@@ -6340,31 +6310,28 @@
         "summary": "Activate a subscription to the orders",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "$ref": "#/parameters/subscriptionIdPathParameter"
           },
           {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/activateSubscriptionRequest"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "Subscription activated",
-            "schema": {
-              "$ref": "#/definitions/subscription"
-            }
+          "202": {
+            "description": "Subscription activation accepted"
           },
           "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
+            "description": "Invalid subscription id",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
           }
         }
       }
@@ -6378,28 +6345,15 @@
         "summary": "Deactivate a subscription to the orders",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
+            "$ref": "#/parameters/subscriptionIdPathParameter"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Subscription deactivated",
-            "schema": {
-              "$ref": "#/definitions/subscription"
-            }
+          "202": {
+            "description": "Subscription deactivation accepted"
           },
           "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
+            "description": "Invalid subscription id",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -6407,8 +6361,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/invoices/settings/general": {
@@ -8050,46 +8003,6 @@
           "type": "string",
           "format": "password",
           "example": "I@mW0nder$Full"
-        }
-      }
-    },
-    "apiCredentials": {
-      "type": "object",
-      "properties": {
-        "credentials": {
-          "description": "Your API credential list",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/apiCredential"
-          },
-          "example": [
-            {
-              "productName": "UserApi",
-              "primaryToken": "3b22980d8d1143c6ba7adf4e55b9a153",
-              "secondaryToken": "162ae17fd52044c38cce3388ea5b0c91"
-            }
-          ]
-        }
-      }
-    },
-    "apiCredential": {
-      "description": "Your api credential",
-      "type": "object",
-      "properties": {
-        "productName": {
-          "description": "The product name related to this credential",
-          "type": "string",
-          "example": "UserAPI"
-        },
-        "primaryToken": {
-          "description": "The primary token to be used in the next call in the user scope API",
-          "type": "string",
-          "example": "3b22980d8d1143c6ba7adf4e55b9a153"
-        },
-        "secondaryToken": {
-          "description": "The secondary token. Could be usefull if you want to share your access with someone else.",
-          "type": "string",
-          "example": "162ae17fd52044c38cce3388ea5b0c91"
         }
       }
     },
@@ -13613,7 +13526,7 @@
         "errorCode": {
           "$ref": "#/definitions/errorCode"
         },
-        "userColumName": {
+        "userColumnName": {
           "$ref": "#/definitions/userColumName"
         }
       }
@@ -13681,6 +13594,9 @@
         "userColumName": {
           "$ref": "#/definitions/userColumName"
         },
+        "beezUPColumnName": {
+          "$ref": "#/definitions/BeezUP.Common.BeezUPColumnName"
+        },
         "errorMessage": {
           "type": "string"
         }
@@ -13739,13 +13655,14 @@
       "description": "Get Importation Report Response",
       "type": "object",
       "required": [
+        "executionId",
         "importationInfo",
-        "columns",
-        "categories",
-        "products",
         "errors"
       ],
       "properties": {
+        "executionId": {
+          "$ref": "#/definitions/executionId"
+        },
         "importationInfo": {
           "$ref": "#/definitions/getImportationReportResponseImportationInfo"
         },
@@ -13814,6 +13731,9 @@
         },
         "userColumName": {
           "$ref": "#/definitions/userColumName"
+        },
+        "beezUPColumnName": {
+          "$ref": "#/definitions/BeezUP.Common.BeezUPColumnName"
         },
         "productCount": {
           "type": "integer"
@@ -14098,14 +14018,14 @@
         }
       ]
     },
-    "links.GetChannelCatalogExclusionFilterOperatorsLink": {
+    "links.GetChannelCatalogFilterOperatorsLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
           "example": {
-            "href": "/v2/user/channelCatalogs/exclusionFilterOperators",
+            "href": "/v2/user/channelCatalogs/filterOperators",
             "method": "GET"
           }
         }
@@ -14638,8 +14558,8 @@
         "add": {
           "$ref": "#/definitions/links.AddChannelCatalogLink"
         },
-        "exclusionFilterOperators": {
-          "$ref": "#/definitions/links.GetChannelCatalogExclusionFilterOperatorsLink"
+        "filterOperators": {
+          "$ref": "#/definitions/links.GetChannelCatalogFilterOperatorsLink"
         }
       }
     },
@@ -15040,10 +14960,10 @@
           "description": "Indicates the uncategorized product count",
           "example": 101
         },
-        "categorizedWithoutCostProductCount": {
+        "withoutCategoryCostProductCount": {
           "type": "integer",
           "format": "int32",
-          "description": "Indicates the categorized product count without cost defined on the category",
+          "description": "Indicates the count of products without cost defined",
           "example": 42
         }
       }
@@ -15103,16 +15023,9 @@
             "generalSettings",
             "channelCostSettings",
             "channelCategorySettings",
-            "isMarketplace",
-            "productCount"
+            "isMarketplace"
           ],
           "properties": {
-            "productCount": {
-              "type": "integer",
-              "format": "int32",
-              "description": "The product count exported considering category mapping. Not all filters have been applied.",
-              "example": 101
-            },
             "enabled": {
               "type": "boolean",
               "description": "Indicates if the channel catalog is enable",
@@ -15414,11 +15327,12 @@
           "$ref": "#/definitions/BeezUP.Common.ChannelColumnId"
         },
         "operatorName": {
-          "$ref": "#/definitions/exclusionFilterOperatorName"
+          "$ref": "#/definitions/filterOperatorName"
         },
         "value": {
           "description": "The value indicate by the user when the filter operation requires it.",
           "type": "string",
+          "maxLength": 4000,
           "example": "sony"
         },
         "enabled": {
@@ -15428,13 +15342,13 @@
         }
       }
     },
-    "exclusionFilterOperatorName": {
+    "filterOperatorName": {
       "description": "The exclusion filter operator name",
       "type": "string",
-      "x-lov": "ChannelCatalogExclusionFilterOperator",
+      "x-lov": "ProductColumnFilterOperatorName",
       "example": "Contains"
     },
-    "exclusionFilterOperatorDataType": {
+    "filterOperatorDataType": {
       "description": "Data type of the operator",
       "enum": [
         "string",
@@ -15444,15 +15358,15 @@
       "default": "string",
       "example": "string"
     },
-    "exclusionFilterOperator": {
-      "description": "The exclusion filter operator",
+    "filterOperator": {
+      "description": "The filter operator",
       "type": "object",
       "properties": {
         "name": {
-          "$ref": "#/definitions/exclusionFilterOperatorName"
+          "$ref": "#/definitions/filterOperatorName"
         },
         "expectedChannelColumnDataType": {
-          "$ref": "#/definitions/exclusionFilterOperatorDataType"
+          "$ref": "#/definitions/filterOperatorDataType"
         },
         "valueRequired": {
           "type": "boolean",
@@ -15460,7 +15374,7 @@
           "example": true
         },
         "expectedValueDataType": {
-          "$ref": "#/definitions/exclusionFilterOperatorDataType"
+          "$ref": "#/definitions/filterOperatorDataType"
         }
       }
     },
@@ -15532,13 +15446,68 @@
           "example": true
         },
         "productFilters": {
-          "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+          "$ref": "#/definitions/channelCatalogProductFilters"
         },
         "catalogCategoryFilter": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryFilter"
         },
         "channelCategoryFilter": {
           "$ref": "#/definitions/BeezUP.Common.ChannelCategoryFilter"
+        }
+      }
+    },
+    "channelCatalogProductFilters": {
+      "type": "object",
+      "properties": {
+        "catalogSkus": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The catalog product SKU filter (multiple values)"
+        },
+        "catalogEans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The catalog product EAN filter (multiple values)"
+        },
+        "catalogMpns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The catalog product MPN filter (multiple values)"
+        },
+        "channelSkus": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The channel product SKU filter (multiple values)"
+        },
+        "channelEans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The channel product EAN filter (multiple values)"
+        },
+        "channelMpns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The channel product MPN filter (multiple values)"
+        },
+        "title": {
+          "type": "string",
+          "description": "The product title filter",
+          "example": "RefrigÃ©rateur"
+        },
+        "additionalProductFilters": {
+          "$ref": "#/definitions/BeezUP.Common.AdditionalProductFilters"
         }
       }
     },
@@ -15558,29 +15527,29 @@
           "description": "Product count WITHOUT category mapped on existing products.",
           "example": 250
         },
-        "excludedProductCountIncludingUncategorized": {
+        "disabledProductCountIncludingUncategorized": {
           "type": "integer",
           "format": "int32",
-          "description": "Excluded product count INCLUDING uncategorized products on existing products.",
+          "description": "Disabled product count INCLUDING uncategorized products on existing products.",
           "example": 169
         },
-        "excludedProductCountExcludingUncategorized": {
+        "disabledProductCountExcludingUncategorized": {
           "type": "integer",
           "format": "int32",
-          "description": "Excluded product count EXCLUDING uncategorized products on existing products.",
+          "description": "Disabled product count EXCLUDING uncategorized products on existing products.",
           "example": 150
         },
-        "disabledProductCountExcludingUncategorizedAndExcluded": {
+        "excludedProductCountIncludingUncategorizedAndDisabled": {
           "type": "integer",
           "format": "int32",
-          "description": "Disabled product count EXCLUDING uncategorized products AND excluded products on existing products.",
-          "example": 50
-        },
-        "disabledProductCountIncludingUncategorizedAndExcluded": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Disabled product count INCLUDING uncategorized products AND excluded products on existing products.",
+          "description": "Excluded product count INCLUDING uncategorized products AND disabled products on existing products.",
           "example": 66
+        },
+        "excludedProductCountExcludingUncategorizedAndDisabled": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Excluded product count EXCLUDING uncategorized products AND disabled products on existing products.",
+          "example": 50
         }
       }
     },
@@ -19130,9 +19099,6 @@
         "targetUrl": {
           "$ref": "#/definitions/BeezUP.Common.HttpUrl"
         },
-        "eventTypes": {
-          "$ref": "#/definitions/subscriptionOrderEventTypeList"
-        },
         "name": {
           "$ref": "#/definitions/subscriptionName"
         },
@@ -19144,19 +19110,20 @@
         }
       }
     },
-    "subscriptionOrderEventTypeList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/orderEventType"
-      },
-      "default": [
-        "order.created",
-        "order.updated"
-      ],
-      "example": [
-        "order.created",
-        "order.updated"
-      ]
+    "activateSubscriptionRequest": {
+      "type": "object",
+      "properties": {
+        "recoverBeginPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "If set, the date must be in the past the subscription will recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+        },
+        "recoverEndPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "If end period set, first the date must be in the past, the subscription will recover existing orders using the begin and the end period order last modification date. \nIf end period is not set and the begin period is set, then you will recover existing orders from the past using the begin period last modification date and after than you will continue to receive new/updated orders in real-time.\nIf begin/end period are not set then you will receive new/updated orders in real-time.\nREMARK: The begin period is required if the end period is fulfilled.\nREMARK: If the end period is order last modification date is indicated then once we have push all orders to your target url the subscription will be desactivated.\n"
+        }
+      }
     },
     "subscriptionName": {
       "type": "string",
@@ -19180,7 +19147,6 @@
       "required": [
         "id",
         "targetUrl",
-        "eventTypes",
         "status",
         "name",
         "applicationName",
@@ -19196,9 +19162,6 @@
         "targetUrl": {
           "$ref": "#/definitions/BeezUP.Common.HttpUrl"
         },
-        "eventTypes": {
-          "$ref": "#/definitions/subscriptionOrderEventTypeList"
-        },
         "name": {
           "$ref": "#/definitions/subscriptionName"
         },
@@ -19207,6 +19170,16 @@
         },
         "applicationVersion": {
           "$ref": "#/definitions/subscriptionApplicationVersion"
+        },
+        "recoverBeginPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+        },
+        "recoverEndPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin and the end period order last modification date.\nOtherwise, you will receive new/updated orders in real-time.\n"
         }
       }
     },
@@ -19222,15 +19195,6 @@
         "inactive"
       ],
       "example": "active"
-    },
-    "orderEventType": {
-      "type": "string",
-      "description": "The event type you can subscribe to",
-      "enum": [
-        "order_created",
-        "order_updated"
-      ],
-      "example": "order_created"
     },
     "getOrderInvoiceGeneralSettingsResponse": {
       "allOf": [
@@ -24682,6 +24646,13 @@
       "type": "string",
       "format": "guid",
       "x-example": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
+    },
+    "subscriptionIdPathParameter": {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "SubscriptionId"
     },
     "marketplaceTechnicalCodeParameter": {
       "description": "The marketplace technical code",
