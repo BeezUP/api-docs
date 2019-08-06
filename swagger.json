@@ -6364,6 +6364,37 @@
         }
       }
     },
+    "/v2/user/marketplaces/orders/subscriptions/{id}/retry": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders - Subscriptions"
+        ],
+        "operationId": "RetryPushOrders",
+        "summary": "In case your subscription consumption is unavailable and your subscription is still active you can ask to retry immediatly to push orders instead of waiting the next scheduled retry date",
+        "parameters": [
+          {
+            "$ref": "#/parameters/subscriptionIdPathParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Retry push orders request accepted"
+          },
+          "404": {
+            "description": "Invalid subscription id",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "The subscription is deactivated or your subscription consumption availability status is available."
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/user/marketplaces/orders/invoices/settings/general": {
       "put": {
         "tags": [
@@ -19107,6 +19138,9 @@
         },
         "applicationVersion": {
           "$ref": "#/definitions/subscriptionApplicationVersion"
+        },
+        "emailAlert": {
+          "$ref": "#/definitions/email"
         }
       }
     },
@@ -19180,8 +19214,56 @@
           "type": "string",
           "format": "date-time",
           "description": "Recover existing orders using the begin and the end period order last modification date.\nOtherwise, you will receive new/updated orders in real-time.\n"
+        },
+        "lastOrderPushedModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This modification date correspond to the last order pushed by your subscription consumer"
+        },
+        "lastSuccessfulOrderPushedUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date of the last pushed order successfully received by your subscription consumer"
+        },
+        "consumerHealthStatus": {
+          "$ref": "#/definitions/consumptionAvailabilityStatus"
+        },
+        "consumerUnvailableSinceUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This date indicates since when the subscription consumer is unavailable"
+        },
+        "lastRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last date we retry to send orders"
+        },
+        "retryCount": {
+          "type": "integer",
+          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "maxRetryCount": {
+          "type": "integer",
+          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "nextScheduledRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The next scheduled  date we retry to send orders"
+        },
+        "emailAlert": {
+          "$ref": "#/definitions/email"
         }
       }
+    },
+    "consumptionAvailabilityStatus": {
+      "type": "string",
+      "description": "The subscription consumption status",
+      "enum": [
+        "Available",
+        "Degraded",
+        "Unavailable"
+      ]
     },
     "subscriptionId": {
       "type": "string",
