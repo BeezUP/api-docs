@@ -6370,7 +6370,8 @@
           "Marketplaces - Orders - Subscriptions"
         ],
         "operationId": "RetryPushOrders",
-        "summary": "In case your subscription consumption is unavailable and your subscription is still active you can ask to retry immediatly to push orders instead of waiting the next scheduled retry date",
+        "summary": "Force retry push orders immediatly",
+        "description": "In case your subscription consumption is unavailable and your subscription is still active you can ask to retry immediatly to push orders instead of waiting the next scheduled retry date",
         "parameters": [
           {
             "$ref": "#/parameters/subscriptionIdPathParameter"
