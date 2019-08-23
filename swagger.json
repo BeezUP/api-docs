@@ -225,7 +225,7 @@
       "x-displayName": "Exports"
     },
     {
-      "name": "Marketplaces - Orders - Subscriptions",
+      "name": "Marketplaces - Orders - Subscriptions - Subscriptions",
       "description": "All orders subscription operations",
       "x-displayName": "Subscriptions"
     },
@@ -6179,10 +6179,10 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/subscriptions": {
+    "/v2/user/marketplaces/orders/subscriptions/": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "GetSubscriptionList",
         "summary": "Get the subscription list",
@@ -6206,7 +6206,7 @@
     "/v2/user/marketplaces/orders/subscriptions/{id}": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "CreateSubscription",
         "summary": "Creates a subscription to the orders",
@@ -6233,11 +6233,11 @@
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
+          "404": {
+            "$ref": "#/responses/subscriptionNotFoundResponse"
+          },
           "409": {
-            "description": "There subscription id is already used.\n",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
+            "$ref": "#/responses/subscriptionAlreadyExistsResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6246,7 +6246,7 @@
       },
       "get": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "GetSubscription",
         "summary": "Get a subscription to the orders",
@@ -6263,10 +6263,7 @@
             }
           },
           "404": {
-            "description": "Invalid subscription id.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
+            "$ref": "#/responses/subscriptionNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6275,7 +6272,7 @@
       },
       "delete": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "DeleteSubscription",
         "summary": "Delete a subscription to the orders",
@@ -6289,10 +6286,7 @@
             "description": "Subscription deletion accepted"
           },
           "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
+            "$ref": "#/responses/subscriptionNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6304,7 +6298,7 @@
     "/v2/user/marketplaces/orders/subscriptions/{id}/activate": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "ActivateSubscription",
         "summary": "Activate a subscription to the orders",
@@ -6324,11 +6318,17 @@
           "202": {
             "description": "Subscription activation accepted"
           },
-          "404": {
-            "description": "Invalid subscription id",
+          "400": {
+            "description": "Activation subscription request is invalid",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
+          },
+          "404": {
+            "$ref": "#/responses/subscriptionNotFoundResponse"
+          },
+          "503": {
+            "$ref": "#/responses/orderSubscriptionTargetNotAvailableResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6339,7 +6339,7 @@
     "/v2/user/marketplaces/orders/subscriptions/{id}/deactivate": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "DeactivateSubscription",
         "summary": "Deactivate a subscription to the orders",
@@ -6353,10 +6353,7 @@
             "description": "Subscription deactivation accepted"
           },
           "404": {
-            "description": "Invalid subscription id",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
+            "$ref": "#/responses/subscriptionNotFoundResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -6367,7 +6364,7 @@
     "/v2/user/marketplaces/orders/subscriptions/{id}/retry": {
       "post": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "RetryPushOrders",
         "summary": "Force retry push orders immediatly",
@@ -6382,13 +6379,10 @@
             "description": "Retry push orders request accepted"
           },
           "404": {
-            "description": "Invalid subscription id",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
+            "$ref": "#/responses/subscriptionNotFoundResponse"
           },
           "409": {
-            "description": "The subscription is deactivated or your subscription consumption availability status is available."
+            "$ref": "#/responses/retryRejectedResponse"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -19120,165 +19114,6 @@
         }
       }
     },
-    "createSubscriptionRequest": {
-      "type": "object",
-      "required": [
-        "targetUrl",
-        "name",
-        "applicationName"
-      ],
-      "properties": {
-        "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
-        },
-        "name": {
-          "$ref": "#/definitions/subscriptionName"
-        },
-        "applicationName": {
-          "$ref": "#/definitions/subscriptionApplicationName"
-        },
-        "applicationVersion": {
-          "$ref": "#/definitions/subscriptionApplicationVersion"
-        },
-        "emailAlert": {
-          "$ref": "#/definitions/email"
-        }
-      }
-    },
-    "activateSubscriptionRequest": {
-      "type": "object",
-      "properties": {
-        "recoverBeginPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "If set, the date must be in the past the subscription will recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
-        },
-        "recoverEndPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "If end period set, first the date must be in the past, the subscription will recover existing orders using the begin and the end period order last modification date. \nIf end period is not set and the begin period is set, then you will recover existing orders from the past using the begin period last modification date and after than you will continue to receive new/updated orders in real-time.\nIf begin/end period are not set then you will receive new/updated orders in real-time.\nREMARK: The begin period is required if the end period is fulfilled.\nREMARK: If the end period is order last modification date is indicated then once we have push all orders to your target url the subscription will be desactivated.\n"
-        }
-      }
-    },
-    "subscriptionName": {
-      "type": "string",
-      "description": "The subscription name you want to use",
-      "example": "MySubscriptionName"
-    },
-    "subscriptionApplicationName": {
-      "type": "string",
-      "description": "The name of your application",
-      "example": "MyApp"
-    },
-    "subscriptionApplicationVersion": {
-      "type": "string",
-      "description": "The version of your application",
-      "default": "1.0",
-      "example": "1.0"
-    },
-    "subscription": {
-      "type": "object",
-      "description": "The subscription definition",
-      "required": [
-        "id",
-        "targetUrl",
-        "status",
-        "name",
-        "applicationName",
-        "applicationVersion"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/subscriptionId"
-        },
-        "status": {
-          "$ref": "#/definitions/subscriptionStatus"
-        },
-        "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
-        },
-        "name": {
-          "$ref": "#/definitions/subscriptionName"
-        },
-        "applicationName": {
-          "$ref": "#/definitions/subscriptionApplicationName"
-        },
-        "applicationVersion": {
-          "$ref": "#/definitions/subscriptionApplicationVersion"
-        },
-        "recoverBeginPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
-        },
-        "recoverEndPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Recover existing orders using the begin and the end period order last modification date.\nOtherwise, you will receive new/updated orders in real-time.\n"
-        },
-        "lastOrderPushedModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "This modification date correspond to the last order pushed by your subscription consumer"
-        },
-        "lastSuccessfulOrderPushedUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The date of the last pushed order successfully received by your subscription consumer"
-        },
-        "consumerHealthStatus": {
-          "$ref": "#/definitions/consumptionAvailabilityStatus"
-        },
-        "consumerUnvailableSinceUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "This date indicates since when the subscription consumer is unavailable"
-        },
-        "lastRetryUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The last date we retry to send orders"
-        },
-        "retryCount": {
-          "type": "integer",
-          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
-        },
-        "maxRetryCount": {
-          "type": "integer",
-          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
-        },
-        "nextScheduledRetryUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The next scheduled  date we retry to send orders"
-        },
-        "emailAlert": {
-          "$ref": "#/definitions/email"
-        }
-      }
-    },
-    "consumptionAvailabilityStatus": {
-      "type": "string",
-      "description": "The subscription consumption status",
-      "enum": [
-        "Available",
-        "Degraded",
-        "Unavailable"
-      ]
-    },
-    "subscriptionId": {
-      "type": "string",
-      "format": "guid"
-    },
-    "subscriptionStatus": {
-      "type": "string",
-      "description": "The status of your subscription",
-      "enum": [
-        "active",
-        "inactive"
-      ],
-      "example": "active"
-    },
     "getOrderInvoiceGeneralSettingsResponse": {
       "allOf": [
         {
@@ -24625,8 +24460,13 @@
         "Marketplaces - Orders - List",
         "Marketplaces - Orders - Order",
         "Marketplaces - Orders - Batches",
-        "Marketplaces - Orders - Exports",
-        "Marketplaces - Orders - Subscriptions"
+        "Marketplaces - Orders - Exports"
+      ]
+    },
+    {
+      "name": "Marketplaces - Orders - Subscriptions",
+      "tags": [
+        "Marketplaces - Orders - Subscriptions - Subscriptions"
       ]
     },
     {
@@ -24730,13 +24570,6 @@
       "format": "guid",
       "x-example": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
     },
-    "subscriptionIdPathParameter": {
-      "name": "id",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "format": "SubscriptionId"
-    },
     "marketplaceTechnicalCodeParameter": {
       "description": "The marketplace technical code",
       "name": "marketplaceTechnicalCode",
@@ -24785,6 +24618,13 @@
       "type": "boolean",
       "default": false,
       "x-example": false
+    },
+    "subscriptionIdPathParameter": {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "SubscriptionId"
     },
     "marketplaceTechnicalCode": {
       "name": "marketplaceTechnicalCode",
