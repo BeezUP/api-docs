@@ -22287,6 +22287,328 @@
         }
       }
     },
+    "createSubscriptionRequest": {
+      "x-format": "Message",
+      "type": "object",
+      "required": [
+        "targetUrl",
+        "name",
+        "merchantApplicationName",
+        "merchantApplicationVersion"
+      ],
+      "properties": {
+        "targetUrl": {
+          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+        },
+        "name": {
+          "$ref": "#/definitions/subscriptionName"
+        },
+        "merchantApplicationName": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationName"
+        },
+        "merchantApplicationVersion": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
+        },
+        "merchantEmailAlert": {
+          "$ref": "#/definitions/email"
+        }
+      }
+    },
+    "activateSubscriptionRequest": {
+      "x-format": "Message",
+      "type": "object",
+      "properties": {
+        "recoverBeginPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "If set, the date must be in the past the subscription will recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+        },
+        "recoverEndPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "If end period set, first the date must be in the past, the subscription will recover existing orders using the begin and the end period order last modification date. \nIf end period is not set and the begin period is set, then you will recover existing orders from the past using the begin period last modification date and after than you will continue to receive new/updated orders in real-time.\nIf begin/end period are not set then you will receive new/updated orders in real-time.\nREMARK: The begin period is required if the end period is fulfilled.\nREMARK: If the end period is order last modification date is indicated then once we have push all orders to your target url the subscription will be desactivated."
+        }
+      }
+    },
+    "subscriptionId": {
+      "type": "string",
+      "format": "guid",
+      "description": "The identifier of the subscription to the orders for a merchant"
+    },
+    "subscriptionName": {
+      "type": "string",
+      "description": "The subscription name you want to use",
+      "example": "MySubscriptionName"
+    },
+    "subscriptionMerchantApplicationName": {
+      "type": "string",
+      "description": "The name of your application",
+      "example": "MyApp"
+    },
+    "subscriptionMerchantApplicationVersion": {
+      "type": "string",
+      "description": "The version of your application",
+      "default": "1.0",
+      "example": "1.0"
+    },
+    "consumptionAvailabilityStatus": {
+      "type": "string",
+      "description": "The subscription consumption status",
+      "enum": [
+        "Available",
+        "Degraded",
+        "Unavailable"
+      ]
+    },
+    "subscriptionStatus": {
+      "type": "string",
+      "description": "The status of your subscription",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "example": "active"
+    },
+    "subscription": {
+      "type": "object",
+      "description": "The subscription definition",
+      "required": [
+        "id",
+        "targetUrl",
+        "status",
+        "name",
+        "merchantApplicationName",
+        "merchantApplicationVersion"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "status": {
+          "$ref": "#/definitions/subscriptionStatus"
+        },
+        "targetUrl": {
+          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+        },
+        "name": {
+          "$ref": "#/definitions/subscriptionName"
+        },
+        "merchantApplicationName": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationName"
+        },
+        "merchantApplicationVersion": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
+        },
+        "recoverBeginPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+        },
+        "recoverEndPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin and the end period order last modification date.\nOtherwise, you will receive new/updated orders in real-time.\n"
+        },
+        "lastOrderPushedModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This modification date correspond to the last order pushed by your subscription consumer"
+        },
+        "lastSuccessfulOrderPushedUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date of the last pushed order successfully received by your subscription consumer"
+        },
+        "consumerHealthStatus": {
+          "$ref": "#/definitions/consumptionAvailabilityStatus"
+        },
+        "consumerUnvailableSinceUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This date indicates since when the subscription consumer is unavailable"
+        },
+        "lastRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last date we retry to send orders"
+        },
+        "retryCount": {
+          "type": "integer",
+          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "maxRetryCount": {
+          "type": "integer",
+          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "nextScheduledRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The next scheduled  date we retry to send orders"
+        },
+        "merchantEmailAlert": {
+          "$ref": "#/definitions/email"
+        }
+      }
+    },
+    "retryRejectionReason": {
+      "type": "string",
+      "enum": [
+        "OrderSubscriptionDeactivated",
+        "OrderSubscriptionConsumptionStatusNotUnavailable"
+      ]
+    },
+    "beezUPMarketplaceTechnicalCode": {
+      "description": "The technical code of the marketplace",
+      "type": "string",
+      "example": "CDiscount",
+      "x-lov": "OMMarketplaceTechnicalCode"
+    },
+    "beezUPMarketplaceAccountId": {
+      "type": "integer",
+      "description": "The marketplace account identifier inside beezup"
+    },
+    "beezUPOrderIdentifier": {
+      "description": "The BeezUP order identifier",
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderId"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/beezUPMarketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/beezUPMarketplaceAccountId"
+        },
+        "beezUPOrderId": {
+          "$ref": "#/definitions/beezUPOrderId"
+        }
+      }
+    },
+    "beezUPOrder": {
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderId",
+        "order_MarketplaceOrderId",
+        "order_LastModificationUtcDate",
+        "order_MarketplaceLastModificationUtcDate"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/beezUPMarketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/beezUPMarketplaceAccountId"
+        },
+        "beezUPOrderId": {
+          "$ref": "#/definitions/beezUPOrderId"
+        },
+        "order_MarketplaceOrderId": {
+          "$ref": "#/definitions/marketplaceOrderId"
+        },
+        "order_LastModificationUtcDate": {
+          "description": "The last modification UTC date done by BeezUP of this order",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-16T10:30:23Z"
+        },
+        "order_MarketplaceLastModificationUtcDate": {
+          "description": "The last modification UTC date done by the marketplace on this order",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-16T10:25:23Z"
+        }
+      },
+      "additionalProperties": true
+    },
+    "orderSubscriptionAlreadyExistsException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The order subscription '{subscriptionId}' already exists\n",
+      "type": "object",
+      "required": [
+        "subscriptionId",
+        "userId"
+      ],
+      "properties": {
+        "subscriptionId": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "userId": {
+          "$ref": "#/definitions/userId"
+        }
+      }
+    },
+    "orderSubscriptionNotFoundException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The order subscription '{subscriptionId}' is not found\n",
+      "type": "object",
+      "required": [
+        "subscriptionId",
+        "userId"
+      ],
+      "properties": {
+        "subscriptionId": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "userId": {
+          "$ref": "#/definitions/userId"
+        }
+      }
+    },
+    "orderSubscriptionRetryRejectedException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The order subscription retry has been rejected for the following reason: '{reason}'\n",
+      "type": "object",
+      "required": [
+        "subscriptionId",
+        "userId",
+        "reason"
+      ],
+      "properties": {
+        "subscriptionId": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "userId": {
+          "$ref": "#/definitions/userId"
+        },
+        "reason": {
+          "$ref": "#/definitions/retryRejectionReason"
+        }
+      }
+    },
+    "orderSubscriptionTargetNotAvailableException": {
+      "x-format": "Exception",
+      "x-transient": false,
+      "x-technical": false,
+      "description": "The target {targetUrl} is not available\n",
+      "type": "object",
+      "required": [
+        "subscriptionId",
+        "userId",
+        "targetUrl"
+      ],
+      "properties": {
+        "subscriptionId": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "userId": {
+          "$ref": "#/definitions/userId"
+        },
+        "targetUrl": {
+          "$ref": "#/definitions/httpUrl"
+        }
+      }
+    },
     "deliveryMethod": {
       "type": "string",
       "description": "A delivery method is a standardized procedure for transferring the product or service to the destination of fulfillment chosen by the customer. Delivery methods are characterized by the means of transportation used, and by the organization or group that is the contracting party for the sending organization or person."
@@ -24959,6 +25281,42 @@
       ],
       "schema": {
         "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "subscriptionNotFoundResponse": {
+      "description": "The subscription is not found",
+      "x-exceptions": [
+        "OrderSubscriptionNotFoundException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/errorResponseMessage"
+      }
+    },
+    "retryRejectedResponse": {
+      "description": "The subscription is deactivated or your subscription consumption availability status is available.",
+      "x-exceptions": [
+        "OrderSubscriptionRetryRejectedException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "subscriptionAlreadyExistsResponse": {
+      "description": "The subscription id is already used.",
+      "x-exceptions": [
+        "OrderSubscriptionAlreadyExistsException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "orderSubscriptionTargetNotAvailableResponse": {
+      "description": "The target url is not available",
+      "x-exceptions": [
+        "OrderSubscriptionTargetNotAvailableException"
+      ],
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
       }
     },
     "200_HealthCheck": {
