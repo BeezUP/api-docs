@@ -13505,6 +13505,7 @@
       }
     },
     "getImportationProductsReportRequest": {
+      "type": "object",
       "description": "Get Importation Products Report Request",
       "required": [
         "pageNumber",
@@ -22756,6 +22757,7 @@
       "example": "EUR"
     },
     "email": {
+      "type": "string",
       "x-exclude": true,
       "description": "The email",
       "format": "email",
