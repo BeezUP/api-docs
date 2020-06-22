@@ -14275,6 +14275,7 @@
         "pageNumber",
         "pageSize"
       ],
+      "type": "object",
       "properties": {
         "pageNumber": {
           "$ref": "#/definitions/BeezUP.Common.PageNumber"
