@@ -6425,7 +6425,7 @@
           "200": {
             "description": "Subscription info",
             "schema": {
-              "$ref": "#/definitions/subscription"
+              "$ref": "#/definitions/subscriptionIndex"
             }
           },
           "404": {
@@ -20379,6 +20379,41 @@
       ],
       "example": "order_created"
     },
+    "subscriptionLinks": {
+      "type": "object",
+      "properties": {
+        "reporting": {
+          "$ref": "#/definitions/link3"
+        },
+        "activate": {
+          "$ref": "#/definitions/link3"
+        },
+        "deacivate": {
+          "$ref": "#/definitions/link3"
+        },
+        "retry": {
+          "$ref": "#/definitions/link3"
+        },
+        "delete": {
+          "$ref": "#/definitions/link3"
+        }
+      }
+    },
+    "subscriptionIndex": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/subscription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/subscriptionLinks"
+            }
+          }
+        }
+      ]
+    },
     "subscriptionPushReporting": {
       "type": "object",
       "description": "The subscription push reporting",
@@ -20472,15 +20507,6 @@
       "default": "1.0",
       "example": "1.0"
     },
-    "consumptionAvailabilityStatus": {
-      "type": "string",
-      "description": "The subscription consumption status",
-      "enum": [
-        "Available",
-        "Degraded",
-        "Unavailable"
-      ]
-    },
     "email": {
       "type": "string",
       "x-exclude": true,
@@ -20506,6 +20532,13 @@
         }
       }
     },
+    "messageId": {
+      "x-exclude": true,
+      "description": "The message identifier. It's a guid.",
+      "format": "MessageId",
+      "type": "string",
+      "example": "b0d3faea-f881-439f-ba92-02b1168511ea"
+    },
     "httpUrl": {
       "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
       "type": "string",
@@ -20513,12 +20546,63 @@
       "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
       "example": "http://www.mydomain.com"
     },
-    "messageId": {
-      "x-exclude": true,
-      "description": "The message identifier. It's a guid.",
-      "format": "MessageId",
+    "consumptionAvailabilityStatus": {
       "type": "string",
-      "example": "b0d3faea-f881-439f-ba92-02b1168511ea"
+      "description": "The subscription consumption status",
+      "enum": [
+        "Available",
+        "Degraded",
+        "Unavailable"
+      ]
+    },
+    "link3": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
+        "docUrl": {
+          "$ref": "#/definitions/docUrl"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the link",
+          "example": "This is a description link"
+        },
+        "href": {
+          "$ref": "#/definitions/href"
+        },
+        "operationId": {
+          "$ref": "#/definitions/operationId"
+        },
+        "method": {
+          "$ref": "#/definitions/httpMethod"
+        },
+        "parameters": {
+          "$ref": "#/definitions/linkParameter3Types"
+        },
+        "urlTemplated": {
+          "type": "boolean",
+          "description": "indicates whether the href is templated or not"
+        },
+        "allRequiredParamsProvided": {
+          "type": "boolean",
+          "description": "indicates whether all required params have been provided"
+        },
+        "allOptionalParamsProvided": {
+          "type": "boolean",
+          "description": "indicates whether all optionals params have been provided"
+        },
+        "info": {
+          "$ref": "#/definitions/infoSummaries"
+        }
+      }
     },
     "userErrorMessage": {
       "x-exclude": true,
@@ -20554,6 +20638,69 @@
       "description": "The documentation related to this operation.",
       "example": "https://api-docs.imn.io/#operation/EnableChannelCatalog"
     },
+    "href": {
+      "x-exclude": true,
+      "type": "string",
+      "example": "/merchant/orders/v1/{marketplaceCode}/{IMNOrderId}",
+      "description": "Indicate the relative uri for this link"
+    },
+    "operationId": {
+      "x-exclude": true,
+      "type": "string",
+      "description": "The operationId to call.",
+      "example": "GetOrder"
+    },
+    "httpMethod": {
+      "x-exclude": true,
+      "type": "string",
+      "enum": [
+        "GET",
+        "POST",
+        "PATCH",
+        "DELETE",
+        "PUT",
+        "HEAD"
+      ],
+      "default": "GET",
+      "example": "GET",
+      "description": "Indicate the http method to use on this link"
+    },
+    "linkParameter3Types": {
+      "x-exclude": true,
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/linkParameter3"
+      }
+    },
+    "infoSummaries": {
+      "type": "object",
+      "properties": {
+        "successes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/successSummary"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/errorSummary"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/warningSummary"
+          }
+        },
+        "informations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/infoSummary"
+          }
+        }
+      }
+    },
     "cultureName": {
       "x-exclude": true,
       "type": "string",
@@ -20568,6 +20715,297 @@
       "additionalProperties": {
         "type": "object"
       }
+    },
+    "linkParameter3": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "in"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link parameter. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
+        "value": {
+          "type": "object",
+          "description": "The value of the parameter. It can be an integer a string or an object."
+        },
+        "required": {
+          "type": "boolean",
+          "default": "false",
+          "example": "true"
+        },
+        "in": {
+          "$ref": "#/definitions/parameterIn"
+        },
+        "lovLink": {
+          "$ref": "#/definitions/LOVLink3"
+        },
+        "lovRequired": {
+          "type": "boolean",
+          "description": "If true, you MUST indicate a value from the list of values otherwise it's a freetext",
+          "example": "true"
+        },
+        "description": {
+          "type": "string",
+          "description": "description of the parameter",
+          "example": "the store identifier"
+        },
+        "schema": {
+          "type": "string",
+          "description": "schema of the parameter",
+          "example": "orderListRequest"
+        },
+        "pattern": {
+          "$ref": "#/definitions/validationPattern"
+        },
+        "properties": {
+          "description": "If the parameter is an object with flexible properties (additionProperties/dictionary), we will describe the properties of the object.",
+          "additionalProperties": {
+            "$ref": "#/definitions/linkParameterProperty3"
+          },
+          "example": {
+            "shipOrder": {
+              "type": "​string"
+            }
+          }
+        }
+      }
+    },
+    "successSummary": {
+      "type": "object",
+      "properties": {
+        "successCode": {
+          "type": "string"
+        },
+        "successMessage": {
+          "type": "string"
+        },
+        "successArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyValue": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        }
+      }
+    },
+    "errorSummary": {
+      "type": "object",
+      "properties": {
+        "utcDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "errorGuid": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "technicalErrorMessage": {
+          "type": "string"
+        },
+        "exceptionDetail": {
+          "$ref": "#/definitions/exceptionDetail"
+        },
+        "errorArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyValue": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "warningSummary": {
+      "type": "object",
+      "properties": {
+        "technicalErrorMessage": {
+          "type": "string"
+        },
+        "warningMessage": {
+          "type": "string"
+        },
+        "warningCode": {
+          "type": "string"
+        },
+        "warningArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "infoSummary": {
+      "type": "object",
+      "properties": {
+        "informationCode": {
+          "type": "string"
+        },
+        "informationMessage": {
+          "type": "string"
+        },
+        "informationArguments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyValue": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        }
+      }
+    },
+    "parameterIn": {
+      "x-exclude": true,
+      "type": "string",
+      "description": "* path: if the parameter must be pass in the path uri\n* header: if the parameter must be passed in http header\n* query: if the parameter must be passed in querystring\n* body: if the parameter must be passed in the body\n* file: if the parameter must be passed in a multipart/form-data (https://swagger.io/docs/specification/2-0/file-upload/)\n",
+      "example": "path",
+      "enum": [
+        "path",
+        "header",
+        "query",
+        "body",
+        "file"
+      ]
+    },
+    "LOVLink3": {
+      "x-exclude": true,
+      "description": "Describe the way you have to follow to get access to the LOV",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "example": "/merchant/lov/v1/Go2CultureName",
+          "description": "Indicate the uri to the list of value"
+        },
+        "method": {
+          "$ref": "#/definitions/httpMethod"
+        }
+      }
+    },
+    "validationPattern": {
+      "type": "string",
+      "description": "The regular expression to validate the value",
+      "example": "*.-api$"
+    },
+    "linkParameterProperty3": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label corresponding to the link parameter property. This label is automatically translated based on the Accept-Language http header.",
+          "example": "The translated label"
+        },
+        "value": {
+          "type": "object",
+          "description": "The value of the parameter. It can be an integer a string or an object."
+        },
+        "required": {
+          "type": "boolean",
+          "example": "true"
+        },
+        "type": {
+          "$ref": "#/definitions/parameterType"
+        },
+        "lovLink": {
+          "$ref": "#/definitions/LOVLink3"
+        },
+        "lovRequired": {
+          "type": "boolean",
+          "description": "If true, you MUST use indicate a value from the list of values otherwise it's a freetext",
+          "example": "true"
+        },
+        "description": {
+          "type": "string",
+          "description": "description of the parameter",
+          "example": "the store identifier"
+        },
+        "schema": {
+          "type": "string",
+          "description": "schema of the parameter",
+          "example": "orderListRequest"
+        },
+        "pattern": {
+          "$ref": "#/definitions/validationPattern"
+        }
+      }
+    },
+    "exceptionDetail": {
+      "type": "object",
+      "properties": {
+        "helpLink": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "stackTrace": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "parameterType": {
+      "x-exclude": true,
+      "description": "The value type of the parameter",
+      "type": "string",
+      "enum": [
+        "string",
+        "integer",
+        "number",
+        "boolean",
+        "object",
+        "array",
+        "date",
+        "date-time",
+        "file"
+      ],
+      "default": "string",
+      "example": "string"
     },
     "getOrderInvoiceGeneralSettingsResponse": {
       "allOf": [
