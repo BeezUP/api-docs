@@ -16,7 +16,7 @@
       "url": "https://www.beezup.com/"
     }
   },
-  "host": "mkpapigateway.beezup.com",
+  "host": "api.beezup.com",
   "basePath": "",
   "x-beezup-api-ops": {
     "repo": "Customer",
