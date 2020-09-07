@@ -18,13 +18,6 @@
   },
   "host": "api.beezup.com",
   "basePath": "",
-  "x-beezup-api-ops": {
-    "repo": "Customer",
-    "apiName": "V2PublicSecurity",
-    "appRoot": "BeezUP.Customer.WebService",
-    "namespace": "BeezUP.Customer.WebService",
-    "comment": "Changing contact email support to help\nNo change. Just server side generation.\n"
-  },
   "schemes": [
     "https"
   ],
@@ -186,10 +179,6 @@
     {
       "name": "Marketplaces - Orders - Exports",
       "x-displayName": "Exports"
-    },
-    {
-      "name": "Marketplaces - Orders - Subscriptions",
-      "x-displayName": "Subscriptions"
     },
     {
       "name": "Marketplaces - Orders - Subscriptions - Subscriptions",
@@ -5103,7 +5092,7 @@
             "x-lov": "MarketplacePublicationType",
             "in": "query",
             "description": "Publication types by which to filter (optional)",
-            "required": false,
+            "required": true,
             "type": "array",
             "items": {
               "type": "string",
@@ -6137,74 +6126,21 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/subscriptions": {
-      "post": {
-        "tags": [
-          "Marketplaces - Orders - Subscriptions"
-        ],
-        "operationId": "CreateSubscription",
-        "summary": "Creates a subscription to the orders",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/createSubscriptionRequest"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Subscription created",
-            "schema": {
-              "$ref": "#/definitions/subscription"
-            }
-          },
-          "400": {
-            "description": "Invalid subscription request.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
-            "description": "There is already a subscription on for the same eventType and the same target Url.\n",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "deprecated": false
-      },
+    "/v2/user/marketplaces/orders/subscriptions/": {
       "get": {
         "tags": [
-          "Marketplaces - Orders - Subscriptions"
+          "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
         "operationId": "GetSubscriptionList",
         "summary": "Get the subscription list",
         "responses": {
           "200": {
-            "description": "The suscription list",
+            "description": "The subscription list",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/subscription"
+                "$ref": "#/definitions/subscriptionIndex"
               }
-            }
-          },
-          "400": {
-            "description": "Invalid subscription request.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
-            "description": "There is already a subscription on for the same eventType and the same target Url.\n",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "default": {
@@ -6215,161 +6151,6 @@
       }
     },
     "/v2/user/marketplaces/orders/subscriptions/{id}": {
-      "get": {
-        "tags": [
-          "Marketplaces - Orders - Subscriptions"
-        ],
-        "operationId": "GetSubscription",
-        "summary": "Get a subscription to the orders",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Subscription info",
-            "schema": {
-              "$ref": "#/definitions/subscription"
-            }
-          },
-          "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Marketplaces - Orders - Subscriptions"
-        ],
-        "operationId": "DeleteSubscription",
-        "summary": "Delete a subscription to the orders",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Subscription deleted"
-          },
-          "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/v2/user/marketplaces/orders/subscriptions/{id}/activate": {
-      "post": {
-        "tags": [
-          "Marketplaces - Orders - Subscriptions"
-        ],
-        "operationId": "ActivateSubscription",
-        "summary": "Activate a subscription to the orders",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Subscription activated",
-            "schema": {
-              "$ref": "#/definitions/subscription"
-            }
-          },
-          "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/subscriptions/{id}/deactivate": {
-      "post": {
-        "tags": [
-          "Marketplaces - Orders - Subscriptions"
-        ],
-        "operationId": "DeactivateSubscription",
-        "summary": "Deactivate a subscription to the orders",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-Hook-Secret",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "x-example": "blablabla"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Subscription deactivated",
-            "schema": {
-              "$ref": "#/definitions/subscription"
-            }
-          },
-          "404": {
-            "description": "Invalid subscription id or X-Hook-Secret.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/v2/user/marketplaces/orders/{id}": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Subscriptions - Subscriptions"
@@ -6461,7 +6242,7 @@
         "deprecated": false
       }
     },
-    "/v2/user/marketplaces/orders/{id}/reporting": {
+    "/v2/user/marketplaces/orders/subscriptions/{id}/reporting": {
       "get": {
         "tags": [
           "Marketplaces - Orders - Subscriptions - Subscriptions"
@@ -6509,7 +6290,7 @@
         }
       }
     },
-    "/v2/user/marketplaces/orders/{id}/activate": {
+    "/v2/user/marketplaces/orders/subscriptions/{id}/activate": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Subscriptions - Subscriptions"
@@ -6551,7 +6332,7 @@
         }
       }
     },
-    "/v2/user/marketplaces/orders/{id}/deactivate": {
+    "/v2/user/marketplaces/orders/subscriptions/{id}/deactivate": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Subscriptions - Subscriptions"
@@ -6576,7 +6357,7 @@
         }
       }
     },
-    "/v2/user/marketplaces/orders/{id}/retry": {
+    "/v2/user/marketplaces/orders/subscriptions/{id}/retry": {
       "post": {
         "tags": [
           "Marketplaces - Orders - Subscriptions - Subscriptions"
@@ -17522,7 +17303,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "_default": {
               "description": "Indicate the default values of the property",
               "type": "array",
               "items": {
@@ -17544,7 +17325,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "_default": {
               "description": "Indicate the default values of the property",
               "type": "array",
               "items": {
@@ -17566,7 +17347,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "_default": {
               "description": "Indicate the default values of the property",
               "type": "boolean",
               "example": "false"
@@ -17583,7 +17364,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "_default": {
               "description": "Indicate the default values of the property",
               "type": "array",
               "items": {
@@ -19430,6 +19211,14 @@
               "type": "boolean",
               "example": "true"
             },
+            "order_FulfilledBy": {
+              "description": "The order FulfilledBy",
+              "type": "string"
+            },
+            "order_IsBusiness": {
+              "description": "The order IsBusiness",
+              "type": "boolean"
+            },
             "order_OrderSourceUri": {
               "description": "Technical information: The url to the source of this order. We received this information from the marketplace.\n",
               "type": "string",
@@ -20266,119 +20055,6 @@
         }
       }
     },
-    "createSubscriptionRequest": {
-      "type": "object",
-      "required": [
-        "targetUrl",
-        "name",
-        "applicationName"
-      ],
-      "properties": {
-        "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
-        },
-        "eventTypes": {
-          "$ref": "#/definitions/subscriptionOrderEventTypeList"
-        },
-        "name": {
-          "$ref": "#/definitions/subscriptionName"
-        },
-        "applicationName": {
-          "$ref": "#/definitions/subscriptionApplicationName"
-        },
-        "applicationVersion": {
-          "$ref": "#/definitions/subscriptionApplicationVersion"
-        }
-      }
-    },
-    "subscriptionOrderEventTypeList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/orderEventType"
-      },
-      "default": [
-        "order.created",
-        "order.updated"
-      ],
-      "example": [
-        "order.created",
-        "order.updated"
-      ]
-    },
-    "subscriptionName": {
-      "type": "string",
-      "description": "The subscription name you want to use",
-      "example": "MySubscriptionName"
-    },
-    "subscriptionApplicationName": {
-      "type": "string",
-      "description": "The name of your application",
-      "example": "MyApp"
-    },
-    "subscriptionApplicationVersion": {
-      "type": "string",
-      "description": "The version of your application",
-      "default": "1.0",
-      "example": "1.0"
-    },
-    "subscription": {
-      "type": "object",
-      "description": "The subscription definition",
-      "required": [
-        "id",
-        "targetUrl",
-        "eventTypes",
-        "status",
-        "name",
-        "applicationName",
-        "applicationVersion"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/subscriptionId"
-        },
-        "status": {
-          "$ref": "#/definitions/subscriptionStatus"
-        },
-        "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
-        },
-        "eventTypes": {
-          "$ref": "#/definitions/subscriptionOrderEventTypeList"
-        },
-        "name": {
-          "$ref": "#/definitions/subscriptionName"
-        },
-        "applicationName": {
-          "$ref": "#/definitions/subscriptionApplicationName"
-        },
-        "applicationVersion": {
-          "$ref": "#/definitions/subscriptionApplicationVersion"
-        }
-      }
-    },
-    "subscriptionId": {
-      "type": "string",
-      "format": "guid"
-    },
-    "subscriptionStatus": {
-      "type": "string",
-      "description": "The status of your subscription",
-      "enum": [
-        "active",
-        "inactive"
-      ],
-      "example": "active"
-    },
-    "orderEventType": {
-      "type": "string",
-      "description": "The event type you can subscribe to",
-      "enum": [
-        "order_created",
-        "order_updated"
-      ],
-      "example": "order_created"
-    },
     "subscriptionLinks": {
       "type": "object",
       "properties": {
@@ -20413,6 +20089,33 @@
           }
         }
       ]
+    },
+    "createSubscriptionRequest": {
+      "x-format": "Message",
+      "type": "object",
+      "required": [
+        "targetUrl",
+        "name",
+        "merchantApplicationName",
+        "merchantApplicationVersion"
+      ],
+      "properties": {
+        "targetUrl": {
+          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+        },
+        "name": {
+          "$ref": "#/definitions/subscriptionName"
+        },
+        "merchantApplicationName": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationName"
+        },
+        "merchantApplicationVersion": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
+        },
+        "merchantEmailAlert": {
+          "$ref": "#/definitions/email"
+        }
+      }
     },
     "subscriptionPushReporting": {
       "type": "object",
@@ -20496,6 +20199,98 @@
         }
       }
     },
+    "subscription": {
+      "type": "object",
+      "description": "The subscription definition",
+      "required": [
+        "id",
+        "targetUrl",
+        "status",
+        "name",
+        "merchantApplicationName",
+        "merchantApplicationVersion"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "status": {
+          "$ref": "#/definitions/subscriptionStatus"
+        },
+        "targetUrl": {
+          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+        },
+        "name": {
+          "$ref": "#/definitions/subscriptionName"
+        },
+        "merchantApplicationName": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationName"
+        },
+        "merchantApplicationVersion": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
+        },
+        "recoverBeginPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+        },
+        "recoverEndPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin and the end period order last modification date.\nOtherwise, you will receive new/updated orders in real-time.\n"
+        },
+        "lastOrderPushedModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This modification date correspond to the last order pushed by your subscription consumer"
+        },
+        "lastSuccessfulOrderPushedUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date of the last pushed order successfully received by your subscription consumer"
+        },
+        "consumerHealthStatus": {
+          "$ref": "#/definitions/consumptionAvailabilityStatus"
+        },
+        "consumerUnvailableSinceUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This date indicates since when the subscription consumer is unavailable"
+        },
+        "lastRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last date we retry to send orders"
+        },
+        "retryCount": {
+          "type": "integer",
+          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "maxRetryCount": {
+          "type": "integer",
+          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "nextScheduledRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The next scheduled  date we retry to send orders"
+        },
+        "merchantEmailAlert": {
+          "$ref": "#/definitions/email"
+        },
+        "lastErrorMessage": {
+          "$ref": "#/definitions/errorResponseMessage"
+        },
+        "consumerLastRequestSentUri": {
+          "$ref": "#/definitions/httpUrl"
+        }
+      }
+    },
+    "subscriptionName": {
+      "type": "string",
+      "description": "The subscription name you want to use",
+      "example": "MySubscriptionName"
+    },
     "subscriptionMerchantApplicationName": {
       "type": "string",
       "description": "The name of your application",
@@ -20532,6 +20327,11 @@
         }
       }
     },
+    "subscriptionId": {
+      "type": "string",
+      "format": "guid",
+      "description": "The identifier of the subscription to the orders for a merchant"
+    },
     "messageId": {
       "x-exclude": true,
       "description": "The message identifier. It's a guid.",
@@ -20545,6 +20345,15 @@
       "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
       "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
       "example": "http://www.mydomain.com"
+    },
+    "subscriptionStatus": {
+      "type": "string",
+      "description": "The status of your subscription",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "example": "active"
     },
     "consumptionAvailabilityStatus": {
       "type": "string",
@@ -24406,8 +24215,7 @@
         "Marketplaces - Orders - List",
         "Marketplaces - Orders - Order",
         "Marketplaces - Orders - Batches",
-        "Marketplaces - Orders - Exports",
-        "Marketplaces - Orders - Subscriptions"
+        "Marketplaces - Orders - Exports"
       ]
     },
     {
