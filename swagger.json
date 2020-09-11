@@ -14517,7 +14517,7 @@
     "sku": {
       "type": "string",
       "description": "The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers. http://schema.org/sku",
-      "maxLength": "50"
+      "maxLength": 50
     },
     "links.GetChannelInfoLink": {
       "allOf": [
@@ -17091,7 +17091,7 @@
                   "name": "ReturnDescription",
                   "position": "5",
                   "required": false,
-                  "maxLength": "5000"
+                  "maxLength": 5000
                 }
               ]
             },
@@ -17103,7 +17103,7 @@
                   "name": "Template_HTML",
                   "position": "1",
                   "required": false,
-                  "maxLength": "50000"
+                  "maxLength": 50000
                 }
               ]
             },
@@ -18416,7 +18416,7 @@
           "items": {
             "$ref": "#/definitions/automaticTransition"
           },
-          "minLength": "1"
+          "minLength": 1
         }
       }
     },
@@ -19952,8 +19952,8 @@
         "changeOrders": {
           "type": "array",
           "description": "The change order operations",
-          "minLength": "1",
-          "maxLength": "100",
+          "minLength": 1,
+          "maxLength": 100,
           "items": {
             "$ref": "#/definitions/changeOrderListRequestItem"
           }
@@ -20950,12 +20950,12 @@
     "headerContentHtml": {
       "description": "Header Content HTML",
       "type": "string",
-      "maxLength": "1000"
+      "maxLength": 1000
     },
     "footerContentHtml": {
       "description": "Footer Content HTML",
       "type": "string",
-      "maxLength": "1000"
+      "maxLength": 1000
     },
     "invoiceContentHtml": {
       "description": "Invoice Content HTML",
