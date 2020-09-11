@@ -5085,7 +5085,7 @@
             "format": "int32",
             "default": "10",
             "minimum": 10,
-            "maximum": "100"
+            "maximum": 100
           },
           {
             "name": "publicationTypes",
@@ -6268,7 +6268,7 @@
             "required": false,
             "type": "integer",
             "format": "PageSize",
-            "maximum": "100",
+            "maximum": 100,
             "minimum": 1
           }
         ],
@@ -6818,7 +6818,7 @@
             "required": false,
             "default": "100",
             "minimum": 5,
-            "maximum": "100"
+            "maximum": 100
           }
         ],
         "responses": {
@@ -6856,7 +6856,7 @@
             "required": false,
             "default": "100",
             "minimum": 5,
-            "maximum": "100"
+            "maximum": 100
           }
         ],
         "responses": {
@@ -6897,7 +6897,7 @@
             "required": false,
             "default": "100",
             "minimum": 5,
-            "maximum": "100"
+            "maximum": 100
           }
         ],
         "responses": {
@@ -7987,7 +7987,7 @@
             "type": "integer",
             "default": "10",
             "minimum": 10,
-            "maximum": "100"
+            "maximum": 100
           }
         ],
         "responses": {
@@ -10912,7 +10912,7 @@
       "type": "integer",
       "example": "12",
       "minimum": 1,
-      "maximum": "12"
+      "maximum": 12
     },
     "expirationYear": {
       "format": "int32",
@@ -10920,7 +10920,7 @@
       "type": "integer",
       "example": "2017",
       "minimum": 2017,
-      "maximum": "9000"
+      "maximum": 9000
     },
     "accountInfoLinks": {
       "description": "The different actions you can make on this account",
@@ -14360,7 +14360,7 @@
       "format": "int32",
       "default": "100",
       "minimum": 25,
-      "maximum": "100",
+      "maximum": 100,
       "example": "100"
     },
     "BeezUP.Common.CatalogColumnId": {
@@ -14591,7 +14591,7 @@
       "type": "integer",
       "format": "int32",
       "minimum": 1,
-      "maximum": "9",
+      "maximum": 9,
       "description": "The channel category level starting from 1",
       "example": "3"
     },
@@ -18147,7 +18147,7 @@
       "format": "int32",
       "default": "100",
       "minimum": 25,
-      "maximum": "100",
+      "maximum": 100,
       "example": "100"
     },
     "pageNumber": {
@@ -20924,14 +20924,14 @@
       "description": "Product VAT in percent",
       "type": "number",
       "minimum": 0,
-      "maximum": "100",
+      "maximum": 100,
       "example": "4"
     },
     "shippingVATPercent": {
       "description": "Shipping cost VAT in percent",
       "type": "number",
       "minimum": 0,
-      "maximum": "100",
+      "maximum": 100,
       "example": "8"
     },
     "invoicePrefix": {
@@ -22267,7 +22267,7 @@
           "type": "integer",
           "description": "If the margin type is 'Global', indicate the percentage of sale price.",
           "minimum": 0,
-          "maximum": "100",
+          "maximum": 100,
           "example": "10"
         },
         "linkClickToOrderType": {
@@ -22277,7 +22277,7 @@
           "type": "integer",
           "description": "If the linkOrderType is OnClickDate, indicate the max day to search the click from the order",
           "minimum": 0,
-          "maximum": "180",
+          "maximum": 180,
           "default": "30",
           "example": "5"
         },
@@ -23731,7 +23731,7 @@
       "type": "integer",
       "format": "int32",
       "minimum": 0,
-      "maximum": "99"
+      "maximum": 99
     },
     "channelIdParameter": {
       "name": "channelId",
@@ -23798,7 +23798,7 @@
       "type": "integer",
       "format": "int32",
       "minimum": 25,
-      "maximum": "100",
+      "maximum": 100,
       "x-example": "25"
     },
     "marketplaceTechnicalCodeParameter": {
