@@ -6128,6 +6128,7 @@
     },
     "/v2/user/marketplaces/orders/subscriptions/": {
       "get": {
+        "x-basePath": "/v2/user/marketplaces/orders/subscriptions",
         "tags": [
           "Marketplaces - Orders - Subscriptions - Subscriptions"
         ],
@@ -7230,7 +7231,7 @@
               "type": "array",
               "minItems": "1",
               "maxItems": "1",
-              "uniqueItems": "true",
+              "uniqueItems": true,
               "items": {
                 "type": "string",
                 "format": "guid"
@@ -7289,7 +7290,7 @@
               "type": "array",
               "minItems": "1",
               "maxItems": "1",
-              "uniqueItems": "true",
+              "uniqueItems": true,
               "items": {
                 "type": "string",
                 "format": "guid"
@@ -8106,7 +8107,7 @@
       "properties": {
         "errors": {
           "type": "array",
-          "uniqueItems": "false",
+          "uniqueItems": false,
           "items": {
             "$ref": "#/definitions/BeezUP.Common.UserErrorMessage"
           }
@@ -13049,7 +13050,7 @@
           "description": "Indicate the time span you want to import your catalog. (i.e. \"21:00:00\" to import your catalog at 9PM)",
           "type": "array",
           "minItems": "1",
-          "uniqueItems": "true",
+          "uniqueItems": true,
           "items": {
             "type": "string",
             "pattern": "(00:1[5-9])|(00:[2-5][0-9])|(0[1-9]:[0-5][0-9])|(1[0-9]:[0-5][0-9])|(2[0-3]:[0-5][0-9])"
@@ -18476,7 +18477,7 @@
             "$ref": "#/definitions/orderIdentifier"
           },
           "maxItems": "100",
-          "uniqueItems": "true",
+          "uniqueItems": true,
           "minItems": "1",
           "example": [
             {
@@ -18518,7 +18519,7 @@
             "$ref": "#/definitions/setMerchantOrderInfoListRequestItem"
           },
           "maxItems": "100",
-          "uniqueItems": "true",
+          "uniqueItems": true,
           "minItems": "1",
           "example": [
             {
@@ -20320,7 +20321,7 @@
       "properties": {
         "errors": {
           "type": "array",
-          "uniqueItems": "false",
+          "uniqueItems": false,
           "items": {
             "$ref": "#/definitions/userErrorMessage"
           }
