@@ -20476,13 +20476,13 @@
       "description": "Indicate the http method to use on this link"
     },
     "linkParameter3Types": {
-      "x-exclude": true,
       "type": "object",
       "additionalProperties": {
         "$ref": "#/definitions/linkParameter3"
       }
     },
     "infoSummaries": {
+      "x-exclude": true,
       "type": "object",
       "properties": {
         "successes": {
