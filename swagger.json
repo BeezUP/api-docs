@@ -1926,6 +1926,30 @@
         }
       }
     },
+    "/v2/user/catalogs/importations": {
+      "get": {
+        "tags": [
+          "Catalogs - Global"
+        ],
+        "summary": "Get the latest catalog importation reporting for all stores",
+        "operationId": "Importation_GetReportingForAllStores",
+        "responses": {
+          "200": {
+            "description": "The last importation reportings for all store",
+            "schema": {
+              "type": "object",
+              "description": "The key of the dictionary will be the store id",
+              "additionalProperties": {
+                "$ref": "#/definitions/importationsResponse"
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/user/catalogs/{storeId}": {
       "get": {
         "tags": [
