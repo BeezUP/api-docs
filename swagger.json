@@ -181,6 +181,18 @@
       "x-displayName": "Exports"
     },
     {
+      "name": "Marketplaces - Orders V3 - Global",
+      "x-displayName": "Global"
+    },
+    {
+      "name": "Marketplaces - Orders V3 - List",
+      "x-displayName": "List"
+    },
+    {
+      "name": "Marketplaces - Orders V3 - Order",
+      "x-displayName": "Order"
+    },
+    {
       "name": "Marketplaces - Orders - Subscriptions - Subscriptions",
       "x-displayName": "Subscriptions"
     },
@@ -6138,6 +6150,344 @@
             },
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "412": {
+            "$ref": "#/responses/412_PreConditionFailed"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/lov/orderManagementReadyMarketplaceBusinessCode": {
+      "get": {
+        "tags": [
+          "Marketplaces - Orders V3 - Global"
+        ],
+        "operationId": "GetOrderManagementReadyMarketplaceBusinessCode",
+        "description": "Get the list of MarketplaceBusinessCode ready for Order Management",
+        "parameters": [
+          {
+            "$ref": "#/parameters/acceptLanguageParameter"
+          },
+          {
+            "$ref": "#/parameters/storeIdsParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched current synchronization status",
+            "schema": {
+              "$ref": "#/definitions/oMReadyMarketplaceBusinessCodeResponse"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "Requested Store could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/orders/v3/status": {
+      "get": {
+        "tags": [
+          "Marketplaces - Orders V3 - Global"
+        ],
+        "operationId": "GetMarketplaceAccountsSynchronization",
+        "description": "Get current synchronization status between your marketplaces and BeezUP accounts",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          },
+          {
+            "$ref": "#/parameters/storeIdsParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched the list of MarketplaceBusinessCode ready for Order Management",
+            "schema": {
+              "$ref": "#/definitions/accountSynchronizationList"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "400": {
+            "description": "Invalid store id",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/orders/v3/list/full": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - List"
+        ],
+        "operationId": "GetOrderListFull",
+        "summary": "Get a paginated list of all Orders with all Order and Order Item(s) properties",
+        "description": "The purpose of this operation is to reduce the amount of request to the API.\\\n\\\nPrevious implmentation of this feature only returned a partial (light) version of the Orders. The purpose of this API is to reduce the number of incoming requests by returning the complete (full) Order and Order Item(s) properties.\n",
+        "parameters": [
+          {
+            "name": "Accept-Encoding",
+            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched the full list of Orders",
+            "schema": {
+              "$ref": "#/definitions/orderListFullWithLinks"
+            }
+          },
+          "400": {
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/list/light": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - List"
+        ],
+        "operationId": "GetOrderListLight",
+        "summary": "Get a paginated list of all Orders without details",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched the list of Orders",
+            "schema": {
+              "$ref": "#/definitions/orderListLightWithLinks"
+            }
+          },
+          "400": {
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
+      "head": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "HeadOrder",
+        "summary": "Get the meta information about the order (ETag, Last-Modified)",
+        "description": "The purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched Order and Order Item(s) properties",
+            "headers": {
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+              },
+              "ETag": {
+                "type": "string",
+                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "GetOrder",
+        "summary": "Get full Order and Order Item(s) properties",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched Order and Order Item(s) properties",
+            "headers": {
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
+              },
+              "ETag": {
+                "type": "string",
+                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/orderWithLinks"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "ChangeOrder",
+        "summary": "Change your marketplace Order Information (accept, ship, etc.)",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "$ref": "#/parameters/changeOrderTypeParameter"
+          },
+          {
+            "$ref": "#/parameters/userNameInQueryParameter"
+          },
+          {
+            "$ref": "#/parameters/testModeInQueryParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/changeOrderRequest"
+            }
+          },
+          {
+            "$ref": "#/parameters/ifMatchParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Order change request accepted"
+          },
+          "400": {
+            "description": "Invalid order change request, could not be send to the marketplace. Please check the body of this request.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "Already processing a change request for this Order.\\\nPlease refresh your clients Order information and retry later.\n",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
             }
           },
           "412": {
@@ -20080,261 +20430,222 @@
         }
       }
     },
-    "subscriptionLinks": {
+    "oMReadyMarketplaceBusinessCodeResponse": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BeezUP.Common.ListOfValueItem"
+      }
+    },
+    "orderListFullWithLinks": {
       "type": "object",
+      "required": [
+        "paginationResult",
+        "orders",
+        "links"
+      ],
       "properties": {
-        "reporting": {
-          "$ref": "#/definitions/link3"
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderWithLinks"
+          }
         },
-        "activate": {
-          "$ref": "#/definitions/link3"
+        "links": {
+          "$ref": "#/definitions/orderListFullLinks"
         },
-        "deacivate": {
-          "$ref": "#/definitions/link3"
-        },
-        "retry": {
-          "$ref": "#/definitions/link3"
-        },
-        "delete": {
-          "$ref": "#/definitions/link3"
+        "paginationResult": {
+          "$ref": "#/definitions/paginationResult"
         }
       }
     },
-    "subscriptionIndex": {
+    "orderListLightWithLinks": {
+      "type": "object",
+      "required": [
+        "paginationResult",
+        "orders",
+        "links"
+      ],
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderHeaderWithLinks"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/orderListLightLinks"
+        },
+        "paginationResult": {
+          "$ref": "#/definitions/paginationResult"
+        }
+      }
+    },
+    "orderWithLinks": {
       "allOf": [
         {
-          "$ref": "#/definitions/subscription"
+          "$ref": "#/definitions/order"
         },
         {
           "type": "object",
+          "required": [
+            "links",
+            "transitionLinks"
+          ],
           "properties": {
             "links": {
-              "$ref": "#/definitions/subscriptionLinks"
+              "$ref": "#/definitions/orderLinks"
+            },
+            "transitionLinks": {
+              "$ref": "#/definitions/orderTransitionLinks"
             }
           }
         }
       ]
     },
-    "createSubscriptionRequest": {
-      "x-format": "Message",
-      "type": "object",
-      "required": [
-        "targetUrl",
-        "name",
-        "merchantApplicationName",
-        "merchantApplicationVersion"
-      ],
-      "properties": {
-        "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+    "orderHeaderWithLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderHeader"
         },
-        "name": {
-          "$ref": "#/definitions/subscriptionName"
-        },
-        "merchantApplicationName": {
-          "$ref": "#/definitions/subscriptionMerchantApplicationName"
-        },
-        "merchantApplicationVersion": {
-          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
-        },
-        "merchantEmailAlert": {
-          "$ref": "#/definitions/email"
+        {
+          "type": "object",
+          "required": [
+            "links"
+          ],
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/orderHeaderLinks"
+            }
+          }
         }
-      }
+      ]
     },
-    "subscriptionPushReporting": {
-      "type": "object",
-      "description": "The subscription push reporting",
-      "required": [
-        "subscriptionId",
-        "eventId",
-        "succeed",
-        "lastOrderModificationUtcDate",
-        "orderCount",
-        "duration"
-      ],
-      "properties": {
-        "subscriptionId": {
-          "$ref": "#/definitions/subscriptionId"
+    "getOrderHistoryLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
         },
-        "eventId": {
-          "$ref": "#/definitions/messageId"
-        },
-        "succeed": {
-          "type": "boolean",
-          "description": "Indicates if the push operation has succeed"
-        },
-        "lastOrderModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "This modification date correspond to the last order pushed by your subscription consumer"
-        },
-        "retryCount": {
-          "type": "integer",
-          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
-        },
-        "maxRetryCount": {
-          "type": "integer",
-          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
-        },
-        "nextScheduledRetryUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The next scheduled  date we retry to send orders"
-        },
-        "errorMessage": {
-          "$ref": "#/definitions/errorResponseMessage"
-        },
-        "requestUri": {
-          "$ref": "#/definitions/httpUrl"
-        },
-        "responseUri": {
-          "$ref": "#/definitions/httpUrl"
-        },
-        "orderCount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The order count sent"
-        },
-        "duration": {
-          "type": "string",
-          "format": "TimeSpan",
-          "description": "The duration of the push operation"
-        },
-        "httpStatus": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The HTTP status received from the consumer"
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/history",
+            "method": "GET"
+          }
         }
-      }
+      ]
     },
-    "activateSubscriptionRequest": {
-      "x-format": "Message",
-      "type": "object",
-      "properties": {
-        "recoverBeginPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "If set, the date must be in the past the subscription will recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+    "harvestOrderLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
         },
-        "recoverEndPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "If end period set, first the date must be in the past, the subscription will recover existing orders using the begin and the end period order last modification date. \nIf end period is not set and the begin period is set, then you will recover existing orders from the past using the begin period last modification date and after than you will continue to receive new/updated orders in real-time.\nIf begin/end period are not set then you will receive new/updated orders in real-time.\nREMARK: The begin period is required if the end period is fulfilled.\nREMARK: If the end period is order last modification date is indicated then once we have push all orders to your target url the subscription will be desactivated."
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/harvest",
+            "method": "POST"
+          }
         }
-      }
+      ]
     },
-    "subscription": {
-      "type": "object",
-      "description": "The subscription definition",
-      "required": [
-        "id",
-        "targetUrl",
-        "status",
-        "name",
-        "merchantApplicationName",
-        "merchantApplicationVersion"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/subscriptionId"
+    "setMerchantOrderInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
         },
-        "status": {
-          "$ref": "#/definitions/subscriptionStatus"
-        },
-        "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
-        },
-        "name": {
-          "$ref": "#/definitions/subscriptionName"
-        },
-        "merchantApplicationName": {
-          "$ref": "#/definitions/subscriptionMerchantApplicationName"
-        },
-        "merchantApplicationVersion": {
-          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
-        },
-        "recoverBeginPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
-        },
-        "recoverEndPeriodOrderLastModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Recover existing orders using the begin and the end period order last modification date.\nOtherwise, you will receive new/updated orders in real-time.\n"
-        },
-        "lastOrderPushedModificationUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "This modification date correspond to the last order pushed by your subscription consumer"
-        },
-        "lastSuccessfulOrderPushedUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The date of the last pushed order successfully received by your subscription consumer"
-        },
-        "consumerHealthStatus": {
-          "$ref": "#/definitions/consumptionAvailabilityStatus"
-        },
-        "consumerUnvailableSinceUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "This date indicates since when the subscription consumer is unavailable"
-        },
-        "lastRetryUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The last date we retry to send orders"
-        },
-        "retryCount": {
-          "type": "integer",
-          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
-        },
-        "maxRetryCount": {
-          "type": "integer",
-          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
-        },
-        "nextScheduledRetryUtcDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The next scheduled  date we retry to send orders"
-        },
-        "merchantEmailAlert": {
-          "$ref": "#/definitions/email"
-        },
-        "lastErrorMessage": {
-          "$ref": "#/definitions/errorResponseMessage"
-        },
-        "consumerLastRequestSentUri": {
-          "$ref": "#/definitions/httpUrl"
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/setMerchantOrderInfo",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "setMerchantOrderInfoRequest"
+              }
+            }
+          }
         }
-      }
+      ]
     },
-    "subscriptionName": {
-      "type": "string",
-      "description": "The subscription name you want to use",
-      "example": "MySubscriptionName"
+    "clearMerchantOrderInfoLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/clearMerchantOrderInfo",
+            "method": "POST"
+          }
+        }
+      ]
     },
-    "subscriptionMerchantApplicationName": {
-      "type": "string",
-      "description": "The name of your application",
-      "example": "MyApp"
+    "harvestAllLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/harvest",
+            "method": "POST"
+          }
+        }
+      ]
     },
-    "subscriptionMerchantApplicationVersion": {
-      "type": "string",
-      "description": "The version of your application",
-      "default": "1.0",
-      "example": "1.0"
+    "setMerchantOrderInfoListLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/setMerchantOrderInfos",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "required": true,
+                "type": "object",
+                "schema": "setMerchantOrderInfoRequest"
+              }
+            }
+          }
+        }
+      ]
     },
-    "email": {
-      "type": "string",
-      "x-exclude": true,
-      "description": "The email",
-      "format": "email",
-      "pattern": "^(.+)@(.+)$",
-      "x-pattern": "^(.+)@(.+)$",
-      "example": "paulsimon@mysupercompany.com"
+    "clearMerchantOrderInfoListLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/clearMerchantOrderInfos",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "exportOrdersLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/exportations",
+            "method": "POST",
+            "properties": {
+              "request": {
+                "in": "body",
+                "required": true,
+                "type": "object",
+                "schema": "exportOrderListRequest"
+              }
+            }
+          }
+        }
+      ]
     },
     "errorResponseMessage": {
       "x-exclude": true,
@@ -20352,42 +20663,205 @@
         }
       }
     },
-    "subscriptionId": {
+    "userErrorMessage": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "docUrl": {
+          "$ref": "#/definitions/docUrl"
+        },
+        "code": {
+          "$ref": "#/definitions/errorCode"
+        },
+        "message": {
+          "type": "string",
+          "description": "The error message",
+          "example": "There is already an importation in progress: b24d0dd8-a561-478a-9b26-34f573f03527\n"
+        },
+        "cultureName": {
+          "$ref": "#/definitions/cultureName"
+        },
+        "arguments": {
+          "$ref": "#/definitions/userErrorMessageArguments"
+        }
+      }
+    },
+    "paginationResult": {
+      "x-exclude": true,
+      "type": "object",
+      "required": [
+        "entryCount",
+        "pageCount",
+        "totalEntryCount",
+        "links"
+      ],
+      "properties": {
+        "entryCount": {
+          "type": "integer",
+          "description": "The entry count currently returned",
+          "example": "25",
+          "minimum": 0
+        },
+        "pageCount": {
+          "type": "integer",
+          "description": "The page count",
+          "example": "38",
+          "minimum": 0
+        },
+        "totalEntryCount": {
+          "type": "integer",
+          "description": "The total entry count",
+          "example": "943",
+          "minimum": 0
+        },
+        "links": {
+          "$ref": "#/definitions/paginationResultLinks"
+        }
+      },
+      "example": {
+        "entryCount": "25",
+        "pageCount": "38",
+        "totalEntryCount": "943",
+        "links": {
+          "first": {
+            "href": "/merchant/orders/v1/list/full",
+            "method": "POST",
+            "parameters": [
+              {
+                "name": "request",
+                "in": "body",
+                "type": "object",
+                "schema": "orderListRequest",
+                "value": {
+                  "beginPeriodUtcDate": "2014-08-25T07:32:31.584Z",
+                  "endPeriodUtcDate": "2014-09-24T07:32:31.584Z",
+                  "pageSize": "25",
+                  "pageNumber": "1"
+                }
+              }
+            ]
+          },
+          "last": {
+            "href": "/merchant/orders/v1/list/full",
+            "method": "POST",
+            "parameters": [
+              {
+                "name": "request",
+                "in": "body",
+                "type": "object",
+                "schema": "orderListRequest",
+                "value": {
+                  "beginPeriodUtcDate": "2014-08-25T07:32:31.584Z",
+                  "endPeriodUtcDate": "2014-09-24T07:32:31.584Z",
+                  "pageSize": "25",
+                  "pageNumber": "38"
+                }
+              }
+            ]
+          },
+          "next": {
+            "href": "/merchant/orders/v1/list/full",
+            "method": "POST",
+            "parameters": [
+              {
+                "name": "request",
+                "in": "body",
+                "type": "object",
+                "schema": "orderListRequest",
+                "value": {
+                  "beginPeriodUtcDate": "2014-08-25T07:32:31.584Z",
+                  "endPeriodUtcDate": "2014-09-24T07:32:31.584Z",
+                  "pageSize": "25",
+                  "pageNumber": "2"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "docUrl": {
+      "x-exclude": true,
+      "type": "string",
+      "format": "uri",
+      "description": "The documentation related to this operation.",
+      "example": "https://api-docs.imn.io/#operation/EnableChannelCatalog"
+    },
+    "cultureName": {
+      "x-exclude": true,
+      "type": "string",
+      "description": "If the error is translated, the culture name will be indicated",
+      "example": "en",
+      "x-lov": "Go2CultureName"
+    },
+    "userErrorMessageArguments": {
+      "x-exclude": true,
+      "type": "object",
+      "description": "a dictionary string/object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "beezUPMarketplaceAccountId": {
+      "description": "The marketplace account identifier in BeezUP. This account identifier is based on your api settings.",
+      "type": "integer",
+      "format": "int32",
+      "example": "1234"
+    },
+    "beezUPMarketplaceBusinessCode": {
+      "description": "In an marketplace technical code like CDiscount you can have several marketplaces like GO SPORT, etc. We identify them by a business code.",
+      "type": "string",
+      "example": "GOSPORT",
+      "x-lov": "MarketplaceBusinessCode"
+    },
+    "beezUPMarketplaceTechnicalCode": {
+      "description": "The technical code of the marketplace.",
+      "type": "string",
+      "example": "Amazon",
+      "x-lov": "MarketplaceTechnicalCode"
+    },
+    "storeId": {
       "type": "string",
       "format": "guid",
-      "description": "The identifier of the subscription to the orders for a merchant"
+      "description": "The store identifier",
+      "x-exclude": true
     },
-    "messageId": {
-      "x-exclude": true,
-      "description": "The message identifier. It's a guid.",
-      "format": "MessageId",
+    "orderListDateSearchType": {
+      "description": "Indicates on which date you want to make the filter",
       "type": "string",
-      "example": "b0d3faea-f881-439f-ba92-02b1168511ea"
-    },
-    "httpUrl": {
-      "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
-      "type": "string",
-      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
-      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
-      "example": "http://www.mydomain.com"
-    },
-    "subscriptionStatus": {
-      "type": "string",
-      "description": "The status of your subscription",
       "enum": [
-        "active",
-        "inactive"
+        "Modification",
+        "Purchase",
+        "MarketPlaceModification"
       ],
-      "example": "active"
+      "default": "Modification"
     },
-    "consumptionAvailabilityStatus": {
-      "type": "string",
-      "description": "The subscription consumption status",
-      "enum": [
-        "Available",
-        "Degraded",
-        "Unavailable"
-      ]
+    "paginationResultLinks": {
+      "x-exclude": true,
+      "description": "The navigation links 'first', 'last', 'next', 'previous'",
+      "type": "object",
+      "required": [
+        "first",
+        "last"
+      ],
+      "properties": {
+        "first": {
+          "$ref": "#/definitions/link3"
+        },
+        "last": {
+          "$ref": "#/definitions/link3"
+        },
+        "previous": {
+          "$ref": "#/definitions/link3"
+        },
+        "next": {
+          "$ref": "#/definitions/link3"
+        }
+      }
     },
     "link3": {
       "x-exclude": true,
@@ -20438,39 +20912,21 @@
         }
       }
     },
-    "userErrorMessage": {
+    "httpUrl": {
       "x-exclude": true,
-      "type": "object",
-      "required": [
-        "code",
-        "message"
-      ],
-      "properties": {
-        "docUrl": {
-          "$ref": "#/definitions/docUrl"
-        },
-        "code": {
-          "$ref": "#/definitions/errorCode"
-        },
-        "message": {
-          "type": "string",
-          "description": "The error message",
-          "example": "There is already an importation in progress: b24d0dd8-a561-478a-9b26-34f573f03527\n"
-        },
-        "cultureName": {
-          "$ref": "#/definitions/cultureName"
-        },
-        "arguments": {
-          "$ref": "#/definitions/userErrorMessageArguments"
-        }
-      }
-    },
-    "docUrl": {
-      "x-exclude": true,
+      "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
       "type": "string",
-      "format": "uri",
-      "description": "The documentation related to this operation.",
-      "example": "https://api-docs.imn.io/#operation/EnableChannelCatalog"
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "example": "http://www.mydomain.com"
+    },
+    "currencyCode": {
+      "x-exclude": true,
+      "description": "The currency code <a href=\"https://en.wikipedia.org/wiki/ISO_4217\">(ISO 4217)</a>\n",
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "x-pattern": "^[A-Z]{3}$",
+      "example": "EUR"
     },
     "href": {
       "x-exclude": true,
@@ -20533,21 +20989,6 @@
             "$ref": "#/definitions/infoSummary"
           }
         }
-      }
-    },
-    "cultureName": {
-      "x-exclude": true,
-      "type": "string",
-      "description": "If the error is translated, the culture name will be indicated",
-      "example": "en",
-      "x-lov": "Go2CultureName"
-    },
-    "userErrorMessageArguments": {
-      "x-exclude": true,
-      "type": "object",
-      "description": "a dictionary string/object",
-      "additionalProperties": {
-        "type": "object"
       }
     },
     "linkParameter3": {
@@ -20840,6 +21281,292 @@
       ],
       "default": "string",
       "example": "string"
+    },
+    "subscriptionLinks": {
+      "type": "object",
+      "properties": {
+        "reporting": {
+          "$ref": "#/definitions/link3"
+        },
+        "activate": {
+          "$ref": "#/definitions/link3"
+        },
+        "deacivate": {
+          "$ref": "#/definitions/link3"
+        },
+        "retry": {
+          "$ref": "#/definitions/link3"
+        },
+        "delete": {
+          "$ref": "#/definitions/link3"
+        }
+      }
+    },
+    "subscriptionIndex": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/subscription"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/subscriptionLinks"
+            }
+          }
+        }
+      ]
+    },
+    "createSubscriptionRequest": {
+      "x-format": "Message",
+      "type": "object",
+      "required": [
+        "targetUrl",
+        "name",
+        "merchantApplicationName",
+        "merchantApplicationVersion"
+      ],
+      "properties": {
+        "targetUrl": {
+          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+        },
+        "name": {
+          "$ref": "#/definitions/subscriptionName"
+        },
+        "merchantApplicationName": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationName"
+        },
+        "merchantApplicationVersion": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
+        },
+        "merchantEmailAlert": {
+          "$ref": "#/definitions/email"
+        }
+      }
+    },
+    "subscriptionPushReporting": {
+      "type": "object",
+      "description": "The subscription push reporting",
+      "required": [
+        "subscriptionId",
+        "eventId",
+        "succeed",
+        "lastOrderModificationUtcDate",
+        "orderCount",
+        "duration"
+      ],
+      "properties": {
+        "subscriptionId": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "eventId": {
+          "$ref": "#/definitions/messageId"
+        },
+        "succeed": {
+          "type": "boolean",
+          "description": "Indicates if the push operation has succeed"
+        },
+        "lastOrderModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This modification date correspond to the last order pushed by your subscription consumer"
+        },
+        "retryCount": {
+          "type": "integer",
+          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "maxRetryCount": {
+          "type": "integer",
+          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "nextScheduledRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The next scheduled  date we retry to send orders"
+        },
+        "errorMessage": {
+          "$ref": "#/definitions/errorResponseMessage"
+        },
+        "requestUri": {
+          "$ref": "#/definitions/httpUrl"
+        },
+        "responseUri": {
+          "$ref": "#/definitions/httpUrl"
+        },
+        "orderCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The order count sent"
+        },
+        "duration": {
+          "type": "string",
+          "format": "TimeSpan",
+          "description": "The duration of the push operation"
+        },
+        "httpStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The HTTP status received from the consumer"
+        }
+      }
+    },
+    "activateSubscriptionRequest": {
+      "x-format": "Message",
+      "type": "object",
+      "properties": {
+        "recoverBeginPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "If set, the date must be in the past the subscription will recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+        },
+        "recoverEndPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "If end period set, first the date must be in the past, the subscription will recover existing orders using the begin and the end period order last modification date. \nIf end period is not set and the begin period is set, then you will recover existing orders from the past using the begin period last modification date and after than you will continue to receive new/updated orders in real-time.\nIf begin/end period are not set then you will receive new/updated orders in real-time.\nREMARK: The begin period is required if the end period is fulfilled.\nREMARK: If the end period is order last modification date is indicated then once we have push all orders to your target url the subscription will be desactivated."
+        }
+      }
+    },
+    "subscription": {
+      "type": "object",
+      "description": "The subscription definition",
+      "required": [
+        "id",
+        "targetUrl",
+        "status",
+        "name",
+        "merchantApplicationName",
+        "merchantApplicationVersion"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/subscriptionId"
+        },
+        "status": {
+          "$ref": "#/definitions/subscriptionStatus"
+        },
+        "targetUrl": {
+          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+        },
+        "name": {
+          "$ref": "#/definitions/subscriptionName"
+        },
+        "merchantApplicationName": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationName"
+        },
+        "merchantApplicationVersion": {
+          "$ref": "#/definitions/subscriptionMerchantApplicationVersion"
+        },
+        "recoverBeginPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin period order last modification date. If not set then you will receive new/updated orders in real-time."
+        },
+        "recoverEndPeriodOrderLastModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Recover existing orders using the begin and the end period order last modification date.\nOtherwise, you will receive new/updated orders in real-time.\n"
+        },
+        "lastOrderPushedModificationUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This modification date correspond to the last order pushed by your subscription consumer"
+        },
+        "lastSuccessfulOrderPushedUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date of the last pushed order successfully received by your subscription consumer"
+        },
+        "consumerHealthStatus": {
+          "$ref": "#/definitions/consumptionAvailabilityStatus"
+        },
+        "consumerUnvailableSinceUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "This date indicates since when the subscription consumer is unavailable"
+        },
+        "lastRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last date we retry to send orders"
+        },
+        "retryCount": {
+          "type": "integer",
+          "description": "The retry count. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "maxRetryCount": {
+          "type": "integer",
+          "description": "The maximum BeezUP will retry to push orders. When we the retry count will reach maximum retry count, the subscription will be deactivated."
+        },
+        "nextScheduledRetryUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The next scheduled  date we retry to send orders"
+        },
+        "merchantEmailAlert": {
+          "$ref": "#/definitions/email"
+        },
+        "lastErrorMessage": {
+          "$ref": "#/definitions/errorResponseMessage"
+        },
+        "consumerLastRequestSentUri": {
+          "$ref": "#/definitions/httpUrl"
+        }
+      }
+    },
+    "subscriptionName": {
+      "type": "string",
+      "description": "The subscription name you want to use",
+      "example": "MySubscriptionName"
+    },
+    "subscriptionMerchantApplicationName": {
+      "type": "string",
+      "description": "The name of your application",
+      "example": "MyApp"
+    },
+    "subscriptionMerchantApplicationVersion": {
+      "type": "string",
+      "description": "The version of your application",
+      "default": "1.0",
+      "example": "1.0"
+    },
+    "email": {
+      "type": "string",
+      "x-exclude": true,
+      "description": "The email",
+      "format": "email",
+      "pattern": "^(.+)@(.+)$",
+      "x-pattern": "^(.+)@(.+)$",
+      "example": "paulsimon@mysupercompany.com"
+    },
+    "subscriptionId": {
+      "type": "string",
+      "format": "guid",
+      "description": "The identifier of the subscription to the orders for a merchant"
+    },
+    "messageId": {
+      "x-exclude": true,
+      "description": "The message identifier. It's a guid.",
+      "format": "MessageId",
+      "type": "string",
+      "example": "b0d3faea-f881-439f-ba92-02b1168511ea"
+    },
+    "subscriptionStatus": {
+      "type": "string",
+      "description": "The status of your subscription",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "example": "active"
+    },
+    "consumptionAvailabilityStatus": {
+      "type": "string",
+      "description": "The subscription consumption status",
+      "enum": [
+        "Available",
+        "Degraded",
+        "Unavailable"
+      ]
     },
     "getOrderInvoiceGeneralSettingsResponse": {
       "allOf": [
@@ -23881,6 +24608,17 @@
       "required": true,
       "description": "ETag value to identify the last known version of requested resource.\\\nTo ensure that you are making a change on the lastest version of the resource.\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
     },
+    "storeIdsParameter": {
+      "name": "storeIds",
+      "description": "StoredIds to filter",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "collectionFormat": "csv",
+      "items": {
+        "type": "string"
+      }
+    },
     "subscriptionIdPathParameter": {
       "name": "id",
       "in": "path",
@@ -24241,6 +24979,14 @@
         "Marketplaces - Orders - Order",
         "Marketplaces - Orders - Batches",
         "Marketplaces - Orders - Exports"
+      ]
+    },
+    {
+      "name": "Marketplaces - Orders V3",
+      "tags": [
+        "Marketplaces - Orders V3 - Global",
+        "Marketplaces - Orders V3 - List",
+        "Marketplaces - Orders V3 - Order"
       ]
     },
     {
