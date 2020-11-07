@@ -6204,7 +6204,7 @@
         "tags": [
           "Marketplaces - Orders V3 - Global"
         ],
-        "operationId": "GetMarketplaceAccountsSynchronization",
+        "operationId": "GetMarketplaceAccountsSynchronizationV3",
         "description": "Get current synchronization status between your marketplaces and BeezUP accounts",
         "parameters": [
           {
@@ -6241,7 +6241,7 @@
         "tags": [
           "Marketplaces - Orders V3 - List"
         ],
-        "operationId": "GetOrderListFull",
+        "operationId": "GetOrderListFullV3",
         "summary": "Get a paginated list of all Orders with all Order and Order Item(s) properties",
         "description": "The purpose of this operation is to reduce the amount of request to the API.\\\n\\\nPrevious implmentation of this feature only returned a partial (light) version of the Orders. The purpose of this API is to reduce the number of incoming requests by returning the complete (full) Order and Order Item(s) properties.\n",
         "parameters": [
@@ -6286,7 +6286,7 @@
         "tags": [
           "Marketplaces - Orders V3 - List"
         ],
-        "operationId": "GetOrderListLight",
+        "operationId": "GetOrderListLightV3",
         "summary": "Get a paginated list of all Orders without details",
         "parameters": [
           {
@@ -6323,7 +6323,7 @@
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
-        "operationId": "HeadOrder",
+        "operationId": "HeadOrderV3",
         "summary": "Get the meta information about the order (ETag, Last-Modified)",
         "description": "The purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful\n",
         "parameters": [
@@ -6374,7 +6374,7 @@
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
-        "operationId": "GetOrder",
+        "operationId": "GetOrderV3",
         "summary": "Get full Order and Order Item(s) properties",
         "parameters": [
           {
@@ -6429,7 +6429,7 @@
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
-        "operationId": "ChangeOrder",
+        "operationId": "ChangeOrderV3",
         "summary": "Change your marketplace Order Information (accept, ship, etc.)",
         "parameters": [
           {
@@ -6464,7 +6464,13 @@
         ],
         "responses": {
           "202": {
-            "description": "Order change request accepted"
+            "description": "Order change request accepted",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "Indicate the address you should follow to know the status of your order change operation"
+              }
+            }
           },
           "400": {
             "description": "Invalid order change request, could not be send to the marketplace. Please check the body of this request.",
@@ -6484,6 +6490,10 @@
               "Retry-After": {
                 "type": "integer",
                 "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              },
+              "Location": {
+                "type": "string",
+                "description": "Indicate the address you should follow to know the status of the existing order change operation"
               }
             },
             "schema": {
@@ -6492,6 +6502,233 @@
           },
           "412": {
             "$ref": "#/responses/412_PreConditionFailed"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
+      "get": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "GetOrderHistoryV3",
+        "summary": "Get an Order's harvest and change history",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched Order history",
+            "schema": {
+              "$ref": "#/definitions/orderHistory"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history/{orderChangeExecutionUUID}": {
+      "get": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "GetOrderChangeReporting",
+        "summary": "Get the order change reporting",
+        "description": "This operation will help you to know the status of your order change operation",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "name": "orderChangeExecutionUUID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The order change execution id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched Order change reporting",
+            "schema": {
+              "$ref": "#/definitions/changeOrderReporting"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "SetMerchantOrderInfoV3",
+        "summary": "Set an Order's merchant information",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setMerchantOrderInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Set Order merchant order info accepted"
+          },
+          "400": {
+            "description": "Could not update Order merchant information. Please see body for more information.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "ClearMerchantOrderInfoV3",
+        "summary": "Clear an Order's merchant information",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Clear Order merchant order info accepted"
+          },
+          "400": {
+            "description": "Could not update Order merchant information. Please see body for more information.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/batches/changeOrders/{changeOrderType}": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Batches"
+        ],
+        "operationId": "ChangeOrderListV3",
+        "summary": "Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
+        "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/changeOrderTypeParameter"
+          },
+          {
+            "$ref": "#/parameters/userNameInQueryParameter"
+          },
+          {
+            "$ref": "#/parameters/testModeInQueryParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changeOrderListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
+            "schema": {
+              "$ref": "#/definitions/batchOrderOperationResponse"
+            }
+          },
+          "400": {
+            "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -20784,6 +21021,11 @@
         }
       }
     },
+    "orderChangeType": {
+      "type": "string",
+      "description": "The business operation type that can be done on an orde",
+      "x-lov": "OrderChangeBusinessOperationType"
+    },
     "docUrl": {
       "x-exclude": true,
       "type": "string",
@@ -20863,6 +21105,14 @@
         }
       }
     },
+    "httpUrl": {
+      "x-exclude": true,
+      "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "example": "http://www.mydomain.com"
+    },
     "link3": {
       "x-exclude": true,
       "type": "object",
@@ -20911,14 +21161,6 @@
           "$ref": "#/definitions/infoSummaries"
         }
       }
-    },
-    "httpUrl": {
-      "x-exclude": true,
-      "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
-      "type": "string",
-      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
-      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
-      "example": "http://www.mydomain.com"
     },
     "currencyCode": {
       "x-exclude": true,
