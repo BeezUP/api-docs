@@ -6789,7 +6789,7 @@
           "400": {
             "description": "Invalid subscription request.",
             "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "#/definitions/errorResponseMessage"
             }
           },
           "404": {
@@ -6929,7 +6929,7 @@
           "400": {
             "description": "Activation subscription request is invalid",
             "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+              "$ref": "#/definitions/errorResponseMessage"
             }
           },
           "404": {
@@ -21159,6 +21159,10 @@
         },
         "info": {
           "$ref": "#/definitions/infoSummaries"
+        },
+        "rel": {
+          "type": "string",
+          "description": "Indicate the relation name related to the link"
         }
       }
     },
@@ -21570,7 +21574,7 @@
       ],
       "properties": {
         "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+          "$ref": "#/definitions/httpUrl"
         },
         "name": {
           "$ref": "#/definitions/subscriptionName"
