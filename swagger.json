@@ -6236,6 +6236,59 @@
         }
       }
     },
+    "/orders/v3/harvest": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Global"
+        ],
+        "operationId": "HarvestAllV3",
+        "summary": "Send harvest request to all your marketplaces",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": false,
+            "description": "The StoreId to filter by",
+            "type": "string",
+            "format": "StoreId",
+            "x-example": "04730364-9826-4ff3-92e4-51fccd02bf10"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successfully sent harvest request to all marketplaces",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              }
+            }
+          },
+          "404": {
+            "description": "Requested Store could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "Failed to send harvest request because allowed rate limits have been exceeded",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/orders/v3/list/full": {
       "post": {
         "tags": [
@@ -6551,12 +6604,65 @@
         "deprecated": false
       }
     },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "HarvestOrderV3",
+        "summary": "Send harvest request for a single Order",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successfully sent Order harvest request",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              }
+            }
+          },
+          "404": {
+            "description": "Requested Order could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "Failed to send harvest request because allowed rate limits have been exceeded",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history/{orderChangeExecutionUUID}": {
       "get": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
-        "operationId": "GetOrderChangeReporting",
+        "operationId": "GetOrderChangeReportingV3",
         "summary": "Get the order change reporting",
         "description": "This operation will help you to know the status of your order change operation",
         "parameters": [
@@ -6690,6 +6796,81 @@
         "deprecated": false
       }
     },
+    "/orders/v3/batches/setMerchantOrderInfos": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Batches"
+        ],
+        "operationId": "SetMerchantOrderInfoListV3",
+        "summary": "Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
+        "description": "The purpose of this operation is to reduce the amount of request to the API.",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setMerchantOrderInfoListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
+            "schema": {
+              "$ref": "#/definitions/batchOrderOperationResponse"
+            }
+          },
+          "400": {
+            "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/orders/v3/batches/clearMerchantOrderInfos": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Batches"
+        ],
+        "operationId": "ClearMerchantOrderInfoListV3",
+        "summary": "Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
+        "description": "The purpose of this operation is to reduce the amount of request to the API.",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/clearMerchantOrderInfoListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
+            "schema": {
+              "$ref": "#/definitions/batchOrderOperationResponse"
+            }
+          },
+          "400": {
+            "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/orders/v3/batches/changeOrders/{changeOrderType}": {
       "post": {
         "tags": [
@@ -6726,6 +6907,111 @@
           },
           "400": {
             "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/v3/exportations": {
+      "get": {
+        "tags": [
+          "Marketplaces - Orders V3 - Exports"
+        ],
+        "operationId": "GetOrderExportationsV3",
+        "summary": "Get a paginated list of Order report exportations",
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "description": "The page number you want to get",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "PageNumber",
+            "minimum": 1,
+            "x-minimum": "1",
+            "x-example": "1"
+          },
+          {
+            "name": "pageSize",
+            "description": "The entry count you want to get",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "PageSize",
+            "minimum": 25,
+            "x-minimum": "25",
+            "maximum": 100,
+            "x-maximum": "100",
+            "x-example": "25"
+          },
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "format": "StoreId",
+            "description": "The store identifier to regroup the order exportations"
+          },
+          {
+            "$ref": "#/parameters/ifNoneMatchParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched the list of Order report exportations",
+            "schema": {
+              "$ref": "#/definitions/orderExportationsWithLinks"
+            }
+          },
+          "304": {
+            "$ref": "#/responses/304_NotModified"
+          },
+          "400": {
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Exports"
+        ],
+        "operationId": "ExportOrdersV3",
+        "summary": "Request a new Order report exportation to be generated",
+        "description": "A new file will be generated containing a summary of all the Orders matching the requested filter settings.",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/exportOrderListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successfully requested new Order report exportation generation"
+          },
+          "400": {
+            "description": "Could not process request for given parameters values. Please check error message for more details.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "No orders have been found for this request.",
             "schema": {
               "$ref": "#/definitions/errorResponseMessage"
             }
@@ -20670,7 +20956,7 @@
     "oMReadyMarketplaceBusinessCodeResponse": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/BeezUP.Common.ListOfValueItem"
+        "$ref": "#/definitions/listOfValueItem"
       }
     },
     "orderListFullWithLinks": {
@@ -20692,6 +20978,28 @@
         },
         "paginationResult": {
           "$ref": "#/definitions/paginationResult"
+        }
+      }
+    },
+    "orderExportationsWithLinks": {
+      "type": "object",
+      "required": [
+        "paginationResult",
+        "exportations",
+        "links"
+      ],
+      "properties": {
+        "paginationResult": {
+          "$ref": "#/definitions/paginationResult"
+        },
+        "exportations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderExportationReporting"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/orderExportationsLinks"
         }
       }
     },
@@ -20757,7 +21065,20 @@
         }
       ]
     },
-    "getOrderHistoryLink": {
+    "links.GetOrderV3Link": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetOrderHistoryV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
@@ -20770,20 +21091,20 @@
         }
       ]
     },
-    "harvestOrderLink": {
+    "links.HarvestOrderV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/harvest",
+            "href": "/v2/user/marketplaces/orders/Amazon/1001#/00000000000000000000000000000000000000000000000/harvest",
             "method": "POST"
           }
         }
       ]
     },
-    "setMerchantOrderInfoLink": {
+    "links.SetMerchantOrderInfoV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
@@ -20803,7 +21124,7 @@
         }
       ]
     },
-    "clearMerchantOrderInfoLink": {
+    "links.ClearMerchantOrderInfoV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
@@ -20816,7 +21137,28 @@
         }
       ]
     },
-    "harvestAllLink": {
+    "links.GetOrderListLightV3Link": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/list/light",
+            "method": "POST",
+            "properties": {
+              "request": {
+                "in": "body",
+                "required": false,
+                "type": "object",
+                "schema": "orderListRequest"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.HarvestAllV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
@@ -20829,7 +21171,7 @@
         }
       ]
     },
-    "setMerchantOrderInfoListLink": {
+    "links.SetMerchantOrderInfoListV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
@@ -20850,7 +21192,7 @@
         }
       ]
     },
-    "clearMerchantOrderInfoListLink": {
+    "links.ClearMerchantOrderInfoListV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
@@ -20863,7 +21205,7 @@
         }
       ]
     },
-    "exportOrdersLink": {
+    "links.ExportOrdersV3Link": {
       "allOf": [
         {
           "$ref": "#/definitions/link3"
@@ -20884,6 +21226,127 @@
         }
       ]
     },
+    "links.GetMarketplaceAccountsSynchronizationV3Link": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/status",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.ChangeOrderV3Link": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "rel": {
+              "type": "string",
+              "description": "Indicate the relation name related to the link",
+              "example": "self"
+            }
+          }
+        },
+        {
+          "example": {
+            "rel": "ShipOrder",
+            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
+            "method": "POST",
+            "templated": "true",
+            "parameters": {
+              "If-Match": {
+                "in": "header",
+                "value": "\"ca071a4580129f932a03971968ffef69\"",
+                "required": true,
+                "type": "string"
+              },
+              "testMode": {
+                "in": "query",
+                "type": "boolean",
+                "required": false,
+                "value": "false"
+              },
+              "userName": {
+                "in": "query",
+                "type": "string",
+                "required": true
+              },
+              "request": {
+                "in": "body",
+                "type": "object",
+                "schema": "changeOrderRequest",
+                "properties": {
+                  "order_Shipping_FulfillmentDate": {
+                    "required": true,
+                    "type": "date-time"
+                  },
+                  "order_Shipping_ShipperTrackingNumber": {
+                    "required": true,
+                    "type": "string"
+                  },
+                  "order_Shipping_CarrierName": {
+                    "required": true,
+                    "type": "string",
+                    "lovRequired": "true",
+                    "lovLink": {
+                      "href": "/v2/user/PriceMinisterCarrierName"
+                    }
+                  },
+                  "order_Shipping_Method": {
+                    "required": true,
+                    "type": "string",
+                    "lovRequired": "false",
+                    "lovLink": {
+                      "href": "/v2/user/ShippingMethod_PriceMinister"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.GetOrderListFullV3Link": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/list/full",
+            "method": "POST",
+            "properties": {
+              "Accept-Encoding": {
+                "in": "header",
+                "required": true,
+                "type": "string"
+              },
+              "request": {
+                "in": "body",
+                "required": false,
+                "type": "object",
+                "schema": "orderListRequest"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "links.GetOrderExportationsV3Link": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/link3"
+        }
+      ]
+    },
     "errorResponseMessage": {
       "x-exclude": true,
       "type": "object",
@@ -20897,6 +21360,34 @@
           "items": {
             "$ref": "#/definitions/userErrorMessage"
           }
+        }
+      }
+    },
+    "listOfValueItem": {
+      "description": "This object is used by LOV apis",
+      "type": "object",
+      "required": [
+        "codeIdentifier",
+        "intIdentifier"
+      ],
+      "properties": {
+        "position": {
+          "format": "int32",
+          "type": "integer",
+          "example": "1"
+        },
+        "codeIdentifier": {
+          "type": "string",
+          "example": "FRA"
+        },
+        "translationText": {
+          "type": "string",
+          "example": "France"
+        },
+        "intIdentifier": {
+          "format": "int32",
+          "type": "integer",
+          "example": "1"
         }
       }
     },
@@ -21026,6 +21517,12 @@
       "description": "The business operation type that can be done on an orde",
       "x-lov": "OrderChangeBusinessOperationType"
     },
+    "storeId": {
+      "type": "string",
+      "format": "guid",
+      "description": "The store identifier",
+      "x-exclude": true
+    },
     "docUrl": {
       "x-exclude": true,
       "type": "string",
@@ -21066,12 +21563,6 @@
       "example": "Amazon",
       "x-lov": "MarketplaceTechnicalCode"
     },
-    "storeId": {
-      "type": "string",
-      "format": "guid",
-      "description": "The store identifier",
-      "x-exclude": true
-    },
     "orderListDateSearchType": {
       "description": "Indicates on which date you want to make the filter",
       "type": "string",
@@ -21105,13 +21596,43 @@
         }
       }
     },
-    "httpUrl": {
+    "userId": {
       "x-exclude": true,
-      "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
+      "format": "guid",
+      "description": "The user identifier",
       "type": "string",
-      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
-      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
-      "example": "http://www.mydomain.com"
+      "example": "8a7fbdec-9e71-472e-9974-27d5c1d57cf8"
+    },
+    "exchangedMessagesItem": {
+      "type": "object",
+      "required": [
+        "operationName",
+        "requestUri",
+        "responseUri",
+        "requestUtcDate",
+        "responseUtcDate"
+      ],
+      "properties": {
+        "operationName": {
+          "type": "string"
+        },
+        "requestUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "responseUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "requestUtcDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "responseUtcDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
     },
     "link3": {
       "x-exclude": true,
@@ -21165,6 +21686,14 @@
           "description": "Indicate the relation name related to the link"
         }
       }
+    },
+    "httpUrl": {
+      "x-exclude": true,
+      "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "example": "http://www.mydomain.com"
     },
     "currencyCode": {
       "x-exclude": true,
