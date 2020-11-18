@@ -193,6 +193,14 @@
       "x-displayName": "Order"
     },
     {
+      "name": "Marketplaces - Orders V3 - Batches",
+      "x-displayName": "Batches"
+    },
+    {
+      "name": "Marketplaces - Orders V3 - Exports",
+      "x-displayName": "Exports"
+    },
+    {
       "name": "Marketplaces - Orders - Subscriptions - Subscriptions",
       "x-displayName": "Subscriptions"
     },
@@ -21606,11 +21614,7 @@
     "exchangedMessagesItem": {
       "type": "object",
       "required": [
-        "operationName",
-        "requestUri",
-        "responseUri",
-        "requestUtcDate",
-        "responseUtcDate"
+        "operationName"
       ],
       "properties": {
         "operationName": {
@@ -22215,7 +22219,7 @@
           "$ref": "#/definitions/subscriptionStatus"
         },
         "targetUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
+          "$ref": "#/definitions/httpUrl"
         },
         "name": {
           "$ref": "#/definitions/subscriptionName"
@@ -25530,7 +25534,7 @@
         "OrderSubscriptionAlreadyExistsException"
       ],
       "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+        "$ref": "#/definitions/errorResponseMessage"
       }
     },
     "orderSubscriptionTargetNotAvailableResponse": {
@@ -25539,7 +25543,7 @@
         "OrderSubscriptionTargetNotAvailableException"
       ],
       "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+        "$ref": "#/definitions/errorResponseMessage"
       }
     },
     "retryRejectedResponse": {
@@ -25548,7 +25552,7 @@
         "OrderSubscriptionRetryRejectedException"
       ],
       "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+        "$ref": "#/definitions/errorResponseMessage"
       }
     },
     "saveOrderInvoiceGeneralSettingsBadRequestResponse": {
@@ -25756,7 +25760,9 @@
       "tags": [
         "Marketplaces - Orders V3 - Global",
         "Marketplaces - Orders V3 - List",
-        "Marketplaces - Orders V3 - Order"
+        "Marketplaces - Orders V3 - Order",
+        "Marketplaces - Orders V3 - Batches",
+        "Marketplaces - Orders V3 - Exports"
       ]
     },
     {
