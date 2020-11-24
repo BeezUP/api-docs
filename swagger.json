@@ -7063,6 +7063,7 @@
         ],
         "operationId": "CreateSubscription",
         "summary": "Creates a subscription to the orders",
+        "description": "Please take a look at this sequence diagram to understand the subscription process to follow [here](https://www.websequencediagrams.com/files/render?link=SBYbeIc8NGshk6ooCbmjoBLIMl4fIGO1xjJbPBQAglBo0n6BwEReh7NXQiPSjOTX)",
         "parameters": [
           {
             "$ref": "#/parameters/subscriptionIdPathParameter"
@@ -22065,7 +22066,7 @@
         "activate": {
           "$ref": "#/definitions/link3"
         },
-        "deacivate": {
+        "deactivate": {
           "$ref": "#/definitions/link3"
         },
         "retry": {
