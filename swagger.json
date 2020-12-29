@@ -7181,6 +7181,19 @@
         "responses": {
           "200": {
             "description": "Subscription push reporting info",
+            "headers": {
+              "Link": {
+                "description": "Based on the RFC 5988 - Web Linking, the page navigation will be indicated here with the rel=next, rel=previous, rel=first, rel=last, the pageNumber and the pageSize will be indicated in the link param",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "X-Total-Count": {
+                "type": "integer",
+                "description": "The total item count related to this query"
+              }
+            },
             "schema": {
               "type": "array",
               "items": {
