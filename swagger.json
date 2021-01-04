@@ -17,7 +17,6 @@
     }
   },
   "host": "api.beezup.com",
-  "basePath": "/v2/public/security",
   "schemes": [
     "https"
   ],
