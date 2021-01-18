@@ -6246,6 +6246,7 @@
     },
     "/orders/v3/harvest": {
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Global"
         ],
@@ -6487,6 +6488,7 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
+        "x-releaseStatus": "PREVIEW",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
@@ -6573,6 +6575,7 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
@@ -6614,6 +6617,7 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
@@ -6667,6 +6671,7 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history/{orderChangeExecutionUUID}": {
       "get": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
@@ -6716,6 +6721,7 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
@@ -6765,6 +6771,7 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
@@ -6806,6 +6813,7 @@
     },
     "/orders/v3/batches/setMerchantOrderInfos": {
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Batches"
         ],
@@ -6843,6 +6851,7 @@
     },
     "/orders/v3/batches/clearMerchantOrderInfos": {
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Batches"
         ],
@@ -6881,6 +6890,7 @@
     },
     "/orders/v3/batches/changeOrders/{changeOrderType}": {
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Batches"
         ],
@@ -6928,6 +6938,7 @@
     },
     "/orders/v3/exportations": {
       "get": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Exports"
         ],
@@ -6992,6 +7003,7 @@
         }
       },
       "post": {
+        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Exports"
         ],
@@ -22489,13 +22501,13 @@
     "headerContentHtml": {
       "description": "Header Content HTML",
       "type": "string",
-      "x-minLength": "0",
+      "x-minValueLength": "0",
       "maxLength": 1000
     },
     "footerContentHtml": {
       "description": "Footer Content HTML",
       "type": "string",
-      "x-minLength": "0",
+      "x-minValueLength": "0",
       "maxLength": 1000
     },
     "invoiceContentHtml": {
