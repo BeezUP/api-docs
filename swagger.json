@@ -17,7 +17,6 @@
     }
   },
   "host": "api.beezup.com",
-  "basePath": "",
   "schemes": [
     "https"
   ],
@@ -6251,7 +6250,7 @@
           "Marketplaces - Orders V3 - Global"
         ],
         "operationId": "HarvestAllV3",
-        "summary": "Send harvest request to all your marketplaces",
+        "summary": "[PLANNED] Send harvest request to all your marketplaces",
         "parameters": [
           {
             "name": "storeId",
@@ -6493,7 +6492,7 @@
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "ChangeOrderV3",
-        "summary": "Change your marketplace Order Information (accept, ship, etc.)",
+        "summary": "[PREVIEW] Change your marketplace Order Information (accept, ship, etc.)",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6580,7 +6579,7 @@
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "GetOrderHistoryV3",
-        "summary": "Get an Order's harvest and change history",
+        "summary": "[PLANNED] Get an Order's harvest and change history",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6622,7 +6621,7 @@
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "HarvestOrderV3",
-        "summary": "Send harvest request for a single Order",
+        "summary": "[PLANNED] Send harvest request for a single Order",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6676,7 +6675,7 @@
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "GetOrderChangeReportingV3",
-        "summary": "Get the order change reporting",
+        "summary": "[PLANNED] Get the order change reporting",
         "description": "This operation will help you to know the status of your order change operation",
         "parameters": [
           {
@@ -6726,7 +6725,7 @@
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "SetMerchantOrderInfoV3",
-        "summary": "Set an Order's merchant information",
+        "summary": "[PLANNED] Set an Order's merchant information",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6776,7 +6775,7 @@
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "ClearMerchantOrderInfoV3",
-        "summary": "Clear an Order's merchant information",
+        "summary": "[PLANNED] Clear an Order's merchant information",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6818,7 +6817,7 @@
           "Marketplaces - Orders V3 - Batches"
         ],
         "operationId": "SetMerchantOrderInfoListV3",
-        "summary": "Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
+        "summary": "[PLANNED] Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -6856,7 +6855,7 @@
           "Marketplaces - Orders V3 - Batches"
         ],
         "operationId": "ClearMerchantOrderInfoListV3",
-        "summary": "Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
+        "summary": "[PLANNED] Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -6895,7 +6894,7 @@
           "Marketplaces - Orders V3 - Batches"
         ],
         "operationId": "ChangeOrderListV3",
-        "summary": "Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
+        "summary": "[PLANNED] Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
         "parameters": [
           {
@@ -6943,7 +6942,7 @@
           "Marketplaces - Orders V3 - Exports"
         ],
         "operationId": "GetOrderExportationsV3",
-        "summary": "Get a paginated list of Order report exportations",
+        "summary": "[PLANNED] Get a paginated list of Order report exportations",
         "parameters": [
           {
             "name": "pageNumber",
@@ -7008,7 +7007,7 @@
           "Marketplaces - Orders V3 - Exports"
         ],
         "operationId": "ExportOrdersV3",
-        "summary": "Request a new Order report exportation to be generated",
+        "summary": "[PLANNED] Request a new Order report exportation to be generated",
         "description": "A new file will be generated containing a summary of all the Orders matching the requested filter settings.",
         "parameters": [
           {
