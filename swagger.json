@@ -6633,6 +6633,16 @@
             "$ref": "#/parameters/beezUPOrderIdParameter"
           }
         ],
+        "x-validation": [
+          {
+            "validatorName": "userAuthorized",
+            "statusCode": "401"
+          },
+          {
+            "validatorName": "orderExists",
+            "statusCode": "404"
+          }
+        ],
         "responses": {
           "202": {
             "description": "Successfully sent Order harvest request",
