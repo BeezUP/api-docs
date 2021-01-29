@@ -6574,12 +6574,11 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "GetOrderHistoryV3",
-        "summary": "[PLANNED] Get an Order's harvest and change history",
+        "summary": "Get an Order's harvest and change history",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6730,12 +6729,11 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "SetMerchantOrderInfoV3",
-        "summary": "[PLANNED] Set an Order's merchant information",
+        "summary": "Set an Order's merchant information",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
