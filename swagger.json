@@ -5331,12 +5331,15 @@
     },
     "/v2/user/marketplaces/orders/status": {
       "get": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Global"
         ],
         "x-tagGroups": "Martketplaces Orders",
         "operationId": "GetMarketplaceAccountsSynchronization",
-        "summary": "Get current synchronization status between your marketplaces and BeezUP accounts",
+        "summary": "[DEPRECATED] Get current synchronization status between your marketplaces and BeezUP accounts",
+        "description": "Use /orders/v3",
         "parameters": [
           {
             "name": "storeId",
@@ -5370,17 +5373,18 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/harvest": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Global"
         ],
         "operationId": "HarvestAll",
-        "summary": "Send harvest request to all your marketplaces",
+        "summary": "[DEPRECATED] Send harvest request to all your marketplaces",
         "parameters": [
           {
             "name": "storeId",
@@ -5423,8 +5427,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/automaticTransitions": {
@@ -5505,12 +5508,14 @@
     },
     "/v2/user/marketplaces/orders/list/full": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - List"
         ],
         "operationId": "GetOrderListFull",
-        "summary": "Get a paginated list of all Orders with all Order and Order Item(s) properties",
-        "description": "The purpose of this operation is to reduce the amount of request to the API.\\\n\\\nPrevious implmentation of this feature only returned a partial (light) version of the Orders. The purpose of this API is to reduce the number of incoming requests by returning the complete (full) Order and Order Item(s) properties.\n",
+        "summary": "[DEPRECATED] Get a paginated list of all Orders with all Order and Order Item(s) properties",
+        "description": "DEPRECATED - Use /orders/v3 instead\nThe purpose of this operation is to reduce the amount of request to the API.\\\n\\\nPrevious implmentation of this feature only returned a partial (light) version of the Orders. The purpose of this API is to reduce the number of incoming requests by returning the complete (full) Order and Order Item(s) properties.\n",
         "parameters": [
           {
             "name": "Accept-Encoding",
@@ -5548,17 +5553,19 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/list/light": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - List"
         ],
         "operationId": "GetOrderListLight",
-        "summary": "Get a paginated list of all Orders without details",
+        "summary": "[DEPRECATED] Get a paginated list of all Orders without details",
+        "description": "Use /orders/v3 instead",
         "parameters": [
           {
             "name": "request",
@@ -5585,8 +5592,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/exportations": {
@@ -5802,12 +5808,14 @@
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
       "head": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Order"
         ],
         "operationId": "HeadOrder",
-        "summary": "Get the meta information about the order (ETag, Last-Modified)",
-        "description": "The purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful\n",
+        "summary": "[DEPRECATED] DEPRECATED - Get the meta information about the order (ETag, Last-Modified)",
+        "description": "DEPRECATED - Use /orders/v3 instead\nThe purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful\n",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -5849,15 +5857,17 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       },
       "get": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Order"
         ],
         "operationId": "GetOrder",
-        "summary": "Get full Order and Order Item(s) properties",
+        "summary": "[DEPRECATED] DEPRECATED - Get full Order and Order Item(s) properties",
+        "description": "DEPRECATED - Use /orders/v3 instead",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -5902,17 +5912,18 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Order"
         ],
         "operationId": "GetOrderHistory",
-        "summary": "Get an Order's harvest and change history",
+        "summary": "[DEPRECATED] Get an Order's harvest and change history",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -5946,17 +5957,18 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Order"
         ],
         "operationId": "HarvestOrder",
-        "summary": "Send harvest request for a single Order",
+        "summary": "[DEPRECATED] Send harvest request for a single Order",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -5999,17 +6011,18 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Order"
         ],
         "operationId": "SetMerchantOrderInfo",
-        "summary": "Set an Order's merchant information",
+        "summary": "[DEPRECATED] Set an Order's merchant information",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6048,8 +6061,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
@@ -6095,11 +6107,13 @@
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Order"
         ],
         "operationId": "ChangeOrder",
-        "summary": "Change your marketplace Order Information (accept, ship, etc.)",
+        "summary": "[DEPRECATED] Change your marketplace Order Information (accept, ship, etc.)",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6165,8 +6179,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/orders/v3/lov/orderManagementReadyMarketplaceBusinessCode": {
