@@ -6690,6 +6690,67 @@
         "deprecated": false
       }
     },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/harvest": {
+      "post": {
+        "x-releaseStatus": "PLANNED",
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "HarvestAccount",
+        "summary": "[PLANNED] Send harvest request for an Account",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          }
+        ],
+        "x-validation": [
+          {
+            "validatorName": "userAuthorized",
+            "statusCode": "401"
+          },
+          {
+            "validatorName": "accountExists",
+            "statusCode": "404"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successfully sent Order harvest request",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              }
+            }
+          },
+          "404": {
+            "description": "Requested Account could not be found",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "409": {
+            "description": "Failed to send harvest request because allowed rate limits have been exceeded",
+            "headers": {
+              "Retry-After": {
+                "type": "integer",
+                "description": "Indicates the duration in seconds to wait to be able to make this request again"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history/{orderChangeExecutionUUID}": {
       "get": {
         "x-releaseStatus": "PLANNED",
