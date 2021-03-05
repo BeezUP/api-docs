@@ -6929,7 +6929,7 @@
             "$ref": "#/parameters/beezUPOrderIdParameter"
           },
           {
-            "$ref": "#/parameters/testModeInQueryParameter"
+            "$ref": "#/parameters/testModeInQueryNonRequiredParameter"
           }
         ],
         "responses": {
