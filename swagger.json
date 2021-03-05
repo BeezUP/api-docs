@@ -6876,7 +6876,7 @@
             "$ref": "#/parameters/beezUPOrderIdParameter"
           },
           {
-            "$ref": "#/parameters/testModeInQueryParameter"
+            "$ref": "#/parameters/testModeInQueryNonRequiredParameter"
           },
           {
             "name": "request",
@@ -25647,6 +25647,14 @@
       "items": {
         "type": "string"
       }
+    },
+    "testModeInQueryNonRequiredParameter": {
+      "name": "testMode",
+      "description": "If true, the operation will be not be sent to marketplace. But the validation will be taken in account.",
+      "in": "query",
+      "required": false,
+      "type": "boolean",
+      "x-example": "false"
     },
     "subscriptionIdPathParameter": {
       "name": "id",
