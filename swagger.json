@@ -7038,6 +7038,54 @@
         "deprecated": false
       }
     },
+    "/orders/v3/batches/changeOrders/{changeOrderType}": {
+      "post": {
+        "x-releaseStatus": "PLANNED",
+        "tags": [
+          "Marketplaces - Orders V3 - Batches"
+        ],
+        "operationId": "ChangeOrderListV2",
+        "summary": "[PLANNED] Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
+        "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/userNameInQueryParameter"
+          },
+          {
+            "$ref": "#/parameters/testModeInQueryParameter"
+          },
+          {
+            "$ref": "#/parameters/changeOrderTypeParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changeOrderListRequestV2"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
+            "schema": {
+              "$ref": "#/definitions/batchOrderOperationResponse"
+            }
+          },
+          "400": {
+            "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/orders/v3/batches/changeOrders": {
       "post": {
         "x-releaseStatus": "PLANNED",
@@ -21624,6 +21672,24 @@
         }
       }
     },
+    "changeOrderListRequestV2": {
+      "type": "object",
+      "description": "Contains all change order operations you want to make.  (max 100 items per call)",
+      "required": [
+        "changeOrders"
+      ],
+      "properties": {
+        "changeOrders": {
+          "type": "array",
+          "description": "The change order operations",
+          "minLength": 1,
+          "maxLength": 100,
+          "items": {
+            "$ref": "#/definitions/changeOrderListRequestItemV2"
+          }
+        }
+      }
+    },
     "listOfValueItem": {
       "description": "This object is used by LOV apis",
       "type": "object",
@@ -21777,6 +21843,21 @@
       "type": "string",
       "description": "The business operation type that can be done on an order",
       "x-lov": "OrderChangeBusinessOperationType"
+    },
+    "changeOrderListRequestItemV2": {
+      "type": "object",
+      "description": "Contains the order identifier and the change order request",
+      "required": [
+        "order"
+      ],
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/orderIdentifierWithETag"
+        },
+        "changeOrderRequest": {
+          "$ref": "#/definitions/changeOrderRequest"
+        }
+      }
     },
     "storeId": {
       "type": "string",
