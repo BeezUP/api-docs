@@ -196,10 +196,6 @@
       "x-displayName": "Batches"
     },
     {
-      "name": "Marketplaces - Orders V3 - Exports",
-      "x-displayName": "Exports"
-    },
-    {
       "name": "Marketplaces - Orders - Subscriptions - Subscriptions",
       "x-displayName": "Subscriptions"
     },
@@ -5358,12 +5354,14 @@
     },
     "/v2/user/marketplaces/orders/": {
       "get": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Global"
         ],
         "x-tagGroups": "Martketplaces Orders",
         "operationId": "GetOrderIndex",
-        "summary": "Get all actions you can do on the order API",
+        "summary": "[DEPRECATED] Get all actions you can do on the order API",
         "parameters": [
           {
             "$ref": "#/parameters/ifNoneMatchParameter"
@@ -5382,8 +5380,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/status": {
@@ -5742,11 +5739,13 @@
     },
     "/v2/user/marketplaces/orders/batches/setMerchantOrderInfos": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Batches"
         ],
         "operationId": "SetMerchantOrderInfoList",
-        "summary": "Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
+        "summary": "[DEPRECATED] Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -5774,17 +5773,18 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Batches"
         ],
         "operationId": "ClearMerchantOrderInfoList",
-        "summary": "Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
+        "summary": "[DEPRECATED] Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -5812,17 +5812,18 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Batches"
         ],
         "operationId": "ChangeOrderList",
-        "summary": "Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
+        "summary": "[DEPRECATED] Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
         "parameters": [
           {
@@ -5859,8 +5860,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
@@ -6123,11 +6123,13 @@
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
+        "deprecated": true,
+        "x-releaseStatus": "DEPRECATED",
         "tags": [
           "Marketplaces - Orders - Order"
         ],
         "operationId": "ClearMerchantOrderInfo",
-        "summary": "Clear an Order's merchant information",
+        "summary": "[DEPRECATED] Clear an Order's merchant information",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6158,8 +6160,7 @@
           "default": {
             "$ref": "#/responses/GeneralError"
           }
-        },
-        "deprecated": false
+        }
       }
     },
     "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
@@ -6315,12 +6316,11 @@
     },
     "/orders/v3/harvest": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Global"
         ],
         "operationId": "HarvestAllV3",
-        "summary": "[PLANNED] Send harvest request to all your marketplaces",
+        "summary": "Send harvest request to all your marketplaces",
         "parameters": [
           {
             "name": "storeId",
@@ -6557,12 +6557,11 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
-        "x-releaseStatus": "PREVIEW",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "ChangeOrderV3",
-        "summary": "[PREVIEW] Change your marketplace Order Information (accept, ship, etc.)",
+        "summary": "Change your marketplace Order Information (accept, ship, etc.)",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6685,12 +6684,11 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "HarvestOrderV3",
-        "summary": "[PLANNED] Send harvest request for a single Order",
+        "summary": "Send harvest request for a single Order",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6749,18 +6747,27 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/harvest": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "HarvestAccount",
-        "summary": "[PLANNED] Send harvest request for an Account",
+        "summary": "Send harvest request for an Account",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
           },
           {
             "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "name": "marketplaceOrderId",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "beezUPOrderId",
+            "in": "query",
+            "type": "string"
           }
         ],
         "x-validation": [
@@ -6770,6 +6777,10 @@
           },
           {
             "validatorName": "accountExists",
+            "statusCode": "404"
+          },
+          {
+            "validatorName": "beezUPOrderIdExists",
             "statusCode": "404"
           }
         ],
@@ -6784,7 +6795,7 @@
             }
           },
           "404": {
-            "description": "Requested Account could not be found",
+            "description": "Requested Account Or beezUPOrderId could not be found",
             "schema": {
               "$ref": "#/definitions/errorResponseMessage"
             }
@@ -6810,12 +6821,11 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history/{orderChangeExecutionUUID}": {
       "get": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "GetOrderChangeReportingV3",
-        "summary": "[PLANNED] Get the order change reporting",
+        "summary": "Get the order change reporting",
         "description": "This operation will help you to know the status of your order change operation",
         "parameters": [
           {
@@ -6912,12 +6922,11 @@
     },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Order"
         ],
         "operationId": "ClearMerchantOrderInfoV3",
-        "summary": "[PLANNED] Clear an Order's merchant information",
+        "summary": "Clear an Order's merchant information",
         "parameters": [
           {
             "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
@@ -6957,12 +6966,11 @@
     },
     "/orders/v3/batches/setMerchantOrderInfos": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Batches"
         ],
         "operationId": "SetMerchantOrderInfoListV3",
-        "summary": "[PLANNED] Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
+        "summary": "Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -6998,12 +7006,11 @@
     },
     "/orders/v3/batches/clearMerchantOrderInfos": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Batches"
         ],
         "operationId": "ClearMerchantOrderInfoListV3",
-        "summary": "[PLANNED] Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
+        "summary": "Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API.",
         "parameters": [
           {
@@ -7040,12 +7047,11 @@
     },
     "/orders/v3/batches/changeOrders/{changeOrderType}": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Batches"
         ],
         "operationId": "ChangeOrderListV2",
-        "summary": "[PLANNED] Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
+        "summary": "Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
         "parameters": [
           {
@@ -7088,12 +7094,11 @@
     },
     "/orders/v3/batches/changeOrders": {
       "post": {
-        "x-releaseStatus": "PLANNED",
         "tags": [
           "Marketplaces - Orders V3 - Batches"
         ],
         "operationId": "ChangeOrderListV3",
-        "summary": "[PLANNED] Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
+        "summary": "Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
         "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
         "parameters": [
           {
@@ -7120,113 +7125,6 @@
           },
           "400": {
             "description": "Requested too many batch operations",
-            "schema": {
-              "$ref": "#/definitions/errorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        },
-        "deprecated": false
-      }
-    },
-    "/orders/v3/exportations": {
-      "get": {
-        "x-releaseStatus": "PLANNED",
-        "tags": [
-          "Marketplaces - Orders V3 - Exports"
-        ],
-        "operationId": "GetOrderExportationsV3",
-        "summary": "[PLANNED] Get a paginated list of Order report exportations",
-        "parameters": [
-          {
-            "name": "pageNumber",
-            "description": "The page number you want to get",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "format": "PageNumber",
-            "minimum": 1,
-            "x-minimum": "1",
-            "x-example": "1"
-          },
-          {
-            "name": "pageSize",
-            "description": "The entry count you want to get",
-            "in": "query",
-            "required": true,
-            "type": "integer",
-            "format": "PageSize",
-            "minimum": 25,
-            "x-minimum": "25",
-            "maximum": 100,
-            "x-maximum": "100",
-            "x-example": "25"
-          },
-          {
-            "name": "storeId",
-            "in": "query",
-            "required": true,
-            "type": "string",
-            "format": "StoreId",
-            "description": "The store identifier to regroup the order exportations"
-          },
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched the list of Order report exportations",
-            "schema": {
-              "$ref": "#/definitions/orderExportationsWithLinks"
-            }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "400": {
-            "description": "Could not process request for given parameters values. Please check error message for more details.",
-            "schema": {
-              "$ref": "#/definitions/errorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      },
-      "post": {
-        "x-releaseStatus": "PLANNED",
-        "tags": [
-          "Marketplaces - Orders V3 - Exports"
-        ],
-        "operationId": "ExportOrdersV3",
-        "summary": "[PLANNED] Request a new Order report exportation to be generated",
-        "description": "A new file will be generated containing a summary of all the Orders matching the requested filter settings.",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/exportOrderListRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Successfully requested new Order report exportation generation"
-          },
-          "400": {
-            "description": "Could not process request for given parameters values. Please check error message for more details.",
-            "schema": {
-              "$ref": "#/definitions/errorResponseMessage"
-            }
-          },
-          "404": {
-            "description": "No orders have been found for this request.",
             "schema": {
               "$ref": "#/definitions/errorResponseMessage"
             }
@@ -21290,28 +21188,6 @@
         }
       }
     },
-    "orderExportationsWithLinks": {
-      "type": "object",
-      "required": [
-        "paginationResult",
-        "exportations",
-        "links"
-      ],
-      "properties": {
-        "paginationResult": {
-          "$ref": "#/definitions/paginationResult"
-        },
-        "exportations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/orderExportationReporting"
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/orderExportationsLinks"
-        }
-      }
-    },
     "orderListLightWithLinks": {
       "type": "object",
       "required": [
@@ -21381,7 +21257,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000",
+            "href": "/orders/v3/Amazon/1001/00000000000000000000000000000000000000000000000",
             "method": "GET"
           }
         }
@@ -21394,7 +21270,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/history",
+            "href": "/orders/v3/Amazon/1001/00000000000000000000000000000000000000000000000/history",
             "method": "GET"
           }
         }
@@ -21407,7 +21283,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001#/00000000000000000000000000000000000000000000000/harvest",
+            "href": "/orders/v3/Amazon/1001#/00000000000000000000000000000000000000000000000/harvest",
             "method": "POST"
           }
         }
@@ -21420,7 +21296,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/setMerchantOrderInfo",
+            "href": "/orders/v3/Amazon/1001/00000000000000000000000000000000000000000000000/setMerchantOrderInfo",
             "method": "POST",
             "parameters": {
               "request": {
@@ -21440,7 +21316,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/clearMerchantOrderInfo",
+            "href": "/orders/v3/Amazon/1001/00000000000000000000000000000000000000000000000/clearMerchantOrderInfo",
             "method": "POST"
           }
         }
@@ -21453,7 +21329,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/list/light",
+            "href": "/orders/v3/list/light",
             "method": "POST",
             "properties": {
               "request": {
@@ -21474,7 +21350,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/harvest",
+            "href": "/orders/v3/harvest",
             "method": "POST"
           }
         }
@@ -21487,7 +21363,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/setMerchantOrderInfos",
+            "href": "/orders/v3/setMerchantOrderInfos",
             "method": "POST",
             "parameters": {
               "request": {
@@ -21508,29 +21384,8 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/clearMerchantOrderInfos",
+            "href": "/orders/v3/clearMerchantOrderInfos",
             "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.ExportOrdersV3Link": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/exportations",
-            "method": "POST",
-            "properties": {
-              "request": {
-                "in": "body",
-                "required": true,
-                "type": "object",
-                "schema": "exportOrderListRequest"
-              }
-            }
           }
         }
       ]
@@ -21542,7 +21397,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/status",
+            "href": "/orders/v3/status",
             "method": "GET"
           }
         }
@@ -21566,7 +21421,7 @@
         {
           "example": {
             "rel": "ShipOrder",
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
+            "href": "/orders/v3/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
             "method": "POST",
             "templated": "true",
             "parameters": {
@@ -21630,7 +21485,7 @@
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/list/full",
+            "href": "/orders/v3/list/full",
             "method": "POST",
             "properties": {
               "Accept-Encoding": {
@@ -21646,13 +21501,6 @@
               }
             }
           }
-        }
-      ]
-    },
-    "links.GetOrderExportationsV3Link": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/link3"
         }
       ]
     },
@@ -21859,12 +21707,6 @@
         }
       }
     },
-    "storeId": {
-      "type": "string",
-      "format": "guid",
-      "description": "The store identifier",
-      "x-exclude": true
-    },
     "docUrl": {
       "x-exclude": true,
       "type": "string",
@@ -21904,6 +21746,12 @@
       "type": "string",
       "example": "Amazon",
       "x-lov": "MarketplaceTechnicalCode"
+    },
+    "storeId": {
+      "type": "string",
+      "format": "guid",
+      "description": "The store identifier",
+      "x-exclude": true
     },
     "orderListDateSearchType": {
       "description": "Indicates on which date you want to make the filter",
@@ -26097,8 +25945,7 @@
         "Marketplaces - Orders V3 - Global",
         "Marketplaces - Orders V3 - List",
         "Marketplaces - Orders V3 - Order",
-        "Marketplaces - Orders V3 - Batches",
-        "Marketplaces - Orders V3 - Exports"
+        "Marketplaces - Orders V3 - Batches"
       ]
     },
     {
