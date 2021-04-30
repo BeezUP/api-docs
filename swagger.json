@@ -230,6 +230,10 @@
     {
       "name": "Analytics - Rules",
       "x-displayName": "Rules"
+    },
+    {
+      "name": "Channel Catalogs - Legacy Tracking - Global",
+      "x-displayName": "Global"
     }
   ],
   "paths": {
@@ -1941,30 +1945,6 @@
         }
       }
     },
-    "/v2/user/catalogs/importations": {
-      "get": {
-        "tags": [
-          "Catalogs - Global"
-        ],
-        "summary": "Get the latest catalog importation reporting for all stores",
-        "operationId": "Importation_GetReportingForAllStores",
-        "responses": {
-          "200": {
-            "description": "The last importation reportings for all store",
-            "schema": {
-              "type": "object",
-              "description": "The key of the dictionary will be the store id",
-              "additionalProperties": {
-                "$ref": "#/definitions/importationsResponse"
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
     "/v2/user/catalogs/{storeId}": {
       "get": {
         "tags": [
@@ -2573,6 +2553,32 @@
           },
           "404": {
             "description": "StoreId or Product not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/importations": {
+      "get": {
+        "tags": [
+          "Catalogs - Importation Process"
+        ],
+        "summary": "Get the latest catalog importation reporting for all your stores",
+        "operationId": "Importation_GetReportingsAllStores",
+        "responses": {
+          "200": {
+            "description": "The last importation reportings",
+            "schema": {
+              "$ref": "#/definitions/importationsPerStoreResponse"
+            }
+          },
+          "404": {
+            "description": "UserId not found",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -4158,6 +4164,29 @@
         }
       }
     },
+    "/v2/user/channelCatalogs/filterOperators": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Global"
+        ],
+        "summary": "Get channel catalog filter operators",
+        "operationId": "GetChannelCatalogFilterOperators",
+        "responses": {
+          "200": {
+            "description": "Channel catalog  filter operator list",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/filterOperator"
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/user/channelCatalogs/{channelCatalogId}/enable": {
       "post": {
         "tags": [
@@ -4449,29 +4478,6 @@
             "description": "ChannelCatalogId not found or not authorized",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/channelCatalogs/exclusionFilterOperators": {
-      "get": {
-        "tags": [
-          "Channel Catalogs - Exclusion Filters"
-        ],
-        "summary": "Get channel catalog exclusion filter operators",
-        "operationId": "GetChannelCatalogExclusionFilterOperators",
-        "responses": {
-          "200": {
-            "description": "Channel catalog exclusion filter operator list",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/exclusionFilterOperator"
-              }
             }
           },
           "default": {
@@ -7943,13 +7949,50 @@
         }
       }
     },
+    "/v2/user/analytics/reports/byday": {
+      "post": {
+        "tags": [
+          "Analytics - Statistics"
+        ],
+        "summary": "Get the report by day for a StoreId",
+        "description": "Get the report by day for a StoreId",
+        "operationId": "GetStoreReportByDayPerStore",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/reportByDayRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your reporting by day",
+            "schema": {
+              "$ref": "#/definitions/reportByDayPerStoreResponse"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/responses/StoreNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/user/analytics/{storeId}/reports/byday": {
       "post": {
         "tags": [
           "Analytics - Statistics"
         ],
-        "summary": "Get the report by day",
-        "description": "Get the report by day",
+        "summary": "Get the report by day for a StoreId",
+        "description": "Get the report by day for a StoreId",
         "operationId": "GetStoreReportByDay",
         "parameters": [
           {
@@ -9026,6 +9069,96 @@
           },
           "404": {
             "$ref": "#/responses/StoreNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/legacyTracking/channelCatalogs/": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Legacy Tracking - Global"
+        ],
+        "summary": "List all your current channel catalogs configured to use legacy tracking format",
+        "operationId": "GetLegacyTrackingChannelCatalogs",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "query",
+            "required": false,
+            "description": "The store identifier",
+            "type": "string",
+            "format": "guid",
+            "x-example": "04730364-9826-4ff3-92e4-51fccd02bf10"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/legacyTrackingChannelCatalogList"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/legacyTracking/channelCatalogs/{channelCatalogId}": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Legacy Tracking - Global"
+        ],
+        "summary": "Get the channel catalog configured to use legacy tracking format information",
+        "operationId": "GetLegacyTrackingChannelCatalog",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel catalog configured to use legacy tracking format",
+            "schema": {
+              "$ref": "#/definitions/legacyTrackingChannelCatalog"
+            }
+          },
+          "404": {
+            "description": "Channel catalog not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/legacyTracking/channelCatalogs/{channelCatalogId}/migrate": {
+      "post": {
+        "tags": [
+          "Channel Catalogs - Legacy Tracking - Global"
+        ],
+        "summary": "Migrate a channel catalog to current tracking format",
+        "operationId": "MigrateLegacyTrackingChannelCatalog",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Channel catalog migrated"
+          },
+          "404": {
+            "description": "Channel catalog not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -13642,6 +13775,12 @@
         }
       }
     },
+    "importationsPerStoreResponse": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/importationsResponse"
+      }
+    },
     "importationsResponse": {
       "type": "object",
       "properties": {
@@ -14850,6 +14989,12 @@
         "configuration": {
           "$ref": "#/definitions/columnConfiguration"
         },
+        "catalogColumnDependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/catalogColumnName"
+          }
+        },
         "links": {
           "$ref": "#/definitions/customColumnLinks"
         }
@@ -15076,12 +15221,12 @@
       }
     },
     "getImportationProductsReportRequest": {
+      "type": "object",
       "description": "Get Importation Products Report Request",
       "required": [
         "pageNumber",
         "pageSize"
       ],
-      "type": "object",
       "properties": {
         "pageNumber": {
           "$ref": "#/definitions/BeezUP.Common.PageNumber"
@@ -15124,7 +15269,7 @@
         "errorCode": {
           "$ref": "#/definitions/errorCode"
         },
-        "userColumName": {
+        "userColumnName": {
           "$ref": "#/definitions/userColumName"
         }
       }
@@ -15192,6 +15337,9 @@
         "userColumName": {
           "$ref": "#/definitions/userColumName"
         },
+        "beezUPColumnName": {
+          "$ref": "#/definitions/BeezUP.Common.BeezUPColumnName"
+        },
         "errorMessage": {
           "type": "string"
         }
@@ -15250,13 +15398,14 @@
       "description": "Get Importation Report Response",
       "type": "object",
       "required": [
+        "executionId",
         "importationInfo",
-        "columns",
-        "categories",
-        "products",
         "errors"
       ],
       "properties": {
+        "executionId": {
+          "$ref": "#/definitions/executionId"
+        },
         "importationInfo": {
           "$ref": "#/definitions/getImportationReportResponseImportationInfo"
         },
@@ -15325,6 +15474,9 @@
         },
         "userColumName": {
           "$ref": "#/definitions/userColumName"
+        },
+        "beezUPColumnName": {
+          "$ref": "#/definitions/BeezUP.Common.BeezUPColumnName"
         },
         "productCount": {
           "type": "integer"
@@ -15866,14 +16018,14 @@
         }
       ]
     },
-    "links.GetChannelCatalogExclusionFilterOperatorsLink": {
+    "links.GetChannelCatalogFilterOperatorsLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
           "example": {
-            "href": "/v2/user/channelCatalogs/exclusionFilterOperators",
+            "href": "/v2/user/channelCatalogs/filterOperators",
             "method": "GET"
           }
         }
@@ -16406,8 +16558,8 @@
         "add": {
           "$ref": "#/definitions/links.AddChannelCatalogLink"
         },
-        "exclusionFilterOperators": {
-          "$ref": "#/definitions/links.GetChannelCatalogExclusionFilterOperatorsLink"
+        "filterOperators": {
+          "$ref": "#/definitions/links.GetChannelCatalogFilterOperatorsLink"
         }
       }
     },
@@ -16808,10 +16960,10 @@
           "description": "Indicates the uncategorized product count",
           "example": "101"
         },
-        "categorizedWithoutCostProductCount": {
+        "withoutCategoryCostProductCount": {
           "type": "integer",
           "format": "int32",
-          "description": "Indicates the categorized product count without cost defined on the category",
+          "description": "Indicates the count of products without cost defined",
           "example": "42"
         }
       }
@@ -16871,16 +17023,9 @@
             "generalSettings",
             "channelCostSettings",
             "channelCategorySettings",
-            "isMarketplace",
-            "productCount"
+            "isMarketplace"
           ],
           "properties": {
-            "productCount": {
-              "type": "integer",
-              "format": "int32",
-              "description": "The product count exported considering category mapping. Not all filters have been applied.",
-              "example": "101"
-            },
             "enabled": {
               "type": "boolean",
               "description": "Indicates if the channel catalog is enable",
@@ -17182,11 +17327,12 @@
           "$ref": "#/definitions/BeezUP.Common.ChannelColumnId"
         },
         "operatorName": {
-          "$ref": "#/definitions/exclusionFilterOperatorName"
+          "$ref": "#/definitions/filterOperatorName"
         },
         "value": {
           "description": "The value indicate by the user when the filter operation requires it.",
           "type": "string",
+          "maxLength": 4000,
           "example": "sony"
         },
         "enabled": {
@@ -17196,13 +17342,13 @@
         }
       }
     },
-    "exclusionFilterOperatorName": {
+    "filterOperatorName": {
       "description": "The exclusion filter operator name",
       "type": "string",
-      "x-lov": "ChannelCatalogExclusionFilterOperator",
+      "x-lov": "ProductColumnFilterOperatorName",
       "example": "Contains"
     },
-    "exclusionFilterOperatorDataType": {
+    "filterOperatorDataType": {
       "description": "Data type of the operator",
       "enum": [
         "string",
@@ -17212,15 +17358,15 @@
       "default": "string",
       "example": "string"
     },
-    "exclusionFilterOperator": {
-      "description": "The exclusion filter operator",
+    "filterOperator": {
+      "description": "The filter operator",
       "type": "object",
       "properties": {
         "name": {
-          "$ref": "#/definitions/exclusionFilterOperatorName"
+          "$ref": "#/definitions/filterOperatorName"
         },
         "expectedChannelColumnDataType": {
-          "$ref": "#/definitions/exclusionFilterOperatorDataType"
+          "$ref": "#/definitions/filterOperatorDataType"
         },
         "valueRequired": {
           "type": "boolean",
@@ -17228,7 +17374,7 @@
           "example": "true"
         },
         "expectedValueDataType": {
-          "$ref": "#/definitions/exclusionFilterOperatorDataType"
+          "$ref": "#/definitions/filterOperatorDataType"
         }
       }
     },
@@ -17300,13 +17446,68 @@
           "example": "true"
         },
         "productFilters": {
-          "$ref": "#/definitions/BeezUP.Common.ProductFilters"
+          "$ref": "#/definitions/channelCatalogProductFilters"
         },
         "catalogCategoryFilter": {
           "$ref": "#/definitions/BeezUP.Common.CatalogCategoryFilter"
         },
         "channelCategoryFilter": {
           "$ref": "#/definitions/BeezUP.Common.ChannelCategoryFilter"
+        }
+      }
+    },
+    "channelCatalogProductFilters": {
+      "type": "object",
+      "properties": {
+        "catalogSkus": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The catalog product SKU filter (multiple values)"
+        },
+        "catalogEans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The catalog product EAN filter (multiple values)"
+        },
+        "catalogMpns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The catalog product MPN filter (multiple values)"
+        },
+        "channelSkus": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The channel product SKU filter (multiple values)"
+        },
+        "channelEans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The channel product EAN filter (multiple values)"
+        },
+        "channelMpns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The channel product MPN filter (multiple values)"
+        },
+        "title": {
+          "type": "string",
+          "description": "The product title filter",
+          "example": "Refrigérateur"
+        },
+        "additionalProductFilters": {
+          "$ref": "#/definitions/BeezUP.Common.AdditionalProductFilters"
         }
       }
     },
@@ -17326,29 +17527,29 @@
           "description": "Product count WITHOUT category mapped on existing products.",
           "example": "250"
         },
-        "excludedProductCountIncludingUncategorized": {
+        "disabledProductCountIncludingUncategorized": {
           "type": "integer",
           "format": "int32",
-          "description": "Excluded product count INCLUDING uncategorized products on existing products.",
+          "description": "Disabled product count INCLUDING uncategorized products on existing products.",
           "example": "169"
         },
-        "excludedProductCountExcludingUncategorized": {
+        "disabledProductCountExcludingUncategorized": {
           "type": "integer",
           "format": "int32",
-          "description": "Excluded product count EXCLUDING uncategorized products on existing products.",
+          "description": "Disabled product count EXCLUDING uncategorized products on existing products.",
           "example": "150"
         },
-        "disabledProductCountExcludingUncategorizedAndExcluded": {
+        "excludedProductCountIncludingUncategorizedAndDisabled": {
           "type": "integer",
           "format": "int32",
-          "description": "Disabled product count EXCLUDING uncategorized products AND excluded products on existing products.",
-          "example": "50"
-        },
-        "disabledProductCountIncludingUncategorizedAndExcluded": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Disabled product count INCLUDING uncategorized products AND excluded products on existing products.",
+          "description": "Excluded product count INCLUDING uncategorized products AND disabled products on existing products.",
           "example": "66"
+        },
+        "excludedProductCountExcludingUncategorizedAndDisabled": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Excluded product count EXCLUDING uncategorized products AND disabled products on existing products.",
+          "example": "50"
         }
       }
     },
@@ -17497,24 +17698,6 @@
           "additionalProperties": {
             "$ref": "#/definitions/channelCatalogProductInfo"
           }
-        }
-      }
-    },
-    "BeezUP.Common.ProductFilters": {
-      "type": "object",
-      "properties": {
-        "sku": {
-          "type": "string",
-          "description": "The product sku filter",
-          "example": "M1234"
-        },
-        "title": {
-          "type": "string",
-          "description": "The product title filter",
-          "example": "Refrigérateur"
-        },
-        "additionalProductFilters": {
-          "$ref": "#/definitions/BeezUP.Common.AdditionalProductFilters"
         }
       }
     },
@@ -24116,6 +24299,13 @@
         }
       }
     },
+    "reportByDayPerStoreResponse": {
+      "type": "object",
+      "description": "The key is the StoreId.",
+      "additionalProperties": {
+        "$ref": "#/definitions/reportByDayResponse"
+      }
+    },
     "reportByDayResponse": {
       "type": "object",
       "required": [
@@ -25368,6 +25558,97 @@
       ],
       "type": "string",
       "example": "ChannelNotPresent"
+    },
+    "links.GetLegacyTrackingChannelCatalogsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/legacyTracking/channelCatalogs",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.GetLegacyTrackingChannelCatalogLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/legacyTracking/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.MigrateLegacyTrackingChannelCatalogLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/legacyTracking/channelCatalogs/6d6b04de-406b-4539-8e7e-bf3e8da5dfb0/migrate",
+            "method": "POST"
+          }
+        }
+      ]
+    },
+    "legacyTrackingChannelCatalogListLinks": {
+      "type": "object",
+      "description": "Indicates how global actions you can do like how to create a channel catalog, exclusion filter operators, etc...\n",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetLegacyTrackingChannelCatalogsLink"
+        }
+      }
+    },
+    "legacyTrackingChannelCatalogLinks": {
+      "type": "object",
+      "description": "Indicates the actions you can do on a channel catalog",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetLegacyTrackingChannelCatalogLink"
+        },
+        "migrate": {
+          "$ref": "#/definitions/links.MigrateLegacyTrackingChannelCatalogLink"
+        }
+      }
+    },
+    "legacyTrackingChannelCatalogList": {
+      "type": "object",
+      "description": "This is the index of the channel catalog API",
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/legacyTrackingChannelCatalogListLinks"
+        },
+        "channelCatalogs": {
+          "type": "object",
+          "description": "The channel catalog list. The key is the channel catalog identifier",
+          "additionalProperties": {
+            "$ref": "#/definitions/legacyTrackingChannelCatalog"
+          }
+        }
+      }
+    },
+    "legacyTrackingChannelCatalog": {
+      "type": "object",
+      "description": "The channel catalog",
+      "required": [
+        "links"
+      ],
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/legacyTrackingChannelCatalogLinks"
+        }
+      }
     }
   },
   "parameters": {
@@ -25970,6 +26251,12 @@
         "Analytics - Optimisations",
         "Analytics - Reports",
         "Analytics - Rules"
+      ]
+    },
+    {
+      "name": "Channel Catalogs - Legacy Tracking",
+      "tags": [
+        "Channel Catalogs - Legacy Tracking - Global"
       ]
     }
   ],
