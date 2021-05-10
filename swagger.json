@@ -22191,6 +22191,13 @@
         }
       }
     },
+    "orderHarvestErrors": {
+      "type": "object",
+      "description": "The key is the OrderMetaInfo.",
+      "additionalProperties": {
+        "$ref": "#/definitions/orderHarvestErrorValue"
+      }
+    },
     "httpUrl": {
       "x-exclude": true,
       "description": "The URL <a href=\"https://en.wikipedia.org/wiki/URL\">https://en.wikipedia.org/wiki/URL</a>",
@@ -22267,6 +22274,21 @@
           "items": {
             "$ref": "#/definitions/infoSummary"
           }
+        }
+      }
+    },
+    "orderHarvestErrorValue": {
+      "type": "object",
+      "required": [
+        "technicalCodePropertyName",
+        "errorMessage"
+      ],
+      "properties": {
+        "technicalCodePropertyName": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
         }
       }
     },
