@@ -24474,7 +24474,7 @@
         "currencyCode": {
           "$ref": "#/definitions/BeezUP.Common.CurrencyCode"
         },
-        "global": {
+        "globalPerformanceIndicators": {
           "$ref": "#/definitions/reportByDayGlobal"
         },
         "days": {
