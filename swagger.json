@@ -6594,9 +6594,6 @@
             "schema": {
               "$ref": "#/definitions/changeOrderRequest"
             }
-          },
-          {
-            "$ref": "#/parameters/ifMatchParameter"
           }
         ],
         "responses": {
@@ -22018,7 +22015,7 @@
       ],
       "properties": {
         "order": {
-          "$ref": "#/definitions/orderIdentifierWithETag"
+          "$ref": "#/definitions/orderIdentifier"
         },
         "changeOrderRequest": {
           "$ref": "#/definitions/changeOrderRequest"
