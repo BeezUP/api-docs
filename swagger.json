@@ -10745,7 +10745,8 @@
         "goVersion",
         "links",
         "offerId",
-        "offerName"
+        "offerName",
+        "isTest"
       ],
       "properties": {
         "storeId": {
@@ -10805,6 +10806,10 @@
         },
         "links": {
           "$ref": "#/definitions/storeLinks"
+        },
+        "isTest": {
+          "type": "boolean",
+          "description": "Is the store a test or a production store"
         }
       }
     },
