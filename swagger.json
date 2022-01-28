@@ -19645,13 +19645,13 @@
           "$ref": "#/definitions/dateSearchType"
         },
         "beginPeriodUtcDate": {
-          "description": "The begin period you want to make the search. \\\nThe period MUST not be greater than 30 days.\nThe begin period MUST be lower than the end period.\n",
+          "description": "The begin period you want to make the search. \\\nThe period MUST not be greater than 62 days.\nThe begin period MUST be lower than the end period.\n",
           "format": "date-time",
           "type": "string",
           "example": "2017-03-01T13:10:01Z"
         },
         "endPeriodUtcDate": {
-          "description": "The end period of you search. \\\nThe period MUST not be greater than 30 days. \\\nThe end period MUST be greater than the begin period.\nThe end period MUST be lower to the current date.\n",
+          "description": "The end period of you search. \\\nThe period MUST not be greater than 62 days. \\\nThe end period MUST be greater than the begin period.\nThe end period MUST be lower to the current date.\n",
           "format": "date-time",
           "type": "string",
           "example": "2017-04-01T13:10:01Z"
