@@ -200,14 +200,6 @@
       "x-displayName": "Subscriptions"
     },
     {
-      "name": "OM Invoice - API - Settings",
-      "x-displayName": "Settings"
-    },
-    {
-      "name": "OM Invoice - API - Generation",
-      "x-displayName": "Generation"
-    },
-    {
       "name": "Analytics - Global",
       "x-displayName": "Global"
     },
@@ -234,6 +226,14 @@
     {
       "name": "Channel Catalogs - Legacy Tracking - Global",
       "x-displayName": "Global"
+    },
+    {
+      "name": "OM Invoice - API - Settings",
+      "x-displayName": "Settings"
+    },
+    {
+      "name": "OM Invoice - API - Generation",
+      "x-displayName": "Generation"
     }
   ],
   "paths": {
@@ -7414,320 +7414,6 @@
         }
       }
     },
-    "/v2/user/marketplaces/orders/invoices/settings/general": {
-      "put": {
-        "tags": [
-          "OM Invoice - API - Settings"
-        ],
-        "operationId": "SaveOrderInvoiceGeneralSettings",
-        "summary": "Save Order Invoice general settings",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/orderInvoiceGeneralSettings"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "General Settings successfully saved"
-          },
-          "400": {
-            "$ref": "#/responses/saveOrderInvoiceGeneralSettingsBadRequestResponse"
-          },
-          "403": {
-            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "OM Invoice - API - Settings"
-        ],
-        "operationId": "GetOrderInvoiceGeneralSettings",
-        "summary": "Get Order Invoice general settings",
-        "responses": {
-          "200": {
-            "description": "Settings successfully retrieved",
-            "schema": {
-              "$ref": "#/definitions/getOrderInvoiceGeneralSettingsResponse"
-            }
-          },
-          "403": {
-            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
-          },
-          "404": {
-            "$ref": "#/responses/orderInvoiceGeneralSettingsNotFoundResponse"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/invoices/settings/design": {
-      "put": {
-        "tags": [
-          "OM Invoice - API - Settings"
-        ],
-        "operationId": "SaveOrderInvoiceDesignSettings",
-        "summary": "Save Order Invoice design settings",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/orderInvoiceDesignSettings"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Design successfully saved"
-          },
-          "400": {
-            "$ref": "#/responses/saveOrderInvoiceDesignSettingsBadRequestResponse"
-          },
-          "403": {
-            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "OM Invoice - API - Settings"
-        ],
-        "operationId": "GetOrderInvoiceDesignSettings",
-        "summary": "Get Order Invoice design settings",
-        "responses": {
-          "200": {
-            "description": "Design successfully retrieved",
-            "schema": {
-              "$ref": "#/definitions/orderInvoiceDesignSettings"
-            }
-          },
-          "403": {
-            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
-          },
-          "404": {
-            "$ref": "#/responses/orderInvoiceDesignSettingsNotFoundResponse"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/invoices/settings/design/preview": {
-      "post": {
-        "tags": [
-          "OM Invoice - API - Settings"
-        ],
-        "operationId": "GetOrderInvoiceDesignSettingsPreview",
-        "summary": "View a preview an Order Invoice using custom design settings",
-        "parameters": [
-          {
-            "name": "Accept-Encoding",
-            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "collectionFormat": "csv",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/orderInvoiceDesignSettings"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Design Preview successfully retrieved",
-            "schema": {
-              "$ref": "#/definitions/getOrderInvoiceDesignPreviewResponse"
-            }
-          },
-          "403": {
-            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/invoices/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderUUID}/generate": {
-      "post": {
-        "tags": [
-          "OM Invoice - API - Generation"
-        ],
-        "operationId": "GenerateOrderInvoice",
-        "summary": "Generate an Order Invoice",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCode"
-          },
-          {
-            "$ref": "#/parameters/accountId"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderUUID"
-          },
-          {
-            "$ref": "#/parameters/userNameInQueryParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/generateOrderInvoiceRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Request Accepted.",
-            "headers": {
-              "Location": {
-                "description": "The location of the generated invoice. Might take a few seconds to be available",
-                "type": "string",
-                "x-example": "http://blob.com/generated.html"
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/responses/orderGenerateForbiddenResponse"
-          },
-          "404": {
-            "$ref": "#/responses/orderNotFoundResponse"
-          },
-          "409": {
-            "$ref": "#/responses/orderInvoiceConflictResponse"
-          },
-          "429": {
-            "$ref": "#/responses/orderGenerateTooManyRequestsResponse"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/invoices/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderUUID}/preview": {
-      "post": {
-        "tags": [
-          "OM Invoice - API - Generation"
-        ],
-        "operationId": "GetOrderInvoicePreview",
-        "summary": "View a preview an Order Invoice",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCode"
-          },
-          {
-            "$ref": "#/parameters/accountId"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderUUID"
-          },
-          {
-            "name": "Accept-Encoding",
-            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "collectionFormat": "csv",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/previewOrderInvoiceRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Order Invoice preview successfully returned.",
-            "schema": {
-              "$ref": "#/definitions/previewOrderInvoiceResponse"
-            }
-          },
-          "403": {
-            "$ref": "#/responses/orderGenerateForbiddenResponse"
-          },
-          "404": {
-            "$ref": "#/responses/orderNotFoundResponse"
-          },
-          "409": {
-            "$ref": "#/responses/orderInvoiceConflictResponse"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/invoices/getPdfInvoice": {
-      "post": {
-        "tags": [
-          "OM Invoice - API - Generation"
-        ],
-        "operationId": "GetOrderInvoicePdf",
-        "summary": "Returns the PDF version of the invoice",
-        "produces": [
-          "application/pdf"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/getOrderInvoicePdfFromHtmlInvoiceUrlRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The PDF version of the HTML invoice URL in the request",
-            "schema": {
-              "type": "file"
-            }
-          },
-          "403": {
-            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
-          },
-          "404": {
-            "$ref": "#/responses/orderInvoiceNotFound"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
     "/v2/user/analytics/": {
       "get": {
         "tags": [
@@ -9156,6 +8842,320 @@
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/settings/general": {
+      "put": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "SaveOrderInvoiceGeneralSettings",
+        "summary": "Save Order Invoice general settings",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceGeneralSettings"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "General Settings successfully saved"
+          },
+          "400": {
+            "$ref": "#/responses/saveOrderInvoiceGeneralSettingsBadRequestResponse"
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "GetOrderInvoiceGeneralSettings",
+        "summary": "Get Order Invoice general settings",
+        "responses": {
+          "200": {
+            "description": "Settings successfully retrieved",
+            "schema": {
+              "$ref": "#/definitions/getOrderInvoiceGeneralSettingsResponse"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderInvoiceGeneralSettingsNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/settings/design": {
+      "put": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "SaveOrderInvoiceDesignSettings",
+        "summary": "Save Order Invoice design settings",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceDesignSettings"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Design successfully saved"
+          },
+          "400": {
+            "$ref": "#/responses/saveOrderInvoiceDesignSettingsBadRequestResponse"
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "GetOrderInvoiceDesignSettings",
+        "summary": "Get Order Invoice design settings",
+        "responses": {
+          "200": {
+            "description": "Design successfully retrieved",
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceDesignSettings"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderInvoiceDesignSettingsNotFoundResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/settings/design/preview": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Settings"
+        ],
+        "operationId": "GetOrderInvoiceDesignSettingsPreview",
+        "summary": "View a preview an Order Invoice using custom design settings",
+        "parameters": [
+          {
+            "name": "Accept-Encoding",
+            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "collectionFormat": "csv",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderInvoiceDesignSettings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Design Preview successfully retrieved",
+            "schema": {
+              "$ref": "#/definitions/getOrderInvoiceDesignPreviewResponse"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderUUID}/generate": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Generation"
+        ],
+        "operationId": "GenerateOrderInvoice",
+        "summary": "Generate an Order Invoice",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCode"
+          },
+          {
+            "$ref": "#/parameters/accountId"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderUUID"
+          },
+          {
+            "$ref": "#/parameters/userNameInQueryParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generateOrderInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Request Accepted.",
+            "headers": {
+              "Location": {
+                "description": "The location of the generated invoice. Might take a few seconds to be available",
+                "type": "string",
+                "x-example": "http://blob.com/generated.html"
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/responses/orderGenerateForbiddenResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/responses/orderInvoiceConflictResponse"
+          },
+          "429": {
+            "$ref": "#/responses/orderGenerateTooManyRequestsResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderUUID}/preview": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Generation"
+        ],
+        "operationId": "GetOrderInvoicePreview",
+        "summary": "View a preview an Order Invoice",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCode"
+          },
+          {
+            "$ref": "#/parameters/accountId"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderUUID"
+          },
+          {
+            "name": "Accept-Encoding",
+            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "collectionFormat": "csv",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/previewOrderInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Invoice preview successfully returned.",
+            "schema": {
+              "$ref": "#/definitions/previewOrderInvoiceResponse"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/orderGenerateForbiddenResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/responses/orderInvoiceConflictResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/marketplaces/orders/invoices/getPdfInvoice": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Generation"
+        ],
+        "operationId": "GetOrderInvoicePdf",
+        "summary": "Returns the PDF version of the invoice",
+        "produces": [
+          "application/pdf"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getOrderInvoicePdfFromHtmlInvoiceUrlRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The PDF version of the HTML invoice URL in the request",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/ownerIdNotAuthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderInvoiceNotFound"
           },
           "default": {
             "$ref": "#/responses/GeneralError"
@@ -22869,160 +22869,6 @@
         "Unavailable"
       ]
     },
-    "getOrderInvoiceGeneralSettingsResponse": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderInvoiceGeneralSettings"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "lastInvoiceSequenceNumber": {
-              "$ref": "#/definitions/invoiceSequenceNumber"
-            }
-          }
-        }
-      ]
-    },
-    "getOrderInvoiceDesignPreviewResponse": {
-      "type": "object",
-      "required": [
-        "invoiceHtmlContent"
-      ],
-      "properties": {
-        "invoiceHtmlContent": {
-          "$ref": "#/definitions/invoiceContentHtml"
-        }
-      }
-    },
-    "generateOrderInvoiceRequest": {
-      "type": "object",
-      "properties": {
-        "invoiceSequenceNumber": {
-          "$ref": "#/definitions/invoiceSequenceNumber"
-        }
-      }
-    },
-    "previewOrderInvoiceRequest": {
-      "type": "object",
-      "properties": {
-        "invoiceSequenceNumber": {
-          "$ref": "#/definitions/invoiceSequenceNumber"
-        }
-      }
-    },
-    "previewOrderInvoiceResponse": {
-      "type": "object",
-      "required": [
-        "invoiceHtmlContent"
-      ],
-      "properties": {
-        "invoiceHtmlContent": {
-          "$ref": "#/definitions/invoiceContentHtml"
-        }
-      }
-    },
-    "getOrderInvoicePdfFromHtmlInvoiceUrlRequest": {
-      "type": "object",
-      "required": [
-        "orderInvoiceUri"
-      ],
-      "properties": {
-        "orderInvoiceUri": {
-          "$ref": "#/definitions/orderInvoiceUri"
-        }
-      }
-    },
-    "orderInvoiceGeneralSettings": {
-      "description": "Order Invoice General Settings",
-      "type": "object",
-      "required": [
-        "cultureName",
-        "productVATPercent",
-        "shippingVATPercent",
-        "invoicePrefix",
-        "invoiceStartingSequenceNumber"
-      ],
-      "properties": {
-        "cultureName": {
-          "$ref": "#/definitions/cultureName"
-        },
-        "productVATPercent": {
-          "$ref": "#/definitions/productVATPercent"
-        },
-        "shippingVATPercent": {
-          "$ref": "#/definitions/shippingVATPercent"
-        },
-        "invoicePrefix": {
-          "$ref": "#/definitions/invoicePrefix"
-        },
-        "invoiceStartingSequenceNumber": {
-          "$ref": "#/definitions/invoiceSequenceNumber"
-        }
-      }
-    },
-    "orderInvoiceDesignSettings": {
-      "type": "object",
-      "properties": {
-        "headerContentHtml": {
-          "$ref": "#/definitions/headerContentHtml"
-        },
-        "footerContentHtml": {
-          "$ref": "#/definitions/footerContentHtml"
-        }
-      }
-    },
-    "productVATPercent": {
-      "description": "Product VAT in percent",
-      "type": "number",
-      "minimum": 0.0,
-      "maximum": 100.0,
-      "example": "4.0"
-    },
-    "shippingVATPercent": {
-      "description": "Shipping cost VAT in percent",
-      "type": "number",
-      "minimum": 0.0,
-      "maximum": 100.0,
-      "example": "8.0"
-    },
-    "invoicePrefix": {
-      "description": "Invoice Prefix. Can contain 1 to 50 characters, with alphanumeric characters in lowercase uppercase and #, _, -",
-      "type": "string",
-      "example": "TOTO",
-      "pattern": "^[a-zA-Z0-9#_-]{1,50}$",
-      "x-pattern": "^[a-zA-Z0-9#_-]{1,50}$"
-    },
-    "invoiceSequenceNumber": {
-      "description": "Invoice Sequence Number",
-      "type": "integer",
-      "minimum": 0,
-      "example": "879"
-    },
-    "headerContentHtml": {
-      "description": "Header Content HTML",
-      "type": "string",
-      "x-minValueLength": "0",
-      "maxLength": 1000
-    },
-    "footerContentHtml": {
-      "description": "Footer Content HTML",
-      "type": "string",
-      "x-minValueLength": "0",
-      "maxLength": 1000
-    },
-    "invoiceContentHtml": {
-      "description": "Invoice Content HTML",
-      "type": "string"
-    },
-    "orderInvoiceUri": {
-      "x-exclude": true,
-      "description": "order invoice url",
-      "type": "string",
-      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
-      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
-      "example": "http://www.mydomain.com"
-    },
     "analyticsIndexLovLinks": {
       "type": "object",
       "properties": {
@@ -25811,6 +25657,160 @@
           "$ref": "#/definitions/legacyTrackingChannelCatalogLinks"
         }
       }
+    },
+    "getOrderInvoiceGeneralSettingsResponse": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderInvoiceGeneralSettings"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "lastInvoiceSequenceNumber": {
+              "$ref": "#/definitions/invoiceSequenceNumber"
+            }
+          }
+        }
+      ]
+    },
+    "getOrderInvoiceDesignPreviewResponse": {
+      "type": "object",
+      "required": [
+        "invoiceHtmlContent"
+      ],
+      "properties": {
+        "invoiceHtmlContent": {
+          "$ref": "#/definitions/invoiceContentHtml"
+        }
+      }
+    },
+    "generateOrderInvoiceRequest": {
+      "type": "object",
+      "properties": {
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "previewOrderInvoiceRequest": {
+      "type": "object",
+      "properties": {
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "previewOrderInvoiceResponse": {
+      "type": "object",
+      "required": [
+        "invoiceHtmlContent"
+      ],
+      "properties": {
+        "invoiceHtmlContent": {
+          "$ref": "#/definitions/invoiceContentHtml"
+        }
+      }
+    },
+    "getOrderInvoicePdfFromHtmlInvoiceUrlRequest": {
+      "type": "object",
+      "required": [
+        "orderInvoiceUri"
+      ],
+      "properties": {
+        "orderInvoiceUri": {
+          "$ref": "#/definitions/orderInvoiceUri"
+        }
+      }
+    },
+    "orderInvoiceGeneralSettings": {
+      "description": "Order Invoice General Settings",
+      "type": "object",
+      "required": [
+        "cultureName",
+        "productVATPercent",
+        "shippingVATPercent",
+        "invoicePrefix",
+        "invoiceStartingSequenceNumber"
+      ],
+      "properties": {
+        "cultureName": {
+          "$ref": "#/definitions/cultureName"
+        },
+        "productVATPercent": {
+          "$ref": "#/definitions/productVATPercent"
+        },
+        "shippingVATPercent": {
+          "$ref": "#/definitions/shippingVATPercent"
+        },
+        "invoicePrefix": {
+          "$ref": "#/definitions/invoicePrefix"
+        },
+        "invoiceStartingSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "orderInvoiceDesignSettings": {
+      "type": "object",
+      "properties": {
+        "headerContentHtml": {
+          "$ref": "#/definitions/headerContentHtml"
+        },
+        "footerContentHtml": {
+          "$ref": "#/definitions/footerContentHtml"
+        }
+      }
+    },
+    "productVATPercent": {
+      "description": "Product VAT in percent",
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 100.0,
+      "example": "4.0"
+    },
+    "shippingVATPercent": {
+      "description": "Shipping cost VAT in percent",
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 100.0,
+      "example": "8.0"
+    },
+    "invoicePrefix": {
+      "description": "Invoice Prefix. Can contain 1 to 50 characters, with alphanumeric characters in lowercase uppercase and #, _, -",
+      "type": "string",
+      "example": "TOTO",
+      "pattern": "^[a-zA-Z0-9#_-]{1,50}$",
+      "x-pattern": "^[a-zA-Z0-9#_-]{1,50}$"
+    },
+    "invoiceSequenceNumber": {
+      "description": "Invoice Sequence Number",
+      "type": "integer",
+      "minimum": 0,
+      "example": "879"
+    },
+    "headerContentHtml": {
+      "description": "Header Content HTML",
+      "type": "string",
+      "x-minValueLength": "0",
+      "maxLength": 1000
+    },
+    "footerContentHtml": {
+      "description": "Footer Content HTML",
+      "type": "string",
+      "x-minValueLength": "0",
+      "maxLength": 1000
+    },
+    "invoiceContentHtml": {
+      "description": "Invoice Content HTML",
+      "type": "string"
+    },
+    "orderInvoiceUri": {
+      "x-exclude": true,
+      "description": "order invoice url",
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
+      "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
+      "example": "http://www.mydomain.com"
     }
   },
   "parameters": {
@@ -26027,30 +26027,6 @@
       "type": "string",
       "format": "SubscriptionId"
     },
-    "marketplaceTechnicalCode": {
-      "name": "marketplaceTechnicalCode",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "format": "MarketplaceTechnicalCode",
-      "description": "The Marketplace Technical Code"
-    },
-    "accountId": {
-      "name": "accountId",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "format": "MarketplaceAccountId",
-      "description": "The Account Identifier"
-    },
-    "beezUPOrderUUID": {
-      "name": "beezUPOrderUUID",
-      "in": "path",
-      "required": true,
-      "type": "string",
-      "format": "BeezUPOrderUUID",
-      "description": "The BeezUP Order UUID"
-    },
     "optimisationActionNameGeneralParameters": {
       "name": "actionName",
       "in": "path",
@@ -26077,6 +26053,30 @@
       "type": "string",
       "format": "guid",
       "description": "Your rule identifier"
+    },
+    "marketplaceTechnicalCode": {
+      "name": "marketplaceTechnicalCode",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "MarketplaceTechnicalCode",
+      "description": "The Marketplace Technical Code"
+    },
+    "accountId": {
+      "name": "accountId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "MarketplaceAccountId",
+      "description": "The Account Identifier"
+    },
+    "beezUPOrderUUID": {
+      "name": "beezUPOrderUUID",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "BeezUPOrderUUID",
+      "description": "The BeezUP Order UUID"
     }
   },
   "responses": {
@@ -26182,6 +26182,18 @@
         "$ref": "#/definitions/errorResponseMessage"
       }
     },
+    "StoreNotFoundResponse": {
+      "description": "Store or resource not found",
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "BadRequestResponse": {
+      "description": "Invalid request",
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
     "saveOrderInvoiceGeneralSettingsBadRequestResponse": {
       "description": "The settingsgeneral did not pass the validation\n",
       "x-exceptions": [
@@ -26274,18 +26286,6 @@
       ],
       "schema": {
         "$ref": "#/definitions/errorResponseMessage"
-      }
-    },
-    "StoreNotFoundResponse": {
-      "description": "Store or resource not found",
-      "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-      }
-    },
-    "BadRequestResponse": {
-      "description": "Invalid request",
-      "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
       }
     }
   },
@@ -26398,13 +26398,6 @@
       ]
     },
     {
-      "name": "OM Invoice - API",
-      "tags": [
-        "OM Invoice - API - Settings",
-        "OM Invoice - API - Generation"
-      ]
-    },
-    {
       "name": "Analytics",
       "tags": [
         "Analytics - Global",
@@ -26419,6 +26412,13 @@
       "name": "Channel Catalogs - Legacy Tracking",
       "tags": [
         "Channel Catalogs - Legacy Tracking - Global"
+      ]
+    },
+    {
+      "name": "OM Invoice - API",
+      "tags": [
+        "OM Invoice - API - Settings",
+        "OM Invoice - API - Generation"
       ]
     }
   ],
