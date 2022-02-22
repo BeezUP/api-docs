@@ -9065,6 +9065,54 @@
         }
       }
     },
+    "/v2/user/marketplaces/orders/invoices/generate": {
+      "post": {
+        "tags": [
+          "OM Invoice - API - Generation"
+        ],
+        "operationId": "GenerateBatchOrderInvoice",
+        "summary": "Generate an Order Invoice batch",
+        "parameters": [
+          {
+            "$ref": "#/parameters/userNameInQueryParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/generateBatchOrderInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "The locations of the generated invoice. Might take a few seconds to be available",
+            "schema": {
+              "$ref": "#/definitions/generateBatchOrderInvoiceResponse"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/generateBatchOrderInvoiceErrorResponse"
+          },
+          "403": {
+            "$ref": "#/responses/orderGenerateForbiddenResponse"
+          },
+          "404": {
+            "$ref": "#/responses/orderNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#/responses/orderInvoiceConflictResponse"
+          },
+          "429": {
+            "$ref": "#/responses/orderGenerateTooManyRequestsResponse"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/user/marketplaces/orders/invoices/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderUUID}/preview": {
       "post": {
         "tags": [
@@ -25692,6 +25740,101 @@
         }
       }
     },
+    "generateBatchOrderInvoiceRequest": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/generateBatchOrderInvoiceRequestItem"
+      }
+    },
+    "generateBatchOrderInvoiceRequestItem": {
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderUUID"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/marketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/marketplaceAccountId"
+        },
+        "beezUPOrderUUID": {
+          "$ref": "#/definitions/beezUPOrderUUID"
+        },
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        }
+      }
+    },
+    "generateBatchOrderInvoiceResponse": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/generateOrderInvoiceResponse"
+      }
+    },
+    "generateBatchOrderInvoiceErrorResponseItem": {
+      "type": "object",
+      "required": [
+        "errorType",
+        "count",
+        "errors"
+      ],
+      "properties": {
+        "errorType": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "errors": {
+          "$ref": "#/definitions/generateBatchOrderInvoiceErrorResponseItemDetails"
+        }
+      }
+    },
+    "generateBatchOrderInvoiceErrorResponseItemDetails": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/generateBatchOrderInvoiceErrorResponseItemDetail"
+      }
+    },
+    "generateBatchOrderInvoiceErrorResponseItemDetail": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "$ref": "#/definitions/userErrorMessage"
+        },
+        "request": {
+          "$ref": "#/definitions/generateBatchOrderInvoiceRequestItem"
+        }
+      }
+    },
+    "generateOrderInvoiceResponse": {
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderUUID"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/marketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/marketplaceAccountId"
+        },
+        "beezUPOrderUUID": {
+          "$ref": "#/definitions/beezUPOrderUUID"
+        },
+        "invoiceSequenceNumber": {
+          "$ref": "#/definitions/invoiceSequenceNumber"
+        },
+        "invoiceLocation": {
+          "$ref": "#/definitions/invoiceLocation"
+        }
+      }
+    },
     "previewOrderInvoiceRequest": {
       "type": "object",
       "properties": {
@@ -25811,6 +25954,23 @@
       "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
       "x-pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.?&\\%-=])*\\/?$",
       "example": "http://www.mydomain.com"
+    },
+    "marketplaceTechnicalCode": {
+      "description": "Marketplace Technical Code",
+      "type": "string",
+      "example": "CDISCOUNT"
+    },
+    "marketplaceAccountId": {
+      "description": "Marketplace Account Identifier",
+      "type": "integer",
+      "example": "50"
+    },
+    "beezUPOrderUUID": {
+      "description": "beezUPOrderUUID",
+      "type": "string"
+    },
+    "invoiceLocation": {
+      "type": "string"
     }
   },
   "parameters": {
@@ -26194,6 +26354,15 @@
         "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
       }
     },
+    "generateBatchOrderInvoiceErrorResponse": {
+      "description": "GenerateBatchOrderInvoiceErrorResponse",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/generateBatchOrderInvoiceErrorResponseItem"
+        }
+      }
+    },
     "saveOrderInvoiceGeneralSettingsBadRequestResponse": {
       "description": "The settingsgeneral did not pass the validation\n",
       "x-exceptions": [
@@ -26242,6 +26411,7 @@
     "orderGenerateForbiddenResponse": {
       "description": "OwnerId not authorized\nThe required order invoice settings have not been set\nBeezUPOrderStatus forbidden\n",
       "x-exceptions": [
+        "MultipleOwnerIdsException",
         "UserNotOwnerException",
         "OrderInvoiceDesignSettingsNotFoundException",
         "OrderInvoiceGeneralSettingsNotFoundException",
