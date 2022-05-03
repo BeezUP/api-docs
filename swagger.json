@@ -25751,7 +25751,8 @@
       "required": [
         "marketplaceTechnicalCode",
         "accountId",
-        "beezUPOrderUUID"
+        "beezUPOrderUUID",
+        "invoiceSequenceNumber"
       ],
       "properties": {
         "marketplaceTechnicalCode": {
