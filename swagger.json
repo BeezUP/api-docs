@@ -10899,8 +10899,8 @@
     },
     "storeCountryIsoCodeAlpha3": {
       "type": "string",
-      "description": "The country iso code alpha 3 based on the list of values /user/lov/StoreCountry",
-      "x-lov": "StoreCountry",
+      "description": "The country iso code alpha 3 based on the list of values /user/lov/StoreCountryWithInternational",
+      "x-lov": "StoreCountryWithInternational",
       "example": "DEU"
     },
     "storeSectors": {
