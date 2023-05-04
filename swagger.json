@@ -10974,6 +10974,9 @@
         },
         "sectors": {
           "$ref": "#/definitions/storeSectors"
+        },
+        "isInternationalStore": {
+          "type": "boolean"
         }
       }
     },
