@@ -18696,6 +18696,11 @@
         "discriminatorType": {
           "$ref": "#/definitions/channelCatalogMarketplacePropertyDiscriminatorType"
         },
+        "defaultValue": {
+          "type": "string",
+          "description": "Indicates the default value of this property.",
+          "example": "2"
+        },
         "pattern": {
           "description": "Channel catalog marketplace setting value format validation regular expression",
           "type": "string",
