@@ -2766,7 +2766,7 @@
         }
       }
     },
-    "/v2/user/catalogs/{storeId}/beezUPColumns/{beezupColumnName}'": {
+    "/v2/user/catalogs/{storeId}/beezUPColumns/{beezupColumnName}": {
       "put": {
         "tags": [
           "Catalogs - Catalog"
