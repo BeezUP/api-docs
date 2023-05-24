@@ -2563,6 +2563,281 @@
         }
       }
     },
+    "/v2/user/catalogs/{storeId}/products/batches/{actionType}": {
+      "post": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_PushProductBatch",
+        "summary": "[PREVIEW] Push product batches",
+        "x-releaseStatus\"": "PREVIEW",
+        "description": "The importation will automatically start if one of the following condition occured:\n- after 1 minutes delay, \n- when you reach 100 batches\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "actionType",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "ProductActionType"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/definitions/pushProductRequest"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "$ref": "#/responses/202_Import_Operation_Request_Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400_Request_Invalid"
+          },
+          "404": {
+            "$ref": "#/responses/404_Store_NotFound"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/importations/getReportUrl": {
+      "get": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_GetReportingByBatchId",
+        "summary": "[PREVIEW] Get Reporting By BatchId",
+        "x-releaseStatus\"": "PREVIEW",
+        "description": "Get Reporting By BatchId.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "batchId",
+            "description": "The product batchId you want to get",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "format": "BatchId"
+          }
+        ],
+        "responses": {
+          "303": {
+            "$ref": "#/responses/303_Import_Operation_GetReportUrl_SeeOther"
+          },
+          "409": {
+            "description": "Get Reporting is not ready yet. Please retry after 1mn.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/beezUPColumns": {
+      "get": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_GetBeezUPColumnMapping",
+        "summary": "[PREVIEW] Get the BeezUPColumns' Mapping of a Store",
+        "x-releaseStatus\"": "PREVIEW",
+        "description": "Get the BeezUPColumns' Mapping of a Store.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BeezUPColumns' Mapping of a Store",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/beezUPColumnMapping"
+              }
+            }
+          },
+          "404": {
+            "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_PatchBatchBeezUPColumnMapping",
+        "summary": "[PREVIEW] Patch the BeezUPColumns' Mapping of a Store.",
+        "x-releaseStatus\"": "PREVIEW",
+        "description": "Patch the BeezUPColumns' Mapping of a Store.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/beezUPColumnMappingBatchRequestItem"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "BeezUPColumns' Mapping of a Store Patched"
+          },
+          "404": {
+            "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_PutBatchBeezUPColumnMapping",
+        "summary": "[PREVIEW] Replace the BeezUPColumns' Mapping of a Store.",
+        "x-releaseStatus\"": "PREVIEW",
+        "description": "Replace the BeezUPColumns' Mapping of a Store.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/beezUPColumnMappingBatchRequestItem"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "BeezUPColumns' Mapping of a Store Replaced"
+          },
+          "404": {
+            "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/beezUPColumns/{beezupColumnName}'": {
+      "put": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_PutBeezUPColumnMapping",
+        "summary": "[PREVIEW] Replace the BeezUPColumns' Mapping of a Store.",
+        "x-releaseStatus\"": "PREVIEW",
+        "description": "Replace the BeezUPColumns' Mapping of a Store.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/beezUPColumnNameParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/beezUPColumnMappingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "BeezUPColumn' Mapping saved"
+          },
+          "404": {
+            "description": "StoreId or BeezUPColumnName or ColumnId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_DeleteBeezUPColumnMapping",
+        "summary": "[PREVIEW] Delete the BeezUPColumn' Mapping of a Store.",
+        "x-releaseStatus\"": "PREVIEW",
+        "description": "Delete the BeezUPColumn' Mapping of a Store.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "$ref": "#/parameters/beezUPColumnNameParameters"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "BeezUPColumn' Mapping deleted"
+          },
+          "404": {
+            "description": "StoreId or BeezUPColumnName not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/user/catalogs/importations": {
       "get": {
         "tags": [
@@ -15543,6 +15818,114 @@
         }
       }
     },
+    "pushProductRequest": {
+      "type": "object",
+      "description": "The product size must not be bigger than 2MB",
+      "required": [
+        "sku"
+      ],
+      "properties": {
+        "sku": {
+          "$ref": "#/definitions/sku"
+        },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/definitions/productField"
+          }
+        }
+      }
+    },
+    "productField": {
+      "type": "object",
+      "description": "If the value is null the property will be remove from the product",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/productFieldName"
+        },
+        "value": {
+          "$ref": "#/definitions/productFieldValue"
+        }
+      }
+    },
+    "productFieldName": {
+      "type": "string",
+      "description": "Product field name",
+      "maxLength": 250
+    },
+    "productFieldValue": {
+      "type": "string",
+      "description": "Product field value",
+      "maxLength": 1000000
+    },
+    "productActionType": {
+      "type": "string",
+      "description": "Values:\n- REPLACE: Add or replace the existing product. If there is any custom column already declared on the catalog, the custom columns computation will be applied on the fly based on the product properties provided in the message\n- MERGE: Update the product properties of the existing product.\n        You cannot remove a product property using this action type, you must using REPLACE action type for that. \n        If there is any custom column already declared on the catalog, the custom columns computation will be applied on the fly based on the product properties provided in the message if it's possible or asynchronously.\n- DELETE: Simply delete the product\n",
+      "enum": [
+        "REPLACE",
+        "MERGE",
+        "DELETE"
+      ]
+    },
+    "beezUPColumnMapping": {
+      "type": "object",
+      "required": [
+        "beezUPColumnName",
+        "columnId",
+        "userColumnName"
+      ],
+      "properties": {
+        "beezUPColumnName": {
+          "$ref": "#/definitions/BeezUP.Common.BeezUPColumnName"
+        },
+        "columnId": {
+          "$ref": "#/definitions/columnId"
+        },
+        "userColumnName": {
+          "$ref": "#/definitions/userColumName"
+        }
+      }
+    },
+    "beezUPColumnMappingBatchRequestItem": {
+      "type": "object",
+      "required": [
+        "beezUPColumnName"
+      ],
+      "properties": {
+        "beezUPColumnName": {
+          "$ref": "#/definitions/BeezUP.Common.BeezUPColumnName"
+        },
+        "columnId": {
+          "$ref": "#/definitions/columnId"
+        }
+      }
+    },
+    "beezUPColumnMappingRequest": {
+      "type": "object",
+      "required": [
+        "columnId"
+      ],
+      "properties": {
+        "columnId": {
+          "$ref": "#/definitions/columnId"
+        }
+      }
+    },
+    "batchId": {
+      "description": "The batch identifier",
+      "type": "string",
+      "format": "Guid",
+      "example": "8f6671d6-a9bc-4de0-a0c4-4643b0c3f871"
+    },
+    "sku": {
+      "description": "Sku",
+      "type": "string"
+    },
     "BeezUP.Common.BeezUPColumnName": {
       "type": "string",
       "description": "The BeezUP column name",
@@ -15749,11 +16132,6 @@
           "$ref": "#/definitions/BeezUP.Common.Link3"
         }
       }
-    },
-    "sku": {
-      "type": "string",
-      "description": "The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers. http://schema.org/sku",
-      "maxLength": 50
     },
     "links.GetChannelInfoLink": {
       "allOf": [
@@ -26058,6 +26436,14 @@
       "minimum": 0,
       "maximum": 99
     },
+    "beezUPColumnNameParameters": {
+      "name": "beezUPColumnName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "format": "BeezUPColumnName",
+      "description": "BeezUP Column Name"
+    },
     "channelIdParameter": {
       "name": "channelId",
       "in": "path",
@@ -26297,6 +26683,44 @@
       "description": "A catalog importation is already in progress!",
       "schema": {
         "$ref": "#/definitions/importAlreadyInProgressResponse"
+      }
+    },
+    "202_Import_Operation_Request_Accepted": {
+      "description": "Request accepted",
+      "headers": {
+        "X-BEEZUP-PRODUCT-IMPORTATION-BATCH-ID": {
+          "type": "string",
+          "format": "BatchId",
+          "description": "The product batch importation identifier"
+        }
+      }
+    },
+    "400_Request_Invalid": {
+      "description": "The request is invalid",
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "404_Store_NotFound": {
+      "description": "The store is not found",
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "404_Product_NotFound": {
+      "description": "The product is not found",
+      "schema": {
+        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+      }
+    },
+    "303_Import_Operation_GetReportUrl_SeeOther": {
+      "description": "Follow location to retrieve the Importation Reporting",
+      "headers": {
+        "Location": {
+          "type": "string",
+          "description": "The location of the new resource to poll",
+          "x-example": "/v2/user/catalogs/a42b780d-4585-4566-800e-4d77a4d6f8a3/importations/222ef571-bdb7-436d-a01a-e5a0e9161c0c"
+        }
       }
     },
     "processingResponse": {
