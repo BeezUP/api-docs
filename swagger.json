@@ -15926,6 +15926,17 @@
       "description": "Sku",
       "type": "string"
     },
+    "errorsBySku": {
+      "type": "object",
+      "description": "The key will be the sku",
+      "additionalProperties": true,
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/BeezUP.Common.UserErrorMessage"
+        }
+      }
+    },
     "BeezUP.Common.BeezUPColumnName": {
       "type": "string",
       "description": "The BeezUP column name",
@@ -26698,7 +26709,7 @@
     "400_Request_Invalid": {
       "description": "The request is invalid",
       "schema": {
-        "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+        "$ref": "#/definitions/errorsBySku"
       }
     },
     "404_Store_NotFound": {
