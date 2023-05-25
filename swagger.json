@@ -15928,9 +15928,17 @@
     },
     "productBatchErrorResponse": {
       "type": "object",
-      "description": "The key will be the sku",
-      "additionalProperties": {
-        "$ref": "#/definitions/errorsBySku"
+      "required": [
+        "errorsBySku"
+      ],
+      "properties": {
+        "errorsBySku": {
+          "type": "object",
+          "description": "The key will be the sku",
+          "additionalProperties": {
+            "$ref": "#/definitions/errorsBySku"
+          }
+        }
       }
     },
     "errorsBySku": {
