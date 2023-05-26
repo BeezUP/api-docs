@@ -19110,7 +19110,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "defaultValue": {
               "description": "Indicate the default values of the property",
               "type": "array",
               "items": {
@@ -19132,7 +19132,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "defaultValue": {
               "description": "Indicate the default values of the property",
               "type": "array",
               "items": {
@@ -19154,7 +19154,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "defaultValue": {
               "description": "Indicate the default values of the property",
               "type": "boolean",
               "example": "false"
@@ -19171,7 +19171,7 @@
         {
           "type": "object",
           "properties": {
-            "default": {
+            "defaultValue": {
               "description": "Indicate the default values of the property",
               "type": "array",
               "items": {
