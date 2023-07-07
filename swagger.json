@@ -2614,7 +2614,7 @@
         }
       }
     },
-    "/v2/user/catalogs/{storeId}/importations/getReportUrl": {
+    "/v2/user/catalogs/{storeId}/importations/{batchId}/getReportUrl": {
       "get": {
         "tags": [
           "Catalogs - Catalog"
@@ -2630,7 +2630,7 @@
           {
             "name": "batchId",
             "description": "The product batchId you want to get",
-            "in": "query",
+            "in": "path",
             "required": true,
             "type": "string",
             "format": "BatchId"
@@ -15877,7 +15877,7 @@
       "required": [
         "beezUPColumnName",
         "columnId",
-        "userColumnName"
+        "catalogColumnName"
       ],
       "properties": {
         "beezUPColumnName": {
@@ -15886,8 +15886,8 @@
         "columnId": {
           "$ref": "#/definitions/columnId"
         },
-        "userColumnName": {
-          "$ref": "#/definitions/userColumName"
+        "catalogColumnName": {
+          "$ref": "#/definitions/catalogColumnName"
         }
       }
     },
@@ -15900,19 +15900,19 @@
         "beezUPColumnName": {
           "$ref": "#/definitions/BeezUP.Common.BeezUPColumnName"
         },
-        "columnId": {
-          "$ref": "#/definitions/columnId"
+        "catalogColumnName": {
+          "$ref": "#/definitions/catalogColumnName"
         }
       }
     },
     "beezUPColumnMappingRequest": {
       "type": "object",
       "required": [
-        "columnId"
+        "catalogColumnName"
       ],
       "properties": {
-        "columnId": {
-          "$ref": "#/definitions/columnId"
+        "catalogColumnName": {
+          "$ref": "#/definitions/catalogColumnName"
         }
       }
     },
