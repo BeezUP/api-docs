@@ -15213,6 +15213,17 @@
           "format": "uri",
           "example": "http://blal.com/catalog.csv"
         },
+        "inputConfigurationBatchUrls": {
+          "description": "Indicate the input urls of this batch importation.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "example": {
+            "64f43358-63a1-47f7-97ec-0301fc39956b": "https://google.fr/file1.csv'",
+            "64f43358-1234-47f7-97ec-0301fc39956b": "https://google.fr/file2.csv'"
+          }
+        },
         "steps": {
           "description": "Indicate the steps that have been passed during the importation process",
           "type": "object",
