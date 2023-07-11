@@ -4478,8 +4478,14 @@
           "204": {
             "description": "Channel catalog enabled"
           },
+          "403": {
+            "description": "Occurs when a user tries to enable a non-configured ChannelCatalog.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
           "404": {
-            "description": "Occurs when a user tries to work on the wrong ChanelCatalogId.",
+            "description": "Occurs when a user tries to work on the wrong ChannelCatalogId.",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
