@@ -2571,7 +2571,7 @@
         "operationId": "Catalog_PushProductBatch",
         "summary": "[PREVIEW] Push product batches",
         "x-releaseStatus\"": "PREVIEW",
-        "description": "The importation will automatically start if one of the following condition occured:\n- after 1 minutes delay, \n- when you reach 100 batches\n",
+        "description": "The importation will automatically start if one of the following condition occured:\n- after 1 minutes delay, \n- when you reach 50 batches\n",
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
@@ -15781,8 +15781,6 @@
     "getImportationReportResponseImportationInfo": {
       "type": "object",
       "required": [
-        "beginUtcDate",
-        "endUtcDate",
         "userId",
         "inputConfiguration"
       ],
