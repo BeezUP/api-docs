@@ -12776,6 +12776,12 @@
               ]
             }
           ]
+        },
+        "alertMails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/storeAlertMail"
+          }
         }
       }
     },
@@ -12785,15 +12791,33 @@
       "type": "integer",
       "example": "8"
     },
+    "userMail": {
+      "description": "A user mail for alert",
+      "type": "string"
+    },
     "alertName": {
       "description": "The alert name",
       "type": "string",
       "example": "NoImportSinceXDays"
     },
+    "alertCategory": {
+      "description": "The alert category",
+      "type": "string",
+      "example": "Import"
+    },
     "alertEnabled": {
       "description": "Is the alert enable ?",
       "type": "boolean",
       "example": "true"
+    },
+    "storeAlertMail": {
+      "type": "object",
+      "required": "userMail",
+      "properties": {
+        "userMail": {
+          "$ref": "#/definitions/userMail"
+        }
+      }
     },
     "storeAlert": {
       "type": "object",
@@ -12801,7 +12825,8 @@
         "links",
         "alertId",
         "alertName",
-        "enabled"
+        "enabled",
+        "alertCategory"
       ],
       "properties": {
         "links": {
@@ -12811,7 +12836,7 @@
           "$ref": "#/definitions/alertId"
         },
         "alertName": {
-          "$ref": "#/definitions/alertName"
+          "$ref": "#/definitions/alertCategory"
         },
         "enabled": {
           "$ref": "#/definitions/alertEnabled"
