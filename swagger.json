@@ -12791,10 +12791,6 @@
       "type": "integer",
       "example": "8"
     },
-    "userMail": {
-      "description": "A user mail for alert",
-      "type": "string"
-    },
     "alertName": {
       "description": "The alert name",
       "type": "string",
@@ -12811,13 +12807,8 @@
       "example": "true"
     },
     "storeAlertMail": {
-      "type": "object",
-      "required": "userMail",
-      "properties": {
-        "userMail": {
-          "$ref": "#/definitions/userMail"
-        }
-      }
+      "description": "A user mail for alert",
+      "type": "string"
     },
     "storeAlert": {
       "type": "object",
@@ -12932,6 +12923,12 @@
               "propertyValue": "3"
             }
           ]
+        },
+        "storeAlertMails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/storeAlertMail"
+          }
         }
       }
     },
