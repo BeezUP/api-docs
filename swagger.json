@@ -12827,6 +12827,9 @@
           "$ref": "#/definitions/alertId"
         },
         "alertName": {
+          "$ref": "#/definitions/alertName"
+        },
+        "alertCategory": {
           "$ref": "#/definitions/alertCategory"
         },
         "enabled": {
