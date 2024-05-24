@@ -148,6 +148,10 @@
       "x-displayName": "Exportations"
     },
     {
+      "name": "Channel Catalogs - Attributes",
+      "x-displayName": "Attributes"
+    },
+    {
       "name": "Channel Catalogs - Replication",
       "x-displayName": "Replication"
     },
@@ -5658,6 +5662,173 @@
           },
           "404": {
             "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/channelCatalogs/{channelCatalogId}/replication/to": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Replication"
+        ],
+        "operationId": "GetReplicationTo",
+        "summary": "[PREVIEW] [Mocked] Get ChannelCatalog's Replicated To Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get ChannelCatalog's Replicated To Configuration",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/channelCatalogReplicationToConfiguration"
+              }
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Channel Catalogs - Replication"
+        ],
+        "operationId": "SaveReplicationTo",
+        "summary": "[PREVIEW] [Mocked] Save ChannelCatalog's Replicated To Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/channelCatalogReplicationToConfiguration"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Request accepted",
+            "headers": {
+              "X-BEEZUP-REPLICATION-EXECUTION-ID": {
+                "type": "string",
+                "format": "ExecutionId",
+                "description": "The Execution Id related to the initial replication. Can be used in GetReplicationLog to retrieve initial replication's logs."
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/channelCatalogs/{channelCatalogId}/replication/from": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Replication"
+        ],
+        "operationId": "GetReplicationFrom",
+        "summary": "[PREVIEW] [Mocked] Get ChannelCatalog's Replicated From Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ChannelCatalog's Replicated From Configuration retrieved",
+            "schema": {
+              "$ref": "#/definitions/channelCatalogReplicationFromConfiguration"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/channelCatalogs/{channelCatalogId}/replication/logs": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Replication"
+        ],
+        "operationId": "GetReplicationLog",
+        "summary": "[PREVIEW] [Mocked] Get Replication Logs - Can be filtered by ExecutionId.",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "name": "executionId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "Guid?",
+            "description": "The execution identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Replication Logs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/channelCatalogReplicationLog"
+              }
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -18949,6 +19120,147 @@
         }
       }
     },
+    "channelCatalogReplicationToConfiguration": {
+      "required": [
+        "toChannelCatalogId",
+        "categoryMappingStrategy",
+        "columnMappingStrategy",
+        "attributeValueMappingStrategy"
+      ],
+      "properties": {
+        "toChannelCatalogId": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelCatalogId"
+        },
+        "categoryMappingStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        },
+        "columnMappingStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        },
+        "attributeValueMappingStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        }
+      }
+    },
+    "channelCatalogReplicationFromConfiguration": {
+      "required": [
+        "fromChannelCatalogId",
+        "categoryMappingStrategy",
+        "columnMappingStrategy",
+        "attributeValueMappingStrategy"
+      ],
+      "properties": {
+        "fromChannelCatalogId": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelCatalogId"
+        },
+        "categoryMappingStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        },
+        "columnMappingStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        },
+        "attributeValueMappingStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        }
+      }
+    },
+    "channelCatalogReplicationLog": {
+      "required": [
+        "executionId",
+        "fromStoreId",
+        "item"
+      ],
+      "properties": {
+        "executionId": {
+          "$ref": "#/definitions/executionId"
+        },
+        "fromChannelCatalogId": {
+          "$ref": "#/definitions/BeezUP.Common.ChannelCatalogId"
+        },
+        "logs": {
+          "type": "object",
+          "description": "The key will be the channelCatalogId",
+          "additionalProperties": {
+            "$ref": "#/definitions/channelCatalogReplicationLogItems"
+          }
+        }
+      }
+    },
+    "channelCatalogReplicationLogItems": {
+      "properties": {
+        "customColumnStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        },
+        "createdItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogReplicationLogItem"
+          }
+        },
+        "updatedItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogReplicationLogItem"
+          }
+        },
+        "deleteItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogReplicationLogItem"
+          }
+        },
+        "ignoreItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogReplicationLogItem"
+          }
+        },
+        "errorItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelCatalogReplicationErrorLogItem"
+          }
+        }
+      }
+    },
+    "channelCatalogReplicationLogItem": {
+      "required": [
+        "actionType",
+        "count"
+      ],
+      "properties": {
+        "actionType": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "channelCatalogReplicationErrorLogItem": {
+      "required": [
+        "item",
+        "errorType",
+        "errorMessage"
+      ],
+      "properties": {
+        "item": {
+          "$ref": "#/definitions/channelCatalogReplicationLogItem"
+        },
+        "errorType": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
     "BeezUP.Common.CatalogCategoryFilter": {
       "type": "object",
       "properties": {
@@ -27639,6 +27951,7 @@
         "Channel Catalogs - Products Overrides",
         "Channel Catalogs - Products Optimisation",
         "Channel Catalogs - Exportations",
+        "Channel Catalogs - Attributes",
         "Channel Catalogs - Replication"
       ]
     },
