@@ -148,6 +148,10 @@
       "x-displayName": "Exportations"
     },
     {
+      "name": "Channel Catalogs - Replication",
+      "x-displayName": "Replication"
+    },
+    {
       "name": "Marketplaces - Channel catalogs - Global",
       "x-displayName": "Global"
     },
@@ -5489,6 +5493,167 @@
             "description": "Channel catalog exportation history",
             "schema": {
               "$ref": "#/definitions/channelCatalogExportationHistory"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/channelCatalogs/{channelCatalogId}/attributes": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Attributes"
+        ],
+        "summary": "Get the Concerned Channel Catalog Attributes",
+        "operationId": "GetConcernedChannelCatalogAttributes",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Concerned Channel Attributes",
+            "schema": {
+              "type": "array",
+              "description": "Concerned Channel Attributes",
+              "items": {
+                "$ref": "#/definitions/concernedChannelCatalogAttribute"
+              }
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/channelCatalogs/{channelCatalogId}/attributes/counters": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Attributes"
+        ],
+        "summary": "Get Attributes Value Mapping Counters",
+        "operationId": "GetChannelCatalogAttributeCounters",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel Attributes Counters",
+            "schema": {
+              "type": "array",
+              "description": "Concerned Channel Attributes",
+              "items": {
+                "$ref": "#/definitions/channelCatalogAttributeCounter"
+              }
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/channelCatalogs/{channelCatalogId}/attributes/{channelAttributeId}/mapping": {
+      "get": {
+        "tags": [
+          "Channel Catalogs - Attributes"
+        ],
+        "summary": "Get the Channel Catalog Attribute Value Mapping",
+        "operationId": "GetChannelCatalogAttributeValueMapping",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "name": "channelAttributeId",
+            "in": "path",
+            "required": true,
+            "description": "The channel attribute identifier",
+            "type": "string",
+            "format": "Guid",
+            "x-example": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Channel Attribute Value Mapping",
+            "schema": {
+              "type": "object",
+              "description": "Channel Attribute Value Mapping",
+              "$ref": "#/definitions/channelCatalogAttributeValueMapping"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found or not authorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Channel Catalogs - Attributes"
+        ],
+        "summary": "Set the Channel Catalog Attribute Value Mapping",
+        "operationId": "SetChannelCatalogAttributeValueMapping",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "name": "channelAttributeId",
+            "in": "path",
+            "required": true,
+            "description": "The channel attribute identifier",
+            "type": "string",
+            "format": "Guid",
+            "x-example": "6d6b04de-406b-4539-8e7e-bf3e8da5dfb0"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setChannelCatalogAttributeValueMappingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Channel Attribute Value Mapping Saved"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
           "404": {
@@ -18632,6 +18797,158 @@
         }
       }
     },
+    "concernedChannelCatalogAttribute": {
+      "type": "object",
+      "properties": {
+        "channelCategoryName": {
+          "type": "string"
+        },
+        "channelOriginCategoryName": {
+          "type": "string"
+        },
+        "channelFullCategoryPath": {
+          "type": "string"
+        },
+        "channelCategoryCode": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/concernedChannelCatalogLinkedAttribute"
+          }
+        }
+      }
+    },
+    "channelCatalogAttributeCounter": {
+      "type": "object",
+      "required": [
+        "channelAttributeId",
+        "totalProductValueCount",
+        "mappedProductValueCount"
+      ],
+      "properties": {
+        "channelAttributeId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "totalProductValueCount": {
+          "type": "integer"
+        },
+        "mappedProductValueCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "concernedChannelCatalogLinkedAttribute": {
+      "type": "object",
+      "properties": {
+        "channelAttributeId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "attributeName": {
+          "type": "string"
+        },
+        "attributeCode": {
+          "type": "string"
+        },
+        "attributeDescription": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "isVariant": {
+          "type": "boolean"
+        },
+        "typeValue": {
+          "type": "string"
+        },
+        "attributeValueListCode": {
+          "type": "string"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "catalogColumnId": {
+          "$ref": "#/definitions/BeezUP.Common.CatalogColumnId"
+        },
+        "catalogColumnName": {
+          "$ref": "#/definitions/BeezUP.Common.CatalogColumnUserName"
+        }
+      }
+    },
+    "channelCatalogAttributeValueMapping": {
+      "type": "object",
+      "required": [
+        "totalProductValueCount",
+        "channelAttributeValuesWithMapping"
+      ],
+      "properties": {
+        "totalProductValueCount": {
+          "type": "integer"
+        },
+        "channelAttributeValuesWithMapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelAttributeValueWithMapping"
+          }
+        },
+        "unmappedProductValues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "channelAttributeValueWithMapping": {
+      "type": "object",
+      "required": [
+        "code",
+        "label"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "mappedProductValues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "channelAttributeValueMapping": {
+      "type": "object",
+      "properties": {
+        "productValue": {
+          "type": "string"
+        },
+        "channelAttributeValueCode": {
+          "type": "string"
+        }
+      }
+    },
+    "setChannelCatalogAttributeValueMappingRequest": {
+      "type": "object",
+      "required": [
+        "mapping"
+      ],
+      "properties": {
+        "mapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/channelAttributeValueMapping"
+          }
+        }
+      }
+    },
     "BeezUP.Common.CatalogCategoryFilter": {
       "type": "object",
       "properties": {
@@ -18736,6 +19053,11 @@
         }
       }
     },
+    "BeezUP.Common.CatalogColumnUserName": {
+      "type": "string",
+      "description": "The catalog column named by the user (catalog or custom column)",
+      "example": "My title"
+    },
     "BeezUP.Common.ApiSettingsStatus": {
       "type": "string",
       "enum": [
@@ -18770,11 +19092,6 @@
           ]
         }
       }
-    },
-    "BeezUP.Common.CatalogColumnUserName": {
-      "type": "string",
-      "description": "The catalog column named by the user (catalog or custom column)",
-      "example": "My title"
     },
     "BeezUP.Common.ProductColumnFilterOperatorName": {
       "type": "string",
@@ -27321,7 +27638,8 @@
         "Channel Catalogs - Products",
         "Channel Catalogs - Products Overrides",
         "Channel Catalogs - Products Optimisation",
-        "Channel Catalogs - Exportations"
+        "Channel Catalogs - Exportations",
+        "Channel Catalogs - Replication"
       ]
     },
     {
