@@ -4152,7 +4152,7 @@
           "Catalogs - Replication"
         ],
         "operationId": "Catalog_GetReplicationTo",
-        "summary": "[PREVIEW] [PREVIEW][Mocked] Get Store's Replicated To Configuration",
+        "summary": "[PREVIEW] [Mocked] Get Store's Replicated To Configuration",
         "x-releaseStatus": "PREVIEW",
         "parameters": [
           {
@@ -4185,7 +4185,7 @@
           "Catalogs - Replication"
         ],
         "operationId": "Catalog_SaveReplicationTo",
-        "summary": "[PREVIEW] [PREVIEW][Mocked] Save Store's Replicated To Configuration",
+        "summary": "[PREVIEW] [Mocked] Save Store's Replicated To Configuration",
         "x-releaseStatus": "PREVIEW",
         "parameters": [
           {
@@ -4244,7 +4244,7 @@
           "Catalogs - Replication"
         ],
         "operationId": "Catalog_GetReplicationFrom",
-        "summary": "[PREVIEW] [PREVIEW][Mocked] Get Store's Replicated From Configuration",
+        "summary": "[PREVIEW] [Mocked] Get Store's Replicated From Configuration",
         "x-releaseStatus": "PREVIEW",
         "parameters": [
           {
@@ -4276,7 +4276,7 @@
           "Catalogs - Replication"
         ],
         "operationId": "Catalog_GetReplicationLog",
-        "summary": "[PREVIEW] [PREVIEW][Mocked] Get Replication Logs - Can be filtered by ExecutionId",
+        "summary": "[PREVIEW] [Mocked] Get Replication Logs - Can be filtered by ExecutionId",
         "x-releaseStatus": "PREVIEW",
         "parameters": [
           {
