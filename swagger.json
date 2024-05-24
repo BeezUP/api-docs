@@ -104,6 +104,10 @@
       "x-displayName": "Catalog"
     },
     {
+      "name": "Catalogs - Replication",
+      "x-displayName": "Replication"
+    },
+    {
       "name": "Channels - Channels Global",
       "x-displayName": "Channels Global"
     },
@@ -2569,8 +2573,7 @@
           "Catalogs - Catalog"
         ],
         "operationId": "Catalog_PushProductBatch",
-        "summary": "[PREVIEW] Push product batches",
-        "x-releaseStatus\"": "PREVIEW",
+        "summary": "Push product batches",
         "description": "The importation will automatically start if one of the following condition occured:\n- after 1 minutes delay, \n- when you reach 50 batches\n",
         "parameters": [
           {
@@ -2620,8 +2623,7 @@
           "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetReportingByBatchId",
-        "summary": "[PREVIEW] Get Reporting By BatchId",
-        "x-releaseStatus\"": "PREVIEW",
+        "summary": "Get Reporting By BatchId",
         "description": "Get Reporting By BatchId.\n",
         "parameters": [
           {
@@ -2658,8 +2660,7 @@
           "Catalogs - Catalog"
         ],
         "operationId": "Catalog_GetBeezUPColumnMapping",
-        "summary": "[PREVIEW] Get the BeezUPColumns' Mapping of a Store",
-        "x-releaseStatus\"": "PREVIEW",
+        "summary": "Get the BeezUPColumns' Mapping of a Store",
         "description": "Get the BeezUPColumns' Mapping of a Store.\n",
         "parameters": [
           {
@@ -2692,8 +2693,7 @@
           "Catalogs - Catalog"
         ],
         "operationId": "Catalog_PatchBatchBeezUPColumnMapping",
-        "summary": "[PREVIEW] Patch the BeezUPColumns' Mapping of a Store.",
-        "x-releaseStatus\"": "PREVIEW",
+        "summary": "Patch the BeezUPColumns' Mapping of a Store.",
         "description": "Patch the BeezUPColumns' Mapping of a Store.\n",
         "parameters": [
           {
@@ -2731,8 +2731,7 @@
           "Catalogs - Catalog"
         ],
         "operationId": "Catalog_PutBatchBeezUPColumnMapping",
-        "summary": "[PREVIEW] Replace the BeezUPColumns' Mapping of a Store.",
-        "x-releaseStatus\"": "PREVIEW",
+        "summary": "Replace the BeezUPColumns' Mapping of a Store.",
         "description": "Replace the BeezUPColumns' Mapping of a Store.\n",
         "parameters": [
           {
@@ -2772,8 +2771,7 @@
           "Catalogs - Catalog"
         ],
         "operationId": "Catalog_PutBeezUPColumnMapping",
-        "summary": "[PREVIEW] Replace the BeezUPColumns' Mapping of a Store.",
-        "x-releaseStatus\"": "PREVIEW",
+        "summary": "Replace the BeezUPColumns' Mapping of a Store.",
         "description": "Replace the BeezUPColumns' Mapping of a Store.\n",
         "parameters": [
           {
@@ -2811,8 +2809,7 @@
           "Catalogs - Catalog"
         ],
         "operationId": "Catalog_DeleteBeezUPColumnMapping",
-        "summary": "[PREVIEW] Delete the BeezUPColumn' Mapping of a Store.",
-        "x-releaseStatus\"": "PREVIEW",
+        "summary": "Delete the BeezUPColumn' Mapping of a Store.",
         "description": "Delete the BeezUPColumn' Mapping of a Store.\n",
         "parameters": [
           {
@@ -4139,6 +4136,173 @@
           },
           "404": {
             "description": "Occurs when a user tries to work on the wrong store.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/replication/to": {
+      "get": {
+        "tags": [
+          "Catalogs - Replication"
+        ],
+        "operationId": "Catalog_GetReplicationTo",
+        "summary": "[PREVIEW] [PREVIEW][Mocked] Get Store's Replicated To Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Store's Replicated To Configuration",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/catalogReplicationToConfiguration"
+              }
+            }
+          },
+          "404": {
+            "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Catalogs - Replication"
+        ],
+        "operationId": "Catalog_SaveReplicationTo",
+        "summary": "[PREVIEW] [PREVIEW][Mocked] Save Store's Replicated To Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/catalogReplicationToConfiguration"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Request accepted",
+            "headers": {
+              "X-BEEZUP-REPLICATION-EXECUTION-ID": {
+                "type": "string",
+                "format": "ExecutionId",
+                "description": "The Execution Id related to the initial replication. Can be used in Catalog_GetReplicationLog to retrieve initial replication's logs."
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/replication/from": {
+      "get": {
+        "tags": [
+          "Catalogs - Replication"
+        ],
+        "operationId": "Catalog_GetReplicationFrom",
+        "summary": "[PREVIEW] [PREVIEW][Mocked] Get Store's Replicated From Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Store's Replicated From Configuration retrieved",
+            "schema": {
+              "$ref": "#/definitions/catalogReplicationFromConfiguration"
+            }
+          },
+          "404": {
+            "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/replication/logs": {
+      "get": {
+        "tags": [
+          "Catalogs - Replication"
+        ],
+        "operationId": "Catalog_GetReplicationLog",
+        "summary": "[PREVIEW] [PREVIEW][Mocked] Get Replication Logs - Can be filtered by ExecutionId",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "executionId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "Guid?",
+            "description": "The execution identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Replication Logs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/catalogReplicationLog"
+              }
+            }
+          },
+          "404": {
+            "description": "StoreId not found",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -15987,6 +16151,139 @@
         "$ref": "#/definitions/BeezUP.Common.UserErrorMessage"
       }
     },
+    "catalogReplicationToConfiguration": {
+      "required": [
+        "toStoreId",
+        "customColumnStrategy"
+      ],
+      "properties": {
+        "toStoreId": {
+          "$ref": "#/definitions/BeezUP.Common.StoreId"
+        },
+        "customColumnStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        }
+      }
+    },
+    "catalogReplicationFromConfiguration": {
+      "required": [
+        "fromStoreId",
+        "customColumnStrategy"
+      ],
+      "properties": {
+        "fromStoreId": {
+          "$ref": "#/definitions/BeezUP.Common.StoreId"
+        },
+        "customColumnStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        }
+      }
+    },
+    "catalogReplicationLog": {
+      "required": [
+        "executionId",
+        "fromStoreId",
+        "item"
+      ],
+      "properties": {
+        "executionId": {
+          "$ref": "#/definitions/executionId"
+        },
+        "fromStoreId": {
+          "$ref": "#/definitions/BeezUP.Common.StoreId"
+        },
+        "logs": {
+          "type": "object",
+          "description": "The key will be the storeId",
+          "additionalProperties": {
+            "$ref": "#/definitions/catalogReplicationLogItems"
+          }
+        }
+      }
+    },
+    "catalogReplicationLogItems": {
+      "properties": {
+        "customColumnStrategy": {
+          "$ref": "#/definitions/replicationStrategy"
+        },
+        "createdItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/catalogReplicationLogItem"
+          }
+        },
+        "updatedItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/catalogReplicationLogItem"
+          }
+        },
+        "deleteItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/catalogReplicationLogItem"
+          }
+        },
+        "ignoreItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/catalogReplicationLogItem"
+          }
+        },
+        "errorItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/catalogReplicationErrorLogItem"
+          }
+        }
+      }
+    },
+    "catalogReplicationLogItem": {
+      "required": [
+        "actionType",
+        "count"
+      ],
+      "properties": {
+        "actionType": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "catalogReplicationErrorLogItem": {
+      "required": [
+        "item",
+        "errorType",
+        "errorMessage"
+      ],
+      "properties": {
+        "item": {
+          "$ref": "#/definitions/catalogReplicationLogItem"
+        },
+        "errorType": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "replicationStrategy": {
+      "enum": [
+        "None",
+        "Standard",
+        "AddOnly",
+        "PurgeAndReplace"
+      ]
+    },
     "BeezUP.Common.BeezUPColumnName": {
       "type": "string",
       "description": "The BeezUP column name",
@@ -27003,7 +27300,8 @@
         "Catalogs - Global",
         "Catalogs - Importation Process",
         "Catalogs - Importation Catalog Info",
-        "Catalogs - Catalog"
+        "Catalogs - Catalog",
+        "Catalogs - Replication"
       ]
     },
     {
