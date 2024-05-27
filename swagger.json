@@ -2592,7 +2592,8 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "format": "ProductActionType"
+            "format": "ProductActionType",
+            "description": "Possible Values:\n- REPLACE: Add or replace the existing product. If there is any custom column already declared on the catalog, the custom columns computation will be applied on the fly based on the product properties provided in the message\n- MERGE: Update the product properties of the existing product.\n      You cannot remove a product property using this action type, you must using REPLACE action type for that.\n      If there is any custom column already declared on the catalog, the custom columns computation will be applied on the fly based on the product properties provided in the message if it's possible or asynchronously.\n- DELETE: Simply delete the product\n"
           },
           {
             "name": "request",
