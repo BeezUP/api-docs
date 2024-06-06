@@ -4193,8 +4193,8 @@
         "tags": [
           "Catalogs - Replication"
         ],
-        "operationId": "Catalog_SaveReplicationTo",
-        "summary": "[PREVIEW] [Mocked] Save Store's Replicated To Configuration",
+        "operationId": "Catalog_PutReplicationTo",
+        "summary": "[PREVIEW] [Mocked] Put Store's Replicated To Configuration",
         "x-releaseStatus": "PREVIEW",
         "parameters": [
           {
@@ -4209,6 +4209,60 @@
               "items": {
                 "$ref": "#/definitions/catalogReplicationToConfiguration"
               }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Request accepted",
+            "headers": {
+              "X-BEEZUP-REPLICATION-EXECUTION-ID": {
+                "type": "string",
+                "format": "ExecutionId",
+                "description": "The Execution Id related to the initial replication. Can be used in Catalog_GetReplicationLog to retrieve initial replication's logs."
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "StoreId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Catalogs - Replication"
+        ],
+        "operationId": "Catalog_PatchReplicationTo",
+        "summary": "[PREVIEW] [Mocked] Patch Store's Replicated To Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/catalogReplicationToConfiguration"
             }
           }
         ],
@@ -4298,6 +4352,22 @@
             "type": "string",
             "format": "Guid?",
             "description": "The execution identifier"
+          },
+          {
+            "name": "minReplicationUtcDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time",
+            "description": "The minimum date for the logs. Cannot be lower than current date. Default is current date."
+          },
+          {
+            "name": "maxReplicationUtcDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time",
+            "description": "The maximum date for the logs. Cannot be greater than 31 days from current date. Default is 2 days from current date."
           }
         ],
         "responses": {
@@ -5711,8 +5781,8 @@
         "tags": [
           "Channel Catalogs - Replication"
         ],
-        "operationId": "SaveReplicationTo",
-        "summary": "[PREVIEW] [Mocked] Save ChannelCatalog's Replicated To Configuration",
+        "operationId": "PutReplicationTo",
+        "summary": "[PREVIEW] [Mocked] Put ChannelCatalog's Replicated To Configuration",
         "x-releaseStatus": "PREVIEW",
         "parameters": [
           {
@@ -5727,6 +5797,60 @@
               "items": {
                 "$ref": "#/definitions/channelCatalogReplicationToConfiguration"
               }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Request accepted",
+            "headers": {
+              "X-BEEZUP-REPLICATION-EXECUTION-ID": {
+                "type": "string",
+                "format": "ExecutionId",
+                "description": "The Execution Id related to the initial replication. Can be used in GetReplicationLog to retrieve initial replication's logs."
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "404": {
+            "description": "ChannelCatalogId not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Channel Catalogs - Replication"
+        ],
+        "operationId": "PatchReplicationTo",
+        "summary": "[PREVIEW] [Mocked] Patch ChannelCatalog's Replicated To Configuration",
+        "x-releaseStatus": "PREVIEW",
+        "parameters": [
+          {
+            "$ref": "#/parameters/channelCatalogIdParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/channelCatalogReplicationToConfiguration"
             }
           }
         ],
@@ -5816,6 +5940,22 @@
             "type": "string",
             "format": "Guid?",
             "description": "The execution identifier"
+          },
+          {
+            "name": "minReplicationUtcDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time",
+            "description": "The minimum date for the logs. Cannot be lower than current date. Default is current date."
+          },
+          {
+            "name": "maxReplicationUtcDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time",
+            "description": "The maximum date for the logs. Cannot be greater than 31 days from current date. Default is 2 days from current date."
           }
         ],
         "responses": {
@@ -16520,7 +16660,8 @@
       "required": [
         "executionId",
         "fromStoreId",
-        "item"
+        "status",
+        "sourceUpdateUtcDate"
       ],
       "properties": {
         "executionId": {
@@ -16529,12 +16670,53 @@
         "fromStoreId": {
           "$ref": "#/definitions/BeezUP.Common.StoreId"
         },
+        "status": {
+          "$ref": "#/definitions/processingStatus"
+        },
+        "sourceUpdateUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The update date on the source"
+        },
+        "targetUpdateUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The update date on the target"
+        },
+        "totalCounters": {
+          "$ref": "#/definitions/catalogReplicationLogCounters"
+        },
         "logs": {
           "type": "object",
           "description": "The key will be the storeId",
           "additionalProperties": {
             "$ref": "#/definitions/catalogReplicationLogItems"
           }
+        }
+      }
+    },
+    "catalogReplicationLogCounters": {
+      "type": "object",
+      "properties": {
+        "totalCreatedCount": {
+          "type": "integer",
+          "description": "The total count of created items"
+        },
+        "totalUpdatedCount": {
+          "type": "integer",
+          "description": "The total count of updated items"
+        },
+        "totalDeletedCount": {
+          "type": "integer",
+          "description": "The total count of deleted items"
+        },
+        "totalIgnoredCount": {
+          "type": "integer",
+          "description": "The total count of ignored items"
+        },
+        "totalErrorCount": {
+          "type": "integer",
+          "description": "The total count of items in error."
         }
       }
     },
@@ -16619,6 +16801,18 @@
         "Standard",
         "AddOnly",
         "PurgeAndReplace"
+      ]
+    },
+    "processingStatus": {
+      "x-exclude": true,
+      "description": "The processing status of an operation",
+      "type": "string",
+      "enum": [
+        "None",
+        "InProgress",
+        "Done",
+        "Failed",
+        "Aborted"
       ]
     },
     "BeezUP.Common.BeezUPColumnName": {
@@ -19169,7 +19363,8 @@
       "required": [
         "executionId",
         "fromStoreId",
-        "item"
+        "status",
+        "sourceUpdateUtcDate"
       ],
       "properties": {
         "executionId": {
@@ -19178,12 +19373,53 @@
         "fromChannelCatalogId": {
           "$ref": "#/definitions/BeezUP.Common.ChannelCatalogId"
         },
+        "status": {
+          "$ref": "#/definitions/processingStatus"
+        },
+        "sourceUpdateUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The update date on the source"
+        },
+        "targetUpdateUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The update date on the target"
+        },
+        "totalCounters": {
+          "$ref": "#/definitions/channelCatalogReplicationLogCounters"
+        },
         "logs": {
           "type": "object",
           "description": "The key will be the channelCatalogId",
           "additionalProperties": {
             "$ref": "#/definitions/channelCatalogReplicationLogItems"
           }
+        }
+      }
+    },
+    "channelCatalogReplicationLogCounters": {
+      "type": "object",
+      "properties": {
+        "totalCreatedCount": {
+          "type": "integer",
+          "description": "The total count of created items"
+        },
+        "totalUpdatedCount": {
+          "type": "integer",
+          "description": "The total count of updated items"
+        },
+        "totalDeletedCount": {
+          "type": "integer",
+          "description": "The total count of deleted items"
+        },
+        "totalIgnoredCount": {
+          "type": "integer",
+          "description": "The total count of ignored items"
+        },
+        "totalErrorCount": {
+          "type": "integer",
+          "description": "The total count of items in error."
         }
       }
     },
