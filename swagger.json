@@ -6127,7 +6127,11 @@
                 "PublishRelationshipsEnum",
                 "PublishProductImagesEnum",
                 "PublishInventoryEnum",
-                "PublishPricingEnum"
+                "PublishPricingEnum",
+                "PublishOffersLVEnum",
+                "PublishOffersFIEnum",
+                "PublishOffersLTEnum",
+                "PublishOffersEEEnum"
               ],
               "format": "publicationType"
             }
@@ -19672,7 +19676,11 @@
         "Images",
         "Relationships",
         "Unpublish",
-        "Offers"
+        "Offers",
+        "Offers_LT",
+        "Offers_LV",
+        "Offers_FI",
+        "Offers_EE"
       ],
       "type": "string",
       "example": "Offers",
