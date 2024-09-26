@@ -19677,10 +19677,10 @@
         "Relationships",
         "Unpublish",
         "Offers",
-        "Offers_LT",
-        "Offers_LV",
-        "Offers_FI",
-        "Offers_EE"
+        "OffersLT",
+        "OffersLV",
+        "OffersFI",
+        "OffersEE"
       ],
       "type": "string",
       "example": "Offers",
