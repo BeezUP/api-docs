@@ -7567,6 +7567,12 @@
           "412": {
             "$ref": "#/responses/412_PreConditionFailed"
           },
+          "503": {
+            "description": "Service could not perform the request",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
@@ -8014,6 +8020,12 @@
           },
           "400": {
             "description": "Requested too many batch operations",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "503": {
+            "description": "Service could not perform the request",
             "schema": {
               "$ref": "#/definitions/errorResponseMessage"
             }
