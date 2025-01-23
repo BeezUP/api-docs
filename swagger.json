@@ -13252,15 +13252,9 @@
       }
     },
     "csmOwner": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "value"
-      ]
+      "type": "string",
+      "description": "The csm owner of the acccount.",
+      "example": "Elise"
     },
     "profilePictureInfoResponseLinks": {
       "type": "object",
