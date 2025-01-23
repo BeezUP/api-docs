@@ -13252,9 +13252,15 @@
       }
     },
     "csmOwner": {
-      "description": "Indicate the name of the csm owner",
-      "example": "Elise",
-      "type": "string"
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
     },
     "profilePictureInfoResponseLinks": {
       "type": "object",
