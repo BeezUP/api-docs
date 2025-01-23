@@ -13139,6 +13139,9 @@
         "commercialOwnerEmail": {
           "$ref": "#/definitions/BeezUP.Common.Email"
         },
+        "csmOwner": {
+          "$ref": "#/definitions/csmOwner"
+        },
         "personalInfo": {
           "$ref": "#/definitions/personalInfo"
         },
@@ -13247,6 +13250,11 @@
           "$ref": "#/definitions/accountingEmails"
         }
       }
+    },
+    "csmOwner": {
+      "description": "Indicate the name of the csm owner",
+      "example": "Elise",
+      "type": "string"
     },
     "profilePictureInfoResponseLinks": {
       "type": "object",
