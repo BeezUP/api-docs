@@ -289,6 +289,92 @@
         }
       }
     },
+    "/v2/public/security/login/mfa": {
+      "post": {
+        "tags": [
+          "Public - Security - Security"
+        ],
+        "summary": "Login",
+        "description": "Checks if user has MFA Enabled - if he does sends the OTP email related, else he login will give your tokens",
+        "operationId": "LoginMFA",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/loginRequest"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your tokens",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ApiCredentials"
+            }
+          },
+          "202": {
+            "description": "One time password sent by email"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "403": {
+            "description": "Invalid credentials"
+          },
+          "500": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/public/security/otplogin": {
+      "post": {
+        "tags": [
+          "Public - Security - Security"
+        ],
+        "summary": "OTPLogin",
+        "description": "User Login with Multi-Factor Authentication - The login will give your tokens",
+        "operationId": "OTPLogin",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/otpLoginRequest"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your tokens",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ApiCredentials"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "401": {
+            "description": "Invalid OTP"
+          },
+          "403": {
+            "description": "Invalid credentials"
+          },
+          "500": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
     "/v2/public/security/register": {
       "post": {
         "tags": [
@@ -10213,6 +10299,29 @@
         }
       }
     },
+    "otpLoginRequest": {
+      "required": [
+        "login",
+        "password",
+        "otp"
+      ],
+      "type": "object",
+      "properties": {
+        "login": {
+          "$ref": "#/definitions/BeezUP.Common.Email"
+        },
+        "password": {
+          "description": "Your password",
+          "type": "string",
+          "format": "password",
+          "example": "I@mW0nder$Full"
+        },
+        "otp": {
+          "description": "The One Time Password BeezUP sent by e-mail after trying to login",
+          "type": "string"
+        }
+      }
+    },
     "registerRequest": {
       "required": [
         "email",
@@ -10255,6 +10364,25 @@
           "items": {
             "$ref": "#/definitions/BeezUP.Common.UserErrorMessage"
           }
+        }
+      }
+    },
+    "BeezUP.Common.ApiCredentials": {
+      "type": "object",
+      "properties": {
+        "credentials": {
+          "description": "Your API credential list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BeezUP.Common.ApiCredential"
+          },
+          "example": [
+            {
+              "productName": "UserApi",
+              "primaryToken": "3b22980d8d1143c6ba7adf4e55b9a153",
+              "secondaryToken": "162ae17fd52044c38cce3388ea5b0c91"
+            }
+          ]
         }
       }
     },
@@ -10312,6 +10440,27 @@
               }
             }
           }
+        }
+      }
+    },
+    "BeezUP.Common.ApiCredential": {
+      "description": "Your api credential",
+      "type": "object",
+      "properties": {
+        "productName": {
+          "description": "The product name related to this credential",
+          "type": "string",
+          "example": "UserAPI"
+        },
+        "primaryToken": {
+          "description": "The primary token to be used in the next call in the user scope API",
+          "type": "string",
+          "example": "3b22980d8d1143c6ba7adf4e55b9a153"
+        },
+        "secondaryToken": {
+          "description": "The secondary token. Could be usefull if you want to share your access with someone else.",
+          "type": "string",
+          "example": "162ae17fd52044c38cce3388ea5b0c91"
         }
       }
     },
