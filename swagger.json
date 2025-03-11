@@ -8160,6 +8160,12 @@
               "$ref": "#/definitions/errorResponseMessage"
             }
           },
+          "503": {
+            "description": "Service could not perform the request",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
           "default": {
             "$ref": "#/responses/GeneralError"
           }
