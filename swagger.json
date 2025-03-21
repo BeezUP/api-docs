@@ -7666,6 +7666,58 @@
         "deprecated": false
       }
     },
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/closeIncident": {
+      "post": {
+        "tags": [
+          "Marketplaces - Orders V3 - Order"
+        ],
+        "operationId": "CloseIncidentV3",
+        "summary": "Mark an order incident as resolved",
+        "parameters": [
+          {
+            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
+          },
+          {
+            "$ref": "#/parameters/accountIdParameter"
+          },
+          {
+            "$ref": "#/parameters/beezUPOrderIdParameter"
+          },
+          {
+            "$ref": "#/parameters/testModeInQueryParameter"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/closeIncidentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Order incident closed successfully"
+          },
+          "400": {
+            "description": "Invalid order change request, could not be send to the marketplace. Please check the body of this request.",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "503": {
+            "description": "Service could not perform the request",
+            "schema": {
+              "$ref": "#/definitions/errorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
         "tags": [
@@ -23680,6 +23732,19 @@
           "items": {
             "$ref": "#/definitions/userErrorMessage"
           }
+        }
+      }
+    },
+    "closeIncidentRequest": {
+      "type": "object",
+      "required": [
+        "order_Incident_ReasonCode"
+      ],
+      "properties": {
+        "order_Incident_ReasonCode": {
+          "type": "string",
+          "description": "close incident reason",
+          "example": "39"
         }
       }
     },
