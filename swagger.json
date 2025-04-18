@@ -7684,6 +7684,9 @@
             "$ref": "#/parameters/beezUPOrderIdParameter"
           },
           {
+            "$ref": "#/parameters/userNameInQueryParameter"
+          },
+          {
             "$ref": "#/parameters/testModeInQueryParameter"
           },
           {
