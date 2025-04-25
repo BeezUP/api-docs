@@ -7262,7 +7262,7 @@
         }
       }
     },
-    "/orders/v3//lov/orderManagementReadyMarketplaceBusinessCode": {
+    "/orders/v3/lov/orderManagementReadyMarketplaceBusinessCode": {
       "get": {
         "tags": [
           "Marketplaces - Orders V3 - Global"
@@ -7299,7 +7299,7 @@
         }
       }
     },
-    "/orders/v3//status": {
+    "/orders/v3/status": {
       "get": {
         "tags": [
           "Marketplaces - Orders V3 - Global"
@@ -7336,7 +7336,7 @@
         }
       }
     },
-    "/orders/v3//harvest": {
+    "/orders/v3/harvest": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Global"
@@ -7389,7 +7389,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//list/full": {
+    "/orders/v3/list/full": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - List"
@@ -7434,7 +7434,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//list/light": {
+    "/orders/v3/list/light": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - List"
@@ -7471,7 +7471,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
       "head": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -7577,7 +7577,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -7666,7 +7666,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/closeIncident": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/closeIncident": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -7721,7 +7721,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
       "get": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -7762,7 +7762,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -7825,7 +7825,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/harvest": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/harvest": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -7899,7 +7899,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history/{orderChangeExecutionUUID}": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history/{orderChangeExecutionUUID}": {
       "get": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -7948,7 +7948,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -8000,7 +8000,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
+    "/orders/v3/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Order"
@@ -8044,7 +8044,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//batches/setMerchantOrderInfos": {
+    "/orders/v3/batches/setMerchantOrderInfos": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Batches"
@@ -8084,7 +8084,7 @@
         }
       }
     },
-    "/orders/v3//batches/clearMerchantOrderInfos": {
+    "/orders/v3/batches/clearMerchantOrderInfos": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Batches"
@@ -8125,7 +8125,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//batches/changeOrders/{changeOrderType}": {
+    "/orders/v3/batches/changeOrders/{changeOrderType}": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Batches"
@@ -8178,7 +8178,7 @@
         "deprecated": false
       }
     },
-    "/orders/v3//batches/changeOrders": {
+    "/orders/v3/batches/changeOrders": {
       "post": {
         "tags": [
           "Marketplaces - Orders V3 - Batches"
