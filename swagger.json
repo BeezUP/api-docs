@@ -6217,7 +6217,8 @@
                 "PublishOffersLVEnum",
                 "PublishOffersFIEnum",
                 "PublishOffersLTEnum",
-                "PublishOffersEEEnum"
+                "PublishOffersEEEnum",
+                "PublishProductsV2Enum"
               ],
               "format": "publicationType"
             }
