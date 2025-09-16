@@ -6102,8 +6102,7 @@
         "tags": [
           "Marketplaces - Channel catalogs - Publications"
         ],
-        "summary": "[PREVIEW] Launch a publication of the catalog to the marketplace",
-        "x-releaseStatus": "PREVIEW",
+        "summary": "Launch a publication of the catalog to the marketplace",
         "operationId": "PublishCatalogToMarketplace",
         "parameters": [
           {
