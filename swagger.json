@@ -302,7 +302,7 @@
             "name": "request",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/loginRequest"
+              "$ref": "#/definitions/otpLoginRequest"
             },
             "required": true
           }
@@ -323,48 +323,21 @@
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
           },
-          "403": {
-            "description": "Invalid credentials"
-          },
-          "500": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/public/security/otplogin": {
-      "post": {
-        "tags": [
-          "Public - Security - Security"
-        ],
-        "summary": "OTPLogin",
-        "description": "User Login with Multi-Factor Authentication - The login will give your tokens",
-        "operationId": "OTPLogin",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/otpLoginRequest"
-            },
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Your tokens",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ApiCredentials"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
           "401": {
-            "description": "Invalid OTP"
+            "description": "OTP required for authentication",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "otp_required"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Please provide your One-Time Password"
+                }
+              }
+            }
           },
           "403": {
             "description": "Invalid credentials"
@@ -10363,8 +10336,7 @@
     "otpLoginRequest": {
       "required": [
         "login",
-        "password",
-        "otp"
+        "password"
       ],
       "type": "object",
       "properties": {
