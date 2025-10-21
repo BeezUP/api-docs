@@ -23179,6 +23179,12 @@
           "type": "boolean",
           "example": "false"
         },
+        "harvestOneOrderEndUtcDate": {
+          "description": "The date the order retrieval process following the order change ended",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:10:05Z"
+        },
         "details": {
           "type": "object",
           "additionalProperties": {
