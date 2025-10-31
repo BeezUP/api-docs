@@ -6167,7 +6167,7 @@
             "format": "int32",
             "default": "10",
             "minimum": 10,
-            "maximum": 100
+            "maximum": 250
           },
           {
             "name": "publicationTypes",
