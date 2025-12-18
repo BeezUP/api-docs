@@ -20633,10 +20633,11 @@
     },
     "publicationStrategyKind": {
       "type": "string",
-      "description": "Define the publication strategy kind, for that you have 2 choices \n* Delta - This is the recommanded publication strategy kind, this strategy will push to the marketplace only the difference between your catalog and the previous published feeds done by BeezUP. \n* Full - If you want to force the publication of all your catalog feeds to the marketplace. \n      !WARNING! Depending to the marketplace this operation will purge the existing offers on the marketplace that are not in the catalog or unknown from the publication feed referential.\n",
+      "description": "Define the publication strategy kind, for that you have 2 choices \n* Delta - This is the recommanded publication strategy kind, this strategy will push to the marketplace only the difference between your catalog and the previous published feeds done by BeezUP. \n* Full - If you want to force the publication of all your catalog feeds to the marketplace. \n      !WARNING! Depending to the marketplace this operation will purge the existing offers on the marketplace that are not in the catalog or unknown from the publication feed referential.\n* Unpublish - This publication strategy kind will perform a depublication of the products that have been deleted from your catalog\n      !WARNING! Products that have been deleted from the catalog were unpublished as soon as they were deleted. This publication strategy kind only allow to replay the operation. \n",
       "enum": [
         "Delta",
-        "Full"
+        "Full",
+        "Unpublish"
       ],
       "default": "Delta"
     },
