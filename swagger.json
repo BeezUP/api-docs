@@ -21087,6 +21087,9 @@
         },
         "links": {
           "$ref": "#/definitions/marketplaceChannelCatalogLinks"
+        },
+        "isChannelV2": {
+          "type": "boolean"
         }
       }
     },
