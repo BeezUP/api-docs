@@ -22276,7 +22276,6 @@
             "processing",
             "etag",
             "links",
-            "orderItems",
             "transitionLinks"
           ],
           "properties": {
