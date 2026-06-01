@@ -2641,7 +2641,8 @@
         ],
         "operationId": "Catalog_PushProductBatch",
         "summary": "Push product batches",
-        "description": "The importation will automatically start if one of the following condition occured:\n- after 1 minutes delay, \n- when you reach 50 batches\n",
+        "deprecated": true,
+        "description": "**Deprecated.** Use the verb-based endpoints on `/{storeId}/product-batches` instead:\n- `PUT` to replace products (REPLACE)\n- `PATCH` to merge products (MERGE)\n- `DELETE` to delete products (DELETE)\n\nThe importation will automatically start if one of the following condition occured:\n- after 1 minutes delay,\n- when you reach 50 batches\n",
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
@@ -2692,7 +2693,8 @@
         ],
         "operationId": "Catalog_GetReportingByBatchId",
         "summary": "Get Reporting By BatchId",
-        "description": "Get Reporting By BatchId.\n",
+        "deprecated": true,
+        "description": "**Deprecated.** Use the new batch tracking flow instead:\n1. `GET /{storeId}/product-batches/{batchId}` to obtain the `correlationId`.\n2. `GET /{storeId}/product-batches/{batchId}/reports/{correlationId}` to fetch the report.\n\nGet Reporting By BatchId.\n",
         "parameters": [
           {
             "$ref": "#/parameters/storeIdOnlyGeneralParameters"
@@ -2712,6 +2714,216 @@
           },
           "409": {
             "description": "Get Reporting is not ready yet. Please retry after 1mn.",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/product-batches": {
+      "put": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_ReplaceProductBatch",
+        "summary": "Replace products",
+        "description": "Push a batch of products to be added or replaced (REPLACE).\n\nThe importation will automatically start if one of the following condition occured:\n- after 1 minutes delay,\n- when you reach 50 batches\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/definitions/pushProductRequest"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "$ref": "#/responses/202_Import_Operation_Request_Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400_Request_Invalid"
+          },
+          "404": {
+            "$ref": "#/responses/404_Store_NotFound"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_MergeProductBatch",
+        "summary": "Merge products",
+        "description": "Push a batch of products to be merged (MERGE).\nYou cannot remove a product property using this action; use the `PUT` (REPLACE) endpoint for that.\n\nThe importation will automatically start if one of the following condition occured:\n- after 1 minutes delay,\n- when you reach 50 batches\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/definitions/pushProductRequest"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "$ref": "#/responses/202_Import_Operation_Request_Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400_Request_Invalid"
+          },
+          "404": {
+            "$ref": "#/responses/404_Store_NotFound"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_DeleteProductBatch",
+        "summary": "Delete products",
+        "description": "Push a batch of product SKUs to be deleted (DELETE).\n\nThe importation will automatically start if one of the following condition occured:\n- after 1 minutes delay,\n- when you reach 50 batches\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1000,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/definitions/sku"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "$ref": "#/responses/202_Import_Operation_Request_Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400_Request_Invalid"
+          },
+          "404": {
+            "$ref": "#/responses/404_Store_NotFound"
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/product-batches/{batchId}": {
+      "get": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_GetProductBatchStatus",
+        "summary": "Get product batch status",
+        "description": "Get the tracking information of a previously submitted product batch.\n\n- When `isStarted` is `false`, the batch hasn't been picked up yet by the importation engine and no `correlationId` is available.\n- When `isStarted` is `true`, a `correlationId` is returned and the report can be fetched via `GET /{storeId}/product-batches/{batchId}/reports/{correlationId}`.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "batchId",
+            "description": "The product batch identifier",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "BatchId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The product batch tracking information",
+            "schema": {
+              "$ref": "#/definitions/productBatchStatusResponse"
+            }
+          },
+          "404": {
+            "description": "The batch is not found",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/user/catalogs/{storeId}/product-batches/{batchId}/reports/{correlationId}": {
+      "get": {
+        "tags": [
+          "Catalogs - Catalog"
+        ],
+        "operationId": "Catalog_GetBatchReport",
+        "summary": "Get product batch report",
+        "description": "Get the report of a product batch importation.\nReturns a `303 See Other` redirect to the URL where the report can be downloaded.\n\nThe `correlationId` is the one returned by `GET /{storeId}/product-batches/{batchId}`.\n",
+        "parameters": [
+          {
+            "$ref": "#/parameters/storeIdOnlyGeneralParameters"
+          },
+          {
+            "name": "batchId",
+            "description": "The product batch identifier",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "BatchId"
+          },
+          {
+            "name": "correlationId",
+            "description": "The correlation identifier returned by the batch status endpoint",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "Guid"
+          }
+        ],
+        "responses": {
+          "303": {
+            "$ref": "#/responses/303_Import_Operation_GetReportUrl_SeeOther"
+          },
+          "404": {
+            "description": "The batch or its report is not found",
             "schema": {
               "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
             }
@@ -16812,6 +17024,35 @@
     "sku": {
       "description": "Sku",
       "type": "string"
+    },
+    "productBatchStatusResponse": {
+      "type": "object",
+      "description": "Tracking information of a product batch.",
+      "required": [
+        "requestedUtcDate",
+        "isStarted"
+      ],
+      "properties": {
+        "requestedUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC date and time when the batch was requested (i.e. accepted by the API)."
+        },
+        "isStarted": {
+          "type": "boolean",
+          "description": "True once the batch has been picked up by the importation engine.\nWhen true, startedUtcDate and correlationId are also returned.\n"
+        },
+        "startedUtcDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC date and time when the batch was picked up by the importation engine.\nPresent only when isStarted is true.\n"
+        },
+        "correlationId": {
+          "type": "string",
+          "format": "Guid",
+          "description": "Correlation identifier of the underlying importation.\nPresent only when isStarted is true. Used to fetch the report via\nGET /{storeId}/product-batches/{batchId}/reports/{correlationId}.\n"
+        }
+      }
     },
     "productBatchErrorResponse": {
       "type": "object",
