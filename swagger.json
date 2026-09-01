@@ -10553,7 +10553,8 @@
     "otpLoginRequest": {
       "required": [
         "login",
-        "password"
+        "password",
+        "otp"
       ],
       "type": "object",
       "properties": {
