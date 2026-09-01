@@ -10508,7 +10508,7 @@
     "apiCredentials": {
       "type": "object",
       "properties": {
-        "MFAEnabled": {
+        "mfaEnabled": {
           "description": "Indicates whether multi-factor authentication is enabled on the account.",
           "type": "boolean",
           "default": "false"
