@@ -10600,6 +10600,31 @@
           "description": "The user id of your commercial in BeezUP.",
           "type": "string",
           "example": "47ea14ab-195d-4f9a-a24e-32c329ee40f6"
+        },
+        "firstName": {
+          "description": "Optional. The first name of the account owner.",
+          "type": "string",
+          "example": "Paul"
+        },
+        "lastName": {
+          "description": "Optional. The last name of the account owner.",
+          "type": "string",
+          "example": "Simon"
+        },
+        "phoneNumber": {
+          "description": "Optional. The phone number of the account owner.",
+          "type": "string",
+          "example": "+33123456789"
+        },
+        "company": {
+          "description": "Optional. The company name.",
+          "type": "string",
+          "example": "My super company"
+        },
+        "vatNumber": {
+          "description": "Optional. The company VAT number. \\\nUnlike the saveCompanyInfo operation, this number is stored as it is given and is NOT checked against the official VIES web service. \\\nThe owner can trigger that validation later by saving the company information from their account.\n",
+          "type": "string",
+          "example": "FR12345678901"
         }
       }
     },
