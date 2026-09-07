@@ -289,13 +289,53 @@
         }
       }
     },
-    "/v2/public/security/login/mfa": {
+    "/v2/public/security/login/front": {
       "post": {
         "tags": [
           "Public - Security - Security"
         ],
         "summary": "Login",
-        "description": "Checks if user has MFA Enabled - if he does sends the OTP email related, else he login will give your tokens",
+        "description": "Checks whether the user has MFA enabled. If MFA is enabled, it sends the user an OTP email. Otherwise, the login process returns the authentication tokens.",
+        "operationId": "Login_front",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/loginRequest"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your tokens",
+            "schema": {
+              "$ref": "#/definitions/UserCredentials"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
+            }
+          },
+          "403": {
+            "description": "Invalid credentials"
+          },
+          "500": {
+            "$ref": "#/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/v2/public/security/login/front/mfa": {
+      "post": {
+        "tags": [
+          "Public - Security - Security"
+        ],
+        "summary": "Login",
+        "description": "Second step of the login - Verifies the One-Time Password sent by email during /login/front. Returns your tokens if the OTP is valid, or an error if it's wrong or expired.",
         "operationId": "LoginMFA",
         "parameters": [
           {
@@ -311,7 +351,7 @@
           "200": {
             "description": "Your tokens",
             "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ApiCredentials"
+              "$ref": "#/definitions/UserCredentials"
             }
           },
           "202": {
@@ -10505,14 +10545,33 @@
         }
       }
     },
-    "apiCredentials": {
+    "UserCredentials": {
       "type": "object",
       "properties": {
-        "mfaEnabled": {
-          "description": "Indicates whether multi-factor authentication is enabled on the account.",
+        "otpRequired": {
+          "description": "Indicates whether a one-time password is required to complete this login.",
           "type": "boolean",
           "default": "false"
         },
+        "credentials": {
+          "description": "Your API credential list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiCredential"
+          },
+          "example": [
+            {
+              "productName": "UserApi",
+              "primaryToken": "3b22980d8d1143c6ba7adf4e55b9a153",
+              "secondaryToken": "162ae17fd52044c38cce3388ea5b0c91"
+            }
+          ]
+        }
+      }
+    },
+    "apiCredentials": {
+      "type": "object",
+      "properties": {
         "credentials": {
           "description": "Your API credential list",
           "type": "array",
@@ -10643,25 +10702,6 @@
         }
       }
     },
-    "BeezUP.Common.ApiCredentials": {
-      "type": "object",
-      "properties": {
-        "credentials": {
-          "description": "Your API credential list",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BeezUP.Common.ApiCredential"
-          },
-          "example": [
-            {
-              "productName": "UserApi",
-              "primaryToken": "3b22980d8d1143c6ba7adf4e55b9a153",
-              "secondaryToken": "162ae17fd52044c38cce3388ea5b0c91"
-            }
-          ]
-        }
-      }
-    },
     "BeezUP.Common.Email": {
       "description": "The email",
       "type": "string",
@@ -10716,27 +10756,6 @@
               }
             }
           }
-        }
-      }
-    },
-    "BeezUP.Common.ApiCredential": {
-      "description": "Your api credential",
-      "type": "object",
-      "properties": {
-        "productName": {
-          "description": "The product name related to this credential",
-          "type": "string",
-          "example": "UserAPI"
-        },
-        "primaryToken": {
-          "description": "The primary token to be used in the next call in the user scope API",
-          "type": "string",
-          "example": "3b22980d8d1143c6ba7adf4e55b9a153"
-        },
-        "secondaryToken": {
-          "description": "The secondary token. Could be usefull if you want to share your access with someone else.",
-          "type": "string",
-          "example": "162ae17fd52044c38cce3388ea5b0c91"
         }
       }
     },
