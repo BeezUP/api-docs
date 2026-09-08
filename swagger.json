@@ -351,7 +351,7 @@
           "200": {
             "description": "Your tokens",
             "schema": {
-              "$ref": "#/definitions/UserCredentials"
+              "$ref": "#/definitions/apiCredentials"
             }
           },
           "202": {
@@ -10545,7 +10545,7 @@
         }
       }
     },
-    "UserCredentials": {
+    "userCredentials": {
       "type": "object",
       "properties": {
         "otpRequired": {
