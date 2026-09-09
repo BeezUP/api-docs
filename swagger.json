@@ -311,7 +311,7 @@
           "200": {
             "description": "Your tokens",
             "schema": {
-              "$ref": "#/definitions/UserCredentials"
+              "$ref": "#/definitions/userCredentials"
             }
           },
           "400": {
