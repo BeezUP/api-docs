@@ -168,24 +168,8 @@
       "x-displayName": "Settings"
     },
     {
-      "name": "Marketplaces - Orders - Global",
-      "x-displayName": "Global"
-    },
-    {
       "name": "Marketplaces - Orders - AutoTransitions",
       "x-displayName": "AutoTransitions"
-    },
-    {
-      "name": "Marketplaces - Orders - List",
-      "x-displayName": "List"
-    },
-    {
-      "name": "Marketplaces - Orders - Order",
-      "x-displayName": "Order"
-    },
-    {
-      "name": "Marketplaces - Orders - Batches",
-      "x-displayName": "Batches"
     },
     {
       "name": "Marketplaces - Orders - Exports",
@@ -6599,138 +6583,6 @@
         }
       }
     },
-    "/v2/user/marketplaces/orders/": {
-      "get": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Global"
-        ],
-        "x-tagGroups": "Martketplaces Orders",
-        "operationId": "GetOrderIndex",
-        "summary": "[DEPRECATED] Get all actions you can do on the order API",
-        "parameters": [
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Order index",
-            "schema": {
-              "$ref": "#/definitions/orderIndex"
-            }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/status": {
-      "get": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Global"
-        ],
-        "x-tagGroups": "Martketplaces Orders",
-        "operationId": "GetMarketplaceAccountsSynchronization",
-        "summary": "[DEPRECATED] Get current synchronization status between your marketplaces and BeezUP accounts",
-        "description": "Use /orders/v3",
-        "parameters": [
-          {
-            "name": "storeId",
-            "in": "query",
-            "required": false,
-            "description": "The StoreId to filter by",
-            "type": "string",
-            "format": "guid",
-            "x-example": "04730364-9826-4ff3-92e4-51fccd02bf10"
-          },
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched current synchronization status",
-            "schema": {
-              "$ref": "#/definitions/accountSynchronizationList"
-            }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "404": {
-            "description": "Requested Store could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/harvest": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Global"
-        ],
-        "operationId": "HarvestAll",
-        "summary": "[DEPRECATED] Send harvest request to all your marketplaces",
-        "parameters": [
-          {
-            "name": "storeId",
-            "in": "query",
-            "required": false,
-            "description": "The StoreId to filter by",
-            "type": "string",
-            "format": "guid",
-            "x-example": "04730364-9826-4ff3-92e4-51fccd02bf10"
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Successfully sent harvest request to all marketplaces",
-            "headers": {
-              "Retry-After": {
-                "type": "integer",
-                "description": "Indicates the duration in seconds to wait to be able to make this request again"
-              }
-            }
-          },
-          "404": {
-            "description": "Requested Store could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
-            "description": "Failed to send harvest request because allowed rate limits have been exceeded",
-            "headers": {
-              "Retry-After": {
-                "type": "integer",
-                "description": "Indicates the duration in seconds to wait to be able to make this request again"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
     "/v2/user/marketplaces/orders/automaticTransitions": {
       "get": {
         "tags": [
@@ -6805,95 +6657,6 @@
           }
         },
         "deprecated": false
-      }
-    },
-    "/v2/user/marketplaces/orders/list/full": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - List"
-        ],
-        "operationId": "GetOrderListFull",
-        "summary": "[DEPRECATED] Get a paginated list of all Orders with all Order and Order Item(s) properties",
-        "description": "DEPRECATED - Use /orders/v3 instead\nThe purpose of this operation is to reduce the amount of request to the API.\\\n\\\nPrevious implmentation of this feature only returned a partial (light) version of the Orders. The purpose of this API is to reduce the number of incoming requests by returning the complete (full) Order and Order Item(s) properties.\n",
-        "parameters": [
-          {
-            "name": "Accept-Encoding",
-            "description": "Allows the client to indicate wether it accepts a compressed encoding to reduce traffic size",
-            "in": "header",
-            "required": true,
-            "type": "array",
-            "collectionFormat": "csv",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/orderListRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched the full list of Orders",
-            "schema": {
-              "$ref": "#/definitions/orderListFull"
-            }
-          },
-          "400": {
-            "description": "Could not process request for given parameters values. Please check error message for more details.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/list/light": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - List"
-        ],
-        "operationId": "GetOrderListLight",
-        "summary": "[DEPRECATED] Get a paginated list of all Orders without details",
-        "description": "Use /orders/v3 instead",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/orderListRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched the list of Orders",
-            "schema": {
-              "$ref": "#/definitions/orderListLight"
-            }
-          },
-          "400": {
-            "description": "Could not process request for given parameters values. Please check error message for more details.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
       }
     },
     "/v2/user/marketplaces/orders/exportations": {
@@ -6982,509 +6745,6 @@
           }
         },
         "deprecated": false
-      }
-    },
-    "/v2/user/marketplaces/orders/batches/setMerchantOrderInfos": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Batches"
-        ],
-        "operationId": "SetMerchantOrderInfoList",
-        "summary": "[DEPRECATED] Send a batch of operations to set an Order's merchant information  (max 100 items per call)",
-        "description": "The purpose of this operation is to reduce the amount of request to the API.",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/setMerchantOrderInfoListRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
-            "schema": {
-              "$ref": "#/definitions/batchOrderOperationResponse"
-            }
-          },
-          "400": {
-            "description": "Requested too many batch operations",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/batches/clearMerchantOrderInfos": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Batches"
-        ],
-        "operationId": "ClearMerchantOrderInfoList",
-        "summary": "[DEPRECATED] Send a batch of operations to clear an Order's merchant information (max 100 items per call)",
-        "description": "The purpose of this operation is to reduce the amount of request to the API.",
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/clearMerchantOrderInfoListRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
-            "schema": {
-              "$ref": "#/definitions/batchOrderOperationResponse"
-            }
-          },
-          "400": {
-            "description": "Requested too many batch operations",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/batches/changeOrders/{changeOrderType}": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Batches"
-        ],
-        "operationId": "ChangeOrderList",
-        "summary": "[DEPRECATED] Send a batch of operations to change your marketplace Order information: accept, ship, etc.  (max 100 items per call)",
-        "description": "The purpose of this operation is to reduce the amount of request to the API. \nMax 100 items per call.\n",
-        "parameters": [
-          {
-            "$ref": "#/parameters/changeOrderTypeParameter"
-          },
-          {
-            "$ref": "#/parameters/userNameInQueryParameter"
-          },
-          {
-            "$ref": "#/parameters/testModeInQueryParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/changeOrderListRequest"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Succesfully received and processed batched operations. Please check response to see the status per operation.",
-            "schema": {
-              "$ref": "#/definitions/batchOrderOperationResponse"
-            }
-          },
-          "400": {
-            "description": "Requested too many batch operations",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}": {
-      "head": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Order"
-        ],
-        "operationId": "HeadOrder",
-        "summary": "[DEPRECATED] DEPRECATED - Get the meta information about the order (ETag, Last-Modified)",
-        "description": "DEPRECATED - Use /orders/v3 instead\nThe purpose of this operation is to reduce the bandwith usage by getting just the meta information about the order (ETag, Last-Modified) with the body.\nThis could be useful\n",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          },
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched Order and Order Item(s) properties",
-            "headers": {
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time",
-                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
-              },
-              "ETag": {
-                "type": "string",
-                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
-              }
-            }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "404": {
-            "description": "Requested Order could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      },
-      "get": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Order"
-        ],
-        "operationId": "GetOrder",
-        "summary": "[DEPRECATED] DEPRECATED - Get full Order and Order Item(s) properties",
-        "description": "DEPRECATED - Use /orders/v3 instead",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          },
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched Order and Order Item(s) properties",
-            "headers": {
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time",
-                "description": "Last modification UTC date of the order\\\nFor more details go to this link: https://tools.ietf.org/html/rfc7232#section-2.2\n"
-              },
-              "ETag": {
-                "type": "string",
-                "description": "ETag value to identify the current version of requested Order\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/order"
-            }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "404": {
-            "description": "Requested Order could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/history": {
-      "get": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Order"
-        ],
-        "operationId": "GetOrderHistory",
-        "summary": "[DEPRECATED] Get an Order's harvest and change history",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          },
-          {
-            "$ref": "#/parameters/ifNoneMatchParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched Order history",
-            "schema": {
-              "$ref": "#/definitions/orderHistory"
-            }
-          },
-          "304": {
-            "$ref": "#/responses/304_NotModified"
-          },
-          "404": {
-            "description": "Requested Order could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/harvest": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Order"
-        ],
-        "operationId": "HarvestOrder",
-        "summary": "[DEPRECATED] Send harvest request for a single Order",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Successfully sent Order harvest request",
-            "headers": {
-              "Retry-After": {
-                "type": "integer",
-                "description": "Indicates the duration in seconds to wait to be able to make this request again"
-              }
-            }
-          },
-          "404": {
-            "description": "Requested Order could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
-            "description": "Failed to send harvest request because allowed rate limits have been exceeded",
-            "headers": {
-              "Retry-After": {
-                "type": "integer",
-                "description": "Indicates the duration in seconds to wait to be able to make this request again"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/setMerchantOrderInfo": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Order"
-        ],
-        "operationId": "SetMerchantOrderInfo",
-        "summary": "[DEPRECATED] Set an Order's merchant information",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/setMerchantOrderInfoRequest"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successfully set Order merchant order info set"
-          },
-          "400": {
-            "description": "Could not update Order merchant information. Please see body for more information.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "404": {
-            "description": "Requested Order could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/clearMerchantOrderInfo": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Order"
-        ],
-        "operationId": "ClearMerchantOrderInfo",
-        "summary": "[DEPRECATED] Clear an Order's merchant information",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successfully cleared Order merchant order info set"
-          },
-          "400": {
-            "description": "Could not update Order merchant information. Please see body for more information.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "404": {
-            "description": "Requested Order could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/v2/user/marketplaces/orders/{marketplaceTechnicalCode}/{accountId}/{beezUPOrderId}/{changeOrderType}": {
-      "post": {
-        "deprecated": true,
-        "x-releaseStatus": "DEPRECATED",
-        "tags": [
-          "Marketplaces - Orders - Order"
-        ],
-        "operationId": "ChangeOrder",
-        "summary": "[DEPRECATED] Change your marketplace Order Information (accept, ship, etc.)",
-        "parameters": [
-          {
-            "$ref": "#/parameters/marketplaceTechnicalCodeParameter"
-          },
-          {
-            "$ref": "#/parameters/accountIdParameter"
-          },
-          {
-            "$ref": "#/parameters/beezUPOrderIdParameter"
-          },
-          {
-            "$ref": "#/parameters/changeOrderTypeParameter"
-          },
-          {
-            "$ref": "#/parameters/userNameInQueryParameter"
-          },
-          {
-            "$ref": "#/parameters/testModeInQueryParameter"
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "required": false,
-            "schema": {
-              "$ref": "#/definitions/changeOrderRequest"
-            }
-          },
-          {
-            "$ref": "#/parameters/ifMatchParameter"
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "Order change request accepted"
-          },
-          "400": {
-            "description": "Invalid order change request, could not be send to the marketplace. Please check the body of this request.",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "404": {
-            "description": "Requested Order could not be found",
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "409": {
-            "description": "Already processing a change request for this Order.\\\nPlease refresh your clients Order information and retry later.\n",
-            "headers": {
-              "Retry-After": {
-                "type": "integer",
-                "description": "Indicates the duration in seconds to wait to be able to make this request again"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/BeezUP.Common.ErrorResponseMessage"
-            }
-          },
-          "412": {
-            "$ref": "#/responses/412_PreConditionFailed"
-          },
-          "default": {
-            "$ref": "#/responses/GeneralError"
-          }
-        }
       }
     },
     "/orders/v3//lov/orderManagementReadyMarketplaceBusinessCode": {
@@ -21502,12 +20762,6 @@
       "format": "int32",
       "example": "1234"
     },
-    "beezUPOrderId": {
-      "description": "The BeezUP Order identifier",
-      "type": "string",
-      "format": "uuid",
-      "example": "00000000000000000000000000000000000000000000000"
-    },
     "accountId": {
       "description": "The marketplace account identifier in BeezUP. This account identifier is based on your api settings.",
       "type": "integer",
@@ -21518,16 +20772,6 @@
       "description": "The order merchant identifier",
       "type": "string",
       "example": "MyOrderMerchantId"
-    },
-    "order_MerchantECommerceSoftwareName": {
-      "description": "The e-commerce software name of the merchant",
-      "type": "string",
-      "example": "Prestashop"
-    },
-    "order_MerchantECommerceSoftwareVersion": {
-      "description": "The e-commece software version of the merchant",
-      "type": "string",
-      "example": "123.0.1"
     },
     "orderExportationsLinks": {
       "type": "object",
@@ -21549,27 +20793,6 @@
           "example": {
             "href": "/v2/user/marketplaces/orders/exportations",
             "method": "GET"
-          }
-        }
-      ]
-    },
-    "links.ExportOrdersLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/exportations",
-            "method": "POST",
-            "properties": {
-              "request": {
-                "in": "body",
-                "required": true,
-                "type": "object",
-                "schema": "exportOrderListRequest"
-              }
-            }
           }
         }
       ]
@@ -21730,23 +20953,6 @@
       "example": "All",
       "x-lov": "OrderMerchantInfoSynchronizationStatus"
     },
-    "pageSize": {
-      "description": "Indicate the order count per page",
-      "type": "integer",
-      "format": "int32",
-      "default": "100",
-      "minimum": 25,
-      "maximum": 100,
-      "example": "100"
-    },
-    "pageNumber": {
-      "description": "Indicates the page number",
-      "format": "int32",
-      "type": "integer",
-      "example": "1",
-      "minimum": 1,
-      "default": "1"
-    },
     "order_Buyer_Name": {
       "description": "Buyer full name",
       "type": "string",
@@ -21847,30 +21053,6 @@
           ]
         }
       }
-    },
-    "orderListRequest": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderListRequestWithoutPagination"
-        },
-        {
-          "type": "object",
-          "required": [
-            "beginPeriodUtcDate",
-            "endPeriodUtcDate",
-            "pageSize",
-            "pageNumber"
-          ],
-          "properties": {
-            "pageSize": {
-              "$ref": "#/definitions/pageSize"
-            },
-            "pageNumber": {
-              "$ref": "#/definitions/pageNumber"
-            }
-          }
-        }
-      ]
     },
     "exportOrderListFormat": {
       "description": "The type of the file to export",
@@ -22035,192 +21217,189 @@
         }
       }
     },
-    "orderIdentifier": {
-      "type": "object",
-      "required": [
-        "marketplaceTechnicalCode",
-        "accountId",
-        "beezUPOrderId"
-      ],
-      "properties": {
-        "marketplaceTechnicalCode": {
-          "$ref": "#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
-        },
-        "accountId": {
-          "$ref": "#/definitions/accountId"
-        },
-        "beezUPOrderId": {
-          "$ref": "#/definitions/beezUPOrderId"
-        }
-      }
-    },
-    "clearMerchantOrderInfoListRequest": {
-      "type": "object",
-      "required": [
-        "orders"
-      ],
-      "properties": {
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/orderIdentifier"
-          },
-          "maxItems": 100,
-          "uniqueItems": true,
-          "minItems": 1,
-          "example": [
-            {
-              "marketplaceTechnicalCode": "Amazon",
-              "accountId": "1234",
-              "beezUPOrderId": "0"
-            },
-            {
-              "marketplaceTechnicalCode": "Amazon",
-              "accountId": "5678",
-              "beezUPOrderId": "0"
-            },
-            {
-              "marketplaceTechnicalCode": "Ebay",
-              "accountId": "9876",
-              "beezUPOrderId": "0"
-            }
-          ]
-        }
-      }
-    },
-    "setMerchantOrderInfoListRequest": {
-      "type": "object",
-      "required": [
-        "order_MerchantECommerceSoftwareName",
-        "order_MerchantECommerceSoftwareVersion",
-        "orders"
-      ],
-      "properties": {
-        "order_MerchantECommerceSoftwareName": {
-          "$ref": "#/definitions/order_MerchantECommerceSoftwareName"
-        },
-        "order_MerchantECommerceSoftwareVersion": {
-          "$ref": "#/definitions/order_MerchantECommerceSoftwareVersion"
-        },
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/setMerchantOrderInfoListRequestItem"
-          },
-          "maxItems": 100,
-          "uniqueItems": true,
-          "minItems": 1,
-          "example": [
-            {
-              "marketplaceTechnicalCode": "Amazon",
-              "accountId": "1234",
-              "beezUPOrderId": "8D47FF1427A26B064ca98e95f644361ada5a5be0bbb3b53",
-              "order_MerchantOrderId": "BX1234"
-            },
-            {
-              "marketplaceTechnicalCode": "Amazon",
-              "accountId": "5678",
-              "beezUPOrderId": "8D47FF149F213D055f26e3c413e4c9ba5c5cfda460547a4",
-              "order_MerchantOrderId": "BX5678"
-            },
-            {
-              "marketplaceTechnicalCode": "Ebay",
-              "accountId": "9876",
-              "beezUPOrderId": "8D47FF150217B60bdec05ab61c445d1a59e3da050b52823",
-              "order_MerchantOrderId": "BX9876"
-            }
-          ]
-        }
-      }
-    },
-    "setMerchantOrderInfoListRequestItem": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderIdentifier"
-        },
-        {
-          "type": "object",
-          "required": [
-            "marketplaceTechnicalCode",
-            "accountId",
-            "beezUPOrderId",
-            "order_MerchantOrderId"
-          ],
-          "properties": {
-            "order_MerchantOrderId": {
-              "$ref": "#/definitions/order_MerchantOrderId"
-            }
-          }
-        }
-      ]
-    },
-    "setMerchantOrderInfoRequest": {
-      "type": "object",
-      "required": [
-        "order_MerchantOrderId",
-        "order_MerchantECommerceSoftwareName",
-        "order_MerchantECommerceSoftwareVersion"
-      ],
-      "properties": {
-        "order_MerchantOrderId": {
-          "$ref": "#/definitions/order_MerchantOrderId"
-        },
-        "order_MerchantECommerceSoftwareName": {
-          "$ref": "#/definitions/order_MerchantECommerceSoftwareName"
-        },
-        "order_MerchantECommerceSoftwareVersion": {
-          "$ref": "#/definitions/order_MerchantECommerceSoftwareVersion"
-        }
-      }
-    },
-    "accountSynchronizationList": {
-      "type": "object",
-      "properties": {
-        "accountSynchronizations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/accountSynchronization"
-          }
-        }
-      }
-    },
-    "accountSynchronization": {
-      "type": "object",
-      "required": [
-        "accountId",
-        "marketplaceTechnicalCode",
-        "marketplaceBusinessCode"
-      ],
-      "properties": {
-        "accountId": {
-          "$ref": "#/definitions/accountId"
-        },
-        "completedHarvestSynchroUtcDate": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "marketplaceBusinessCode": {
-          "$ref": "#/definitions/BeezUP.Common.MarketplaceBusinessCode"
-        },
-        "marketplaceTechnicalCode": {
-          "$ref": "#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
-        }
-      }
-    },
-    "processing": {
-      "description": "If true, there is currently a harvest or an order change in progress. Otherwise false.",
-      "type": "boolean",
-      "example": "false"
-    },
-    "links.GetOrderLink": {
+    "links.GetAutomaticTransitionsLink": {
       "allOf": [
         {
           "$ref": "#/definitions/BeezUP.Common.Link3"
         },
         {
           "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000",
+            "href": "/v2/user/marketplaces/orders/autoTransitions",
             "method": "GET"
+          }
+        }
+      ]
+    },
+    "links.ConfigureAutomaticTransitionsLink": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/BeezUP.Common.Link3"
+        },
+        {
+          "example": {
+            "href": "/v2/user/marketplaces/orders/autoTransitions",
+            "method": "POST",
+            "parameters": {
+              "request": {
+                "in": "body",
+                "request": "true",
+                "schema": "configureAutomaticTransitionRequest"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "beezUPOrderStatus": {
+      "type": "string",
+      "description": "BeezUP order status. Unified for all marketplaces.",
+      "example": "Shipped",
+      "x-lov": "BeezUPOrderState"
+    },
+    "marketplaceOrderId": {
+      "description": "The order marketplace identifier",
+      "type": "string",
+      "example": "AMAZON12345"
+    },
+    "sourceType": {
+      "description": "Indicates the origin of the operation",
+      "type": "string",
+      "enum": [
+        "Api",
+        "Go"
+      ],
+      "example": "Api"
+    },
+    "oMReadyMarketplaceBusinessCodeResponse": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/listOfValueItem"
+      }
+    },
+    "orderListFullWithLinks": {
+      "type": "object",
+      "required": [
+        "paginationResult",
+        "orders",
+        "links"
+      ],
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderWithLinks"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/orderListFullLinks"
+        },
+        "paginationResult": {
+          "$ref": "#/definitions/paginationResult"
+        }
+      }
+    },
+    "orderListLightWithLinks": {
+      "type": "object",
+      "required": [
+        "paginationResult",
+        "orders",
+        "links"
+      ],
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderHeaderWithLinks"
+          }
+        },
+        "links": {
+          "$ref": "#/definitions/orderListLightLinks"
+        },
+        "paginationResult": {
+          "$ref": "#/definitions/paginationResult"
+        }
+      }
+    },
+    "orderListFullLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderListLinks"
+        },
+        {
+          "type": "object",
+          "required": [
+            "self",
+            "harvest",
+            "setMerchantInfos",
+            "clearMerchantInfos",
+            "status"
+          ],
+          "properties": {
+            "self": {
+              "$ref": "#/definitions/links.GetOrderListFullV3Link"
+            }
+          }
+        }
+      ]
+    },
+    "orderListLightLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderListLinks"
+        },
+        {
+          "type": "object",
+          "required": [
+            "self",
+            "harvest",
+            "setMerchantInfos",
+            "clearMerchantInfos",
+            "status"
+          ],
+          "properties": {
+            "self": {
+              "$ref": "#/definitions/links.GetOrderListLightV3Link"
+            }
+          }
+        }
+      ]
+    },
+    "orderWithLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/order"
+        },
+        {
+          "type": "object",
+          "required": [
+            "links",
+            "transitionLinks"
+          ],
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/orderLinks"
+            },
+            "transitionLinks": {
+              "$ref": "#/definitions/orderTransitionLinks"
+            }
+          }
+        }
+      ]
+    },
+    "orderHeaderWithLinks": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderHeader"
+        },
+        {
+          "type": "object",
+          "required": [
+            "links"
+          ],
+          "properties": {
+            "links": {
+              "$ref": "#/definitions/orderHeaderLinks"
+            }
           }
         }
       ]
@@ -22232,692 +21411,70 @@
       ],
       "properties": {
         "self": {
-          "$ref": "#/definitions/links.GetOrderLink"
-        }
-      }
-    },
-    "orderHeader": {
-      "description": "Describe the basic information related to an order. All properties with the prefix order_ are translated in the list of values /user/lov/OrderMetaInfoOrderDetails",
-      "type": "object",
-      "required": [
-        "marketplaceTechnicalCode",
-        "accountId",
-        "beezUPOrderId",
-        "marketplaceBusinessCode",
-        "order_MarketplaceOrderId",
-        "order_Status_BeezUPOrderStatus",
-        "order_PurchaseUtcDate",
-        "order_LastModificationUtcDate",
-        "order_MarketplaceLastModificationUtcDate",
-        "processing",
-        "etag",
-        "links"
-      ],
-      "properties": {
-        "marketplaceTechnicalCode": {
-          "$ref": "#/definitions/BeezUP.Common.MarketplaceTechnicalCode"
-        },
-        "accountId": {
-          "$ref": "#/definitions/accountId"
-        },
-        "beezUPOrderId": {
-          "$ref": "#/definitions/beezUPOrderId"
-        },
-        "beezUPOrderUrl": {
-          "$ref": "#/definitions/BeezUP.Common.HttpUrl"
-        },
-        "marketplaceBusinessCode": {
-          "$ref": "#/definitions/BeezUP.Common.MarketplaceBusinessCode"
-        },
-        "order_MarketplaceOrderId": {
-          "$ref": "#/definitions/marketplaceOrderId"
-        },
-        "order_Status_BeezUPOrderStatus": {
-          "$ref": "#/definitions/beezUPOrderStatus"
-        },
-        "order_Status_MarketplaceOrderStatus": {
-          "$ref": "#/definitions/marketplaceOrderStatus"
-        },
-        "order_MerchantOrderId": {
-          "$ref": "#/definitions/order_MerchantOrderId"
-        },
-        "order_MerchantECommerceSoftwareName": {
-          "$ref": "#/definitions/order_MerchantECommerceSoftwareName"
-        },
-        "order_MerchantECommerceSoftwareVersion": {
-          "$ref": "#/definitions/order_MerchantECommerceSoftwareVersion"
-        },
-        "order_PurchaseUtcDate": {
-          "description": "The purchase date of this order",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-03-31T21:30:23Z"
-        },
-        "order_LastModificationUtcDate": {
-          "description": "The last modification UTC date done by BeezUP of this order",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-04-16T10:30:23Z"
-        },
-        "order_MarketplaceLastModificationUtcDate": {
-          "description": "The last modification UTC date done by the marketplace on this order",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-04-16T10:25:23Z"
-        },
-        "order_Buyer_Name": {
-          "$ref": "#/definitions/order_Buyer_Name"
-        },
-        "order_TotalPrice": {
-          "description": "The total price of this order (corresponding to the amount paid by the customer)",
-          "format": "decimal",
-          "type": "number",
-          "example": "101.42"
-        },
-        "order_CurrencyCode": {
-          "$ref": "#/definitions/BeezUP.Common.CurrencyCode"
-        },
-        "order_Invoice_Number": {
-          "description": "The order invoice number",
-          "type": "string"
-        },
-        "order_Invoice_Uri": {
-          "description": "The order invoice URI",
-          "type": "string"
-        },
-        "processing": {
-          "$ref": "#/definitions/processing"
-        },
-        "etag": {
-          "$ref": "#/definitions/etag"
-        },
-        "links": {
-          "$ref": "#/definitions/orderHeaderLinks"
-        }
-      }
-    },
-    "etag": {
-      "description": "ETag value to identify the order.\\\nThis information is required for the operation GetOrder and ChangeOrder.\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n",
-      "type": "string",
-      "example": "\"ca071a4580129f932a03971968ffef69\""
-    },
-    "orderItem": {
-      "description": "Describe an order item. All properties with the prefix orderItem_ are translated in the list of values /user/lov/OrderMetaInfoOrderItems",
-      "type": "object",
-      "required": [
-        "beezUPOrderItemId",
-        "orderItem_OrderItemType"
-      ],
-      "properties": {
-        "beezUPOrderItemId": {
-          "description": "The BeezUP identifier of the order Item",
-          "type": "string",
-          "example": "1"
-        },
-        "orderItem_OrderItemType": {
-          "description": "The order item type of the order item",
-          "type": "string",
-          "example": "Product"
-        },
-        "orderItem_MerchantImportedProductId": {
-          "description": "The product id indicated in the catalog importation in BeezUP system for this order item. This property will help you to match the order to the inventory system.",
-          "type": "string",
-          "example": "73267"
-        },
-        "orderItem_MerchantImportedProductIdColumnName": {
-          "description": "The column name for the product id indicated in the catalog importation in BeezUP system related to this order item. This property will help you to match the order to the inventory system.",
-          "example": "reference",
-          "type": "string"
-        },
-        "orderItem_MerchantImportedProductUrl": {
-          "description": "The product url indicated in the catalog importation in BeezUP system related to this order item",
-          "example": "http://blabla.com/my-folder/73267.html",
-          "type": "string"
-        },
-        "orderItem_MerchantProductIdColumnName": {
-          "description": "The column name indicate in the mapping for the product id related to the order item",
-          "example": "reference_produit",
-          "type": "string"
-        },
-        "orderItem_BeezUPStoreId": {
-          "description": "The store id in the beezup system related to the order item. This property will help you to match the order to the inventory system.",
-          "example": "00000000-cceb-4c20-b2c9-000000000000",
-          "type": "string"
-        },
-        "orderItem_ItemTax": {
-          "description": "The tax of the order item",
-          "type": "number",
-          "format": "decimal",
-          "example": "0.0"
-        },
-        "orderItem_Title": {
-          "description": "The title of the order item",
-          "example": "bLA acide-plomb 6v-4.5ah 70x48x106mm",
-          "type": "string"
-        },
-        "orderItem_ImageUrl": {
-          "description": "The URL of the image of the order item",
-          "example": "http://blabla.com//das6-45.jpg",
-          "type": "string"
-        },
-        "orderItem_MerchantProductId": {
-          "description": "The merchant product id of the order item",
-          "example": "BlaLdas6-4.5",
-          "type": "string"
-        },
-        "orderItem_MarketPlaceProductId": {
-          "description": "The marketplace product identifier of the order item",
-          "example": "",
-          "type": "string"
-        },
-        "orderItem_gtin": {
-          "description": "The order item gtin",
-          "example": "gtin_sample",
-          "type": "string"
-        },
-        "orderItem_ItemPrice": {
-          "description": "The price of the order item",
-          "example": "6.86",
-          "type": "number",
-          "format": "decimal"
-        },
-        "orderItem_Quantity": {
-          "description": "The quantity of the order item",
-          "example": "1.0",
-          "type": "number",
-          "format": "decimal"
-        },
-        "orderItem_TotalPrice": {
-          "description": "The total price of the order item",
-          "example": "6.86",
-          "type": "number",
-          "format": "decimal"
-        },
-        "orderItem_Shipping_Price": {
-          "description": "The shipping price of the order item",
-          "type": "number",
-          "example": "0.0",
-          "format": "decimal"
-        },
-        "orderItem_Condition": {
-          "description": "The merchant product condition of the order item",
-          "example": "New",
-          "type": "string"
-        },
-        "orderItem_MarketplaceProductUri": {
-          "description": "The merchant product uri of the order item",
-          "type": "string",
-          "example": "http://beezupblob.com/productLink.xml"
-        },
-        "orderItem_MarketplaceImageUri": {
-          "description": "The marketplace image uri",
-          "type": "string",
-          "example": "http://beezupblob.com/marketplaceImg.jpg"
+          "$ref": "#/definitions/links.GetOrderV3Link"
         }
       }
     },
     "orderLinks": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderHeaderLinks"
+      "type": "object",
+      "required": [
+        "self",
+        "history",
+        "harvest",
+        "setMerchantInfo",
+        "clearMerchantInfo"
+      ],
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/links.GetOrderV3Link"
         },
-        {
-          "type": "object",
-          "required": [
-            "self",
-            "history",
-            "harvest",
-            "setMerchantInfo",
-            "clearMerchantInfo"
-          ],
-          "properties": {
-            "history": {
-              "$ref": "#/definitions/links.GetOrderHistoryLink"
-            },
-            "harvest": {
-              "$ref": "#/definitions/links.HarvestOrderLink"
-            },
-            "setMerchantInfo": {
-              "$ref": "#/definitions/links.SetMerchantOrderInfoLink"
-            },
-            "clearMerchantInfo": {
-              "$ref": "#/definitions/links.ClearMerchantOrderInfoLink"
-            }
-          }
+        "history": {
+          "$ref": "#/definitions/links.GetOrderHistoryV3Link"
+        },
+        "harvest": {
+          "$ref": "#/definitions/links.HarvestOrderV3Link"
+        },
+        "setMerchantInfo": {
+          "$ref": "#/definitions/links.SetMerchantOrderInfoV3Link"
+        },
+        "clearMerchantInfo": {
+          "$ref": "#/definitions/links.ClearMerchantOrderInfoV3Link"
         }
-      ]
+      }
     },
-    "links.GetOrderHistoryLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
+    "orderListLinks": {
+      "description": "The list of actions you can do from the order list response",
+      "type": "object",
+      "required": [
+        "setMerchantInfos",
+        "clearMerchantInfos",
+        "status"
+      ],
+      "properties": {
+        "harvest": {
+          "$ref": "#/definitions/links.HarvestAllV3Link"
         },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/history",
-            "method": "GET"
-          }
+        "setMerchantInfos": {
+          "$ref": "#/definitions/links.SetMerchantOrderInfoListV3Link"
+        },
+        "clearMerchantInfos": {
+          "$ref": "#/definitions/links.ClearMerchantOrderInfoListV3Link"
+        },
+        "status": {
+          "$ref": "#/definitions/links.GetMarketplaceAccountsSynchronizationV3Link"
         }
-      ]
-    },
-    "links.SetMerchantOrderInfoLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/setMerchantOrderInfo",
-            "method": "POST",
-            "parameters": {
-              "request": {
-                "in": "body",
-                "type": "object",
-                "schema": "setMerchantOrderInfoRequest"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "links.ClearMerchantOrderInfoLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/clearMerchantOrderInfo",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.HarvestOrderLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/harvest",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "order": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderHeader"
-        },
-        {
-          "type": "object",
-          "description": "Describe in details all informations related to an order. All properties with the prefix order_ are translated in the list of values /user/lov/OrderMetaInfoOrderDetails.",
-          "required": [
-            "marketplaceTechnicalCode",
-            "accountId",
-            "beezUPOrderId",
-            "marketplaceBusinessCode",
-            "order_MarketplaceOrderId",
-            "order_Status_BeezUPOrderStatus",
-            "order_PurchaseUtcDate",
-            "order_LastModificationUtcDate",
-            "order_MarketplaceLastModificationUtcDate",
-            "processing",
-            "etag",
-            "links",
-            "transitionLinks"
-          ],
-          "properties": {
-            "links": {
-              "$ref": "#/definitions/orderLinks"
-            },
-            "order_MarketPlaceChannel": {
-              "description": "Useful to identify the origin of the order. For example in Amazon.",
-              "type": "string",
-              "example": "Amazon France"
-            },
-            "order_TotalTax": {
-              "description": "The total tax of this order",
-              "type": "number",
-              "format": "decimal",
-              "example": "0.0"
-            },
-            "order_TotalCommission": {
-              "description": "The total commission of this order",
-              "type": "number",
-              "format": "decimal",
-              "example": "0.0"
-            },
-            "order_PaymentMethod": {
-              "description": "The payment method of this order",
-              "type": "string",
-              "example": "1 / 1X"
-            },
-            "order_PayingUtcDate": {
-              "description": "The UTC date of the payment of this order",
-              "type": "string",
-              "format": "date-time",
-              "example": "2017-04-01T13:22:01Z"
-            },
-            "order_Comment": {
-              "description": "The comment associated to this order",
-              "type": "string",
-              "example": "This is a comment"
-            },
-            "order_Shipping_FirstName": {
-              "description": "Order Shipping first name",
-              "type": "string",
-              "example": "Monroe"
-            },
-            "order_Shipping_LastName": {
-              "description": "Order Shipping last name",
-              "type": "string",
-              "example": "Monroe"
-            },
-            "order_Shipping_Civility": {
-              "description": "The civility of the person in the shipping address for this order",
-              "type": "string",
-              "example": "MRS"
-            },
-            "order_Shipping_CompanyName": {
-              "description": "The company name of the shipping address for this order",
-              "type": "string",
-              "example": "My Company"
-            },
-            "order_Shipping_AddressName": {
-              "description": "The name of the person in the shipping address for this order",
-              "type": "string",
-              "example": "Jacques BAUREGARD"
-            },
-            "order_Shipping_Email": {
-              "description": "The email of the person in the shipping address for this order",
-              "type": "string",
-              "example": "client_000000@manomano.fr"
-            },
-            "order_Shipping_AddressLine1": {
-              "description": "The shipping address line 1 of this order",
-              "type": "string",
-              "example": "5 rue amélie"
-            },
-            "order_Shipping_AddressLine2": {
-              "description": "The shipping address line 2 of this order",
-              "type": "string",
-              "example": "BDR"
-            },
-            "order_Shipping_AddressLine3": {
-              "description": "The shipping address line 3 of this order",
-              "type": "string",
-              "example": "RDC"
-            },
-            "order_Shipping_AddressPostalCode": {
-              "description": "The shipping address postal code of this order",
-              "type": "string",
-              "example": "13014"
-            },
-            "order_Shipping_AddressCity": {
-              "description": "The shipping address city of this order",
-              "type": "string",
-              "example": "Marseille"
-            },
-            "order_Shipping_AddressStateOrRegion": {
-              "description": "The shipping address state or region of this order",
-              "type": "string",
-              "example": "BDR"
-            },
-            "order_Shipping_AddressCountryName": {
-              "description": "The shipping address country name",
-              "type": "string",
-              "example": "France"
-            },
-            "order_Shipping_AddressCountryIsoCodeAlpha2": {
-              "description": "The shipping address country iso code alpha 2 (see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#/decoding_table for more details)",
-              "type": "string",
-              "example": "FR"
-            },
-            "order_Shipping_Phone": {
-              "description": "The phone number of the person in the shipping address for this order",
-              "type": "string",
-              "example": "+33000000041"
-            },
-            "order_Shipping_MobilePhone": {
-              "description": "The mobile phone number of the person in the shipping address for this order",
-              "type": "string",
-              "example": "+33000000042"
-            },
-            "order_Shipping_Price": {
-              "description": "The shipping price of this order",
-              "type": "number",
-              "format": "decimal",
-              "example": "6.9"
-            },
-            "order_Shipping_Method": {
-              "description": "The shipping method of this order",
-              "type": "string",
-              "example": "DPD Domicile"
-            },
-            "order_Shipping_ShippingTax": {
-              "description": "The shipping tax for this order",
-              "type": "number",
-              "format": "decimal",
-              "example": "0.0"
-            },
-            "order_Shipping_EarliestShipUtcDate": {
-              "description": "The UTC date of the earliest ship for this order",
-              "type": "string",
-              "example": "2017-04-02T21:30:00Z",
-              "format": "date-time"
-            },
-            "order_Shipping_LatestShipUtcDate": {
-              "description": "The UTC date of the latest ship for this order",
-              "type": "string",
-              "format": "date-time",
-              "example": "2017-04-30T21:30:00Z"
-            },
-            "order_Buyer_Identifier": {
-              "description": "The buyer identifier for this order",
-              "type": "string",
-              "example": "1234567890"
-            },
-            "order_Buyer_FirstName": {
-              "description": "Order Buyer first name",
-              "type": "string",
-              "example": "Monroe"
-            },
-            "order_Buyer_LastName": {
-              "description": "Order Buyer last name",
-              "type": "string",
-              "example": "Monroe"
-            },
-            "order_Buyer_Civility": {
-              "description": "The buyer civility for this order",
-              "type": "string",
-              "example": "Marseille"
-            },
-            "order_Buyer_CompanyName": {
-              "description": "The buyer company name for this order",
-              "type": "string",
-              "example": "Marsillia"
-            },
-            "order_Buyer_Email": {
-              "description": "The email of the buyer for this order",
-              "type": "string",
-              "example": "client_000000@manomano.fr"
-            },
-            "order_Buyer_AddressLine1": {
-              "description": "The Buyer address line 1 of this order",
-              "type": "string",
-              "example": "5 rue amélie"
-            },
-            "order_Buyer_AddressLine2": {
-              "description": "The Buyer address line 2 of this order",
-              "type": "string",
-              "example": "BDR"
-            },
-            "order_Buyer_AddressLine3": {
-              "description": "The Buyer address line 3 of this order",
-              "type": "string",
-              "example": "RDC"
-            },
-            "order_Buyer_AddressPostalCode": {
-              "description": "The Buyer address postal code of this order",
-              "type": "string",
-              "example": "13014"
-            },
-            "order_Buyer_AddressCity": {
-              "description": "The Buyer address city of this order",
-              "type": "string",
-              "example": "Marseille"
-            },
-            "order_Buyer_AddressStateOrRegion": {
-              "description": "The Buyer address state or region of this order",
-              "type": "string",
-              "example": "BDR"
-            },
-            "order_Buyer_AddressCountryName": {
-              "description": "The Buyer address country name",
-              "type": "string",
-              "example": "France"
-            },
-            "order_Buyer_AddressCountryIsoCodeAlpha2": {
-              "description": "The Buyer address country iso code alpha 2 (see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#/decoding_table for more details)",
-              "type": "string",
-              "example": "FR"
-            },
-            "order_Buyer_Phone": {
-              "description": "The phone number of the buyer for this order",
-              "type": "string",
-              "example": "+33000000101"
-            },
-            "order_Buyer_MobilePhone": {
-              "description": "The mobile phone number of the buyer for this order",
-              "type": "string",
-              "example": "+33000000042"
-            },
-            "order_IsPrime": {
-              "description": "Indicates if the order is considered as Prime (only on Amazon)",
-              "type": "boolean",
-              "example": "true"
-            },
-            "order_FulfilledBy": {
-              "description": "The order FulfilledBy",
-              "type": "string"
-            },
-            "order_IsBusiness": {
-              "description": "The order IsBusiness",
-              "type": "boolean"
-            },
-            "order_OrderSourceUri": {
-              "description": "Technical information: The url to the source of this order. We received this information from the marketplace.\n",
-              "type": "string",
-              "format": "uri",
-              "example": "http://beezupblob.com/order.xml"
-            },
-            "order_OrderItemsSourceUri": {
-              "description": "Technical information: The url to the source of this order items. We received this information from the marketplace.\n",
-              "type": "string",
-              "format": "uri",
-              "example": "http://beezupblob.com/orderItems.xml"
-            },
-            "orderItems": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/orderItem"
-              }
-            },
-            "transitionLinks": {
-              "$ref": "#/definitions/orderTransitionLinks"
-            }
-          }
-        }
-      ]
-    },
-    "links.ChangeOrderLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "rel": {
-              "type": "string",
-              "description": "Indicate the relation name related to the link",
-              "example": "self"
-            }
-          }
-        },
-        {
-          "example": {
-            "rel": "ShipOrder",
-            "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
-            "method": "POST",
-            "templated": "true",
-            "parameters": {
-              "If-Match": {
-                "in": "header",
-                "value": "\"ca071a4580129f932a03971968ffef69\"",
-                "required": true,
-                "type": "string"
-              },
-              "testMode": {
-                "in": "query",
-                "type": "boolean",
-                "required": false,
-                "value": "false"
-              },
-              "userName": {
-                "in": "query",
-                "type": "string",
-                "required": true
-              },
-              "request": {
-                "in": "body",
-                "type": "object",
-                "schema": "changeOrderRequest",
-                "properties": {
-                  "order_Shipping_FulfillmentDate": {
-                    "required": true,
-                    "type": "date-time"
-                  },
-                  "order_Shipping_ShipperTrackingNumber": {
-                    "required": true,
-                    "type": "string"
-                  },
-                  "order_Shipping_CarrierName": {
-                    "required": true,
-                    "type": "string",
-                    "lovRequired": "true",
-                    "lovLink": {
-                      "href": "/v2/user/PriceMinisterCarrierName"
-                    }
-                  },
-                  "order_Shipping_Method": {
-                    "required": true,
-                    "type": "string",
-                    "lovRequired": "false",
-                    "lovLink": {
-                      "href": "/v2/user/ShippingMethod_PriceMinister"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ]
+      }
     },
     "orderTransitionLinks": {
       "description": "Contains the authorized change actions for an order",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/links.ChangeOrderLink"
+        "$ref": "#/definitions/links.ChangeOrderV3Link"
       },
       "example": [
         {
           "rel": "ShipOrder",
-          "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
+          "href": "/orders/v3/Amazon/1001/00000000000000000000000000000000000000000000000/ShipOrder",
           "method": "POST",
           "templated": "true",
           "parameters": {
@@ -22973,7 +21530,7 @@
         },
         {
           "rel": "CancelOrder",
-          "href": "/v2/user/marketplaces/orders/Amazon/1001/00000000000000000000000000000000000000000000000/CancelOrder",
+          "href": "/orders/v3/Amazon/1001/00000000000000000000000000000000000000000000000/CancelOrder",
           "method": "POST",
           "templated": "true",
           "parameters": {
@@ -23004,737 +21561,6 @@
                   "type": "string"
                 }
               }
-            }
-          }
-        }
-      ]
-    },
-    "orderIndex": {
-      "type": "object",
-      "required": [
-        "links",
-        "lovLinks"
-      ],
-      "properties": {
-        "links": {
-          "$ref": "#/definitions/orderIndexLinks"
-        },
-        "lovLinks": {
-          "$ref": "#/definitions/orderIndexLovLinks"
-        }
-      }
-    },
-    "links.GetOrderIndexLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders",
-            "method": "GET"
-          }
-        }
-      ]
-    },
-    "orderIndexLinks": {
-      "description": "Gives you all entry point operations you can do on this API",
-      "type": "object",
-      "required": [
-        "self",
-        "status",
-        "harvest",
-        "setMerchantInfos",
-        "clearMerchantInfos",
-        "export",
-        "autoTransitions",
-        "orders",
-        "lightOrders"
-      ],
-      "properties": {
-        "self": {
-          "$ref": "#/definitions/links.GetOrderIndexLink"
-        },
-        "status": {
-          "$ref": "#/definitions/links.GetMarketplaceAccountsSynchronizationLink"
-        },
-        "harvest": {
-          "$ref": "#/definitions/links.HarvestAllLink"
-        },
-        "setMerchantInfos": {
-          "$ref": "#/definitions/links.SetMerchantOrderInfoListLink"
-        },
-        "clearMerchantInfos": {
-          "$ref": "#/definitions/links.ClearMerchantOrderInfoListLink"
-        },
-        "export": {
-          "$ref": "#/definitions/links.ExportOrdersLink"
-        },
-        "autoTransitions": {
-          "$ref": "#/definitions/links.GetAutomaticTransitionsLink"
-        },
-        "exportations": {
-          "$ref": "#/definitions/links.GetOrderExportationsLink"
-        },
-        "orders": {
-          "$ref": "#/definitions/links.GetOrderListFullLink"
-        },
-        "lightOrders": {
-          "$ref": "#/definitions/links.GetOrderListLightLink"
-        }
-      }
-    },
-    "orderIndexLovLinks": {
-      "description": "Gives you all the LOV to get the translations realated to operation name, codes, property names and statuses.",
-      "type": "object",
-      "required": [
-        "orderChangeBusinessOperationType",
-        "orderState",
-        "orderProperty",
-        "orderPropertyPosted"
-      ],
-      "properties": {
-        "orderChangeBusinessOperationType": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "orderState": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "orderProperty": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        },
-        "orderPropertyPosted": {
-          "$ref": "#/definitions/BeezUP.Common.LOVLink3"
-        }
-      }
-    },
-    "links.GetOrderListFullLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/list/full",
-            "method": "POST",
-            "properties": {
-              "Accept-Encoding": {
-                "in": "header",
-                "required": true,
-                "type": "​array",
-                "schema": "string"
-              },
-              "request": {
-                "in": "body",
-                "required": false,
-                "type": "object",
-                "schema": "orderListRequest"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "links.GetOrderListLightLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/list/light",
-            "method": "POST",
-            "properties": {
-              "request": {
-                "in": "body",
-                "required": false,
-                "type": "object",
-                "schema": "orderListRequest"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "links.GetAutomaticTransitionsLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/autoTransitions",
-            "method": "GET"
-          }
-        }
-      ]
-    },
-    "links.ConfigureAutomaticTransitionsLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/autoTransitions",
-            "method": "POST",
-            "parameters": {
-              "request": {
-                "in": "body",
-                "request": "true",
-                "schema": "configureAutomaticTransitionRequest"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "orderListLinks": {
-      "description": "The list of actions you can do from the order list response",
-      "type": "object",
-      "required": [
-        "harvest",
-        "setMerchantInfos",
-        "clearMerchantInfos",
-        "export",
-        "status"
-      ],
-      "properties": {
-        "harvest": {
-          "$ref": "#/definitions/links.HarvestAllLink"
-        },
-        "setMerchantInfos": {
-          "$ref": "#/definitions/links.SetMerchantOrderInfoListLink"
-        },
-        "clearMerchantInfos": {
-          "$ref": "#/definitions/links.ClearMerchantOrderInfoListLink"
-        },
-        "export": {
-          "$ref": "#/definitions/links.ExportOrdersLink"
-        },
-        "status": {
-          "$ref": "#/definitions/links.GetMarketplaceAccountsSynchronizationLink"
-        }
-      }
-    },
-    "links.GetMarketplaceAccountsSynchronizationLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/status",
-            "method": "GET"
-          }
-        }
-      ]
-    },
-    "orderListLightLinks": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderListLinks"
-        },
-        {
-          "type": "object",
-          "required": [
-            "self",
-            "harvest",
-            "setMerchantInfos",
-            "clearMerchantInfos",
-            "export",
-            "status"
-          ],
-          "properties": {
-            "self": {
-              "$ref": "#/definitions/links.GetOrderListLightLink"
-            }
-          }
-        }
-      ]
-    },
-    "orderListFullLinks": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderListLinks"
-        },
-        {
-          "type": "object",
-          "required": [
-            "self",
-            "harvest",
-            "setMerchantInfos",
-            "clearMerchantInfos",
-            "export",
-            "status"
-          ],
-          "properties": {
-            "self": {
-              "$ref": "#/definitions/links.GetOrderListFullLink"
-            }
-          }
-        }
-      ]
-    },
-    "links.SetMerchantOrderInfoListLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/setMerchantOrderInfos",
-            "method": "POST",
-            "parameters": {
-              "request": {
-                "in": "body",
-                "required": true,
-                "type": "object",
-                "schema": "setMerchantOrderInfoRequest"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "links.ClearMerchantOrderInfoListLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/clearMerchantOrderInfos",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "links.HarvestAllLink": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/BeezUP.Common.Link3"
-        },
-        {
-          "example": {
-            "href": "/v2/user/marketplaces/orders/harvest",
-            "method": "POST"
-          }
-        }
-      ]
-    },
-    "orderListLight": {
-      "description": "The order list with minimum information we have from the orders.\\\nThe paginationResult properties can be null if the list is empty.\n",
-      "type": "object",
-      "required": [
-        "orders",
-        "links"
-      ],
-      "properties": {
-        "paginationResult": {
-          "$ref": "#/definitions/BeezUP.Common.PaginationResult"
-        },
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/orderHeader"
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/orderListLightLinks"
-        }
-      }
-    },
-    "orderListFull": {
-      "description": "The order list with all information we have from the orders and its items.\\\nThe paginationResult properties can be null if the list is empty.\n",
-      "type": "object",
-      "required": [
-        "orders",
-        "links"
-      ],
-      "properties": {
-        "paginationResult": {
-          "$ref": "#/definitions/BeezUP.Common.PaginationResult"
-        },
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/order"
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/orderListFullLinks"
-        }
-      }
-    },
-    "beezUPOrderStatus": {
-      "type": "string",
-      "description": "BeezUP order status. Unified for all marketplaces.",
-      "example": "Shipped",
-      "x-lov": "BeezUPOrderState"
-    },
-    "marketplaceOrderStatus": {
-      "description": "The marketplace order state",
-      "type": "string",
-      "example": "In_progress_3"
-    },
-    "marketplaceOrderId": {
-      "description": "The order marketplace identifier",
-      "type": "string",
-      "example": "AMAZON12345"
-    },
-    "orderHistory": {
-      "description": "Describe the history related to an order",
-      "type": "object",
-      "properties": {
-        "changeOrderReportings": {
-          "description": "The list of change order operation",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/changeOrderReporting"
-          }
-        },
-        "harvestOrderReportings": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/harvestOrderReporting"
-          }
-        },
-        "lastModificationUtcDate": {
-          "format": "date-time",
-          "type": "string"
-        }
-      }
-    },
-    "sourceType": {
-      "description": "Indicates the origin of the operation",
-      "type": "string",
-      "enum": [
-        "Api",
-        "Go"
-      ],
-      "example": "Api"
-    },
-    "executionUUID": {
-      "description": "The execution identifier",
-      "format": "uuid",
-      "type": "string",
-      "example": "8D4176FA78D5A7Fffa91e9edc694ec5858be9a1b109507c"
-    },
-    "changeOrderReporting": {
-      "description": "The reporting related to a change order operation",
-      "type": "object",
-      "properties": {
-        "executionUUID": {
-          "$ref": "#/definitions/executionUUID"
-        },
-        "changeOrderType": {
-          "$ref": "#/definitions/businessOperationType"
-        },
-        "sourceType": {
-          "$ref": "#/definitions/sourceType"
-        },
-        "sourceUserId": {
-          "$ref": "#/definitions/BeezUP.Common.UserId"
-        },
-        "sourceUserName": {
-          "type": "string",
-          "example": "Guillaume Tell"
-        },
-        "creationUtcDate": {
-          "description": "The creation UTC date of the execution",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-04-01T13:10:03Z"
-        },
-        "processingStatus": {
-          "description": "The processing status of the execution",
-          "type": "string",
-          "example": "Done"
-        },
-        "lastUpdateUtcDate": {
-          "description": "The last update UTC date of the execution",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-04-01T13:10:05Z"
-        },
-        "errorMessage": {
-          "description": "The error message during the execution",
-          "type": "string",
-          "example": "This is an error message"
-        },
-        "ipAddress": {
-          "description": "The IP address who request this operation",
-          "type": "string",
-          "example": "127.0.0.1"
-        },
-        "testMode": {
-          "description": "This operation was a test",
-          "type": "boolean",
-          "example": "false"
-        },
-        "harvestOneOrderEndUtcDate": {
-          "description": "The date the order retrieval process following the order change ended",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-04-01T13:10:05Z"
-        },
-        "details": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "object"
-          }
-        }
-      }
-    },
-    "harvestOrderReporting": {
-      "description": "The reporting related to a harvest order operation",
-      "type": "object",
-      "properties": {
-        "executionUUID": {
-          "$ref": "#/definitions/executionUUID"
-        },
-        "creationUtcDate": {
-          "description": "The creation UTC date of the execution",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-04-01T13:10:03Z"
-        },
-        "processingStatus": {
-          "description": "The processing status of the execution",
-          "type": "string",
-          "example": "Done"
-        },
-        "lastUpdateUtcDate": {
-          "description": "The last update UTC date of the execution",
-          "format": "date-time",
-          "type": "string",
-          "example": "2017-04-01T13:10:05Z"
-        },
-        "errorMessage": {
-          "description": "The warning message during the execution",
-          "type": "string",
-          "example": "This is an error message"
-        },
-        "warningMessage": {
-          "description": "The warning message during the execution",
-          "type": "string",
-          "example": "This is a warning"
-        },
-        "beezUPStatus": {
-          "$ref": "#/definitions/beezUPOrderStatus"
-        },
-        "marketplaceStatus": {
-          "description": "The order marketplace status",
-          "type": "string",
-          "example": "In_progress_3"
-        },
-        "beezUPForcedStatus": {
-          "description": "The marketplace order status forced by BeezUP during the order change oepration. This could happend when there is no status on the marketplace side.",
-          "type": "string",
-          "example": "In_progress_3"
-        }
-      }
-    },
-    "changeOrderListRequest": {
-      "type": "object",
-      "description": "Contains all change order operations you want to make.  (max 100 items per call)",
-      "required": [
-        "changeOrders"
-      ],
-      "properties": {
-        "changeOrders": {
-          "type": "array",
-          "description": "The change order operations",
-          "minLength": 1,
-          "maxLength": 100,
-          "items": {
-            "$ref": "#/definitions/changeOrderListRequestItem"
-          }
-        }
-      }
-    },
-    "changeOrderListRequestItem": {
-      "type": "object",
-      "description": "Contains the order identifier and the change order request",
-      "required": [
-        "order"
-      ],
-      "properties": {
-        "order": {
-          "$ref": "#/definitions/orderIdentifierWithETag"
-        },
-        "changeOrderRequest": {
-          "$ref": "#/definitions/changeOrderRequest"
-        }
-      }
-    },
-    "orderIdentifierWithETag": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderIdentifier"
-        },
-        {
-          "type": "object",
-          "required": [
-            "marketplaceTechnicalCode",
-            "accountId",
-            "beezUPOrderId",
-            "etag"
-          ],
-          "properties": {
-            "etag": {
-              "$ref": "#/definitions/etag"
-            }
-          }
-        }
-      ]
-    },
-    "changeOrderRequest": {
-      "type": "object",
-      "description": "All properties with the prefix order_ are translated in the list of values /user/lov#OrderMetaInfoPosted",
-      "additionalProperties": {
-        "type": "string"
-      },
-      "example": {
-        "order_Shipping_ShipperTrackingNumber": "1H01845163783",
-        "order_Shipping_ShippingUrl": "https://trackingpackage.com?number=1H01845163783",
-        "order_Shipping_CarrierName": "La poste",
-        "order_Shipping_FulfillmentDate": "2014-09-23T09:58:00Z",
-        "order_Shipping_EstimatedDeliveryDate": "2014-09-24T09:58:00Z"
-      }
-    },
-    "batchOrderOperationResponse": {
-      "description": "The response given by the batch operation",
-      "type": "object",
-      "required": [
-        "operations"
-      ],
-      "properties": {
-        "operations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/orderOperationResponse"
-          }
-        }
-      }
-    },
-    "orderOperationResponse": {
-      "description": "The response given by the batch operation for an order",
-      "type": "object",
-      "required": [
-        "order",
-        "success",
-        "status"
-      ],
-      "properties": {
-        "order": {
-          "$ref": "#/definitions/orderIdentifier"
-        },
-        "success": {
-          "type": "boolean",
-          "description": "Indicates if the operation succeed or not",
-          "example": "true"
-        },
-        "status": {
-          "type": "integer",
-          "description": "Indicates the http status corresponding to the individual operation",
-          "example": "204"
-        },
-        "errors": {
-          "description": "The error list",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BeezUP.Common.UserErrorMessage"
-          }
-        }
-      }
-    },
-    "oMReadyMarketplaceBusinessCodeResponse": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/listOfValueItem"
-      }
-    },
-    "orderListFullWithLinks": {
-      "type": "object",
-      "required": [
-        "paginationResult",
-        "orders",
-        "links"
-      ],
-      "properties": {
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/orderWithLinks"
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/orderListFullLinks"
-        },
-        "paginationResult": {
-          "$ref": "#/definitions/paginationResult"
-        }
-      }
-    },
-    "orderListLightWithLinks": {
-      "type": "object",
-      "required": [
-        "paginationResult",
-        "orders",
-        "links"
-      ],
-      "properties": {
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/orderHeaderWithLinks"
-          }
-        },
-        "links": {
-          "$ref": "#/definitions/orderListLightLinks"
-        },
-        "paginationResult": {
-          "$ref": "#/definitions/paginationResult"
-        }
-      }
-    },
-    "orderWithLinks": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/order"
-        },
-        {
-          "type": "object",
-          "required": [
-            "links",
-            "transitionLinks"
-          ],
-          "properties": {
-            "links": {
-              "$ref": "#/definitions/orderLinks"
-            },
-            "transitionLinks": {
-              "$ref": "#/definitions/orderTransitionLinks"
-            }
-          }
-        }
-      ]
-    },
-    "orderHeaderWithLinks": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/orderHeader"
-        },
-        {
-          "type": "object",
-          "required": [
-            "links"
-          ],
-          "properties": {
-            "links": {
-              "$ref": "#/definitions/orderHeaderLinks"
             }
           }
         }
@@ -24010,6 +21836,55 @@
         }
       }
     },
+    "accountSynchronizationList": {
+      "type": "object",
+      "properties": {
+        "accountSynchronizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/accountSynchronization"
+          }
+        }
+      }
+    },
+    "orderListRequest": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderListRequestWithoutPagination"
+        },
+        {
+          "type": "object",
+          "required": [
+            "beginPeriodUtcDate",
+            "endPeriodUtcDate",
+            "pageSize",
+            "pageNumber"
+          ],
+          "properties": {
+            "pageSize": {
+              "$ref": "#/definitions/pageSize"
+            },
+            "pageNumber": {
+              "$ref": "#/definitions/pageNumber"
+            }
+          }
+        }
+      ]
+    },
+    "changeOrderRequest": {
+      "type": "object",
+      "description": "All properties with the prefix order_ are translated in the list of values /user/lov#OrderMetaInfoPosted",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "order_Shipping_ShipperTrackingNumber": "1H01845163783",
+        "order_Shipping_ShippingUrl": "https://trackingpackage.com?number=1H01845163783",
+        "order_Shipping_CarrierName": "La poste",
+        "order_Shipping_FulfillmentDate": "2014-09-23T09:58:00Z",
+        "order_Shipping_EstimatedDeliveryDate": "2014-09-24T09:58:00Z"
+      }
+    },
     "closeIncidentRequest": {
       "type": "object",
       "required": [
@@ -24020,6 +21895,217 @@
           "type": "string",
           "description": "close incident reason",
           "example": "39"
+        }
+      }
+    },
+    "orderHistory": {
+      "description": "Describe the history related to an order",
+      "type": "object",
+      "properties": {
+        "changeOrderReportings": {
+          "description": "The list of change order operation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/changeOrderReporting"
+          }
+        },
+        "harvestOrderReportings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/harvestOrderReporting"
+          }
+        },
+        "lastModificationUtcDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "changeOrderReporting": {
+      "description": "The reporting related to a change order operation",
+      "type": "object",
+      "properties": {
+        "executionUUID": {
+          "$ref": "#/definitions/executionUUID"
+        },
+        "changeOrderType": {
+          "$ref": "#/definitions/orderChangeType"
+        },
+        "sourceType": {
+          "$ref": "#/definitions/sourceType"
+        },
+        "sourceUserId": {
+          "$ref": "#/definitions/userId"
+        },
+        "sourceUserName": {
+          "type": "string",
+          "example": "Guillaume Tell"
+        },
+        "creationUtcDate": {
+          "description": "The creation UTC date of the execution",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:10:03Z"
+        },
+        "processingStatus": {
+          "description": "The processing status of the execution",
+          "type": "string",
+          "example": "Done"
+        },
+        "lastUpdateUtcDate": {
+          "description": "The last update UTC date of the execution",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:10:05Z"
+        },
+        "errorMessage": {
+          "description": "The error message during the execution",
+          "type": "string",
+          "example": "This is an error message"
+        },
+        "ipAddress": {
+          "description": "The IP address who request this operation",
+          "type": "string",
+          "example": "127.0.0.1"
+        },
+        "testMode": {
+          "description": "This operation was a test",
+          "type": "boolean",
+          "example": "false"
+        },
+        "details": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "exchangedMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/exchangedMessagesItem"
+          }
+        },
+        "harvestOneOrderExecutionUUID": {
+          "$ref": "#/definitions/executionUUID"
+        },
+        "harvestOneOrderEndUtcDate": {
+          "description": "The date the order retrieval process following the order change ended",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:10:05Z"
+        }
+      }
+    },
+    "setMerchantOrderInfoRequest": {
+      "type": "object",
+      "required": [
+        "order_MerchantOrderId",
+        "order_MerchantECommerceSoftwareName",
+        "order_MerchantECommerceSoftwareVersion"
+      ],
+      "properties": {
+        "order_MerchantOrderId": {
+          "$ref": "#/definitions/order_MerchantOrderId"
+        },
+        "order_MerchantECommerceSoftwareName": {
+          "$ref": "#/definitions/order_MerchantECommerceSoftwareName"
+        },
+        "order_MerchantECommerceSoftwareVersion": {
+          "$ref": "#/definitions/order_MerchantECommerceSoftwareVersion"
+        }
+      }
+    },
+    "setMerchantOrderInfoListRequest": {
+      "type": "object",
+      "required": [
+        "order_MerchantECommerceSoftwareName",
+        "order_MerchantECommerceSoftwareVersion",
+        "orders"
+      ],
+      "properties": {
+        "order_MerchantECommerceSoftwareName": {
+          "$ref": "#/definitions/order_MerchantECommerceSoftwareName"
+        },
+        "order_MerchantECommerceSoftwareVersion": {
+          "$ref": "#/definitions/order_MerchantECommerceSoftwareVersion"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/setMerchantOrderInfoListRequestItem"
+          },
+          "maxItems": 100,
+          "uniqueItems": true,
+          "minItems": 1,
+          "example": [
+            {
+              "marketplaceTechnicalCode": "Amazon",
+              "accountId": "1234",
+              "beezUPOrderId": "8D47FF1427A26B064ca98e95f644361ada5a5be0bbb3b53",
+              "order_MerchantOrderId": "BX1234"
+            },
+            {
+              "marketplaceTechnicalCode": "Amazon",
+              "accountId": "5678",
+              "beezUPOrderId": "8D47FF149F213D055f26e3c413e4c9ba5c5cfda460547a4",
+              "order_MerchantOrderId": "BX5678"
+            },
+            {
+              "marketplaceTechnicalCode": "Ebay",
+              "accountId": "9876",
+              "beezUPOrderId": "8D47FF150217B60bdec05ab61c445d1a59e3da050b52823",
+              "order_MerchantOrderId": "BX9876"
+            }
+          ]
+        }
+      }
+    },
+    "batchOrderOperationResponse": {
+      "description": "The response given by the batch operation",
+      "type": "object",
+      "required": [
+        "operations"
+      ],
+      "properties": {
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderOperationResponse"
+          }
+        }
+      }
+    },
+    "clearMerchantOrderInfoListRequest": {
+      "type": "object",
+      "required": [
+        "orders"
+      ],
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderIdentifier"
+          },
+          "maxItems": 100,
+          "uniqueItems": true,
+          "minItems": 1,
+          "example": [
+            {
+              "marketplaceTechnicalCode": "Amazon",
+              "accountId": "1234",
+              "beezUPOrderId": "0"
+            },
+            {
+              "marketplaceTechnicalCode": "Amazon",
+              "accountId": "5678",
+              "beezUPOrderId": "0"
+            },
+            {
+              "marketplaceTechnicalCode": "Ebay",
+              "accountId": "9876",
+              "beezUPOrderId": "0"
+            }
+          ]
         }
       }
     },
@@ -24037,6 +22123,24 @@
           "maxLength": 100,
           "items": {
             "$ref": "#/definitions/changeOrderListRequestItemV2"
+          }
+        }
+      }
+    },
+    "changeOrderListRequest": {
+      "type": "object",
+      "description": "Contains all change order operations you want to make.  (max 100 items per call)",
+      "required": [
+        "changeOrders"
+      ],
+      "properties": {
+        "changeOrders": {
+          "type": "array",
+          "description": "The change order operations",
+          "minLength": 1,
+          "maxLength": 100,
+          "items": {
+            "$ref": "#/definitions/changeOrderListRequestItem"
           }
         }
       }
@@ -24095,6 +22199,51 @@
           "$ref": "#/definitions/userErrorMessageArguments"
         }
       }
+    },
+    "accountSynchronization": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "marketplaceTechnicalCode",
+        "marketplaceBusinessCode"
+      ],
+      "properties": {
+        "accountId": {
+          "$ref": "#/definitions/beezUPMarketplaceAccountId"
+        },
+        "completedHarvestSynchroUtcDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "marketplaceBusinessCode": {
+          "$ref": "#/definitions/beezUPMarketplaceBusinessCode"
+        },
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/beezUPMarketplaceTechnicalCode"
+        }
+      }
+    },
+    "pageSize": {
+      "x-exclude": true,
+      "description": "Indicate the item count per page",
+      "type": "integer",
+      "format": "int32",
+      "default": "100",
+      "minimum": 25,
+      "x-minimum": "25",
+      "maximum": 100,
+      "x-maximum": "100",
+      "example": "100"
+    },
+    "pageNumber": {
+      "x-exclude": true,
+      "description": "Indicates the page number",
+      "format": "int32",
+      "type": "integer",
+      "example": "1",
+      "minimum": 1,
+      "x-minimum": "1",
+      "default": "1"
     },
     "paginationResult": {
       "x-exclude": true,
@@ -24190,10 +22339,143 @@
         }
       }
     },
+    "harvestOrderReporting": {
+      "description": "The reporting related to a harvest order operation",
+      "type": "object",
+      "properties": {
+        "executionUUID": {
+          "$ref": "#/definitions/executionUUID"
+        },
+        "creationUtcDate": {
+          "description": "The creation UTC date of the execution",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:10:03Z"
+        },
+        "processingStatus": {
+          "description": "The processing status of the execution",
+          "type": "string",
+          "example": "Done"
+        },
+        "lastUpdateUtcDate": {
+          "description": "The last update UTC date of the execution",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-01T13:10:05Z"
+        },
+        "errorMessage": {
+          "description": "The warning message during the execution",
+          "type": "string",
+          "example": "This is an error message"
+        },
+        "warningMessage": {
+          "description": "The warning message during the execution",
+          "type": "string",
+          "example": "This is a warning"
+        },
+        "beezUPStatus": {
+          "$ref": "#/definitions/beezUPOrderStatus"
+        },
+        "marketplaceStatus": {
+          "description": "The order marketplace status",
+          "type": "string",
+          "example": "In_progress_3"
+        },
+        "beezUPForcedStatus": {
+          "description": "The marketplace order status forced by BeezUP during the order change oepration. This could happend when there is no status on the marketplace side.",
+          "type": "string",
+          "example": "In_progress_3"
+        }
+      }
+    },
     "orderChangeType": {
       "type": "string",
       "description": "The business operation type that can be done on an order",
       "x-lov": "OrderChangeBusinessOperationType"
+    },
+    "order_MerchantECommerceSoftwareName": {
+      "description": "The e-commerce software name of the merchant",
+      "type": "string",
+      "example": "Prestashop"
+    },
+    "order_MerchantECommerceSoftwareVersion": {
+      "description": "The e-commece software version of the merchant",
+      "type": "string",
+      "example": "123.0.1"
+    },
+    "setMerchantOrderInfoListRequestItem": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderIdentifier"
+        },
+        {
+          "type": "object",
+          "required": [
+            "marketplaceTechnicalCode",
+            "accountId",
+            "beezUPOrderId",
+            "order_MerchantOrderId"
+          ],
+          "properties": {
+            "order_MerchantOrderId": {
+              "$ref": "#/definitions/order_MerchantOrderId"
+            }
+          }
+        }
+      ]
+    },
+    "orderOperationResponse": {
+      "description": "The response given by the batch operation for an order",
+      "type": "object",
+      "required": [
+        "order",
+        "success",
+        "status"
+      ],
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/orderIdentifier"
+        },
+        "success": {
+          "type": "boolean",
+          "description": "Indicates if the operation succeed or not",
+          "example": "true"
+        },
+        "status": {
+          "type": "integer",
+          "description": "Indicates the http status corresponding to the individual operation",
+          "example": "204"
+        },
+        "errors": {
+          "description": "The error list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/userErrorMessage"
+          }
+        },
+        "executionUUID": {
+          "$ref": "#/definitions/executionUUID"
+        }
+      }
+    },
+    "orderIdentifier": {
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderId"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/beezUPMarketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/beezUPMarketplaceAccountId"
+        },
+        "beezUPOrderId": {
+          "$ref": "#/definitions/beezUPOrderId"
+        }
+      }
     },
     "changeOrderListRequestItemV2": {
       "type": "object",
@@ -24202,6 +22484,24 @@
         "order"
       ],
       "properties": {
+        "order": {
+          "$ref": "#/definitions/orderIdentifier"
+        },
+        "changeOrderRequest": {
+          "$ref": "#/definitions/changeOrderRequest"
+        }
+      }
+    },
+    "changeOrderListRequestItem": {
+      "type": "object",
+      "description": "Contains the order identifier and the change order request",
+      "required": [
+        "order"
+      ],
+      "properties": {
+        "changeOrderType": {
+          "$ref": "#/definitions/orderChangeType"
+        },
         "order": {
           "$ref": "#/definitions/orderIdentifier"
         },
@@ -24266,6 +22566,377 @@
       ],
       "default": "Modification"
     },
+    "beezUPOrderId": {
+      "description": "The BeezUP Order identifier",
+      "type": "string",
+      "example": "00000000000000000000000000000000000000000000000"
+    },
+    "order": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/orderHeader"
+        },
+        {
+          "type": "object",
+          "description": "Describe in details all informations related to an order. All properties with the prefix order_ are translated in the list of values /user/lov/OrderMetaInfoOrderDetails.",
+          "required": [
+            "marketplaceTechnicalCode",
+            "accountId",
+            "beezUPOrderId",
+            "marketplaceBusinessCode",
+            "order_MarketplaceOrderId",
+            "order_Status_BeezUPOrderStatus",
+            "order_PurchaseUtcDate",
+            "order_LastModificationUtcDate",
+            "order_MarketplaceLastModificationUtcDate",
+            "processing",
+            "etag",
+            "orderItems"
+          ],
+          "properties": {
+            "order_MarketPlaceChannel": {
+              "description": "Useful to identify the origin of the order. For example in Amazon.",
+              "type": "string",
+              "example": "Amazon France"
+            },
+            "order_TotalTax": {
+              "description": "The total tax of this order",
+              "type": "number",
+              "format": "decimal",
+              "example": "0.0"
+            },
+            "order_TotalCommission": {
+              "description": "The total commission of this order",
+              "type": "number",
+              "format": "decimal",
+              "example": "0.0"
+            },
+            "order_PaymentMethod": {
+              "description": "The payment method of this order",
+              "type": "string",
+              "example": "1 / 1X"
+            },
+            "order_PayingUtcDate": {
+              "description": "The UTC date of the payment of this order",
+              "type": "string",
+              "format": "date-time",
+              "example": "2017-04-01T13:22:01Z"
+            },
+            "order_Comment": {
+              "description": "The comment associated to this order",
+              "type": "string",
+              "example": "This is a comment"
+            },
+            "order_RelayId": {
+              "description": "The id of the shipping relay handling the order",
+              "type": "string"
+            },
+            "order_StatusReasonCode": {
+              "description": "The order cancellation cause",
+              "type": "string"
+            },
+            "order_Shipping_FirstName": {
+              "description": "Order Shipping first name",
+              "type": "string",
+              "example": "Monroe"
+            },
+            "order_Shipping_LastName": {
+              "description": "Order Shipping last name",
+              "type": "string",
+              "example": "Monroe"
+            },
+            "order_Shipping_Civility": {
+              "description": "The civility of the person in the shipping address for this order",
+              "type": "string",
+              "example": "MRS"
+            },
+            "order_Shipping_CompanyName": {
+              "description": "The company name of the shipping address for this order",
+              "type": "string",
+              "example": "My Company"
+            },
+            "order_Shipping_AddressName": {
+              "description": "The name of the person in the shipping address for this order",
+              "type": "string",
+              "example": "Jacques BAUREGARD"
+            },
+            "order_Shipping_Email": {
+              "description": "The email of the person in the shipping address for this order",
+              "type": "string",
+              "example": "client_000000@manomano.fr"
+            },
+            "order_Shipping_AddressLine1": {
+              "description": "The shipping address line 1 of this order",
+              "type": "string",
+              "example": "5 rue amélie"
+            },
+            "order_Shipping_AddressLine2": {
+              "description": "The shipping address line 2 of this order",
+              "type": "string",
+              "example": "BDR"
+            },
+            "order_Shipping_AddressLine3": {
+              "description": "The shipping address line 3 of this order",
+              "type": "string",
+              "example": "RDC"
+            },
+            "order_Shipping_AddressPostalCode": {
+              "description": "The shipping address postal code of this order",
+              "type": "string",
+              "example": "13014"
+            },
+            "order_Shipping_AddressCity": {
+              "description": "The shipping address city of this order",
+              "type": "string",
+              "example": "Marseille"
+            },
+            "order_Shipping_AddressStateOrRegion": {
+              "description": "The shipping address state or region of this order",
+              "type": "string",
+              "example": "BDR"
+            },
+            "order_Shipping_AddressCountryName": {
+              "description": "The shipping address country name",
+              "type": "string",
+              "example": "France"
+            },
+            "order_Shipping_AddressCountryIsoCodeAlpha2": {
+              "description": "The shipping address country iso code alpha 2 (see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#/decoding_table for more details)",
+              "type": "string",
+              "example": "FR"
+            },
+            "order_Shipping_Phone": {
+              "description": "The phone number of the person in the shipping address for this order",
+              "type": "string",
+              "example": "+33000000041"
+            },
+            "order_Shipping_MobilePhone": {
+              "description": "The mobile phone number of the person in the shipping address for this order",
+              "type": "string",
+              "example": "+33000000042"
+            },
+            "order_Shipping_Price": {
+              "description": "The shipping price of this order",
+              "type": "number",
+              "format": "decimal",
+              "example": "6.9"
+            },
+            "order_Shipping_Method": {
+              "description": "The shipping method of this order",
+              "type": "string",
+              "example": "DPD Domicile"
+            },
+            "order_Shipping_ShippingTax": {
+              "description": "The shipping tax for this order",
+              "type": "number",
+              "format": "decimal",
+              "example": "0.0"
+            },
+            "order_Shipping_EarliestShipUtcDate": {
+              "description": "The UTC date of the earliest ship for this order",
+              "type": "string",
+              "example": "2017-04-02T21:30:00Z",
+              "format": "date-time"
+            },
+            "order_Shipping_LatestShipUtcDate": {
+              "description": "The UTC date of the latest ship for this order",
+              "type": "string",
+              "format": "date-time",
+              "example": "2017-04-30T21:30:00Z"
+            },
+            "order_Buyer_Identifier": {
+              "description": "The buyer identifier for this order",
+              "type": "string",
+              "example": "1234567890"
+            },
+            "order_Buyer_FirstName": {
+              "description": "Order Buyer first name",
+              "type": "string",
+              "example": "Monroe"
+            },
+            "order_Buyer_LastName": {
+              "description": "Order Buyer last name",
+              "type": "string",
+              "example": "Monroe"
+            },
+            "order_Buyer_Civility": {
+              "description": "The buyer civility for this order",
+              "type": "string",
+              "example": "Marseille"
+            },
+            "order_Buyer_CompanyName": {
+              "description": "The buyer company name for this order",
+              "type": "string",
+              "example": "Marsillia"
+            },
+            "order_Buyer_Email": {
+              "description": "The email of the buyer for this order",
+              "type": "string",
+              "example": "client_000000@manomano.fr"
+            },
+            "order_Buyer_AddressLine1": {
+              "description": "The Buyer address line 1 of this order",
+              "type": "string",
+              "example": "5 rue amélie"
+            },
+            "order_Buyer_AddressLine2": {
+              "description": "The Buyer address line 2 of this order",
+              "type": "string",
+              "example": "BDR"
+            },
+            "order_Buyer_AddressLine3": {
+              "description": "The Buyer address line 3 of this order",
+              "type": "string",
+              "example": "RDC"
+            },
+            "order_Buyer_AddressPostalCode": {
+              "description": "The Buyer address postal code of this order",
+              "type": "string",
+              "example": "13014"
+            },
+            "order_Buyer_AddressCity": {
+              "description": "The Buyer address city of this order",
+              "type": "string",
+              "example": "Marseille"
+            },
+            "order_Buyer_AddressStateOrRegion": {
+              "description": "The Buyer address state or region of this order",
+              "type": "string",
+              "example": "BDR"
+            },
+            "order_Buyer_AddressCountryName": {
+              "description": "The Buyer address country name",
+              "type": "string",
+              "example": "France"
+            },
+            "order_Buyer_AddressCountryIsoCodeAlpha2": {
+              "description": "The Buyer address country iso code alpha 2 (see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#/decoding_table for more details)",
+              "type": "string",
+              "example": "FR"
+            },
+            "order_Buyer_Phone": {
+              "description": "The phone number of the buyer for this order",
+              "type": "string",
+              "example": "+33000000101"
+            },
+            "order_Buyer_MobilePhone": {
+              "description": "The mobile phone number of the buyer for this order",
+              "type": "string",
+              "example": "+33000000042"
+            },
+            "order_IsPrime": {
+              "description": "Indicates if the order is considered as Prime (only on Amazon)",
+              "type": "boolean",
+              "example": "true"
+            },
+            "order_FulfilledBy": {
+              "description": "The order FulfilledBy",
+              "type": "string"
+            },
+            "order_IsBusiness": {
+              "description": "The order IsBusiness",
+              "type": "boolean"
+            },
+            "order_ChannelOrderId": {
+              "description": "The order channel id (octopia)",
+              "type": "string"
+            },
+            "order_AdditionalOrderId": {
+              "description": "An additional order reference for the customer",
+              "type": "string"
+            },
+            "order_SellerContractId": {
+              "description": "The seller's contract id.",
+              "type": "string"
+            },
+            "order_Shipping_Deadline": {
+              "description": "The order shipping deadline.",
+              "type": "string"
+            },
+            "order_Total_Discount": {
+              "description": "The order total discount.",
+              "type": "number",
+              "format": "decimal"
+            },
+            "order_Total_AdditionalFees": {
+              "description": "The order total additional fees.",
+              "type": "number",
+              "format": "decimal"
+            },
+            "order_EarliestDeliveryDate": {
+              "description": "The order earliest delivery date.",
+              "type": "string",
+              "format": "date-time"
+            },
+            "order_LatestDeliveryDate": {
+              "description": "The order latest delivery date.",
+              "type": "string",
+              "format": "date-time"
+            },
+            "order_TotalPrice_ExclVat": {
+              "description": "The order total price excluding VAT.",
+              "type": "number",
+              "format": "decimal"
+            },
+            "order_HasIncident": {
+              "description": "Indicates if the order has an incident",
+              "type": "boolean"
+            },
+            "order_PaymentMethodDetails": {
+              "description": "The payment method details of the order",
+              "type": "string"
+            },
+            "order_Shipping_ShipmentServiceLevelCategory": {
+              "description": "The shipping service level category of the order",
+              "type": "string"
+            },
+            "order_Shipping_RefundAmount": {
+              "description": "The shipping refund amount of the order",
+              "type": "string"
+            },
+            "order_PurchaseOrderNumber": {
+              "description": "The purchase order number",
+              "type": "string"
+            },
+            "order_Shipping_Label": {
+              "description": "The order shipping label",
+              "type": "string"
+            },
+            "order_IsAmazonInvoiced": {
+              "description": "Determines if the order has been invoiced by Amazon",
+              "type": "string"
+            },
+            "order_Carriers": {
+              "description": "Carriers list of the order (when the marketplace combines delivery mode chosen by the buyer and the carriers)",
+              "type": "string"
+            },
+            "order_Buyer_CompanyVATNumber": {
+              "description": "The Buyer company VAT number",
+              "type": "string",
+              "example": "FR12345678901"
+            },
+            "order_OrderSourceUri": {
+              "description": "The url to the source of this order. We received this information from the marketplace.",
+              "type": "string",
+              "format": "uri",
+              "example": "http://beezupblob.com/order.xml"
+            },
+            "order_OrderItemsSourceUri": {
+              "description": "The url to the source of this order items. We received this information from the marketplace.",
+              "type": "string",
+              "format": "uri",
+              "example": "http://beezupblob.com/orderItems.xml"
+            },
+            "orderItems": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/orderItem"
+              }
+            }
+          }
+        }
+      ]
+    },
     "paginationResultLinks": {
       "x-exclude": true,
       "description": "The navigation links 'first', 'last', 'next', 'previous'",
@@ -24288,6 +22959,111 @@
           "$ref": "#/definitions/link3"
         }
       }
+    },
+    "orderHeader": {
+      "description": "Describe the basic information related to an order. All properties with the prefix order_ are translated in the list of values /user/lov/OrderMetaInfoOrderDetails",
+      "type": "object",
+      "required": [
+        "marketplaceTechnicalCode",
+        "accountId",
+        "beezUPOrderId",
+        "marketplaceBusinessCode",
+        "order_MarketplaceOrderId",
+        "order_Status_BeezUPOrderStatus",
+        "order_PurchaseUtcDate",
+        "order_LastModificationUtcDate",
+        "order_MarketplaceLastModificationUtcDate",
+        "processing",
+        "etag"
+      ],
+      "properties": {
+        "marketplaceTechnicalCode": {
+          "$ref": "#/definitions/beezUPMarketplaceTechnicalCode"
+        },
+        "accountId": {
+          "$ref": "#/definitions/beezUPMarketplaceAccountId"
+        },
+        "beezUPOrderId": {
+          "$ref": "#/definitions/beezUPOrderId"
+        },
+        "beezUPOrderUrl": {
+          "$ref": "#/definitions/httpUrl"
+        },
+        "marketplaceBusinessCode": {
+          "$ref": "#/definitions/beezUPMarketplaceBusinessCode"
+        },
+        "order_MarketplaceOrderId": {
+          "$ref": "#/definitions/marketplaceOrderId"
+        },
+        "order_Status_BeezUPOrderStatus": {
+          "$ref": "#/definitions/beezUPOrderStatus"
+        },
+        "order_Status_MarketplaceOrderStatus": {
+          "$ref": "#/definitions/marketplaceOrderStatus"
+        },
+        "order_MerchantOrderId": {
+          "$ref": "#/definitions/order_MerchantOrderId"
+        },
+        "order_MerchantECommerceSoftwareName": {
+          "$ref": "#/definitions/order_MerchantECommerceSoftwareName"
+        },
+        "order_MerchantECommerceSoftwareVersion": {
+          "$ref": "#/definitions/order_MerchantECommerceSoftwareVersion"
+        },
+        "order_PurchaseUtcDate": {
+          "description": "The purchase date of this order",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-03-31T21:30:23Z"
+        },
+        "order_LastModificationUtcDate": {
+          "description": "The last modification UTC date done by BeezUP of this order",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-16T10:30:23Z"
+        },
+        "order_MarketplaceLastModificationUtcDate": {
+          "description": "The last modification UTC date done by the marketplace on this order",
+          "format": "date-time",
+          "type": "string",
+          "example": "2017-04-16T10:25:23Z"
+        },
+        "order_Buyer_Name": {
+          "$ref": "#/definitions/order_Buyer_Name"
+        },
+        "order_TotalPrice": {
+          "description": "The total price of this order (corresponding to the amount paid by the customer)",
+          "format": "decimal",
+          "type": "number",
+          "example": "101.42"
+        },
+        "order_CurrencyCode": {
+          "$ref": "#/definitions/currencyCode"
+        },
+        "order_Invoice_Number": {
+          "description": "The order invoice number",
+          "type": "string"
+        },
+        "order_Invoice_Uri": {
+          "description": "The order invoice URI",
+          "type": "string"
+        },
+        "processing": {
+          "type": "boolean",
+          "description": "If true, there is currently a harvest or an order change in progress. Otherwise false."
+        },
+        "etag": {
+          "$ref": "#/definitions/etag"
+        },
+        "orderHarvestErrors": {
+          "$ref": "#/definitions/orderHarvestErrors"
+        }
+      }
+    },
+    "executionUUID": {
+      "description": "The execution identifier",
+      "type": "string",
+      "example": "8D4176FA78D5A7Fffa91e9edc694ec5858be9a1b109507c"
     },
     "userId": {
       "x-exclude": true,
@@ -24320,6 +23096,197 @@
         "responseUtcDate": {
           "type": "string",
           "format": "date-time"
+        }
+      }
+    },
+    "orderItem": {
+      "description": "Describe an order item. All properties with the prefix orderItem_ are translated in the list of values /user/lov/OrderMetaInfoOrderItems",
+      "type": "object",
+      "required": [
+        "beezUPOrderItemId",
+        "orderItem_OrderItemType"
+      ],
+      "properties": {
+        "beezUPOrderItemId": {
+          "description": "The BeezUP identifier of the order Item",
+          "type": "string",
+          "example": "1"
+        },
+        "orderItem_Id": {
+          "description": "The marketplace order item id",
+          "type": "string",
+          "example": "A13V1IB3VIYZZH"
+        },
+        "orderItem_OrderItemType": {
+          "description": "The order item type of the order item",
+          "type": "string",
+          "example": "Product"
+        },
+        "orderItem_MerchantImportedProductId": {
+          "description": "The product id indicated in the catalog importation in BeezUP system for this order item. This property will help you to match the order to the inventory system.",
+          "type": "string",
+          "example": "73267"
+        },
+        "orderItem_MerchantImportedProductIdColumnName": {
+          "description": "The column name for the product id indicated in the catalog importation in BeezUP system related to this order item. This property will help you to match the order to the inventory system.",
+          "example": "reference",
+          "type": "string"
+        },
+        "orderItem_MerchantImportedProductUrl": {
+          "description": "The product url indicated in the catalog importation in BeezUP system related to this order item",
+          "example": "http://blabla.com/my-folder/73267.html",
+          "type": "string"
+        },
+        "orderItem_MerchantProductIdColumnName": {
+          "description": "The column name indicate in the mapping for the product id related to the order item",
+          "example": "reference_produit",
+          "type": "string"
+        },
+        "orderItem_BeezUPStoreId": {
+          "description": "The store id in the beezup system related to the order item. This property will help you to match the order to the inventory system.",
+          "example": "00000000-cceb-4c20-b2c9-000000000000",
+          "type": "string"
+        },
+        "orderItem_ItemTax": {
+          "description": "The tax of the order item",
+          "type": "number",
+          "format": "decimal",
+          "example": "0.0"
+        },
+        "orderItem_Title": {
+          "description": "The title of the order item",
+          "example": "bLA acide-plomb 6v-4.5ah 70x48x106mm",
+          "type": "string"
+        },
+        "orderItem_ImageUrl": {
+          "description": "The URL of the image of the order item",
+          "example": "http://blabla.com//das6-45.jpg",
+          "type": "string"
+        },
+        "orderItem_MerchantProductId": {
+          "description": "The merchant product id of the order item",
+          "example": "BlaLdas6-4.5",
+          "type": "string"
+        },
+        "orderItem_MarketPlaceProductId": {
+          "description": "The marketplace product identifier of the order item",
+          "example": "",
+          "type": "string"
+        },
+        "orderItem_gtin": {
+          "description": "The order item gtin",
+          "example": "gtin_sample",
+          "type": "string"
+        },
+        "orderItem_ItemPrice": {
+          "description": "The price of the order item",
+          "example": "6.86",
+          "type": "number",
+          "format": "decimal"
+        },
+        "orderItem_Quantity": {
+          "description": "The quantity of the order item",
+          "example": "1.0",
+          "type": "number",
+          "format": "decimal"
+        },
+        "orderItem_TotalPrice": {
+          "description": "The total price of the order item",
+          "example": "6.86",
+          "type": "number",
+          "format": "decimal"
+        },
+        "orderItem_Shipping_Price": {
+          "description": "The shipping price of the order item",
+          "type": "number",
+          "example": "0.0",
+          "format": "decimal"
+        },
+        "orderItem_Condition": {
+          "description": "The merchant product condition of the order item",
+          "example": "New",
+          "type": "string"
+        },
+        "orderItem_MarketplaceProductUri": {
+          "description": "The merchant product uri of the order item",
+          "type": "string",
+          "example": "http://beezupblob.com/productLink.xml"
+        },
+        "orderItem_MarketplaceImageUri": {
+          "description": "The marketplace image uri",
+          "type": "string",
+          "example": "http://beezupblob.com/marketplaceImg.jpg"
+        },
+        "orderItem_OldTakeover": {
+          "description": "The old takeover of the order item",
+          "type": "string"
+        },
+        "orderItem_RecollectedQuantity": {
+          "description": "The recollected quantity of the order item",
+          "type": "string"
+        },
+        "orderItem_TotalPrice_ExclVat": {
+          "description": "The total price excluding VAT",
+          "type": "number",
+          "format": "decimal"
+        },
+        "orderItem_OrderLineStateReasonLabel": {
+          "description": "The order line state reason label",
+          "type": "string"
+        },
+        "orderItem_OrderLineState": {
+          "description": "The order line state",
+          "type": "string"
+        },
+        "orderItem_MarketPlaceOrderItemId": {
+          "description": "The marketplace order item id",
+          "type": "string"
+        },
+        "orderItem_VatRate": {
+          "description": "The order VAT rate (ManoMano)",
+          "format": "decimal",
+          "type": "number"
+        },
+        "orderItem_ShippingVatRate": {
+          "description": "The order shipping VAT rate (ManoMano)",
+          "format": "decimal",
+          "type": "number"
+        },
+        "orderItem_EcoContributions": {
+          "description": "The order ecologic contribution amount (Mirakl and CDiscount)",
+          "example": "6.86",
+          "type": "number",
+          "format": "decimal"
+        },
+        "orderItem_IsGift": {
+          "description": "Determines if the order item is a gift",
+          "type": "boolean"
+        },
+        "orderItem_GiftMessageText": {
+          "description": "The order item gift message",
+          "type": "string"
+        },
+        "orderItem_GiftWrapLevel": {
+          "description": "Packaging type",
+          "example": "Papier cadeau",
+          "type": "string"
+        },
+        "orderItem_Delivery_PromisedAtMin": {
+          "description": "Promised minimum delivery date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "orderItem_Delivery_PromisedAtMax": {
+          "description": "Promised maximum delivery date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "orderItem_TaxModel": {
+          "description": "The tax model",
+          "type": "string"
+        },
+        "orderHarvestErrors": {
+          "$ref": "#/definitions/orderHarvestErrors"
         }
       }
     },
@@ -24376,6 +23343,11 @@
         }
       }
     },
+    "marketplaceOrderStatus": {
+      "description": "The marketplace order state",
+      "type": "string",
+      "example": "In_progress_3"
+    },
     "orderHarvestErrors": {
       "type": "object",
       "description": "The key is the OrderMetaInfo.",
@@ -24398,6 +23370,11 @@
       "pattern": "^[A-Z]{3}$",
       "x-pattern": "^[A-Z]{3}$",
       "example": "EUR"
+    },
+    "etag": {
+      "description": "ETag value to identify the entity.\\\nThis information is required for the operation Get and Change.\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n",
+      "type": "string",
+      "example": "\"ca071a4580129f932a03971968ffef69\""
     },
     "href": {
       "x-exclude": true,
@@ -28260,6 +27237,7 @@
       "in": "path",
       "required": true,
       "type": "string",
+      "format": "BeezUPMarketplaceTechnicalCode",
       "x-example": "Amazon"
     },
     "accountIdParameter": {
@@ -28267,7 +27245,7 @@
       "in": "path",
       "required": true,
       "type": "integer",
-      "format": "int32",
+      "format": "BeezUPMarketplaceAccountId",
       "x-example": "1001"
     },
     "beezUPOrderIdParameter": {
@@ -28276,8 +27254,19 @@
       "in": "path",
       "required": true,
       "type": "string",
-      "format": "uuid",
+      "format": "BeezUPOrderId",
       "x-example": "00000000000000000000000000000000000000000000000"
+    },
+    "storeIdsParameter": {
+      "name": "storeIds",
+      "description": "StoredIds to filter",
+      "in": "query",
+      "required": false,
+      "type": "array",
+      "collectionFormat": "csv",
+      "items": {
+        "type": "string"
+      }
     },
     "changeOrderTypeParameter": {
       "description": "The Order change type",
@@ -28296,30 +27285,11 @@
     },
     "testModeInQueryParameter": {
       "name": "testMode",
-      "description": "If true, the operation will be not be sent to marketplace. But the validation will be taken in account.",
+      "description": "If true, the operation will be not be apply. But the validation will be taken in account.",
       "in": "query",
       "required": false,
       "type": "boolean",
-      "default": "false",
       "x-example": "false"
-    },
-    "ifMatchParameter": {
-      "name": "If-Match",
-      "in": "header",
-      "type": "string",
-      "required": true,
-      "description": "ETag value to identify the last known version of requested resource.\\\nTo ensure that you are making a change on the lastest version of the resource.\\\nFor more details go to this link: http://tools.ietf.org/html/rfc7232#section-2.3\n"
-    },
-    "storeIdsParameter": {
-      "name": "storeIds",
-      "description": "StoredIds to filter",
-      "in": "query",
-      "required": false,
-      "type": "array",
-      "collectionFormat": "csv",
-      "items": {
-        "type": "string"
-      }
     },
     "subscriptionIdPathParameter": {
       "name": "id",
@@ -28726,11 +27696,7 @@
     {
       "name": "Marketplaces - Orders",
       "tags": [
-        "Marketplaces - Orders - Global",
         "Marketplaces - Orders - AutoTransitions",
-        "Marketplaces - Orders - List",
-        "Marketplaces - Orders - Order",
-        "Marketplaces - Orders - Batches",
         "Marketplaces - Orders - Exports"
       ]
     },
