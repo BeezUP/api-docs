@@ -392,7 +392,14 @@
         ],
         "responses": {
           "204": {
-            "description": "Customer registered"
+            "description": "Customer registered",
+            "headers": {
+              "x-beezup-userid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "The id of the just created user"
+              }
+            }
           },
           "400": {
             "description": "Email or password is invalid. Disposable email are refused."
