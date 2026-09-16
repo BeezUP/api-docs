@@ -391,14 +391,10 @@
           }
         ],
         "responses": {
-          "204": {
+          "201": {
             "description": "Customer registered",
-            "headers": {
-              "x-beezup-userid": {
-                "type": "string",
-                "format": "uuid",
-                "description": "The id of the just created user"
-              }
+            "schema": {
+              "$ref": "#/definitions/registerResponse"
             }
           },
           "400": {
@@ -9954,6 +9950,17 @@
         }
       }
     },
+    "registerResponse": {
+      "required": [
+        "userId"
+      ],
+      "type": "object",
+      "properties": {
+        "userId": {
+          "$ref": "#/definitions/BeezUP.Common.UserId"
+        }
+      }
+    },
     "BeezUP.Common.ErrorResponseMessage": {
       "type": "object",
       "required": [
@@ -10025,6 +10032,12 @@
           }
         }
       }
+    },
+    "BeezUP.Common.UserId": {
+      "format": "guid",
+      "description": "The user identifier",
+      "type": "string",
+      "example": "8a7fbdec-9e71-472e-9974-27d5c1d57cf8"
     },
     "BeezUP.Common.DocUrl": {
       "type": "string",
@@ -13606,12 +13619,6 @@
           "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
         }
       }
-    },
-    "BeezUP.Common.UserId": {
-      "format": "guid",
-      "description": "The user identifier",
-      "type": "string",
-      "example": "8a7fbdec-9e71-472e-9974-27d5c1d57cf8"
     },
     "BeezUP.Common.StoreId": {
       "format": "guid",
