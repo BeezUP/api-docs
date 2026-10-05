@@ -22783,7 +22783,7 @@
               "type": "string",
               "example": "FR12345678901"
             },
-            "order_PromotionDiscount_Amount": {
+            "promotionDiscount_Amount": {
               "description": "The order promotion discount amount",
               "type": "string"
             },
