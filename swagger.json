@@ -22783,6 +22783,10 @@
               "type": "string",
               "example": "FR12345678901"
             },
+            "order_PromotionDiscount_Amount": {
+              "description": "The order promotion discount amount",
+              "type": "string"
+            },
             "order_OrderSourceUri": {
               "description": "The url to the source of this order. We received this information from the marketplace.",
               "type": "string",
