@@ -22783,10 +22783,6 @@
               "type": "string",
               "example": "FR12345678901"
             },
-            "promotionDiscount_Amount": {
-              "description": "The order promotion discount amount",
-              "type": "string"
-            },
             "order_OrderSourceUri": {
               "description": "The url to the source of this order. We received this information from the marketplace.",
               "type": "string",
@@ -23155,6 +23151,10 @@
         },
         "orderItem_TaxModel": {
           "description": "The tax model",
+          "type": "string"
+        },
+        "orderItem_promotionDiscount_Amount": {
+          "description": "The order promotion discount amount",
           "type": "string"
         },
         "orderHarvestErrors": {
