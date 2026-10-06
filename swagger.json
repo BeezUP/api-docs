@@ -23153,7 +23153,7 @@
           "description": "The tax model",
           "type": "string"
         },
-        "orderItem_promotionDiscount_Amount": {
+        "promotionDiscount_Amount": {
           "description": "The order promotion discount amount",
           "type": "string"
         },
