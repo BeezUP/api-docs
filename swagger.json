@@ -31082,6 +31082,15 @@
       },
       "additionalProperties": false
     },
+    "BeezupScope": {
+      "enum": [
+        "none",
+        "beezUp",
+        "octopiaMerchant",
+        "octopiaPaas"
+      ],
+      "type": "string"
+    },
     "BeezupProductVisionDocumentPublicationMd5": {
       "type": "object",
       "properties": {
