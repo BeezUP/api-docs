@@ -9738,7 +9738,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -9840,7 +9845,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -9898,7 +9908,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -9963,7 +9978,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10028,7 +10048,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10093,7 +10118,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10159,7 +10189,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10220,7 +10255,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10286,7 +10326,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10570,12 +10615,24 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
             "name": "beezupScope",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "None",
+              "BeezUp",
+              "OctopiaMerchant",
+              "OctopiaPaas"
+            ]
           },
           {
             "in": "body",
@@ -10628,12 +10685,24 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
             "name": "beezupScope",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "None",
+              "BeezUp",
+              "OctopiaMerchant",
+              "OctopiaPaas"
+            ]
           },
           {
             "in": "body",
@@ -10686,7 +10755,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10751,7 +10825,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
@@ -10817,7 +10896,12 @@
           {
             "in": "path",
             "name": "feedType",
-            "required": true
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Offers",
+              "Products"
+            ]
           },
           {
             "in": "path",
