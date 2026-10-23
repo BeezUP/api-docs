@@ -232,8 +232,8 @@
       "x-displayName": "Generation"
     },
     {
-      "name": "Product Vision 2 - Admin",
-      "x-displayName": "Admin"
+      "name": "Product Vision 2 - BusinessCode",
+      "x-displayName": "BusinessCode"
     },
     {
       "name": "Product Vision 2 - ChannelCatalog",
@@ -254,10 +254,6 @@
     {
       "name": "Product Vision 2 - Store",
       "x-displayName": "Store"
-    },
-    {
-      "name": "Product Vision 2 - BusinessCode",
-      "x-displayName": "BusinessCode"
     },
     {
       "name": "Change logs - ChangeLogs",
@@ -9721,2751 +9717,61 @@
         }
       }
     },
-    "/vision/v1/admin/channelCatalog/{channelCatalogId}/{importV2ProductId}/disable": {
-      "post": {
-        "description": "DisableProductVisionDocument",
-        "operationId": "post-v1-admin-channelcatalog-channelcatalogid-importv2productid-disable",
-        "summary": "DisableProductVisionDocument",
-        "tags": [
-          "Product Vision 2 - Admin"
-        ],
-        "parameters": [
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "importV2ProductId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "x-api-secret-key",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/GetAllProductVisionResponse"
-            },
-            "examples": {
-              "application/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              },
-              "text/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/reset": {
-      "post": {
-        "description": "ResetChannelCatalog",
-        "operationId": "post-v1-feedtype-channelcatalog-channelcatalogid-reset",
-        "summary": "ResetChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResetChannelCatalogResponse"
-            },
-            "examples": {
-              "application/json": {
-                "publicationReferentialCreatedCount": "0",
-                "deletedCount": "0",
-                "offersReferentialTable": "string",
-                "importedCount": "0"
-              },
-              "text/json": {
-                "publicationReferentialCreatedCount": "0",
-                "deletedCount": "0",
-                "offersReferentialTable": "string",
-                "importedCount": "0"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/counters": {
-      "get": {
-        "description": "GetProductVisionCountersByChannelCatalog",
-        "operationId": "get-v1-feedtype-channelcatalog-channelcatalogid-counters",
-        "summary": "GetProductVisionCountersByChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          }
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/V1FeedTypeChannelCatalogChannelCatalogIdCountersGet200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": {
-                "none": "0",
-                "imported": "0",
-                "uncategorized": "0",
-                "disabled": "0",
-                "filtered": "0",
-                "invalid": "0",
-                "exported": "0",
-                "exportedError": "0",
-                "published": "0",
-                "publishedObsolete": "0",
-                "publishedError": "0",
-                "unpublished": "0",
-                "unpublishedError": "0"
-              },
-              "text/json": {
-                "none": "0",
-                "imported": "0",
-                "uncategorized": "0",
-                "disabled": "0",
-                "filtered": "0",
-                "invalid": "0",
-                "exported": "0",
-                "exportedError": "0",
-                "published": "0",
-                "publishedObsolete": "0",
-                "publishedError": "0",
-                "unpublished": "0",
-                "unpublishedError": "0"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/all": {
-      "post": {
-        "description": "GetAllProductVisionsByChannelCatalog",
-        "operationId": "post-v1-feedtype-channelcatalog-channelcatalogid-all",
-        "summary": "GetAllProductVisionsByChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "getAllProductVisionRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetAllProductVisionRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/GetAllProductVisionResponse"
-            },
-            "examples": {
-              "application/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              },
-              "text/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/{feedId}": {
-      "post": {
-        "description": "GetOneProductVisionByChannelCatalog",
-        "operationId": "post-v1-feedtype-channelcatalog-channelcatalogid-feedid",
-        "summary": "GetOneProductVisionByChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "feedId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "getOneProductVisionRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetOneProductVisionRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/BeezupProductVisionDocumentWithHistory"
-            },
-            "examples": {
-              "application/json": {
-                "id": "string",
-                "beezupProductId": "string",
-                "sku": "string",
-                "productId_Id": "0",
-                "title": "string",
-                "ean": "string",
-                "mpn": "string",
-                "price": "0",
-                "errorCode": "string",
-                "flowStatus": "none",
-                "lastModifiedUtcDate": "string",
-                "channelCatalogId": "string",
-                "channelId": "string",
-                "comparatorId": "0",
-                "storeId": "string",
-                "accountId": "0",
-                "businessCode": "string",
-                "technicalCode": "string",
-                "storeName": "string",
-                "beezupScope": "none",
-                "publicationMd5": "string",
-                "merchantCategory": "string",
-                "lastImport": {
-                  "scope": "none",
-                  "channelCatalogId": "string",
-                  "beezupProductId": "string",
-                  "flowStatus": "none",
-                  "feedType": "offers",
-                  "reasonCode": "string",
-                  "reasonMessage": "string",
-                  "createdUtcDate": "string",
-                  "sku": "string",
-                  "jsonErrorMessages": "string",
-                  "storeId": "string"
-                },
-                "lastExport": {
-                  "scope": "none",
-                  "channelCatalogId": "string",
-                  "beezupProductId": "string",
-                  "flowStatus": "none",
-                  "feedType": "offers",
-                  "reasonCode": "string",
-                  "reasonMessage": "string",
-                  "createdUtcDate": "string",
-                  "sku": "string",
-                  "jsonErrorMessages": "string"
-                },
-                "lastPublication": {
-                  "scope": "none",
-                  "channelCatalogId": "string",
-                  "beezupProductId": "string",
-                  "flowStatus": "none",
-                  "feedType": "offers",
-                  "reasonCode": "string",
-                  "reasonMessage": "string",
-                  "createdUtcDate": "string",
-                  "sku": "string",
-                  "jsonErrorMessages": "string",
-                  "publicationUUID": "string",
-                  "sourceContent": "string",
-                  "publicationPackageUUID": "string"
-                },
-                "importHistory": [
-                  {
-                    "scope": "none",
-                    "channelCatalogId": "string",
-                    "beezupProductId": "string",
-                    "flowStatus": "none",
-                    "feedType": "offers",
-                    "reasonCode": "string",
-                    "reasonMessage": "string",
-                    "createdUtcDate": "string",
-                    "sku": "string",
-                    "jsonErrorMessages": "string",
-                    "storeId": "string"
-                  }
-                ],
-                "exportHistory": [
-                  {
-                    "scope": "none",
-                    "channelCatalogId": "string",
-                    "beezupProductId": "string",
-                    "flowStatus": "none",
-                    "feedType": "offers",
-                    "reasonCode": "string",
-                    "reasonMessage": "string",
-                    "createdUtcDate": "string",
-                    "sku": "string",
-                    "jsonErrorMessages": "string"
-                  }
-                ],
-                "publicationHistory": [
-                  {
-                    "scope": "none",
-                    "channelCatalogId": "string",
-                    "beezupProductId": "string",
-                    "flowStatus": "none",
-                    "feedType": "offers",
-                    "reasonCode": "string",
-                    "reasonMessage": "string",
-                    "createdUtcDate": "string",
-                    "sku": "string",
-                    "jsonErrorMessages": "string",
-                    "publicationUUID": "string",
-                    "sourceContent": "string",
-                    "publicationPackageUUID": "string"
-                  }
-                ]
-              },
-              "text/json": {
-                "id": "string",
-                "beezupProductId": "string",
-                "sku": "string",
-                "productId_Id": "0",
-                "title": "string",
-                "ean": "string",
-                "mpn": "string",
-                "price": "0",
-                "errorCode": "string",
-                "flowStatus": "none",
-                "lastModifiedUtcDate": "string",
-                "channelCatalogId": "string",
-                "channelId": "string",
-                "comparatorId": "0",
-                "storeId": "string",
-                "accountId": "0",
-                "businessCode": "string",
-                "technicalCode": "string",
-                "storeName": "string",
-                "beezupScope": "none",
-                "publicationMd5": "string",
-                "merchantCategory": "string",
-                "lastImport": {
-                  "scope": "none",
-                  "channelCatalogId": "string",
-                  "beezupProductId": "string",
-                  "flowStatus": "none",
-                  "feedType": "offers",
-                  "reasonCode": "string",
-                  "reasonMessage": "string",
-                  "createdUtcDate": "string",
-                  "sku": "string",
-                  "jsonErrorMessages": "string",
-                  "storeId": "string"
-                },
-                "lastExport": {
-                  "scope": "none",
-                  "channelCatalogId": "string",
-                  "beezupProductId": "string",
-                  "flowStatus": "none",
-                  "feedType": "offers",
-                  "reasonCode": "string",
-                  "reasonMessage": "string",
-                  "createdUtcDate": "string",
-                  "sku": "string",
-                  "jsonErrorMessages": "string"
-                },
-                "lastPublication": {
-                  "scope": "none",
-                  "channelCatalogId": "string",
-                  "beezupProductId": "string",
-                  "flowStatus": "none",
-                  "feedType": "offers",
-                  "reasonCode": "string",
-                  "reasonMessage": "string",
-                  "createdUtcDate": "string",
-                  "sku": "string",
-                  "jsonErrorMessages": "string",
-                  "publicationUUID": "string",
-                  "sourceContent": "string",
-                  "publicationPackageUUID": "string"
-                },
-                "importHistory": [
-                  {
-                    "scope": "none",
-                    "channelCatalogId": "string",
-                    "beezupProductId": "string",
-                    "flowStatus": "none",
-                    "feedType": "offers",
-                    "reasonCode": "string",
-                    "reasonMessage": "string",
-                    "createdUtcDate": "string",
-                    "sku": "string",
-                    "jsonErrorMessages": "string",
-                    "storeId": "string"
-                  }
-                ],
-                "exportHistory": [
-                  {
-                    "scope": "none",
-                    "channelCatalogId": "string",
-                    "beezupProductId": "string",
-                    "flowStatus": "none",
-                    "feedType": "offers",
-                    "reasonCode": "string",
-                    "reasonMessage": "string",
-                    "createdUtcDate": "string",
-                    "sku": "string",
-                    "jsonErrorMessages": "string"
-                  }
-                ],
-                "publicationHistory": [
-                  {
-                    "scope": "none",
-                    "channelCatalogId": "string",
-                    "beezupProductId": "string",
-                    "flowStatus": "none",
-                    "feedType": "offers",
-                    "reasonCode": "string",
-                    "reasonMessage": "string",
-                    "createdUtcDate": "string",
-                    "sku": "string",
-                    "jsonErrorMessages": "string",
-                    "publicationUUID": "string",
-                    "sourceContent": "string",
-                    "publicationPackageUUID": "string"
-                  }
-                ]
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}": {
-      "post": {
-        "description": "GetManyProductVisionsByChannelCatalog",
-        "operationId": "post-v1-feedtype-channelcatalog-channelcatalogid",
-        "summary": "GetManyProductVisionsByChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "getManyProductVisionRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetManyProductVisionRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/GetManyProductVisionResponse"
-            },
-            "examples": {
-              "application/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              },
-              "text/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/search": {
-      "post": {
-        "description": "SearchProductVisionByPropertyByChannelCatalog",
-        "operationId": "post-v1-feedtype-channelcatalog-channelcatalogid-search",
-        "summary": "SearchProductVisionByPropertyByChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "searchProductVisionByPropertyRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/SearchProductVisionByPropertyRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/SearchProductVisionByPropertyResponse"
-            },
-            "examples": {
-              "application/json": {
-                "feedType": "offers",
-                "searchEligibleProperty": "none",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string",
-                "searchOperator": "none"
-              },
-              "text/json": {
-                "feedType": "offers",
-                "searchEligibleProperty": "none",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string",
-                "searchOperator": "none"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/export/{feedType}/channelCatalog/{channelCatalogId}/search": {
-      "post": {
-        "description": "GetExportProductVisionBySearchPropertyByChannelCatalog",
-        "operationId": "post-v1-export-feedtype-channelcatalog-channelcatalogid-search",
-        "summary": "GetExportProductVisionBySearchPropertyByChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "exportSearchProductVisionByPropertyRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/ExportSearchProductVisionByPropertyRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/csv",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/V1ExportFeedTypeChannelCatalogChannelCatalogIdSearchPost200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": "string",
-              "text/json": "string"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/export/{feedType}/channelCatalog/{channelCatalogId}": {
-      "post": {
-        "description": "GetExportByChannelCatalog",
-        "operationId": "post-v1-export-feedtype-channelcatalog-channelcatalogid",
-        "summary": "GetExportByChannelCatalog",
-        "tags": [
-          "Product Vision 2 - ChannelCatalog"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "getExportByChannelCatalogIdRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetExportByChannelCatalogIdRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/csv",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/V1ExportFeedTypeChannelCatalogChannelCatalogIdPost200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": "string",
-              "text/json": "string"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/{channelCatalogId}/md5": {
-      "post": {
-        "description": "GetProductVisionPublicationMd5BySkuList",
-        "operationId": "post-v1-feedtype-channelcatalogid-md5",
-        "summary": "GetProductVisionPublicationMd5BySkuList",
-        "tags": [
-          "Product Vision 2 - Publication"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "channelCatalogId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "getProductVisionPublicationMd5BySkuRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetProductVisionPublicationMd5BySkuRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/BeezupProductVisionDocumentPublicationMd5Array"
-            },
-            "examples": {
-              "application/json": [
-                {
-                  "channelCatalogId": "string",
-                  "sku": "string",
-                  "publicationMd5": "string"
-                }
-              ],
-              "text/json": [
-                {
-                  "channelCatalogId": "string",
-                  "sku": "string",
-                  "publicationMd5": "string"
-                }
-              ]
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/operators": {
-      "get": {
-        "description": "GetEligibleOperatorsPerProperty",
-        "operationId": "get-v1-operators",
-        "summary": "GetEligibleOperatorsPerProperty",
-        "tags": [
-          "Product Vision 2 - Global"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/V1OperatorsGet200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": {
-                "none": [
-                  "none"
-                ],
-                "title": [
-                  "none"
-                ],
-                "category": [
-                  "none"
-                ],
-                "price": [
-                  "none"
-                ],
-                "sku": [
-                  "none"
-                ],
-                "ean": [
-                  "none"
-                ],
-                "mpn": [
-                  "none"
-                ],
-                "errorCode": [
-                  "none"
-                ],
-                "flowStatus": [
-                  "none"
-                ]
-              },
-              "text/json": {
-                "none": [
-                  "none"
-                ],
-                "title": [
-                  "none"
-                ],
-                "category": [
-                  "none"
-                ],
-                "price": [
-                  "none"
-                ],
-                "sku": [
-                  "none"
-                ],
-                "ean": [
-                  "none"
-                ],
-                "mpn": [
-                  "none"
-                ],
-                "errorCode": [
-                  "none"
-                ],
-                "flowStatus": [
-                  "none"
-                ]
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/scope/{beezupScope}/all": {
-      "post": {
-        "description": "GetAllProductVisionsByScope",
-        "operationId": "post-v1-feedtype-scope-beezupscope-all",
-        "summary": "GetAllProductVisionsByScope",
-        "tags": [
-          "Product Vision 2 - Scope"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "beezupScope",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "none",
-              "beezUp",
-              "octopiaMerchant",
-              "octopiaPaas"
-            ]
-          },
-          {
-            "name": "getAllProductVisionRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetAllProductVisionRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/GetAllProductVisionRequest"
-            },
-            "examples": {
-              "application/json": {
-                "limit": "10",
-                "continuationToken": "string"
-              },
-              "text/json": {
-                "limit": "10",
-                "continuationToken": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/store/{storeId}/search": {
-      "post": {
-        "description": "SearchStoreProductVisionByPropertyByStore",
-        "operationId": "post-v1-feedtype-store-storeid-search",
-        "summary": "SearchStoreProductVisionByPropertyByStore",
-        "tags": [
-          "Product Vision 2 - Store"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "storeId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "searchProductVisionByPropertyRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/SearchProductVisionByPropertyRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/SearchProductVisionByPropertyResponse"
-            },
-            "examples": {
-              "application/json": {
-                "feedType": "offers",
-                "searchEligibleProperty": "none",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string",
-                "searchOperator": "none"
-              },
-              "text/json": {
-                "feedType": "offers",
-                "searchEligibleProperty": "none",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string",
-                "searchOperator": "none"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/{feedType}/store/{storeId}/all": {
-      "post": {
-        "description": "GetAllProductVisionsByStore",
-        "operationId": "post-v1-feedtype-store-storeid-all",
-        "summary": "GetAllProductVisionsByStore",
-        "tags": [
-          "Product Vision 2 - Store"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "storeId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "getAllProductVisionRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetAllProductVisionRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/GetAllProductVisionResponse"
-            },
-            "examples": {
-              "application/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              },
-              "text/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/columns": {
-      "get": {
-        "description": "GetEligibleExportColumns",
-        "operationId": "get-v1-columns",
-        "summary": "GetEligibleExportColumns",
-        "tags": [
-          "Product Vision 2 - Global"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/V1ColumnsGet200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": {
-                "none": [
-                  "none"
-                ],
-                "title": [
-                  "none"
-                ],
-                "category": [
-                  "none"
-                ],
-                "price": [
-                  "none"
-                ],
-                "sku": [
-                  "none"
-                ],
-                "ean": [
-                  "none"
-                ],
-                "mpn": [
-                  "none"
-                ],
-                "errorCode": [
-                  "none"
-                ],
-                "flowStatus": [
-                  "none"
-                ]
-              },
-              "text/json": {
-                "none": [
-                  "none"
-                ],
-                "title": [
-                  "none"
-                ],
-                "category": [
-                  "none"
-                ],
-                "price": [
-                  "none"
-                ],
-                "sku": [
-                  "none"
-                ],
-                "ean": [
-                  "none"
-                ],
-                "mpn": [
-                  "none"
-                ],
-                "errorCode": [
-                  "none"
-                ],
-                "flowStatus": [
-                  "none"
-                ]
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
     "/vision/v1/export/{feedType}/businessCode/{businessCode}": {
       "post": {
-        "description": "GetExportByBusinessCode",
-        "operationId": "post-v1-export-feedtype-businesscode-businesscode",
-        "summary": "GetExportByBusinessCode",
         "tags": [
           "Product Vision 2 - BusinessCode"
         ],
+        "summary": "GetExportByBusinessCode",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/csv",
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
-            "name": "feedType",
             "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
+            "name": "feedType",
+            "required": true
           },
           {
-            "name": "businessCode",
             "in": "path",
+            "name": "businessCode",
             "required": true,
             "type": "string"
           },
           {
-            "name": "getExportByBusinessCodeRequest",
             "in": "body",
+            "name": "body",
             "schema": {
               "$ref": "#/definitions/GetExportByBusinessCodeRequest"
             }
           }
         ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/csv",
-          "text/plain"
-        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/V1ExportFeedTypeBusinessCodeBusinessCodePost200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": "string",
-              "text/json": "string"
+              "format": "binary",
+              "type": "string"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
               "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
             }
           },
           "500": {
             "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/export/{feedType}/scope/{beezupScope}": {
-      "post": {
-        "description": "GetExportByScope",
-        "operationId": "post-v1-export-feedtype-scope-beezupscope",
-        "summary": "GetExportByScope",
-        "tags": [
-          "Product Vision 2 - Scope"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "beezupScope",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "none",
-              "beezUp",
-              "octopiaMerchant",
-              "octopiaPaas"
-            ]
-          },
-          {
-            "name": "getExportByScopeRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetExportByScopeRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/csv",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/V1ExportFeedTypeScopeBeezupScopePost200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": "string",
-              "text/json": "string"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/vision/v1/export/{feedType}/store/{storeId}": {
-      "post": {
-        "description": "GetExportByStore",
-        "operationId": "post-v1-export-feedtype-store-storeid",
-        "summary": "GetExportByStore",
-        "tags": [
-          "Product Vision 2 - Store"
-        ],
-        "parameters": [
-          {
-            "name": "feedType",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
-          },
-          {
-            "name": "storeId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "getExportByStoreIdRequest",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/GetExportByStoreIdRequest"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/csv",
-          "text/plain"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/V1ExportFeedTypeStoreStoreIdPost200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": "string",
-              "text/json": "string"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
             }
           }
         }
@@ -12473,21 +9779,567 @@
     },
     "/vision/v1/channelCatalog/{channelCatalogId}": {
       "get": {
-        "description": "GetChannelCatalogState",
-        "operationId": "get-v1-channelcatalog-channelcatalogid",
-        "summary": "GetChannelCatalogState",
         "tags": [
           "Product Vision 2 - ChannelCatalog"
         ],
+        "summary": "GetChannelCatalogState",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
-            "name": "channelCatalogId",
             "in": "path",
+            "name": "channelCatalogId",
             "required": true,
             "type": "string",
             "format": "uuid"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ChannelCatalogState"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/counters": {
+      "get": {
+        "tags": [
+          "Product Vision 2 - ChannelCatalog"
+        ],
+        "summary": "GetProductVisionCountersByChannelCatalog",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BeezupProductVisionCounters2"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/all": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - ChannelCatalog"
+        ],
+        "summary": "GetAllProductVisionsByChannelCatalog",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetAllProductVisionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetAllProductVisionResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/single": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - ChannelCatalog"
+        ],
+        "summary": "GetOneProductVisionByChannelCatalog",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetOneProductVisionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductVisionDocumentDtoWithHistory"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/batch": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - ChannelCatalog"
+        ],
+        "summary": "GetManyProductVisionsByChannelCatalog",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetManyProductVisionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetManyProductVisionResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/search": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - ChannelCatalog"
+        ],
+        "summary": "SearchProductVisionByPropertyByChannelCatalog",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SearchCompositeProductVisionByPropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SearchProductVisionByPropertyResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/export/{feedType}/channelCatalog/{channelCatalogId}/search": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - ChannelCatalog"
+        ],
+        "summary": "GetExportProductVisionBySearchPropertyByChannelCatalog",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/csv",
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ExportSearchProductVisionByPropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/export/{feedType}/channelCatalog/{channelCatalogId}": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - ChannelCatalog"
+        ],
+        "summary": "GetExportByChannelCatalog",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/csv",
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetExportByChannelCatalogIdRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/{channelCatalogId}/md5": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - Publication"
+        ],
+        "summary": "GetProductVisionPublicationMd5BySkuList",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "channelCatalogId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetProductVisionPublicationMd5BySkuRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BeezupProductVisionDocumentPublicationMd5"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/operators": {
+      "get": {
+        "tags": [
+          "Product Vision 2 - Global"
+        ],
+        "summary": "GetEligibleOperatorsPerProperty",
         "produces": [
           "text/plain",
           "application/json",
@@ -12497,414 +10349,509 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ChannelCatalogState"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
+              "type": "object",
+              "properties": {
+                "None": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Title": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Category": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Price": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Stock": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Sku": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Ean": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Mpn": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "ErrorCode": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "FlowStatus": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Identifier": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Brand": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "ParentSku": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                }
               },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
+              "additionalProperties": false
             }
           },
           "500": {
             "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
             }
           }
         }
       }
     },
-    "/vision/v1/admin/channelCatalog/{channelCatalogId}/{importV2ProductId}/enable": {
-      "post": {
-        "description": "EnableProductVisionDocument",
-        "operationId": "post-v1-admin-channelcatalog-channelcatalogid-importv2productid-enable",
-        "summary": "EnableProductVisionDocument",
+    "/vision/v1/columns": {
+      "get": {
         "tags": [
-          "Product Vision 2 - Admin"
+          "Product Vision 2 - Global"
+        ],
+        "summary": "GetEligibleExportColumns",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "None": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Title": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Category": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Price": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Stock": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Sku": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Ean": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Mpn": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "ErrorCode": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "FlowStatus": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Identifier": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "Brand": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                },
+                "ParentSku": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchOperator"
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/scope/{beezupScope}/all": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - Scope"
+        ],
+        "summary": "GetAllProductVisionsByScope",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
         ],
         "parameters": [
           {
-            "name": "channelCatalogId",
             "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
+            "name": "feedType",
+            "required": true
           },
           {
-            "name": "importV2ProductId",
             "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
+            "name": "beezupScope",
+            "required": true
           },
           {
-            "name": "x-api-secret-key",
-            "in": "header",
-            "type": "string"
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetAllProductVisionRequest"
+            }
           }
         ],
-        "produces": [
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetAllProductVisionRequest"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/export/{feedType}/scope/{beezupScope}": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - Scope"
+        ],
+        "summary": "GetExportByScope",
+        "consumes": [
           "application/json",
           "text/json",
-          "text/plain"
+          "application/*+json"
+        ],
+        "produces": [
+          "text/csv",
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "beezupScope",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetExportByScopeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/store/{storeId}/search": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - Store"
+        ],
+        "summary": "SearchStoreProductVisionByPropertyByStore",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "storeId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SearchProductVisionByPropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SearchProductVisionByPropertyResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
+            }
+          }
+        }
+      }
+    },
+    "/vision/v1/{feedType}/store/{storeId}/all": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - Store"
+        ],
+        "summary": "GetAllProductVisionsByStore",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "storeId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetAllProductVisionRequest"
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/GetAllProductVisionResponse"
-            },
-            "examples": {
-              "application/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              },
-              "text/json": {
-                "feedType": "offers",
-                "results": [
-                  {
-                    "beezupProductId": "string",
-                    "sku": "string",
-                    "title": "string",
-                    "ean": "string",
-                    "mpn": "string",
-                    "flowStatus": "none",
-                    "lastModifiedUtcDate": "string",
-                    "channelCatalogId": "string",
-                    "channelId": "string",
-                    "storeId": "string",
-                    "accountId": "0",
-                    "businessCode": "string",
-                    "technicalCode": "string",
-                    "merchantCategory": "string",
-                    "storeName": "string",
-                    "price": "0",
-                    "errorCode": "string"
-                  }
-                ],
-                "continuationToken": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
               "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessageDto"
             }
           },
           "500": {
             "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
             }
           }
         }
       }
     },
-    "/vision/v1/{feedType}/channelCatalog/{channelCatalogId}/counters2": {
-      "get": {
-        "description": "GetProductVisionCountersByChannelCatalog2",
-        "operationId": "691315662f313e785da67cee",
-        "summary": "GetProductVisionCountersByChannelCatalog2",
+    "/vision/v1/export/{feedType}/store/{storeId}": {
+      "post": {
+        "tags": [
+          "Product Vision 2 - Store"
+        ],
+        "summary": "GetExportByStore",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/csv",
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
-            "name": "feedType",
             "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "offers",
-              "products"
-            ]
+            "name": "feedType",
+            "required": true
           },
           {
-            "name": "channelCatalogId",
             "in": "path",
+            "name": "storeId",
             "required": true,
             "type": "string",
             "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GetExportByStoreIdRequest"
+            }
           }
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "text/plain"
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/V1FeedTypeChannelCatalogChannelCatalogIdCountersGet200TextJsonResponse"
-            },
-            "examples": {
-              "application/json": {
-                "none": "0",
-                "imported": "0",
-                "uncategorized": "0",
-                "disabled": "0",
-                "filtered": "0",
-                "invalid": "0",
-                "exported": "0",
-                "exportedError": "0",
-                "published": "0",
-                "publishedObsolete": "0",
-                "publishedError": "0",
-                "unpublished": "0",
-                "unpublishedError": "0"
-              },
-              "text/json": {
-                "none": "0",
-                "imported": "0",
-                "uncategorized": "0",
-                "disabled": "0",
-                "filtered": "0",
-                "invalid": "0",
-                "exported": "0",
-                "exportedError": "0",
-                "published": "0",
-                "publishedObsolete": "0",
-                "publishedError": "0",
-                "unpublished": "0",
-                "unpublishedError": "0"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
+              "format": "binary",
+              "type": "string"
             }
           },
           "404": {
             "description": "Not Found",
             "schema": {
               "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
             }
           },
           "500": {
             "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/ErrorMessageDto"
-            },
-            "examples": {
-              "application/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              },
-              "text/json": {
-                "docUrl": "string",
-                "code": "string",
-                "message": "string",
-                "cultureName": "string",
-                "arguments": {},
-                "stackTrace": "string"
-              }
             }
           }
         }
@@ -31043,6 +28990,446 @@
     "invoiceLocation": {
       "type": "string"
     },
+    "BeezupLink": {
+      "type": "object",
+      "properties": {
+        "docUrl": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "operationId": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "parameters": {
+          "$ref": "#/definitions/BeezupLinkParameters"
+        },
+        "urlTemplated": {
+          "type": "boolean"
+        },
+        "allRequiredParamsProvided": {
+          "type": "boolean"
+        },
+        "allOptionalParamsProvided": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupLinkParameters": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "$ref": "#/definitions/BeezupLinkRequestParameter"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupLinkRequestParameter": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "in": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "lovRequired": {
+          "type": "boolean"
+        },
+        "schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/BeezupLink"
+        },
+        "override": {
+          "$ref": "#/definitions/BeezupLink"
+        },
+        "disable": {
+          "$ref": "#/definitions/BeezupLink"
+        },
+        "reenable": {
+          "$ref": "#/definitions/BeezupLink"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupProductVisionCounters2": {
+      "type": "object",
+      "properties": {
+        "aggregatedCounters": {
+          "type": "object",
+          "properties": {
+            "None": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Imported": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Deleted": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Disabled": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Filtered": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Invalid": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Uncategorized": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Exported": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "ExportedError": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Published": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "PublishedObsolete": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "PublishedError": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Unpublished": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "UnpublishedError": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        },
+        "counters": {
+          "type": "object",
+          "properties": {
+            "None": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Imported": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Deleted": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Disabled": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Filtered": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Invalid": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Uncategorized": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Exported": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "ExportedError": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Published": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "PublishedObsolete": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "PublishedError": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "Unpublished": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "UnpublishedError": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        },
+        "channelCatalogId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupProductVisionDocumentPublicationMd5": {
+      "type": "object",
+      "properties": {
+        "channelCatalogId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "publicationMd5": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupReferentialStatusHistoryCatalogDto": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/BeezupReferentialStatusHistoryScope"
+        },
+        "channelCatalogId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "beezupProductId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "flowStatus": {
+          "$ref": "#/definitions/FlowStatus"
+        },
+        "feedType": {
+          "$ref": "#/definitions/FeedType"
+        },
+        "reasonCode": {
+          "type": "string"
+        },
+        "reasonMessage": {
+          "type": "string"
+        },
+        "createdUtcDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "errorMessages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "storeId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupReferentialStatusHistoryChannelCatalogDto": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string"
+        },
+        "correlationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/BeezupReferentialStatusHistoryScope"
+        },
+        "channelCatalogId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "beezupProductId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "flowStatus": {
+          "$ref": "#/definitions/FlowStatus"
+        },
+        "feedType": {
+          "$ref": "#/definitions/FeedType"
+        },
+        "reasonCode": {
+          "type": "string"
+        },
+        "reasonMessage": {
+          "type": "string"
+        },
+        "createdUtcDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "errorMessages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "stock": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupReferentialStatusHistoryPublicationDto": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/BeezupReferentialStatusHistoryScope"
+        },
+        "channelCatalogId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "beezupProductId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "flowStatus": {
+          "$ref": "#/definitions/FlowStatus"
+        },
+        "feedType": {
+          "$ref": "#/definitions/FeedType"
+        },
+        "reasonCode": {
+          "type": "string"
+        },
+        "reasonMessage": {
+          "type": "string"
+        },
+        "createdUtcDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "errorMessages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publicationUUID": {
+          "type": "string"
+        },
+        "sourceContent": {
+          "type": "string"
+        },
+        "publicationPackageUUID": {
+          "type": "string"
+        },
+        "transformedContentMd5": {
+          "type": "string"
+        },
+        "publicationStrategy": {
+          "type": "string"
+        },
+        "exportEtag": {
+          "type": "string"
+        },
+        "exchangedMessagesUrl": {
+          "type": "string"
+        },
+        "marketPlacePackageNumber": {
+          "type": "string"
+        },
+        "correlationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "causeId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "stock": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BeezupReferentialStatusHistoryScope": {
+      "enum": [
+        "None",
+        "Catalog",
+        "ChannelCatalog",
+        "Publication"
+      ],
+      "type": "string"
+    },
+    "BeezupScope": {
+      "enum": [
+        "None",
+        "BeezUp",
+        "OctopiaMerchant",
+        "OctopiaPaas"
+      ],
+      "type": "string"
+    },
     "ChannelCatalogState": {
       "type": "object",
       "properties": {
@@ -31078,370 +29465,36 @@
         },
         "isChannelV2": {
           "type": "boolean"
+        },
+        "marketplacePublicationType": {
+          "$ref": "#/definitions/MarketPlacePublicationType"
         }
       },
       "additionalProperties": false
     },
-    "BeezupScope": {
+    "EligibleExportColumn": {
       "enum": [
-        "none",
-        "beezUp",
-        "octopiaMerchant",
-        "octopiaPaas"
+        "BeezupProductId",
+        "Sku",
+        "Ean",
+        "Mpn",
+        "ChannelCatalogId",
+        "StoreId",
+        "AccountId",
+        "BusinessCode",
+        "TechnicalCode",
+        "StoreName",
+        "BeezupScope",
+        "FlowStatus",
+        "ErrorCode",
+        "LastModifiedUtcDate",
+        "Title",
+        "Price",
+        "Stock",
+        "CurrencyCode",
+        "ErrorMessage"
       ],
       "type": "string"
-    },
-    "BeezupProductVisionDocumentPublicationMd5": {
-      "type": "object",
-      "properties": {
-        "channelCatalogId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "publicationMd5": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "BeezupProductVisionDocumentWithHistory": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "readOnly": "true"
-        },
-        "beezupProductId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "productId_Id": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "title": {
-          "type": "string"
-        },
-        "ean": {
-          "type": "string"
-        },
-        "mpn": {
-          "type": "string"
-        },
-        "price": {
-          "format": "double",
-          "type": "number"
-        },
-        "errorCode": {
-          "type": "string"
-        },
-        "flowStatus": {
-          "enum": [
-            "none",
-            "imported",
-            "uncategorized",
-            "disabled",
-            "filtered",
-            "invalid",
-            "exported",
-            "exportedError",
-            "published",
-            "publishedObsolete",
-            "publishedError",
-            "unpublished",
-            "unpublishedError"
-          ],
-          "type": "string"
-        },
-        "lastModifiedUtcDate": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "channelCatalogId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "channelId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "comparatorId": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "storeId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "accountId": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "businessCode": {
-          "type": "string"
-        },
-        "technicalCode": {
-          "type": "string"
-        },
-        "storeName": {
-          "type": "string"
-        },
-        "beezupScope": {
-          "enum": [
-            "none",
-            "beezUp",
-            "octopiaMerchant",
-            "octopiaPaas"
-          ],
-          "type": "string"
-        },
-        "publicationMd5": {
-          "type": "string"
-        },
-        "merchantCategory": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "lastImport": {
-          "$ref": "#/definitions/BeezupReferentialStatusHistoryCatalog"
-        },
-        "lastExport": {
-          "$ref": "#/definitions/BeezupReferentialStatusHistoryChannelCatalog"
-        },
-        "lastPublication": {
-          "$ref": "#/definitions/BeezupReferentialStatusHistoryPublication"
-        },
-        "importHistory": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BeezupReferentialStatusHistoryCatalog"
-          }
-        },
-        "exportHistory": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BeezupReferentialStatusHistoryChannelCatalog"
-          }
-        },
-        "publicationHistory": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BeezupReferentialStatusHistoryPublication"
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "BeezupReferentialStatusHistoryCatalog": {
-      "type": "object",
-      "properties": {
-        "scope": {
-          "enum": [
-            "none",
-            "catalog",
-            "channelCatalog",
-            "publication"
-          ],
-          "type": "string"
-        },
-        "channelCatalogId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "beezupProductId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "flowStatus": {
-          "enum": [
-            "none",
-            "imported",
-            "uncategorized",
-            "disabled",
-            "filtered",
-            "invalid",
-            "exported",
-            "exportedError",
-            "published",
-            "publishedObsolete",
-            "publishedError",
-            "unpublished",
-            "unpublishedError"
-          ],
-          "type": "string"
-        },
-        "feedType": {
-          "enum": [
-            "offers",
-            "products"
-          ],
-          "type": "string"
-        },
-        "reasonCode": {
-          "type": "string"
-        },
-        "reasonMessage": {
-          "type": "string"
-        },
-        "createdUtcDate": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "jsonErrorMessages": {
-          "type": "string"
-        },
-        "storeId": {
-          "format": "uuid",
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "BeezupReferentialStatusHistoryChannelCatalog": {
-      "type": "object",
-      "properties": {
-        "scope": {
-          "enum": [
-            "none",
-            "catalog",
-            "channelCatalog",
-            "publication"
-          ],
-          "type": "string"
-        },
-        "channelCatalogId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "beezupProductId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "flowStatus": {
-          "enum": [
-            "none",
-            "imported",
-            "uncategorized",
-            "disabled",
-            "filtered",
-            "invalid",
-            "exported",
-            "exportedError",
-            "published",
-            "publishedObsolete",
-            "publishedError",
-            "unpublished",
-            "unpublishedError"
-          ],
-          "type": "string"
-        },
-        "feedType": {
-          "enum": [
-            "offers",
-            "products"
-          ],
-          "type": "string"
-        },
-        "reasonCode": {
-          "type": "string"
-        },
-        "reasonMessage": {
-          "type": "string"
-        },
-        "createdUtcDate": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "jsonErrorMessages": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "BeezupReferentialStatusHistoryPublication": {
-      "type": "object",
-      "properties": {
-        "scope": {
-          "enum": [
-            "none",
-            "catalog",
-            "channelCatalog",
-            "publication"
-          ],
-          "type": "string"
-        },
-        "channelCatalogId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "beezupProductId": {
-          "format": "uuid",
-          "type": "string"
-        },
-        "flowStatus": {
-          "enum": [
-            "none",
-            "imported",
-            "uncategorized",
-            "disabled",
-            "filtered",
-            "invalid",
-            "exported",
-            "exportedError",
-            "published",
-            "publishedObsolete",
-            "publishedError",
-            "unpublished",
-            "unpublishedError"
-          ],
-          "type": "string"
-        },
-        "feedType": {
-          "enum": [
-            "offers",
-            "products"
-          ],
-          "type": "string"
-        },
-        "reasonCode": {
-          "type": "string"
-        },
-        "reasonMessage": {
-          "type": "string"
-        },
-        "createdUtcDate": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "jsonErrorMessages": {
-          "type": "string"
-        },
-        "publicationUUID": {
-          "type": "string"
-        },
-        "sourceContent": {
-          "type": "string"
-        },
-        "publicationPackageUUID": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
     },
     "ErrorMessageDto": {
       "type": "object",
@@ -31470,81 +29523,61 @@
     },
     "ExportSearchProductVisionByPropertyRequest": {
       "required": [
-        "eligibleExportColumns",
-        "predicates",
-        "searchEligibleProperty",
-        "searchOperator"
+        "compositePredicates",
+        "eligibleExportColumns"
       ],
       "type": "object",
       "properties": {
         "eligibleExportColumns": {
           "type": "array",
           "items": {
-            "enum": [
-              "channelCatalogId",
-              "storeId",
-              "accountId",
-              "businessCode",
-              "technicalCode",
-              "storeName",
-              "beezupScope",
-              "flowStatus",
-              "errorCode",
-              "lastModifiedUtcDate",
-              "title",
-              "ean",
-              "mpn",
-              "sku",
-              "price",
-              "beezupProductId"
-            ],
-            "type": "string"
+            "$ref": "#/definitions/EligibleExportColumn"
           }
         },
-        "searchOperator": {
-          "enum": [
-            "none",
-            "equal",
-            "contains",
-            "startWith",
-            "greater",
-            "lower",
-            "in"
-          ],
-          "type": "string"
-        },
-        "searchEligibleProperty": {
-          "enum": [
-            "none",
-            "title",
-            "category",
-            "price",
-            "sku",
-            "ean",
-            "mpn",
-            "errorCode",
-            "flowStatus"
-          ],
-          "type": "string"
-        },
-        "predicates": {
+        "compositePredicates": {
+          "maxItems": 10,
+          "minItems": 1,
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/SearchCompositeItem"
           }
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "eligibleExportColumns": [
-          "channelCatalogId"
-        ],
-        "searchOperator": "none",
-        "searchEligibleProperty": "none",
-        "predicates": [
-          "string"
-        ]
-      }
+      "additionalProperties": false
+    },
+    "FeedIdType": {
+      "enum": [
+        "DocumentId",
+        "Sku",
+        "Identifier"
+      ],
+      "type": "string"
+    },
+    "FeedType": {
+      "enum": [
+        "Offers",
+        "Products"
+      ],
+      "type": "string"
+    },
+    "FlowStatus": {
+      "enum": [
+        "None",
+        "Imported",
+        "Deleted",
+        "Disabled",
+        "Filtered",
+        "Invalid",
+        "Uncategorized",
+        "Exported",
+        "ExportedError",
+        "Published",
+        "PublishedObsolete",
+        "PublishedError",
+        "Unpublished",
+        "UnpublishedError"
+      ],
+      "type": "string"
     },
     "GetAllProductVisionRequest": {
       "type": "object",
@@ -31560,21 +29593,13 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "limit": "10",
-        "continuationToken": "string"
-      }
+      "additionalProperties": false
     },
     "GetAllProductVisionResponse": {
       "type": "object",
       "properties": {
         "feedType": {
-          "enum": [
-            "offers",
-            "products"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/FeedType"
         },
         "results": {
           "type": "array",
@@ -31599,34 +29624,11 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "enum": [
-              "channelCatalogId",
-              "storeId",
-              "accountId",
-              "businessCode",
-              "technicalCode",
-              "storeName",
-              "beezupScope",
-              "flowStatus",
-              "errorCode",
-              "lastModifiedUtcDate",
-              "title",
-              "ean",
-              "mpn",
-              "sku",
-              "price",
-              "beezupProductId"
-            ],
-            "type": "string"
+            "$ref": "#/definitions/EligibleExportColumn"
           }
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "eligibleExportColumns": [
-          "channelCatalogId"
-        ]
-      }
+      "additionalProperties": false
     },
     "GetExportByChannelCatalogIdRequest": {
       "required": [
@@ -31639,34 +29641,11 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "enum": [
-              "channelCatalogId",
-              "storeId",
-              "accountId",
-              "businessCode",
-              "technicalCode",
-              "storeName",
-              "beezupScope",
-              "flowStatus",
-              "errorCode",
-              "lastModifiedUtcDate",
-              "title",
-              "ean",
-              "mpn",
-              "sku",
-              "price",
-              "beezupProductId"
-            ],
-            "type": "string"
+            "$ref": "#/definitions/EligibleExportColumn"
           }
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "eligibleExportColumns": [
-          "channelCatalogId"
-        ]
-      }
+      "additionalProperties": false
     },
     "GetExportByScopeRequest": {
       "required": [
@@ -31679,34 +29658,11 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "enum": [
-              "channelCatalogId",
-              "storeId",
-              "accountId",
-              "businessCode",
-              "technicalCode",
-              "storeName",
-              "beezupScope",
-              "flowStatus",
-              "errorCode",
-              "lastModifiedUtcDate",
-              "title",
-              "ean",
-              "mpn",
-              "sku",
-              "price",
-              "beezupProductId"
-            ],
-            "type": "string"
+            "$ref": "#/definitions/EligibleExportColumn"
           }
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "eligibleExportColumns": [
-          "channelCatalogId"
-        ]
-      }
+      "additionalProperties": false
     },
     "GetExportByStoreIdRequest": {
       "required": [
@@ -31719,34 +29675,11 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "enum": [
-              "channelCatalogId",
-              "storeId",
-              "accountId",
-              "businessCode",
-              "technicalCode",
-              "storeName",
-              "beezupScope",
-              "flowStatus",
-              "errorCode",
-              "lastModifiedUtcDate",
-              "title",
-              "ean",
-              "mpn",
-              "sku",
-              "price",
-              "beezupProductId"
-            ],
-            "type": "string"
+            "$ref": "#/definitions/EligibleExportColumn"
           }
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "eligibleExportColumns": [
-          "channelCatalogId"
-        ]
-      }
+      "additionalProperties": false
     },
     "GetManyProductVisionRequest": {
       "required": [
@@ -31756,11 +29689,7 @@
       "type": "object",
       "properties": {
         "feedIdType": {
-          "enum": [
-            "documentId",
-            "sku"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/FeedIdType"
         },
         "feedIdList": {
           "maxItems": 10,
@@ -31781,25 +29710,13 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "feedIdType": "documentId",
-        "feedIdList": [
-          "string"
-        ],
-        "limit": "10",
-        "continuationToken": "string"
-      }
+      "additionalProperties": false
     },
     "GetManyProductVisionResponse": {
       "type": "object",
       "properties": {
         "feedType": {
-          "enum": [
-            "offers",
-            "products"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/FeedType"
         },
         "results": {
           "type": "array",
@@ -31815,22 +29732,20 @@
     },
     "GetOneProductVisionRequest": {
       "required": [
+        "feedId",
         "feedIdType"
       ],
       "type": "object",
       "properties": {
         "feedIdType": {
-          "enum": [
-            "documentId",
-            "sku"
-          ],
+          "$ref": "#/definitions/FeedIdType"
+        },
+        "feedId": {
+          "minLength": 1,
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "feedIdType": "documentId"
-      }
+      "additionalProperties": false
     },
     "GetProductVisionPublicationMd5BySkuRequest": {
       "required": [
@@ -31845,12 +29760,14 @@
           }
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "skuList": [
-          "string"
-        ]
-      }
+      "additionalProperties": false
+    },
+    "MarketPlacePublicationType": {
+      "enum": [
+        "Export",
+        "Api"
+      ],
+      "type": "string"
     },
     "ProductVisionDocumentDto": {
       "type": "object",
@@ -31872,22 +29789,7 @@
           "type": "string"
         },
         "flowStatus": {
-          "enum": [
-            "none",
-            "imported",
-            "uncategorized",
-            "disabled",
-            "filtered",
-            "invalid",
-            "exported",
-            "exportedError",
-            "published",
-            "publishedObsolete",
-            "publishedError",
-            "unpublished",
-            "unpublishedError"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/FlowStatus"
         },
         "lastModifiedUtcDate": {
           "format": "date-time",
@@ -31928,30 +29830,218 @@
         },
         "errorCode": {
           "type": "string"
+        },
+        "stock": {
+          "format": "double",
+          "type": "number"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "beezupLinks": {
+          "$ref": "#/definitions/BeezupLinks"
         }
       },
       "additionalProperties": false
     },
-    "ResetChannelCatalogResponse": {
+    "ProductVisionDocumentDtoWithHistory": {
       "type": "object",
       "properties": {
-        "publicationReferentialCreatedCount": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "deletedCount": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "offersReferentialTable": {
+        "beezupProductId": {
+          "format": "uuid",
           "type": "string"
         },
-        "importedCount": {
-          "format": "int64",
+        "sku": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "ean": {
+          "type": "string"
+        },
+        "mpn": {
+          "type": "string"
+        },
+        "flowStatus": {
+          "$ref": "#/definitions/FlowStatus"
+        },
+        "lastModifiedUtcDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "channelCatalogId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "channelId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "storeId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "accountId": {
+          "format": "int32",
           "type": "integer"
+        },
+        "businessCode": {
+          "type": "string"
+        },
+        "technicalCode": {
+          "type": "string"
+        },
+        "merchantCategory": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "storeName": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "stock": {
+          "format": "double",
+          "type": "number"
+        },
+        "currencyCode": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "beezupLinks": {
+          "$ref": "#/definitions/BeezupLinks"
+        },
+        "isDeleted": {
+          "type": "boolean",
+          "readOnly": "true"
+        },
+        "lastImport": {
+          "$ref": "#/definitions/BeezupReferentialStatusHistoryCatalogDto"
+        },
+        "lastExport": {
+          "$ref": "#/definitions/BeezupReferentialStatusHistoryChannelCatalogDto"
+        },
+        "lastPublication": {
+          "$ref": "#/definitions/BeezupReferentialStatusHistoryPublicationDto"
+        },
+        "importHistory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BeezupReferentialStatusHistoryCatalogDto"
+          }
+        },
+        "exportHistory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BeezupReferentialStatusHistoryChannelCatalogDto"
+          }
+        },
+        "publicationHistory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BeezupReferentialStatusHistoryPublicationDto"
+          }
         }
       },
       "additionalProperties": false
+    },
+    "SearchCompositeItem": {
+      "required": [
+        "predicates",
+        "searchEligibleProperty",
+        "searchOperator"
+      ],
+      "type": "object",
+      "properties": {
+        "searchOperator": {
+          "$ref": "#/definitions/SearchOperator"
+        },
+        "searchEligibleProperty": {
+          "$ref": "#/definitions/SearchEligibleProperty"
+        },
+        "predicates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "SearchCompositeProductVisionByPropertyRequest": {
+      "required": [
+        "compositePredicates"
+      ],
+      "type": "object",
+      "properties": {
+        "compositePredicates": {
+          "maxItems": 10,
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SearchCompositeItem"
+          }
+        },
+        "limit": {
+          "format": "int32",
+          "default": "10",
+          "maximum": 1000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "continuationToken": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SearchEligibleProperty": {
+      "enum": [
+        "None",
+        "Title",
+        "Category",
+        "Price",
+        "Stock",
+        "Sku",
+        "Ean",
+        "Mpn",
+        "ErrorCode",
+        "FlowStatus",
+        "Identifier",
+        "Brand",
+        "ParentSku"
+      ],
+      "type": "string"
+    },
+    "SearchOperator": {
+      "enum": [
+        "None",
+        "Equal",
+        "Contains",
+        "StartWith",
+        "Greater",
+        "Lower",
+        "In",
+        "IsNull"
+      ],
+      "type": "string"
     },
     "SearchProductVisionByPropertyRequest": {
       "required": [
@@ -31962,34 +30052,12 @@
       "type": "object",
       "properties": {
         "searchOperator": {
-          "enum": [
-            "none",
-            "equal",
-            "contains",
-            "startWith",
-            "greater",
-            "lower",
-            "in"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/SearchOperator"
         },
         "searchEligibleProperty": {
-          "enum": [
-            "none",
-            "title",
-            "category",
-            "price",
-            "sku",
-            "ean",
-            "mpn",
-            "errorCode",
-            "flowStatus"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/SearchEligibleProperty"
         },
         "predicates": {
-          "maxItems": 5,
-          "minItems": 1,
           "type": "array",
           "items": {
             "type": "string"
@@ -32006,40 +30074,16 @@
           "type": "string"
         }
       },
-      "additionalProperties": false,
-      "example": {
-        "searchOperator": "none",
-        "searchEligibleProperty": "none",
-        "predicates": [
-          "string"
-        ],
-        "limit": "10",
-        "continuationToken": "string"
-      }
+      "additionalProperties": false
     },
     "SearchProductVisionByPropertyResponse": {
       "type": "object",
       "properties": {
         "feedType": {
-          "enum": [
-            "offers",
-            "products"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/FeedType"
         },
         "searchEligibleProperty": {
-          "enum": [
-            "none",
-            "title",
-            "category",
-            "price",
-            "sku",
-            "ean",
-            "mpn",
-            "errorCode",
-            "flowStatus"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/SearchEligibleProperty"
         },
         "results": {
           "type": "array",
@@ -32051,1125 +30095,10 @@
           "type": "string"
         },
         "searchOperator": {
-          "enum": [
-            "none",
-            "equal",
-            "contains",
-            "startWith",
-            "greater",
-            "lower",
-            "in"
-          ],
-          "type": "string"
+          "$ref": "#/definitions/SearchOperator"
         }
       },
       "additionalProperties": false
-    },
-    "V1ExportFeedTypeBusinessCodeBusinessCodePost200TextCsvResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeBusinessCodeBusinessCodePost200TextPlainResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeBusinessCodeBusinessCodePost200ApplicationJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeBusinessCodeBusinessCodePost200TextJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1FeedTypeChannelCatalogChannelCatalogIdCountersGet200TextPlainResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "imported": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "uncategorized": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "disabled": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "filtered": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "invalid": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "exported": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "exportedError": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "published": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "publishedObsolete": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "publishedError": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "unpublished": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "unpublishedError": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1FeedTypeChannelCatalogChannelCatalogIdCountersGet200ApplicationJsonRespons": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "imported": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "uncategorized": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "disabled": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "filtered": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "invalid": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "exported": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "exportedError": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "published": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "publishedObsolete": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "publishedError": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "unpublished": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "unpublishedError": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1FeedTypeChannelCatalogChannelCatalogIdCountersGet200TextJsonResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "imported": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "uncategorized": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "disabled": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "filtered": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "invalid": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "exported": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "exportedError": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "published": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "publishedObsolete": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "publishedError": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "unpublished": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "unpublishedError": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdSearchPost200TextCsvResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdSearchPost200TextPlainResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdSearchPost200ApplicationJsonRe": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdSearchPost200TextJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdPost200TextCsvResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdPost200TextPlainResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdPost200ApplicationJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeChannelCatalogChannelCatalogIdPost200TextJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "BeezupProductVisionDocumentPublicationMd5Array": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/BeezupProductVisionDocumentPublicationMd5"
-      }
-    },
-    "V1OperatorsGet200TextPlainResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "title": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "category": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "price": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "sku": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "ean": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "mpn": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "errorCode": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "flowStatus": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1OperatorsGet200ApplicationJsonResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "title": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "category": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "price": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "sku": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "ean": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "mpn": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "errorCode": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "flowStatus": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1OperatorsGet200TextJsonResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "title": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "category": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "price": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "sku": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "ean": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "mpn": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "errorCode": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "flowStatus": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1ColumnsGet200TextPlainResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "title": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "category": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "price": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "sku": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "ean": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "mpn": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "errorCode": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "flowStatus": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1ColumnsGet200ApplicationJsonResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "title": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "category": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "price": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "sku": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "ean": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "mpn": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "errorCode": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "flowStatus": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1ColumnsGet200TextJsonResponse": {
-      "type": "object",
-      "properties": {
-        "none": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "title": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "category": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "price": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "sku": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "ean": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "mpn": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "errorCode": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        },
-        "flowStatus": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "none",
-              "equal",
-              "contains",
-              "startWith",
-              "greater",
-              "lower",
-              "in"
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "V1ExportFeedTypeScopeBeezupScopePost200TextCsvResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeScopeBeezupScopePost200TextPlainResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeScopeBeezupScopePost200ApplicationJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeScopeBeezupScopePost200TextJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeStoreStoreIdPost200TextCsvResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeStoreStoreIdPost200TextPlainResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeStoreStoreIdPost200ApplicationJsonResponse": {
-      "format": "binary",
-      "type": "string"
-    },
-    "V1ExportFeedTypeStoreStoreIdPost200TextJsonResponse": {
-      "format": "binary",
-      "type": "string"
     },
     "ChangeLogDomain": {
       "enum": [
@@ -33997,13 +30926,12 @@
     {
       "name": "Product Vision 2",
       "tags": [
-        "Product Vision 2 - Admin",
+        "Product Vision 2 - BusinessCode",
         "Product Vision 2 - ChannelCatalog",
         "Product Vision 2 - Publication",
         "Product Vision 2 - Global",
         "Product Vision 2 - Scope",
-        "Product Vision 2 - Store",
-        "Product Vision 2 - BusinessCode"
+        "Product Vision 2 - Store"
       ]
     },
     {
