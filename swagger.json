@@ -232,10 +232,6 @@
       "x-displayName": "Generation"
     },
     {
-      "name": "Product Vision 2 - BusinessCode",
-      "x-displayName": "BusinessCode"
-    },
-    {
       "name": "Product Vision 2 - ChannelCatalog",
       "x-displayName": "ChannelCatalog"
     },
@@ -9713,71 +9709,6 @@
           },
           "default": {
             "$ref": "#/responses/GeneralError"
-          }
-        }
-      }
-    },
-    "/vision/v1/export/{feedType}/businessCode/{businessCode}": {
-      "post": {
-        "tags": [
-          "Product Vision 2 - BusinessCode"
-        ],
-        "summary": "GetExportByBusinessCode",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "produces": [
-          "text/csv",
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "feedType",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "Offers",
-              "Products"
-            ]
-          },
-          {
-            "in": "path",
-            "name": "businessCode",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/GetExportByBusinessCodeRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "format": "binary",
-              "type": "string"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/ErrorMessageDto"
-            }
           }
         }
       }
@@ -29682,27 +29613,6 @@
     "GetAllProductVisionResponse": {
       "type": "object",
       "properties": {
-        "feedType": {
-          "$ref": "#/definitions/FeedType"
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ProductVisionDocumentDto"
-          }
-        },
-        "continuationToken": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "GetExportByBusinessCodeRequest": {
-      "required": [
-        "eligibleExportColumns"
-      ],
-      "type": "object",
-      "properties": {
         "eligibleExportColumns": {
           "maxItems": 10,
           "minItems": 1,
@@ -29712,7 +29622,10 @@
           }
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": [
+        "eligibleExportColumns"
+      ]
     },
     "GetExportByChannelCatalogIdRequest": {
       "required": [
@@ -31010,7 +30923,6 @@
     {
       "name": "Product Vision 2",
       "tags": [
-        "Product Vision 2 - BusinessCode",
         "Product Vision 2 - ChannelCatalog",
         "Product Vision 2 - Publication",
         "Product Vision 2 - Global",
