@@ -24846,6 +24846,10 @@
               "format": "uri",
               "example": "http://beezupblob.com/orderItems.xml"
             },
+            "order_Shipping_Method_Country": {
+              "description": "The country of the shipping method of this order",
+              "type": "string"
+            },
             "orderItems": {
               "type": "array",
               "items": {
